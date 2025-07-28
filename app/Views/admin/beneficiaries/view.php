@@ -1,0 +1,167 @@
+<?= $this->extend('admin/layout') ?>
+
+<?= $this->section('content') ?>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h4><i class="fas fa-eye"></i> View Beneficiary Details</h4>
+    <div>
+        <a href="<?= base_url('admin/beneficiaries/edit/' . $beneficiary['id']) ?>" class="btn btn-warning">
+            <i class="fas fa-edit"></i> Edit
+        </a>
+        <a href="<?= base_url('admin/beneficiaries') ?>" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to List
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Personal Information -->
+    <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-user"></i> Personal Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Student ID:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['student_id']) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Full Name:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['name']) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Phone:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['contact_phone']) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Email:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['email']) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Status:</strong></div>
+                    <div class="col-sm-8">
+                        <span class="badge bg-<?= $beneficiary['status'] == 'Active' ? 'success' : ($beneficiary['status'] == 'Graduated' ? 'info' : 'secondary') ?>">
+                            <?= esc($beneficiary['status']) ?>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Academic Information -->
+    <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-graduation-cap"></i> Academic Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Course:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['course']) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>University:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['university']) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Current Year:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['year']) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Enrolled:</strong></div>
+                    <div class="col-sm-8"><?= date('F j, Y', strtotime($beneficiary['enrolled_date'])) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Expected Graduation:</strong></div>
+                    <div class="col-sm-8"><?= date('F j, Y', strtotime($beneficiary['expected_graduation'])) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Previous Education:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['previous_education']) ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Financial Information -->
+    <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-rupee-sign"></i> Financial Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Total Fees:</strong></div>
+                    <div class="col-sm-8">₹<?= number_format($beneficiary['total_fees'], 2) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Scholarship Amount:</strong></div>
+                    <div class="col-sm-8 text-success">₹<?= number_format($beneficiary['scholarship_amount'], 2) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Coverage:</strong></div>
+                    <div class="col-sm-8">
+                        <?php $percentage = ($beneficiary['scholarship_amount'] / $beneficiary['total_fees']) * 100; ?>
+                        <div class="progress" style="height: 20px;">
+                            <div class="progress-bar bg-success" style="width: <?= $percentage ?>%">
+                                <?= round($percentage) ?>%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Family Income:</strong></div>
+                    <div class="col-sm-8">₹<?= number_format($beneficiary['family_income'], 2) ?>/year</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Family Information -->
+    <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-home"></i> Family Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Father's Name:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['father_name']) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Father's Occupation:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['father_occupation']) ?></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Address:</strong></div>
+                    <div class="col-sm-8"><?= nl2br(esc($beneficiary['address'])) ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Timeline -->
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-clock"></i> Record Timeline</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p><i class="fas fa-plus-circle text-success"></i> <strong>Added:</strong> <?= date('F j, Y g:i A', strtotime($beneficiary['created_at'])) ?></p>
+            </div>
+            <div class="col-md-6">
+                <p><i class="fas fa-edit text-warning"></i> <strong>Last Updated:</strong> <?= date('F j, Y g:i A', strtotime($beneficiary['updated_at'])) ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var page_title = 'View Beneficiary';
+</script>
+
+<?= $this->endSection() ?>
