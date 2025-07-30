@@ -1,3 +1,4 @@
+
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -10,6 +11,58 @@
     </div>
 </section>
 
+<!-- Search and Filter Section -->
+<section class="py-5 bg-soft">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-4">
+                        <form method="GET" action="<?= base_url('beneficiaries') ?>" class="row g-3">
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-0">
+                                        <i class="fas fa-search text-muted"></i>
+                                    </span>
+                                    <input type="text" class="form-control border-0 bg-light" name="search" 
+                                           placeholder="Search by name, course, or university..." 
+                                           value="<?= esc($search ?? '') ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="d-grid gap-2 d-md-flex">
+                                    <button type="submit" class="btn btn-primary flex-fill">
+                                        <i class="fas fa-search me-2"></i> Search
+                                    </button>
+                                    <?php if (!empty($search)): ?>
+                                    <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-secondary">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <?php if (!empty($search)): ?>
+        <div class="row mt-3">
+            <div class="col-12 text-center">
+                <p class="text-muted">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Showing results for "<strong><?= esc($search) ?></strong>" 
+                    <?php if (isset($total_results)): ?>
+                        - <?= $total_results ?> student(s) found
+                    <?php endif; ?>
+                </p>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+</section>
+
 <!-- Beneficiaries Grid -->
 <section class="section-padding">
     <div class="container">
@@ -17,111 +70,178 @@
         <div class="row">
             <?php foreach($beneficiaries as $beneficiary): ?>
             <div class="col-lg-6 col-xl-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-header">
-                        <h5 class="mb-0">
-                            <i class="fas fa-user-graduate"></i> 
+                <div class="card h-100 border-0 shadow-lg">
+                    <div class="card-header text-center" style="background: var(--gradient-soft); border-bottom: 3px solid var(--primary-color);">
+                        <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h5 class="mb-1 font-display">
                             <?= esc($beneficiary['name']) ?>
                         </h5>
-                        <small class="text-light">Student ID: <?= esc($beneficiary['student_id']) ?></small>
-                    </div>
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <h6 class="text-primary">Course & University</h6>
-                                <p class="mb-1"><strong><?= esc($beneficiary['course']) ?></strong></p>
-                                <p class="text-muted small"><?= esc($beneficiary['university']) ?></p>
-                            </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <div class="col-6">
-                                <h6 class="text-primary">Academic Year</h6>
-                                <p class="mb-0"><?= esc($beneficiary['year']) ?></p>
-                            </div>
-                            <div class="col-6">
-                                <h6 class="text-primary">Status</h6>
-                                <span class="badge bg-success"><?= esc($beneficiary['status']) ?></span>
-                            </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <h6 class="text-primary">Contact Information</h6>
-                                <p class="mb-1">
-                                    <i class="fas fa-phone text-muted"></i> 
-                                    <?= esc($beneficiary['contact_phone']) ?>
-                                </p>
-                                <p class="mb-0">
-                                    <i class="fas fa-envelope text-muted"></i> 
-                                    <?= esc($beneficiary['email']) ?>
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <h6 class="text-primary">Academic Timeline</h6>
-                                <p class="mb-1">
-                                    <small><strong>Enrolled:</strong> <?= date('M Y', strtotime($beneficiary['enrolled_date'])) ?></small>
-                                </p>
-                                <p class="mb-0">
-                                    <small><strong>Expected Graduation:</strong> <?= date('M Y', strtotime($beneficiary['expected_graduation'])) ?></small>
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <h6 class="text-primary">Financial Support</h6>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <small class="text-muted">Total Fees</small>
-                                        <p class="mb-0"><strong>₹<?= number_format($beneficiary['total_fees']) ?></strong></p>
-                                    </div>
-                                    <div class="col-6">
-                                        <small class="text-muted">Scholarship</small>
-                                        <p class="mb-0 text-success"><strong>₹<?= number_format($beneficiary['scholarship_amount']) ?></strong></p>
-                                    </div>
-                                </div>
-                                <div class="progress mt-2" style="height: 8px;">
-                                    <?php $percentage = ($beneficiary['scholarship_amount'] / $beneficiary['total_fees']) * 100; ?>
-                                    <div class="progress-bar bg-success" style="width: <?= $percentage ?>%"></div>
-                                </div>
-                                <small class="text-muted"><?= round($percentage) ?>% scholarship coverage</small>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-12">
-                                <h6 class="text-primary">Family Background</h6>
-                                <p class="mb-1"><strong>Father:</strong> <?= esc($beneficiary['father_name']) ?></p>
-                                <p class="mb-1"><strong>Occupation:</strong> <?= esc($beneficiary['father_occupation']) ?></p>
-                                <p class="mb-1"><strong>Family Income:</strong> ₹<?= number_format($beneficiary['family_income']) ?>/year</p>
-                                <p class="mb-0 small text-muted">
-                                    <i class="fas fa-map-marker-alt"></i> 
-                                    <?= esc($beneficiary['address']) ?>
-                                </p>
-                            </div>
+                        <small class="text-muted">ID: <?= esc($beneficiary['student_id']) ?></small>
+                        <div class="mt-2">
+                            <span class="badge px-3 py-2" style="background: var(--gradient-primary); color: white;">
+                                <?= esc($beneficiary['status']) ?>
+                            </span>
                         </div>
                     </div>
-                    <div class="card-footer bg-light">
-                        <small class="text-muted">
-                            <i class="fas fa-graduation-cap"></i> 
-                            Previous Education: <?= esc($beneficiary['previous_education']) ?>
-                        </small>
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <h6 class="text-primary mb-2">
+                                <i class="fas fa-graduation-cap me-2"></i>Course & University
+                            </h6>
+                            <p class="mb-1 fw-bold"><?= esc($beneficiary['course']) ?></p>
+                            <p class="text-muted small mb-0"><?= esc($beneficiary['university']) ?></p>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <h6 class="text-primary mb-2">
+                                    <i class="fas fa-calendar-alt me-2"></i>Academic Year
+                                </h6>
+                                <p class="mb-0 fw-semibold"><?= esc($beneficiary['year']) ?></p>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="text-primary mb-2">
+                                    <i class="fas fa-phone me-2"></i>Contact
+                                </h6>
+                                <p class="mb-0 fw-semibold"><?= esc($beneficiary['contact_phone']) ?></p>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="text-primary mb-2">
+                                <i class="fas fa-money-bill-wave me-2"></i>Financial Support
+                            </h6>
+                            <div class="row">
+                                <div class="col-6">
+                                    <small class="text-muted">Total Fees</small>
+                                    <p class="mb-0 fw-bold text-success">₹<?= number_format($beneficiary['total_fees']) ?></p>
+                                </div>
+                                <div class="col-6">
+                                    <small class="text-muted">Scholarship</small>
+                                    <p class="mb-0 fw-bold text-primary">₹<?= number_format($beneficiary['scholarship_amount']) ?></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="text-primary mb-2">
+                                <i class="fas fa-calendar me-2"></i>Timeline
+                            </h6>
+                            <div class="row">
+                                <div class="col-6">
+                                    <small class="text-muted">Enrolled</small>
+                                    <p class="mb-0 fw-semibold"><?= date('M Y', strtotime($beneficiary['enrolled_date'])) ?></p>
+                                </div>
+                                <div class="col-6">
+                                    <small class="text-muted">Expected Graduation</small>
+                                    <p class="mb-0 fw-semibold"><?= date('M Y', strtotime($beneficiary['expected_graduation'])) ?></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php if (!empty($beneficiary['email'])): ?>
+                        <div class="text-center mt-4">
+                            <a href="mailto:<?= esc($beneficiary['email']) ?>" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-envelope me-2"></i>Contact Student
+                            </a>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
-        <?php else: ?>
-        <div class="text-center py-5">
-            <i class="fas fa-user-graduate fa-5x text-muted mb-4"></i>
-            <h3 class="text-muted">No Beneficiaries Found</h3>
-            <p class="text-muted">We're currently working on adding new beneficiaries to our program.</p>
+        
+        <!-- Pagination -->
+        <?php if (isset($pager) && $pager->getPageCount() > 1): ?>
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="d-flex justify-content-center">
+                    <nav aria-label="Beneficiaries pagination">
+                        <ul class="pagination pagination-lg">
+                            <?php if ($pager->hasPrevious()): ?>
+                            <li class="page-item">
+                                <a class="page-link" href="<?= $pager->getPrevious() . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                            <?php endif; ?>
+                            
+                            <?php foreach ($pager->links() as $link): ?>
+                            <li class="page-item <?= $link['active'] ? 'active' : '' ?>">
+                                <a class="page-link" href="<?= $link['uri'] . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
+                                    <?= $link['title'] ?>
+                                </a>
+                            </li>
+                            <?php endforeach; ?>
+                            
+                            <?php if ($pager->hasNext()): ?>
+                            <li class="page-item">
+                                <a class="page-link" href="<?= $pager->getNext() . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                            <?php endif; ?>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <div class="text-center mt-3">
+                    <p class="text-muted">
+                        Showing <?= $pager->getDetails()['start'] ?> to <?= $pager->getDetails()['end'] ?> 
+                        of <?= $pager->getDetails()['total'] ?> entries
+                    </p>
+                </div>
+            </div>
         </div>
         <?php endif; ?>
+        
+        <?php else: ?>
+        <div class="text-center py-5">
+            <div class="feature-icon mx-auto mb-4" style="width: 120px; height: 120px; font-size: 4rem; background: var(--gradient-soft); color: var(--text-light);">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h3 class="text-muted mb-3">
+                <?= !empty($search) ? 'No Results Found' : 'No Beneficiaries Found' ?>
+            </h3>
+            <p class="text-muted mb-4">
+                <?= !empty($search) ? 
+                    'Try adjusting your search terms or browse all beneficiaries.' : 
+                    'We\'re currently working on adding new beneficiaries to our program.' ?>
+            </p>
+            <?php if (!empty($search)): ?>
+            <a href="<?= base_url('beneficiaries') ?>" class="btn btn-primary">
+                <i class="fas fa-list me-2"></i> View All Beneficiaries
+            </a>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section-padding bg-soft">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="section-title text-gradient font-display">Support Our Mission</h2>
+                <p class="lead text-muted mb-4">Help us continue supporting deserving students in their educational journey. Every contribution makes a meaningful difference in someone's life.</p>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <a href="<?= base_url('success-stories') ?>" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-star me-2"></i> Read Success Stories
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <a href="<?= base_url() ?>" class="btn btn-outline-primary btn-lg w-100">
+                            <i class="fas fa-home me-2"></i> Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

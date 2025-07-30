@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Controllers;
@@ -24,8 +25,44 @@ class Home extends BaseController
     public function beneficiaries()
     {
         $beneficiaryModel = new BeneficiaryModel();
+        $search = $this->request->getGet('search');
+        $perPage = 9; // 3 columns x 3 rows
+        
+        // Build query
+        $builder = $beneficiaryModel->where('status', 'Active');
+        
+        if ($search) {
+            $builder->groupStart()
+                   ->like('name', $search)
+                   ->orLike('course', $search)
+                   ->orLike('university', $search)
+                   ->orLike('student_id', $search)
+                   ->groupEnd();
+        }
+        
+        // Get paginated results
+        $beneficiaries = $builder->paginate($perPage, 'default');
+        $pager = $beneficiaryModel->pager;
+        
+        // Get total results for search info
+        $totalResults = null;
+        if ($search) {
+            $countBuilder = $beneficiaryModel->where('status', 'Active')
+                                          ->groupStart()
+                                          ->like('name', $search)
+                                          ->orLike('course', $search)
+                                          ->orLike('university', $search)
+                                          ->orLike('student_id', $search)
+                                          ->groupEnd();
+            $totalResults = $countBuilder->countAllResults();
+        }
+        
         $data = [
-            'beneficiaries' => $beneficiaryModel->where('status', 'Active')->findAll()
+            'beneficiaries' => $beneficiaries,
+            'pager' => $pager,
+            'search' => $search,
+            'total_results' => $totalResults,
+            'title' => 'Our Beneficiaries'
         ];
         
         return view('frontend/beneficiaries', $data);
@@ -35,7 +72,8 @@ class Home extends BaseController
     {
         $successStoryModel = new SuccessStoryModel();
         $data = [
-            'success_stories' => $successStoryModel->getPublishedStories()
+            'success_stories' => $successStoryModel->getPublishedStories(),
+            'title' => 'Success Stories'
         ];
         
         return view('frontend/success_stories', $data);
