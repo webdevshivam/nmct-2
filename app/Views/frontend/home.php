@@ -48,7 +48,7 @@
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card stats-card h-100">
                     <div class="card-body">
-                        <div class="feature-icon bg-success mb-3 mx-auto" style="background: var(--gradient-accent);">
+                        <div class="feature-icon mb-3 mx-auto" style="background: var(--secondary-color);">
                             <i class="fas fa-user-graduate"></i>
                         </div>
                         <span class="stats-number"><?= $active_beneficiaries ?></span>
@@ -60,7 +60,7 @@
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card stats-card h-100">
                     <div class="card-body">
-                        <div class="feature-icon mb-3 mx-auto" style="background: var(--gradient-secondary);">
+                        <div class="feature-icon mb-3 mx-auto" style="background: var(--accent-color);">
                             <i class="fas fa-trophy"></i>
                         </div>
                         <span class="stats-number"><?= count($success_stories) ?></span>
@@ -72,7 +72,7 @@
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card stats-card h-100">
                     <div class="card-body">
-                        <div class="feature-icon mb-3 mx-auto" style="background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%);">
+                        <div class="feature-icon mb-3 mx-auto" style="background: var(--warning-color);">
                             <i class="fas fa-handshake"></i>
                         </div>
                         <span class="stats-number">5+</span>
@@ -98,7 +98,7 @@
                     <div class="col-sm-6 mb-3">
                         <div class="d-flex align-items-center">
                             <div class="feature-icon me-3" style="width: 60px; height: 60px; font-size: 1.3rem;">
-                                <i class="fas fa-scholarship"></i>
+                                <i class="fas fa-graduation-cap"></i>
                             </div>
                             <div>
                                 <h6 class="fw-bold mb-1">Scholarship Programs</h6>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="col-sm-6 mb-3">
                         <div class="d-flex align-items-center">
-                            <div class="feature-icon me-3" style="width: 60px; height: 60px; font-size: 1.3rem; background: var(--gradient-accent);">
+                            <div class="feature-icon me-3" style="width: 60px; height: 60px; font-size: 1.3rem; background: var(--secondary-color);">
                                 <i class="fas fa-compass"></i>
                             </div>
                             <div>
@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-sm-6 mb-3">
                         <div class="d-flex align-items-center">
-                            <div class="feature-icon me-3" style="width: 60px; height: 60px; font-size: 1.3rem; background: var(--gradient-secondary);">
+                            <div class="feature-icon me-3" style="width: 60px; height: 60px; font-size: 1.3rem; background: var(--accent-color);">
                                 <i class="fas fa-hands-helping"></i>
                             </div>
                             <div>
@@ -130,7 +130,7 @@
                     </div>
                     <div class="col-sm-6 mb-3">
                         <div class="d-flex align-items-center">
-                            <div class="feature-icon me-3" style="width: 60px; height: 60px; font-size: 1.3rem; background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%);">
+                            <div class="feature-icon me-3" style="width: 60px; height: 60px; font-size: 1.3rem; background: var(--warning-color);">
                                 <i class="fas fa-tools"></i>
                             </div>
                             <div>
@@ -189,21 +189,21 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="process-step">
-                    <div class="process-number" style="background: var(--gradient-accent);">2</div>
+                    <div class="process-number" style="background: var(--secondary-color);">2</div>
                     <h5 class="fw-bold mb-3">Selection & Onboarding</h5>
                     <p class="text-muted">Our selection committee carefully reviews applications and selected students are onboarded with a comprehensive orientation program.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="process-step">
-                    <div class="process-number" style="background: var(--gradient-secondary);">3</div>
+                    <div class="process-number" style="background: var(--accent-color);">3</div>
                     <h5 class="fw-bold mb-3">Support & Mentorship</h5>
                     <p class="text-muted">Ongoing financial support, academic mentorship, career guidance, and personal development throughout their educational journey.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="process-step">
-                    <div class="process-number" style="background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%);">4</div>
+                    <div class="process-number" style="background: var(--warning-color);">4</div>
                     <h5 class="fw-bold mb-3">Success & Impact</h5>
                     <p class="text-muted">Graduates become successful professionals who contribute back to society and inspire the next generation of students.</p>
                 </div>
@@ -291,11 +291,11 @@
             <div class="col-lg-4 mb-4">
                 <div class="testimonial-card">
                     <div class="mb-3">
-                        <i class="fas fa-quote-left fa-2x" style="color: var(--accent-color);"></i>
+                        <i class="fas fa-quote-left fa-2x" style="color: var(--secondary-color);"></i>
                     </div>
                     <p class="text-muted mb-4">"Not just financial support, but the mentorship and emotional support I received made me who I am today. Forever grateful to this amazing organization."</p>
                     <div class="d-flex align-items-center justify-content-center">
-                        <div class="feature-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem; background: var(--gradient-accent);">
+                        <div class="feature-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem; background: var(--secondary-color);">
                             <i class="fas fa-user"></i>
                         </div>
                         <div>
@@ -308,11 +308,11 @@
             <div class="col-lg-4 mb-4">
                 <div class="testimonial-card">
                     <div class="mb-3">
-                        <i class="fas fa-quote-left fa-2x" style="color: var(--secondary-color);"></i>
+                        <i class="fas fa-quote-left fa-2x" style="color: var(--accent-color);"></i>
                     </div>
                     <p class="text-muted mb-4">"The trust's holistic approach to education support - from academics to personality development - prepared me for a successful career in business."</p>
                     <div class="d-flex align-items-center justify-content-center">
-                        <div class="feature-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem; background: var(--gradient-secondary);">
+                        <div class="feature-icon me-3" style="width: 50px; height: 50px; font-size: 1.2rem; background: var(--accent-color);">
                             <i class="fas fa-user"></i>
                         </div>
                         <div>
@@ -347,7 +347,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="text-center">
-                    <div class="feature-icon mx-auto mb-3" style="background: var(--gradient-accent);">
+                    <div class="feature-icon mx-auto mb-3" style="background: var(--secondary-color);">
                         <i class="fas fa-lightbulb"></i>
                     </div>
                     <h5 class="fw-bold">Innovation</h5>
@@ -356,7 +356,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="text-center">
-                    <div class="feature-icon mx-auto mb-3" style="background: var(--gradient-secondary);">
+                    <div class="feature-icon mx-auto mb-3" style="background: var(--accent-color);">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h5 class="fw-bold">Transparency</h5>
@@ -365,7 +365,7 @@
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="text-center">
-                    <div class="feature-icon mx-auto mb-3" style="background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%);">
+                    <div class="feature-icon mx-auto mb-3" style="background: var(--warning-color);">
                         <i class="fas fa-globe"></i>
                     </div>
                     <h5 class="fw-bold">Community Impact</h5>
@@ -377,7 +377,7 @@
 </section>
 
 <!-- Call to Action -->
-<section class="section-padding" style="background: var(--gradient-primary); color: white;">
+<section class="section-padding" style="background: var(--primary-color); color: white;">
     <div class="container text-center fade-in">
         <div class="row">
             <div class="col-lg-8 mx-auto">

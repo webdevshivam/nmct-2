@@ -10,34 +10,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6366f1;
-            --primary-light: #a5b4fc;
-            --primary-dark: #4338ca;
-            --secondary-color: #ec4899;
-            --secondary-light: #f9a8d4;
-            --accent-color: #06b6d4;
-            --accent-light: #67e8f9;
+            --primary-color: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #059669;
+            --secondary-light: #10b981;
+            --accent-color: #dc2626;
+            --accent-light: #ef4444;
             --success-color: #10b981;
-            --success-light: #6ee7b7;
+            --success-light: #34d399;
             --warning-color: #f59e0b;
-            --warning-light: #fcd34d;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --text-light: #9ca3af;
+            --warning-light: #fbbf24;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-light: #6b7280;
             --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-tertiary: #f1f5f9;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
             --bg-soft: #fefefe;
-            --border-light: #e5e7eb;
-            --border-lighter: #f3f4f6;
+            --border-light: #d1d5db;
+            --border-lighter: #e5e7eb;
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            --gradient-secondary: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
-            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-            --gradient-soft: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            --gradient-secondary: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            --gradient-accent: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            --gradient-soft: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
         }
         
         * {
@@ -60,18 +60,10 @@
         
         /* Navigation Styles */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-lighter);
-            box-shadow: var(--shadow-sm);
-            padding: 1.2rem 0;
-            transition: all 0.3s ease;
-        }
-        
-        .navbar.scrolled {
             background: rgba(255, 255, 255, 0.98);
-            box-shadow: var(--shadow-md);
-            padding: 0.8rem 0;
+            border-bottom: 2px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            padding: 1rem 0;
         }
         
         .navbar-brand {
@@ -79,133 +71,69 @@
             font-weight: 700;
             color: var(--primary-color) !important;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
         
         .navbar-brand:hover {
-            color: var(--secondary-color) !important;
-            transform: translateY(-1px);
+            color: var(--primary-dark) !important;
         }
         
         .navbar-nav .nav-link {
             color: var(--text-primary) !important;
             font-weight: 500;
-            margin: 0 0.8rem;
-            padding: 0.7rem 1.2rem !important;
-            border-radius: 12px;
-            position: relative;
-            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+            padding: 0.8rem 1.2rem !important;
+            border-radius: 6px;
             font-size: 0.95rem;
         }
         
         .navbar-nav .nav-link:hover {
             color: var(--primary-color) !important;
-            background: rgba(99, 102, 241, 0.08);
-            transform: translateY(-1px);
-        }
-        
-        .navbar-nav .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-primary);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .navbar-nav .nav-link:hover::after {
-            width: 70%;
+            background: var(--bg-secondary);
         }
         
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            background: var(--bg-secondary);
             color: var(--text-primary);
-            padding: 140px 0 120px;
+            padding: 120px 0 100px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="0.5" fill="%236366f1" opacity="0.1"><animate attributeName="opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite"/></circle></svg>') repeat;
-            animation: float 25s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(180deg); }
+            border-bottom: 1px solid var(--border-light);
         }
         
         .hero-section h1 {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1.8rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.5s forwards;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary-color);
         }
         
         .hero-section .lead {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.7s forwards;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
             color: var(--text-secondary);
             font-weight: 400;
-        }
-        
-        .hero-buttons {
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.9s forwards;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         /* Button Styles */
         .btn {
             font-weight: 600;
-            border-radius: 14px;
-            padding: 14px 28px;
-            transition: all 0.3s ease;
+            border-radius: 6px;
+            padding: 12px 24px;
             border: none;
-            position: relative;
-            overflow: hidden;
             font-family: 'Poppins', sans-serif;
         }
         
         .btn-primary {
-            background: var(--gradient-primary);
+            background: var(--primary-color);
             color: white;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, #5b5bd6 0%, #7c3aed 100%);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            background: var(--primary-dark);
             color: white;
         }
         
@@ -218,47 +146,26 @@
         .btn-outline-primary:hover {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
         }
         
         .btn-lg {
-            padding: 16px 32px;
+            padding: 14px 28px;
             font-size: 1.1rem;
         }
         
         /* Card Styles */
         .card {
-            border: none;
-            border-radius: 20px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s ease;
-            overflow: hidden;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
             background: var(--bg-primary);
-            border: 1px solid var(--border-lighter);
-        }
-        
-        .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-xl);
         }
         
         .card-header {
-            background: var(--gradient-soft);
+            background: var(--bg-secondary);
             color: var(--text-primary);
-            border: none;
-            padding: 2.5rem;
-            position: relative;
-        }
-        
-        .card-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-primary);
+            border-bottom: 1px solid var(--border-light);
+            padding: 2rem;
         }
         
         /* Stats Cards */
@@ -267,16 +174,9 @@
             border: 1px solid var(--border-light);
             color: var(--text-primary);
             text-align: center;
-            padding: 3rem 2rem;
-            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
             position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
         }
         
         .stats-card::before {
@@ -285,20 +185,17 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
+            height: 3px;
+            background: var(--primary-color);
         }
         
         .stats-number {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             display: block;
             line-height: 1;
             margin-bottom: 0.8rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary-color);
         }
         
         .stats-card h5 {
@@ -341,22 +238,16 @@
         
         /* Feature Icons */
         .feature-icon {
-            width: 90px;
-            height: 90px;
-            background: var(--gradient-primary);
-            border-radius: 24px;
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.8rem;
+            margin: 0 auto 1.5rem;
             color: white;
-            font-size: 2.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-icon:hover {
-            transform: rotate(5deg) scale(1.1);
-            background: var(--gradient-secondary);
+            font-size: 2rem;
         }
         
         .bg-soft {
@@ -399,14 +290,8 @@
             transform: translateX(5px);
         }
         
-        /* Animations */
+        /* Remove animations - content always visible */
         .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-        
-        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -415,15 +300,9 @@
         .testimonial-card {
             background: var(--bg-primary);
             border: 1px solid var(--border-light);
-            border-radius: 20px;
+            border-radius: 8px;
             padding: 2.5rem;
             text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
         }
         
         .process-step {
@@ -589,37 +468,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('mainNavbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(el => observer.observe(el));
-        });
-
-        // Smooth scrolling for anchor links
+        // Smooth scrolling for anchor links (keeping minimal functionality)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
