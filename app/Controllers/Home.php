@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Controllers;
@@ -12,51 +11,51 @@ class Home extends BaseController
     {
         $successStoryModel = new SuccessStoryModel();
         $beneficiaryModel = new BeneficiaryModel();
-        
+
         $data = [
             'success_stories' => $successStoryModel->getPublishedStories(),
             'total_beneficiaries' => $beneficiaryModel->countAll(),
             'active_beneficiaries' => $beneficiaryModel->where('status', 'Active')->countAllResults()
         ];
-        
+
         return view('frontend/home', $data);
     }
-    
+
     public function beneficiaries()
     {
         $beneficiaryModel = new BeneficiaryModel();
         $search = $this->request->getGet('search');
         $perPage = 9; // 3 columns x 3 rows
-        
+
         // Build query
         $builder = $beneficiaryModel->where('status', 'Active');
-        
+
         if ($search) {
             $builder->groupStart()
-                   ->like('name', $search)
-                   ->orLike('course', $search)
-                   ->orLike('university', $search)
-                   ->orLike('student_id', $search)
-                   ->groupEnd();
+                ->like('name', $search)
+                ->orLike('course', $search)
+                ->orLike('university', $search)
+                ->orLike('student_id', $search)
+                ->groupEnd();
         }
-        
+
         // Get paginated results
         $beneficiaries = $builder->paginate($perPage, 'default');
         $pager = $beneficiaryModel->pager;
-        
+
         // Get total results for search info
         $totalResults = null;
         if ($search) {
             $countBuilder = $beneficiaryModel->where('status', 'Active')
-                                          ->groupStart()
-                                          ->like('name', $search)
-                                          ->orLike('course', $search)
-                                          ->orLike('university', $search)
-                                          ->orLike('student_id', $search)
-                                          ->groupEnd();
+                ->groupStart()
+                ->like('name', $search)
+                ->orLike('course', $search)
+                ->orLike('university', $search)
+                ->orLike('student_id', $search)
+                ->groupEnd();
             $totalResults = $countBuilder->countAllResults();
         }
-        
+
         $data = [
             'beneficiaries' => $beneficiaries,
             'pager' => $pager,
@@ -64,10 +63,10 @@ class Home extends BaseController
             'total_results' => $totalResults,
             'title' => 'Our Beneficiaries'
         ];
-        
+
         return view('frontend/beneficiaries', $data);
     }
-    
+
     public function success_stories()
     {
         $successStoryModel = new SuccessStoryModel();
@@ -75,7 +74,7 @@ class Home extends BaseController
             'success_stories' => $successStoryModel->getPublishedStories(),
             'title' => 'Success Stories'
         ];
-        
+
         return view('frontend/success_stories', $data);
     }
 }
