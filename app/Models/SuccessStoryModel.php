@@ -52,4 +52,9 @@ class SuccessStoryModel extends Model
     {
         return $this->where('status', 'active')->findAll();
     }
+
+    public function getPublishedStories()
+    {
+        return $this->where('status', 'active')->findAll();
+    }
 }
