@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -14,8 +13,15 @@ class PublicFormModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'form_name', 'form_type', 'public_url_token', 'valid_until', 'max_submissions',
-        'current_submissions', 'status', 'description', 'created_by_admin_id'
+        'form_name',
+        'form_type',
+        'public_url_token',
+        'valid_until',
+        'max_submissions',
+        'current_submissions',
+        'status',
+        'description',
+        'created_by_admin_id'
     ];
 
     // Dates
@@ -35,9 +41,9 @@ class PublicFormModel extends Model
     public function generateUniqueToken($type)
     {
         do {
-            $token = strtoupper($type == 'beneficiary' ? 'BEN' : 'SUC') . '_' . 
-                    date('Y') . '_' . 
-                    bin2hex(random_bytes(4));
+            $token = strtoupper($type == 'beneficiary' ? 'BEN' : 'SUC') . '_' .
+                date('Y') . '_' .
+                bin2hex(random_bytes(4));
         } while ($this->where('public_url_token', $token)->first());
 
         return $token;
@@ -46,9 +52,9 @@ class PublicFormModel extends Model
     public function getActiveForm($token)
     {
         return $this->where('public_url_token', $token)
-                   ->where('status', 'active')
-                   ->where('valid_until >', date('Y-m-d H:i:s'))
-                   ->first();
+            ->where('status', 'active')
+            ->where('valid_until >', date('Y-m-d H:i:s'))
+            ->first();
     }
 
     public function incrementSubmissions($id)

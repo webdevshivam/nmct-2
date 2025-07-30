@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -14,8 +13,19 @@ class SuccessStoryModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'name', 'age', 'education', 'current_position', 'company', 'city', 'state',
-        'linkedin_url', 'company_link', 'story', 'achievements', 'image', 'status'
+        'name',
+        'age',
+        'education',
+        'current_position',
+        'company',
+        'city',
+        'state',
+        'linkedin_url',
+        'company_link',
+        'story',
+        'achievements',
+        'image',
+        'status'
     ];
 
     // Dates

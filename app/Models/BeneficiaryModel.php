@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -14,9 +13,22 @@ class BeneficiaryModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'name', 'age', 'education_level', 'course', 'institution', 'city', 'state',
-        'phone', 'email', 'linkedin_url', 'company_link', 'family_background',
-        'academic_achievements', 'career_goals', 'image', 'status'
+        'name',
+        'age',
+        'education_level',
+        'course',
+        'institution',
+        'city',
+        'state',
+        'phone',
+        'email',
+        'linkedin_url',
+        'company_link',
+        'family_background',
+        'academic_achievements',
+        'career_goals',
+        'image',
+        'status'
     ];
 
     // Dates
@@ -43,36 +55,36 @@ class BeneficiaryModel extends Model
     public function getActiveBeneficiaries($limit = null, $offset = null, $search = null)
     {
         $builder = $this->where('status', 'active');
-        
+
         if ($search) {
             $builder->groupStart()
-                   ->like('name', $search)
-                   ->orLike('course', $search)
-                   ->orLike('institution', $search)
-                   ->orLike('city', $search)
-                   ->groupEnd();
+                ->like('name', $search)
+                ->orLike('course', $search)
+                ->orLike('institution', $search)
+                ->orLike('city', $search)
+                ->groupEnd();
         }
-        
+
         if ($limit) {
             $builder->limit($limit, $offset);
         }
-        
+
         return $builder->findAll();
     }
 
     public function countActiveBeneficiaries($search = null)
     {
         $builder = $this->where('status', 'active');
-        
+
         if ($search) {
             $builder->groupStart()
-                   ->like('name', $search)
-                   ->orLike('course', $search)
-                   ->orLike('institution', $search)
-                   ->orLike('city', $search)
-                   ->groupEnd();
+                ->like('name', $search)
+                ->orLike('course', $search)
+                ->orLike('institution', $search)
+                ->orLike('city', $search)
+                ->groupEnd();
         }
-        
+
         return $builder->countAllResults();
     }
 }

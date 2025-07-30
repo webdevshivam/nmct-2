@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -14,7 +13,12 @@ class PublicSubmissionModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'public_form_id', 'form_data', 'image', 'ip_address', 'user_agent', 'status'
+        'public_form_id',
+        'form_data',
+        'image',
+        'ip_address',
+        'user_agent',
+        'status'
     ];
 
     // Dates
@@ -30,8 +34,8 @@ class PublicSubmissionModel extends Model
     public function getSubmissionsByForm($formId)
     {
         return $this->where('public_form_id', $formId)
-                   ->orderBy('submitted_at', 'DESC')
-                   ->findAll();
+            ->orderBy('submitted_at', 'DESC')
+            ->findAll();
     }
 
     public function approveSubmission($id, $targetTable)
@@ -40,7 +44,7 @@ class PublicSubmissionModel extends Model
         if (!$submission) return false;
 
         $formData = json_decode($submission['form_data'], true);
-        
+
         // Add image if exists
         if ($submission['image']) {
             $formData['image'] = $submission['image'];
@@ -49,7 +53,7 @@ class PublicSubmissionModel extends Model
         // Insert into target table
         $db = \Config\Database::connect();
         $result = $db->table($targetTable)->insert($formData);
-        
+
         if ($result) {
             $this->update($id, ['status' => 'approved']);
             return true;
