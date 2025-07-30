@@ -395,11 +395,6 @@
                             <i class="fas fa-trophy me-1"></i> Success Stories
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('admin/login') ?>">
-                            <i class="fas fa-user-shield me-1"></i> Admin
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -433,7 +428,6 @@
                         <li><a href="<?= base_url() ?>" class="text-light">Home</a></li>
                         <li><a href="<?= base_url('beneficiaries') ?>" class="text-light">Our Beneficiaries</a></li>
                         <li><a href="<?= base_url('success-stories') ?>" class="text-light">Success Stories</a></li>
-                        <li><a href="<?= base_url('admin/login') ?>" class="text-light">Admin Portal</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
