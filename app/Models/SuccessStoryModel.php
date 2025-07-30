@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Models;
@@ -13,8 +14,8 @@ class SuccessStoryModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'title', 'student_name', 'story', 'image', 'achievement',
-        'current_position', 'graduation_year', 'status'
+        'name', 'age', 'education', 'current_position', 'company', 'city', 'state',
+        'linkedin_url', 'company_link', 'story', 'achievements', 'image', 'status'
     ];
 
     // Dates
@@ -24,15 +25,21 @@ class SuccessStoryModel extends Model
 
     // Validation
     protected $validationRules = [
-        'title' => 'required|min_length[3]|max_length[255]',
-        'student_name' => 'required|min_length[3]|max_length[255]',
+        'name' => 'required|min_length[3]|max_length[255]',
+        'age' => 'required|integer|greater_than[0]',
+        'education' => 'required|max_length[255]',
+        'current_position' => 'required|max_length[255]',
+        'company' => 'required|max_length[255]',
+        'city' => 'required|max_length[100]',
+        'state' => 'required|max_length[100]',
+        'linkedin_url' => 'permit_empty|valid_url|max_length[500]',
+        'company_link' => 'permit_empty|valid_url|max_length[500]',
         'story' => 'required|min_length[10]',
-        'achievement' => 'required|max_length[255]',
-        'status' => 'required|in_list[Published,Draft]'
+        'status' => 'required|in_list[active,inactive]'
     ];
 
-    public function getPublishedStories()
+    public function getActiveStories()
     {
-        return $this->where('status', 'Published')->findAll();
+        return $this->where('status', 'active')->findAll();
     }
 }

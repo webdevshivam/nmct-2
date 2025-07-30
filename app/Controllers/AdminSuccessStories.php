@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Controllers;
@@ -49,14 +50,27 @@ class AdminSuccessStories extends BaseController
         if ($auth !== true) return $auth;
         
         $data = [
-            'title' => $this->request->getPost('title'),
-            'student_name' => $this->request->getPost('student_name'),
-            'story' => $this->request->getPost('story'),
-            'achievement' => $this->request->getPost('achievement'),
+            'name' => $this->request->getPost('name'),
+            'age' => (int)$this->request->getPost('age'),
+            'education' => $this->request->getPost('education'),
             'current_position' => $this->request->getPost('current_position'),
-            'graduation_year' => $this->request->getPost('graduation_year'),
+            'company' => $this->request->getPost('company'),
+            'city' => $this->request->getPost('city'),
+            'state' => $this->request->getPost('state'),
+            'linkedin_url' => $this->request->getPost('linkedin_url'),
+            'company_link' => $this->request->getPost('company_link'),
+            'story' => $this->request->getPost('story'),
+            'achievements' => $this->request->getPost('achievements'),
             'status' => $this->request->getPost('status')
         ];
+        
+        // Handle image upload
+        $image = $this->request->getFile('image');
+        if ($image && $image->isValid() && !$image->hasMoved()) {
+            $newName = $image->getRandomName();
+            $image->move(WRITEPATH . 'uploads/success_stories', $newName);
+            $data['image'] = $newName;
+        }
         
         if ($this->successStoryModel->save($data)) {
             $this->session->setFlashdata('success', 'Success story added successfully');
@@ -90,14 +104,36 @@ class AdminSuccessStories extends BaseController
         if ($auth !== true) return $auth;
         
         $data = [
-            'title' => $this->request->getPost('title'),
-            'student_name' => $this->request->getPost('student_name'),
-            'story' => $this->request->getPost('story'),
-            'achievement' => $this->request->getPost('achievement'),
+            'name' => $this->request->getPost('name'),
+            'age' => (int)$this->request->getPost('age'),
+            'education' => $this->request->getPost('education'),
             'current_position' => $this->request->getPost('current_position'),
-            'graduation_year' => $this->request->getPost('graduation_year'),
+            'company' => $this->request->getPost('company'),
+            'city' => $this->request->getPost('city'),
+            'state' => $this->request->getPost('state'),
+            'linkedin_url' => $this->request->getPost('linkedin_url'),
+            'company_link' => $this->request->getPost('company_link'),
+            'story' => $this->request->getPost('story'),
+            'achievements' => $this->request->getPost('achievements'),
             'status' => $this->request->getPost('status')
         ];
+        
+        // Handle image upload
+        $image = $this->request->getFile('image');
+        if ($image && $image->isValid() && !$image->hasMoved()) {
+            // Delete old image if exists
+            $oldStory = $this->successStoryModel->find($id);
+            if ($oldStory && $oldStory['image']) {
+                $oldImagePath = WRITEPATH . 'uploads/success_stories/' . $oldStory['image'];
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+            
+            $newName = $image->getRandomName();
+            $image->move(WRITEPATH . 'uploads/success_stories', $newName);
+            $data['image'] = $newName;
+        }
         
         if ($this->successStoryModel->update($id, $data)) {
             $this->session->setFlashdata('success', 'Success story updated successfully');
@@ -113,6 +149,15 @@ class AdminSuccessStories extends BaseController
     {
         $auth = $this->checkAuth();
         if ($auth !== true) return $auth;
+        
+        // Delete image if exists
+        $story = $this->successStoryModel->find($id);
+        if ($story && $story['image']) {
+            $imagePath = WRITEPATH . 'uploads/success_stories/' . $story['image'];
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         
         if ($this->successStoryModel->delete($id)) {
             $this->session->setFlashdata('success', 'Success story deleted successfully');

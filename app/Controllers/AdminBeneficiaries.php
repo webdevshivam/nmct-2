@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Controllers;
@@ -49,24 +50,30 @@ class AdminBeneficiaries extends BaseController
         if ($auth !== true) return $auth;
         
         $data = [
-            'student_id' => $this->request->getPost('student_id'),
             'name' => $this->request->getPost('name'),
+            'age' => (int)$this->request->getPost('age'),
+            'education_level' => $this->request->getPost('education_level'),
             'course' => $this->request->getPost('course'),
-            'university' => $this->request->getPost('university'),
-            'contact_phone' => $this->request->getPost('contact_phone'),
+            'institution' => $this->request->getPost('institution'),
+            'city' => $this->request->getPost('city'),
+            'state' => $this->request->getPost('state'),
+            'phone' => $this->request->getPost('phone'),
             'email' => $this->request->getPost('email'),
-            'status' => $this->request->getPost('status'),
-            'year' => $this->request->getPost('year'),
-            'enrolled_date' => $this->request->getPost('enrolled_date'),
-            'expected_graduation' => $this->request->getPost('expected_graduation'),
-            'previous_education' => $this->request->getPost('previous_education'),
-            'total_fees' => $this->request->getPost('total_fees'),
-            'scholarship_amount' => $this->request->getPost('scholarship_amount'),
-            'family_income' => $this->request->getPost('family_income'),
-            'father_name' => $this->request->getPost('father_name'),
-            'father_occupation' => $this->request->getPost('father_occupation'),
-            'address' => $this->request->getPost('address')
+            'linkedin_url' => $this->request->getPost('linkedin_url'),
+            'company_link' => $this->request->getPost('company_link'),
+            'family_background' => $this->request->getPost('family_background'),
+            'academic_achievements' => $this->request->getPost('academic_achievements'),
+            'career_goals' => $this->request->getPost('career_goals'),
+            'status' => $this->request->getPost('status')
         ];
+        
+        // Handle image upload
+        $image = $this->request->getFile('image');
+        if ($image && $image->isValid() && !$image->hasMoved()) {
+            $newName = $image->getRandomName();
+            $image->move(WRITEPATH . 'uploads/beneficiaries', $newName);
+            $data['image'] = $newName;
+        }
         
         if ($this->beneficiaryModel->save($data)) {
             $this->session->setFlashdata('success', 'Beneficiary added successfully');
@@ -100,24 +107,39 @@ class AdminBeneficiaries extends BaseController
         if ($auth !== true) return $auth;
         
         $data = [
-            'student_id' => $this->request->getPost('student_id'),
             'name' => $this->request->getPost('name'),
+            'age' => (int)$this->request->getPost('age'),
+            'education_level' => $this->request->getPost('education_level'),
             'course' => $this->request->getPost('course'),
-            'university' => $this->request->getPost('university'),
-            'contact_phone' => $this->request->getPost('contact_phone'),
+            'institution' => $this->request->getPost('institution'),
+            'city' => $this->request->getPost('city'),
+            'state' => $this->request->getPost('state'),
+            'phone' => $this->request->getPost('phone'),
             'email' => $this->request->getPost('email'),
-            'status' => $this->request->getPost('status'),
-            'year' => $this->request->getPost('year'),
-            'enrolled_date' => $this->request->getPost('enrolled_date'),
-            'expected_graduation' => $this->request->getPost('expected_graduation'),
-            'previous_education' => $this->request->getPost('previous_education'),
-            'total_fees' => $this->request->getPost('total_fees'),
-            'scholarship_amount' => $this->request->getPost('scholarship_amount'),
-            'family_income' => $this->request->getPost('family_income'),
-            'father_name' => $this->request->getPost('father_name'),
-            'father_occupation' => $this->request->getPost('father_occupation'),
-            'address' => $this->request->getPost('address')
+            'linkedin_url' => $this->request->getPost('linkedin_url'),
+            'company_link' => $this->request->getPost('company_link'),
+            'family_background' => $this->request->getPost('family_background'),
+            'academic_achievements' => $this->request->getPost('academic_achievements'),
+            'career_goals' => $this->request->getPost('career_goals'),
+            'status' => $this->request->getPost('status')
         ];
+        
+        // Handle image upload
+        $image = $this->request->getFile('image');
+        if ($image && $image->isValid() && !$image->hasMoved()) {
+            // Delete old image if exists
+            $oldBeneficiary = $this->beneficiaryModel->find($id);
+            if ($oldBeneficiary && $oldBeneficiary['image']) {
+                $oldImagePath = WRITEPATH . 'uploads/beneficiaries/' . $oldBeneficiary['image'];
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+            
+            $newName = $image->getRandomName();
+            $image->move(WRITEPATH . 'uploads/beneficiaries', $newName);
+            $data['image'] = $newName;
+        }
         
         if ($this->beneficiaryModel->update($id, $data)) {
             $this->session->setFlashdata('success', 'Beneficiary updated successfully');
@@ -134,6 +156,15 @@ class AdminBeneficiaries extends BaseController
         $auth = $this->checkAuth();
         if ($auth !== true) return $auth;
         
+        // Delete image if exists
+        $beneficiary = $this->beneficiaryModel->find($id);
+        if ($beneficiary && $beneficiary['image']) {
+            $imagePath = WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'];
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+        
         if ($this->beneficiaryModel->delete($id)) {
             $this->session->setFlashdata('success', 'Beneficiary deleted successfully');
         } else {
@@ -141,21 +172,5 @@ class AdminBeneficiaries extends BaseController
         }
         
         return redirect()->to('/admin/beneficiaries');
-    }
-    
-    public function view($id)
-    {
-        $auth = $this->checkAuth();
-        if ($auth !== true) return $auth;
-        
-        $data = [
-            'beneficiary' => $this->beneficiaryModel->find($id)
-        ];
-        
-        if (!$data['beneficiary']) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Beneficiary not found');
-        }
-        
-        return view('admin/beneficiaries/view', $data);
     }
 }

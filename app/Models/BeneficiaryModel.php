@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Models;
@@ -13,10 +14,9 @@ class BeneficiaryModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'student_id', 'name', 'course', 'university', 'contact_phone', 'email', 'status',
-        'year', 'enrolled_date', 'expected_graduation', 'previous_education',
-        'total_fees', 'scholarship_amount', 'family_income', 'father_name',
-        'father_occupation', 'address', 'photo'
+        'name', 'age', 'education_level', 'course', 'institution', 'city', 'state',
+        'phone', 'email', 'linkedin_url', 'company_link', 'family_background',
+        'academic_achievements', 'career_goals', 'image', 'status'
     ];
 
     // Dates
@@ -26,20 +26,53 @@ class BeneficiaryModel extends Model
 
     // Validation
     protected $validationRules = [
-        'student_id' => 'required|is_unique[beneficiaries.student_id,id,{id}]',
         'name' => 'required|min_length[3]|max_length[255]',
+        'age' => 'required|integer|greater_than[0]',
+        'education_level' => 'required|max_length[100]',
         'course' => 'required|max_length[255]',
-        'university' => 'required|max_length[255]',
-        'contact_phone' => 'required|max_length[20]',
-        'email' => 'required|valid_email|max_length[255]',
-        'year' => 'required|max_length[50]',
-        'enrolled_date' => 'required|valid_date',
-        'expected_graduation' => 'required|valid_date',
-        'total_fees' => 'required|decimal',
-        'scholarship_amount' => 'required|decimal',
-        'family_income' => 'required|decimal',
-        'father_name' => 'required|max_length[255]',
-        'father_occupation' => 'required|max_length[255]',
-        'address' => 'required'
+        'institution' => 'required|max_length[255]',
+        'city' => 'required|max_length[100]',
+        'state' => 'required|max_length[100]',
+        'phone' => 'permit_empty|max_length[20]',
+        'email' => 'permit_empty|valid_email|max_length[255]',
+        'linkedin_url' => 'permit_empty|valid_url|max_length[500]',
+        'company_link' => 'permit_empty|valid_url|max_length[500]',
+        'status' => 'required|in_list[active,inactive]'
     ];
+
+    public function getActiveBeneficiaries($limit = null, $offset = null, $search = null)
+    {
+        $builder = $this->where('status', 'active');
+        
+        if ($search) {
+            $builder->groupStart()
+                   ->like('name', $search)
+                   ->orLike('course', $search)
+                   ->orLike('institution', $search)
+                   ->orLike('city', $search)
+                   ->groupEnd();
+        }
+        
+        if ($limit) {
+            $builder->limit($limit, $offset);
+        }
+        
+        return $builder->findAll();
+    }
+
+    public function countActiveBeneficiaries($search = null)
+    {
+        $builder = $this->where('status', 'active');
+        
+        if ($search) {
+            $builder->groupStart()
+                   ->like('name', $search)
+                   ->orLike('course', $search)
+                   ->orLike('institution', $search)
+                   ->orLike('city', $search)
+                   ->groupEnd();
+        }
+        
+        return $builder->countAllResults();
+    }
 }
