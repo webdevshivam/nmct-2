@@ -1,4 +1,3 @@
-
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -24,9 +23,9 @@
                                     <span class="input-group-text bg-light border-0">
                                         <i class="fas fa-search text-muted"></i>
                                     </span>
-                                    <input type="text" class="form-control border-0 bg-light" name="search" 
-                                           placeholder="Search by name, course, or university..." 
-                                           value="<?= esc($search ?? '') ?>">
+                                    <input type="text" class="form-control border-0 bg-light" name="search"
+                                        placeholder="Search by name, course, or university..."
+                                        value="<?= esc($search ?? '') ?>">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -35,9 +34,9 @@
                                         <i class="fas fa-search me-2"></i> Search
                                     </button>
                                     <?php if (!empty($search)): ?>
-                                    <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-secondary">
-                                        <i class="fas fa-times"></i>
-                                    </a>
+                                        <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-secondary">
+                                            <i class="fas fa-times"></i>
+                                        </a>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -46,19 +45,19 @@
                 </div>
             </div>
         </div>
-        
+
         <?php if (!empty($search)): ?>
-        <div class="row mt-3">
-            <div class="col-12 text-center">
-                <p class="text-muted">
-                    <i class="fas fa-info-circle me-2"></i>
-                    Showing results for "<strong><?= esc($search) ?></strong>" 
-                    <?php if (isset($total_results)): ?>
-                        - <?= $total_results ?> student(s) found
-                    <?php endif; ?>
-                </p>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="text-muted">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Showing results for "<strong><?= esc($search) ?></strong>"
+                        <?php if (isset($total_results)): ?>
+                            - <?= $total_results ?> student(s) found
+                        <?php endif; ?>
+                    </p>
+                </div>
             </div>
-        </div>
         <?php endif; ?>
     </div>
 </section>
@@ -67,156 +66,156 @@
 <section class="section-padding">
     <div class="container">
         <?php if (!empty($beneficiaries)): ?>
-        <div class="row">
-            <?php foreach($beneficiaries as $beneficiary): ?>
-            <div class="col-lg-6 col-xl-4 mb-4">
-                <div class="card h-100 border-0 shadow-lg">
-                    <div class="card-header text-center" style="background: var(--gradient-soft); border-bottom: 3px solid var(--primary-color);">
-                        <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <h5 class="mb-1 font-display">
-                            <?= esc($beneficiary['name']) ?>
-                        </h5>
-                        <small class="text-muted">ID: <?= esc($beneficiary['student_id']) ?></small>
-                        <div class="mt-2">
-                            <span class="badge px-3 py-2" style="background: var(--gradient-primary); color: white;">
-                                <?= esc($beneficiary['status']) ?>
-                            </span>
+            <div class="row">
+                <?php foreach ($beneficiaries as $beneficiary): ?>
+                    <div class="col-lg-6 col-xl-4 mb-4">
+                        <div class="card h-100 border-0 shadow-lg">
+                            <div class="card-header text-center" style="background: var(--gradient-soft); border-bottom: 3px solid var(--primary-color);">
+                                <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <h5 class="mb-1 font-display">
+                                    <?= esc($beneficiary['name']) ?>
+                                </h5>
+
+                                <div class="mt-2">
+                                    <span class="badge px-3 py-2" style="background: var(--gradient-primary); color: white;">
+                                        <?= esc($beneficiary['status']) ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="mb-4">
+                                    <h6 class="text-primary mb-2">
+                                        <i class="fas fa-graduation-cap me-2"></i>Course & University
+                                    </h6>
+                                    <p class="mb-1 fw-bold"><?= esc($beneficiary['course']) ?></p>
+                                    <p class="text-muted small mb-0"><?= esc($beneficiary['institution']) ?></p>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <h6 class="text-primary mb-2">
+                                            <i class="fas fa-calendar-alt me-2"></i>Academic Year
+                                        </h6>
+                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['year']) ?></p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h6 class="text-primary mb-2">
+                                            <i class="fas fa-phone me-2"></i>Contact
+                                        </h6>
+                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['contact_phone']) ?></p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6 class="text-primary mb-2">
+                                        <i class="fas fa-money-bill-wave me-2"></i>Financial Support
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <small class="text-muted">Total Fees</small>
+                                            <p class="mb-0 fw-bold text-success">₹<?= number_format($beneficiary['total_fees']) ?></p>
+                                        </div>
+                                        <div class="col-6">
+                                            <small class="text-muted">Scholarship</small>
+                                            <p class="mb-0 fw-bold text-primary">₹<?= number_format($beneficiary['scholarship_amount']) ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h6 class="text-primary mb-2">
+                                        <i class="fas fa-calendar me-2"></i>Timeline
+                                    </h6>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <small class="text-muted">Enrolled</small>
+                                            <p class="mb-0 fw-semibold"><?= date('M Y', strtotime($beneficiary['enrolled_date'])) ?></p>
+                                        </div>
+                                        <div class="col-6">
+                                            <small class="text-muted">Expected Graduation</small>
+                                            <p class="mb-0 fw-semibold"><?= date('M Y', strtotime($beneficiary['expected_graduation'])) ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <?php if (!empty($beneficiary['email'])): ?>
+                                    <div class="text-center mt-4">
+                                        <a href="mailto:<?= esc($beneficiary['email']) ?>" class="btn btn-outline-primary btn-sm">
+                                            <i class="fas fa-envelope me-2"></i>Contact Student
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body p-4">
-                        <div class="mb-4">
-                            <h6 class="text-primary mb-2">
-                                <i class="fas fa-graduation-cap me-2"></i>Course & University
-                            </h6>
-                            <p class="mb-1 fw-bold"><?= esc($beneficiary['course']) ?></p>
-                            <p class="text-muted small mb-0"><?= esc($beneficiary['university']) ?></p>
-                        </div>
-                        
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <h6 class="text-primary mb-2">
-                                    <i class="fas fa-calendar-alt me-2"></i>Academic Year
-                                </h6>
-                                <p class="mb-0 fw-semibold"><?= esc($beneficiary['year']) ?></p>
-                            </div>
-                            <div class="col-6">
-                                <h6 class="text-primary mb-2">
-                                    <i class="fas fa-phone me-2"></i>Contact
-                                </h6>
-                                <p class="mb-0 fw-semibold"><?= esc($beneficiary['contact_phone']) ?></p>
-                            </div>
+                <?php endforeach; ?>
+            </div>
+
+            <!-- Pagination -->
+            <?php if (isset($pager) && $pager->getPageCount() > 1): ?>
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <nav aria-label="Beneficiaries pagination">
+                                <ul class="pagination pagination-lg">
+                                    <?php if ($pager->hasPrevious()): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="<?= $pager->getPrevious() . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+
+                                    <?php foreach ($pager->links() as $link): ?>
+                                        <li class="page-item <?= $link['active'] ? 'active' : '' ?>">
+                                            <a class="page-link" href="<?= $link['uri'] . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
+                                                <?= $link['title'] ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+
+                                    <?php if ($pager->hasNext()): ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="<?= $pager->getNext() . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </nav>
                         </div>
 
-                        <div class="mb-4">
-                            <h6 class="text-primary mb-2">
-                                <i class="fas fa-money-bill-wave me-2"></i>Financial Support
-                            </h6>
-                            <div class="row">
-                                <div class="col-6">
-                                    <small class="text-muted">Total Fees</small>
-                                    <p class="mb-0 fw-bold text-success">₹<?= number_format($beneficiary['total_fees']) ?></p>
-                                </div>
-                                <div class="col-6">
-                                    <small class="text-muted">Scholarship</small>
-                                    <p class="mb-0 fw-bold text-primary">₹<?= number_format($beneficiary['scholarship_amount']) ?></p>
-                                </div>
-                            </div>
+                        <div class="text-center mt-3">
+                            <p class="text-muted">
+                                Showing <?= $pager->getDetails()['start'] ?> to <?= $pager->getDetails()['end'] ?>
+                                of <?= $pager->getDetails()['total'] ?> entries
+                            </p>
                         </div>
-
-                        <div class="mb-4">
-                            <h6 class="text-primary mb-2">
-                                <i class="fas fa-calendar me-2"></i>Timeline
-                            </h6>
-                            <div class="row">
-                                <div class="col-6">
-                                    <small class="text-muted">Enrolled</small>
-                                    <p class="mb-0 fw-semibold"><?= date('M Y', strtotime($beneficiary['enrolled_date'])) ?></p>
-                                </div>
-                                <div class="col-6">
-                                    <small class="text-muted">Expected Graduation</small>
-                                    <p class="mb-0 fw-semibold"><?= date('M Y', strtotime($beneficiary['expected_graduation'])) ?></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <?php if (!empty($beneficiary['email'])): ?>
-                        <div class="text-center mt-4">
-                            <a href="mailto:<?= esc($beneficiary['email']) ?>" class="btn btn-outline-primary btn-sm">
-                                <i class="fas fa-envelope me-2"></i>Contact Student
-                            </a>
-                        </div>
-                        <?php endif; ?>
                     </div>
                 </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-        
-        <!-- Pagination -->
-        <?php if (isset($pager) && $pager->getPageCount() > 1): ?>
-        <div class="row mt-5">
-            <div class="col-12">
-                <div class="d-flex justify-content-center">
-                    <nav aria-label="Beneficiaries pagination">
-                        <ul class="pagination pagination-lg">
-                            <?php if ($pager->hasPrevious()): ?>
-                            <li class="page-item">
-                                <a class="page-link" href="<?= $pager->getPrevious() . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
-                                    <i class="fas fa-chevron-left"></i>
-                                </a>
-                            </li>
-                            <?php endif; ?>
-                            
-                            <?php foreach ($pager->links() as $link): ?>
-                            <li class="page-item <?= $link['active'] ? 'active' : '' ?>">
-                                <a class="page-link" href="<?= $link['uri'] . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
-                                    <?= $link['title'] ?>
-                                </a>
-                            </li>
-                            <?php endforeach; ?>
-                            
-                            <?php if ($pager->hasNext()): ?>
-                            <li class="page-item">
-                                <a class="page-link" href="<?= $pager->getNext() . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                            </li>
-                            <?php endif; ?>
-                        </ul>
-                    </nav>
-                </div>
-                
-                <div class="text-center mt-3">
-                    <p class="text-muted">
-                        Showing <?= $pager->getDetails()['start'] ?> to <?= $pager->getDetails()['end'] ?> 
-                        of <?= $pager->getDetails()['total'] ?> entries
-                    </p>
-                </div>
-            </div>
-        </div>
-        <?php endif; ?>
-        
-        <?php else: ?>
-        <div class="text-center py-5">
-            <div class="feature-icon mx-auto mb-4" style="width: 120px; height: 120px; font-size: 4rem; background: var(--gradient-soft); color: var(--text-light);">
-                <i class="fas fa-user-graduate"></i>
-            </div>
-            <h3 class="text-muted mb-3">
-                <?= !empty($search) ? 'No Results Found' : 'No Beneficiaries Found' ?>
-            </h3>
-            <p class="text-muted mb-4">
-                <?= !empty($search) ? 
-                    'Try adjusting your search terms or browse all beneficiaries.' : 
-                    'We\'re currently working on adding new beneficiaries to our program.' ?>
-            </p>
-            <?php if (!empty($search)): ?>
-            <a href="<?= base_url('beneficiaries') ?>" class="btn btn-primary">
-                <i class="fas fa-list me-2"></i> View All Beneficiaries
-            </a>
             <?php endif; ?>
-        </div>
+
+        <?php else: ?>
+            <div class="text-center py-5">
+                <div class="feature-icon mx-auto mb-4" style="width: 120px; height: 120px; font-size: 4rem; background: var(--gradient-soft); color: var(--text-light);">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3 class="text-muted mb-3">
+                    <?= !empty($search) ? 'No Results Found' : 'No Beneficiaries Found' ?>
+                </h3>
+                <p class="text-muted mb-4">
+                    <?= !empty($search) ?
+                        'Try adjusting your search terms or browse all beneficiaries.' :
+                        'We\'re currently working on adding new beneficiaries to our program.' ?>
+                </p>
+                <?php if (!empty($search)): ?>
+                    <a href="<?= base_url('beneficiaries') ?>" class="btn btn-primary">
+                        <i class="fas fa-list me-2"></i> View All Beneficiaries
+                    </a>
+                <?php endif; ?>
+            </div>
         <?php endif; ?>
     </div>
 </section>
