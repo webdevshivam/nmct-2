@@ -1,3 +1,4 @@
+
 <?= $this->extend('admin/layout') ?>
 
 <?= $this->section('content') ?>
@@ -9,60 +10,113 @@
     </a>
 </div>
 
+<?php if (session('errors')): ?>
+<div class="alert alert-danger">
+    <ul class="mb-0">
+        <?php foreach (session('errors') as $error): ?>
+            <li><?= esc($error) ?></li>
+        <?php endforeach ?>
+    </ul>
+</div>
+<?php endif; ?>
+
 <div class="card">
     <div class="card-header">
-        <h5 class="mb-0"><i class="fas fa-star"></i> Update Success Story Information</h5>
+        <h5 class="mb-0"><i class="fas fa-star"></i> Success Story Information</h5>
     </div>
     <div class="card-body">
-        <form action="<?= base_url('admin/success-stories/update/' . $story['id']) ?>" method="post">
+        <form action="<?= base_url('admin/success-stories/update/' . $story['id']) ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="title" class="form-label">Story Title <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="title" name="title" 
-                               value="<?= old('title', $story['title']) ?>" required>
+                        <label for="name" class="form-label">Student Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                               value="<?= old('name', $story['name']) ?>" required>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="student_name" class="form-label">Student Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="student_name" name="student_name" 
-                               value="<?= old('student_name', $story['student_name']) ?>" required>
+                        <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="age" name="age" 
+                               value="<?= old('age', $story['age']) ?>" required min="18" max="100">
                     </div>
                     
                     <div class="mb-3">
-                        <label for="achievement" class="form-label">Achievement <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="achievement" name="achievement" 
-                               value="<?= old('achievement', $story['achievement']) ?>" required>
+                        <label for="education" class="form-label">Education <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="education" name="education" 
+                               value="<?= old('education', $story['education']) ?>" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="current_position" class="form-label">Current Position <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="current_position" name="current_position" 
+                               value="<?= old('current_position', $story['current_position']) ?>" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="company" class="form-label">Company <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="company" name="company" 
+                               value="<?= old('company', $story['company']) ?>" required>
                     </div>
                 </div>
                 
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="current_position" class="form-label">Current Position</label>
-                        <input type="text" class="form-control" id="current_position" name="current_position" 
-                               value="<?= old('current_position', $story['current_position']) ?>">
+                        <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="city" name="city" 
+                               value="<?= old('city', $story['city']) ?>" required>
                     </div>
-                    
+
                     <div class="mb-3">
-                        <label for="graduation_year" class="form-label">Graduation Year</label>
-                        <input type="number" class="form-control" id="graduation_year" name="graduation_year" 
-                               value="<?= old('graduation_year', $story['graduation_year']) ?>" min="2000" max="<?= date('Y') + 5 ?>">
+                        <label for="state" class="form-label">State <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="state" name="state" 
+                               value="<?= old('state', $story['state']) ?>" required>
                     </div>
-                    
+
+                    <div class="mb-3">
+                        <label for="linkedin_url" class="form-label">LinkedIn URL</label>
+                        <input type="url" class="form-control" id="linkedin_url" name="linkedin_url" 
+                               value="<?= old('linkedin_url', $story['linkedin_url']) ?>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="company_link" class="form-label">Company Website</label>
+                        <input type="url" class="form-control" id="company_link" name="company_link" 
+                               value="<?= old('company_link', $story['company_link']) ?>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Profile Image</label>
+                        <?php if (!empty($story['image'])): ?>
+                        <div class="mb-2">
+                            <img src="<?= base_url('writable/uploads/success_stories/' . $story['image']) ?>" 
+                                 alt="Current image" class="img-thumbnail" style="max-width: 200px;">
+                            <p class="text-muted small">Current image</p>
+                        </div>
+                        <?php endif; ?>
+                        <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                        <div class="form-text">Upload a new profile picture to replace the current one (JPG, PNG, max 2MB)</div>
+                    </div>
+
                     <div class="mb-3">
                         <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
                         <select class="form-control" id="status" name="status" required>
-                            <option value="Published" <?= old('status', $story['status']) == 'Published' ? 'selected' : '' ?>>Published</option>
-                            <option value="Draft" <?= old('status', $story['status']) == 'Draft' ? 'selected' : '' ?>>Draft</option>
+                            <option value="active" <?= old('status', $story['status']) == 'active' ? 'selected' : '' ?>>Active</option>
+                            <option value="inactive" <?= old('status', $story['status']) == 'inactive' ? 'selected' : '' ?>>Inactive</option>
                         </select>
                     </div>
                 </div>
             </div>
-            
+
             <div class="mb-3">
                 <label for="story" class="form-label">Success Story <span class="text-danger">*</span></label>
                 <textarea class="form-control" id="story" name="story" rows="8" required><?= old('story', $story['story']) ?></textarea>
                 <div class="form-text">Tell the inspiring journey of this student and how they achieved success.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="achievements" class="form-label">Key Achievements</label>
+                <textarea class="form-control" id="achievements" name="achievements" rows="4"><?= old('achievements', $story['achievements']) ?></textarea>
+                <div class="form-text">List major achievements, awards, or recognitions.</div>
             </div>
             
             <div class="d-flex justify-content-end">
@@ -76,9 +130,5 @@
         </form>
     </div>
 </div>
-
-<script>
-var page_title = 'Edit Success Story';
-</script>
 
 <?= $this->endSection() ?>

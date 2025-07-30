@@ -1,3 +1,4 @@
+
 <?= $this->extend('admin/layout') ?>
 
 <?= $this->section('content') ?>
@@ -19,10 +20,10 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Student Name</th>
-                        <th>Achievement</th>
-                        <th>Graduation Year</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Education</th>
                         <th>Status</th>
                         <th>Created</th>
                         <th>Actions</th>
@@ -31,13 +32,13 @@
                 <tbody>
                     <?php foreach($stories as $story): ?>
                     <tr>
-                        <td><strong><?= esc($story['title']) ?></strong></td>
-                        <td><?= esc($story['student_name']) ?></td>
-                        <td><?= esc($story['achievement']) ?></td>
-                        <td><?= esc($story['graduation_year'] ?? 'N/A') ?></td>
+                        <td><strong><?= esc($story['name']) ?></strong></td>
+                        <td><?= esc($story['current_position']) ?></td>
+                        <td><?= esc($story['company']) ?></td>
+                        <td><?= esc($story['education']) ?></td>
                         <td>
-                            <span class="badge bg-<?= $story['status'] == 'Published' ? 'success' : 'warning' ?>">
-                                <?= esc($story['status']) ?>
+                            <span class="badge bg-<?= $story['status'] == 'active' ? 'success' : 'warning' ?>">
+                                <?= ucfirst(esc($story['status'])) ?>
                             </span>
                         </td>
                         <td><?= date('M j, Y', strtotime($story['created_at'])) ?></td>
@@ -71,9 +72,5 @@
         <?php endif; ?>
     </div>
 </div>
-
-<script>
-var page_title = 'Manage Success Stories';
-</script>
 
 <?= $this->endSection() ?>

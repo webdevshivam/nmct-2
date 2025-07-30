@@ -232,15 +232,15 @@
                                 <i class="fas fa-star"></i>
                             </div>
                             <div>
-                                <h5 class="card-title mb-1 font-display"><?= esc($story['title']) ?></h5>
-                                <h6 class="text-primary fw-bold"><?= esc($story['student_name']) ?></h6>
+                                <h5 class="card-title mb-1 font-display"><?= esc($story['current_position']) ?></h5>
+                                <h6 class="text-primary fw-bold"><?= esc($story['name']) ?></h6>
                             </div>
                         </div>
                         <p class="card-text text-muted mb-3"><?= esc(substr($story['story'], 0, 150)) ?>...</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="badge px-3 py-2" style="background: var(--gradient-accent); color: white;">
                                 <i class="fas fa-trophy me-1"></i>
-                                <?= esc($story['achievement']) ?>
+                                <?= esc($story['achievements'] ?? $story['current_position']) ?>
                             </div>
                             <small class="text-muted">
                                 <i class="fas fa-calendar-alt me-1"></i>

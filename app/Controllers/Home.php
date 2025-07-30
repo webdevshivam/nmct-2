@@ -15,7 +15,7 @@ class Home extends BaseController
         $data = [
             'success_stories' => $successStoryModel->getPublishedStories(),
             'total_beneficiaries' => $beneficiaryModel->countAll(),
-            'active_beneficiaries' => $beneficiaryModel->where('status', 'Active')->countAllResults()
+            'active_beneficiaries' => $beneficiaryModel->where('status', 'active')->countAllResults()
         ];
 
         return view('frontend/home', $data);
@@ -28,14 +28,13 @@ class Home extends BaseController
         $perPage = 9; // 3 columns x 3 rows
 
         // Build query
-        $builder = $beneficiaryModel->where('status', 'Active');
+        $builder = $beneficiaryModel->where('status', 'active');
 
         if ($search) {
             $builder->groupStart()
                 ->like('name', $search)
                 ->orLike('course', $search)
-                ->orLike('university', $search)
-                ->orLike('student_id', $search)
+                ->orLike('institution', $search)
                 ->groupEnd();
         }
 
@@ -46,12 +45,11 @@ class Home extends BaseController
         // Get total results for search info
         $totalResults = null;
         if ($search) {
-            $countBuilder = $beneficiaryModel->where('status', 'Active')
+            $countBuilder = $beneficiaryModel->where('status', 'active')
                 ->groupStart()
                 ->like('name', $search)
                 ->orLike('course', $search)
-                ->orLike('university', $search)
-                ->orLike('student_id', $search)
+                ->orLike('institution', $search)
                 ->groupEnd();
             $totalResults = $countBuilder->countAllResults();
         }
