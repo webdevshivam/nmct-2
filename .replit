@@ -2,7 +2,7 @@ modules = ["php-8.2", "web", "nodejs-20"]
 
 [nix]
 channel = "stable-25_05"
-packages = ["php81", "php81Packages.composer"]
+packages = ["php81", "php81Packages.composer", "mysql80"]
 
 [agent]
 expertMode = true

@@ -25,16 +25,21 @@ class Database extends Config
      * @var array<string, mixed>
      */
     public array $default = [
-        'database'    => WRITEPATH . 'database.db',
-        'DBDriver'    => 'SQLite3',
-        'DBPrefix'    => '',
-        'DBDebug'     => true,
-        'swapPre'     => '',
-        'failover'    => [],
-        'foreignKeys' => true,
-        'busyTimeout' => 1000,
-        'synchronous' => null,
-        'dateFormat'  => [
+        'DSN'        => '',
+        'hostname'   => getenv('PGHOST') ?: 'localhost',
+        'username'   => getenv('PGUSER') ?: 'root',
+        'password'   => getenv('PGPASSWORD') ?: '',
+        'database'   => getenv('PGDATABASE') ?: 'mydatabase',
+        'schema'     => 'public',
+        'DBDriver'   => 'Postgre',
+        'DBPrefix'   => '',
+        'pConnect'   => false,
+        'DBDebug'    => true,
+        'charset'    => 'utf8',
+        'swapPre'    => '',
+        'failover'   => [],
+        'port'       => getenv('PGPORT') ?: 5432,
+        'dateFormat' => [
             'date'     => 'Y-m-d',
             'datetime' => 'Y-m-d H:i:s',
             'time'     => 'H:i:s',
