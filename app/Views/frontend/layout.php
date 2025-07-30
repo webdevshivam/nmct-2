@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,11 +38,11 @@
             --gradient-accent: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
             --gradient-soft: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
         }
-        
+
         * {
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.7;
@@ -52,12 +51,12 @@
             scroll-behavior: smooth;
             font-weight: 400;
         }
-        
+
         .font-display {
             font-family: 'Poppins', serif;
             font-weight: 600;
         }
-        
+
         /* Navigation Styles */
         .navbar {
             background: rgba(255, 255, 255, 0.98);
@@ -65,18 +64,18 @@
             box-shadow: var(--shadow-sm);
             padding: 1rem 0;
         }
-        
+
         .navbar-brand {
             font-size: 1.6rem;
             font-weight: 700;
             color: var(--primary-color) !important;
             text-decoration: none;
         }
-        
+
         .navbar-brand:hover {
             color: var(--primary-dark) !important;
         }
-        
+
         .navbar-nav .nav-link {
             color: var(--text-primary) !important;
             font-weight: 500;
@@ -85,12 +84,12 @@
             border-radius: 6px;
             font-size: 0.95rem;
         }
-        
+
         .navbar-nav .nav-link:hover {
             color: var(--primary-color) !important;
             background: var(--bg-secondary);
         }
-        
+
         /* Hero Section */
         .hero-section {
             background: var(--bg-secondary);
@@ -99,14 +98,14 @@
             text-align: center;
             border-bottom: 1px solid var(--border-light);
         }
-        
+
         .hero-section h1 {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1.8rem;
             color: var(--primary-color);
         }
-        
+
         .hero-section .lead {
             font-size: 1.2rem;
             margin-bottom: 2.5rem;
@@ -116,7 +115,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         /* Button Styles */
         .btn {
             font-weight: 600;
@@ -125,34 +124,34 @@
             border: none;
             font-family: 'Poppins', sans-serif;
         }
-        
+
         .btn-primary {
             background: var(--primary-color);
             color: white;
             box-shadow: var(--shadow-sm);
         }
-        
+
         .btn-primary:hover {
             background: var(--primary-dark);
             color: white;
         }
-        
+
         .btn-outline-primary {
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
             background: transparent;
         }
-        
+
         .btn-outline-primary:hover {
             background: var(--primary-color);
             color: white;
         }
-        
+
         .btn-lg {
             padding: 14px 28px;
             font-size: 1.1rem;
         }
-        
+
         /* Card Styles */
         .card {
             border: 1px solid var(--border-light);
@@ -160,14 +159,14 @@
             box-shadow: var(--shadow-sm);
             background: var(--bg-primary);
         }
-        
+
         .card-header {
             background: var(--bg-secondary);
             color: var(--text-primary);
             border-bottom: 1px solid var(--border-light);
             padding: 2rem;
         }
-        
+
         /* Stats Cards */
         .stats-card {
             background: var(--bg-primary);
@@ -178,7 +177,7 @@
             border-radius: 8px;
             position: relative;
         }
-        
+
         .stats-card::before {
             content: '';
             position: absolute;
@@ -188,7 +187,7 @@
             height: 3px;
             background: var(--primary-color);
         }
-        
+
         .stats-number {
             font-size: 3rem;
             font-weight: 800;
@@ -197,18 +196,18 @@
             margin-bottom: 0.8rem;
             color: var(--primary-color);
         }
-        
+
         .stats-card h5 {
             font-weight: 600;
             margin-bottom: 0.8rem;
             color: var(--text-primary);
         }
-        
+
         /* Section Styling */
         .section-padding {
             padding: 7rem 0;
         }
-        
+
         .section-title {
             font-size: 2.8rem;
             font-weight: 700;
@@ -217,7 +216,7 @@
             display: inline-block;
             color: var(--text-primary);
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -228,14 +227,14 @@
             background: var(--gradient-secondary);
             border-radius: 2px;
         }
-        
+
         .text-gradient {
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         /* Feature Icons */
         .feature-icon {
             width: 80px;
@@ -249,11 +248,11 @@
             color: white;
             font-size: 2rem;
         }
-        
+
         .bg-soft {
             background: var(--bg-secondary) !important;
         }
-        
+
         /* Footer */
         .footer {
             background: linear-gradient(135deg, var(--text-primary) 0%, #374151 100%);
@@ -262,7 +261,7 @@
             margin-top: 8rem;
             position: relative;
         }
-        
+
         .footer::before {
             content: '';
             position: absolute;
@@ -272,30 +271,30 @@
             height: 4px;
             background: var(--gradient-primary);
         }
-        
+
         .footer h5 {
             color: white;
             font-weight: 600;
             margin-bottom: 2rem;
         }
-        
+
         .footer a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .footer a:hover {
             color: var(--primary-light);
             transform: translateX(5px);
         }
-        
+
         /* Remove animations - content always visible */
         .fade-in {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         /* Additional Sections Styling */
         .testimonial-card {
             background: var(--bg-primary);
@@ -304,12 +303,12 @@
             padding: 2.5rem;
             text-align: center;
         }
-        
+
         .process-step {
             text-align: center;
             position: relative;
         }
-        
+
         .process-number {
             width: 60px;
             height: 60px;
@@ -323,46 +322,46 @@
             font-size: 1.3rem;
             margin: 0 auto 1.5rem;
         }
-        
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .hero-section h1 {
                 font-size: 2.8rem;
             }
-            
+
             .hero-section .lead {
                 font-size: 1.1rem;
             }
-            
+
             .section-title {
                 font-size: 2.2rem;
             }
-            
+
             .stats-number {
                 font-size: 2.8rem;
             }
-            
+
             .feature-icon {
                 width: 70px;
                 height: 70px;
                 font-size: 1.8rem;
             }
         }
-        
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
-        
+
         ::-webkit-scrollbar-track {
             background: var(--bg-tertiary);
         }
-        
+
         ::-webkit-scrollbar-thumb {
             background: var(--gradient-primary);
             border-radius: 4px;
         }
-        
+
         ::-webkit-scrollbar-thumb:hover {
             background: var(--gradient-secondary);
         }
