@@ -49,9 +49,16 @@ class Admin extends BaseController
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
         
-        $admin = $adminModel->verifyAdmin($username, $password);
+        // Check if user exists first
+        $admin = $adminModel->where('username', $username)->first();
         
-        if ($admin) {
+        if (!$admin) {
+            $this->session->setFlashdata('error', 'User not found');
+            return redirect()->to('/admin/login');
+        }
+        
+        // Verify password
+        if (password_verify($password, $admin['password'])) {
             $this->session->set([
                 'admin_logged_in' => true,
                 'admin_id' => $admin['id'],
@@ -59,7 +66,7 @@ class Admin extends BaseController
             ]);
             return redirect()->to('/admin');
         } else {
-            $this->session->setFlashdata('error', 'Invalid username or password');
+            $this->session->setFlashdata('error', 'Invalid password');
             return redirect()->to('/admin/login');
         }
     }
