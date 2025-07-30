@@ -155,7 +155,7 @@
                         <small class="text-muted">
                             <strong>Demo Credentials:</strong><br>
                             Username: <code>admin</code><br>
-                            Password: <code>admi234324n123</code>
+                            Password: <code>admin123</code>
                         </small>
                     </div>
                 </div>
