@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -52,11 +51,11 @@ class SuccessStoryModel extends Model
     public function getPublishedStories($limit = null, $offset = null)
     {
         $builder = $this->where('status', 'active');
-        
+
         if ($limit) {
             $builder->limit($limit, $offset);
         }
-        
+
         return $builder->orderBy('created_at', 'DESC')->findAll();
     }
 
