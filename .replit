@@ -9,7 +9,7 @@ packages = ["sqlite", "php82", "php82Packages.composer"]
 expertMode = true
 
 [workflows]
-runButton = "Project"
+runButton = "Server Port 8080"
 
 [[workflows.workflow]]
 name = "Project"
@@ -28,6 +28,15 @@ author = "agent"
 task = "shell.exec"
 args = "php -S 0.0.0.0:5000 -t public"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Server Port 8080"
+author = 45803003
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "php -S 0.0.0.0:8080 -t public"
 
 [[ports]]
 localPort = 5000
