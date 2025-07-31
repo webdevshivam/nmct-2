@@ -11,7 +11,7 @@ $routes->get('/', 'Home::index');
 $routes->get('beneficiaries', 'Home::beneficiaries');
 $routes->get('beneficiaries/load-more', 'Home::loadMoreBeneficiaries');
 $routes->get('uploads/beneficiaries/(:any)', 'Home::serveBeneficiaryImage/$1');
-$routes->get('success-stories', 'Home::successStories');
+$routes->get('success-stories', 'Home::success_stories');
 
 // Admin routes
 $routes->group('admin', function($routes) {

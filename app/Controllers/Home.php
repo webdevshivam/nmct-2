@@ -88,8 +88,8 @@ class Home extends BaseController
         ?>
         <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
             <div class="card h-100 border-0 shadow-lg">
-                <div class="card-header text-center bg-light">
-                    <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--primary-color); overflow: hidden; border-radius: 50%;">
+                <div class="card-header text-center bg-light py-2">
+                    <div class="feature-icon mx-auto mb-2" style="width: 60px; height: 60px; font-size: 1.5rem; background: var(--gradient-soft); color: var(--primary-color); overflow: hidden; border-radius: 50%;">
                         <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
                             <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>" 
                                  alt="<?= esc($beneficiary['name']) ?>" 
@@ -98,18 +98,16 @@ class Home extends BaseController
                             <i class="fas fa-user-graduate"></i>
                         <?php endif; ?>
                     </div>
-                    <h5 class="mb-1 font-display text-dark">
+                    <h6 class="mb-1 font-display text-dark">
                         <?= esc($beneficiary['name']) ?>
-                    </h5>
+                    </h6>
                     <?php if (!empty($beneficiary['age'])): ?>
-                        <p class="text-muted small mb-2"><?= esc($beneficiary['age']) ?> years old</p>
+                        <p class="text-muted small mb-1" style="font-size: 0.75rem;"><?= esc($beneficiary['age']) ?> years old</p>
                     <?php endif; ?>
 
-                    <div class="mt-2">
-                        <span class="badge bg-success px-3 py-2">
-                            <?= esc(ucfirst($beneficiary['status'])) ?>
-                        </span>
-                    </div>
+                    <span class="badge bg-success px-2 py-1 small">
+                        <?= esc(ucfirst($beneficiary['status'])) ?>
+                    </span>
                 </div>
                 <div class="card-body p-4">
                     <!-- Course & University -->
