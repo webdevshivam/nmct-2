@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Controllers;
@@ -26,11 +25,11 @@ class AdminSuccessStories extends BaseController
 
     public function index()
     {
-        $auth = $this->checkAuth();
-        if ($auth !== true) return $auth;
+        $authCheck = $this->checkAuth();
+        if ($authCheck !== true) return $authCheck;
 
         $data = [
-            'stories' => $this->successStoryModel->findAll()
+            'success_stories' => $this->successStoryModel->orderBy('created_at', 'DESC')->findAll()
         ];
 
         return view('admin/success_stories/index', $data);
@@ -38,40 +37,20 @@ class AdminSuccessStories extends BaseController
 
     public function create()
     {
-        $auth = $this->checkAuth();
-        if ($auth !== true) return $auth;
+        $authCheck = $this->checkAuth();
+        if ($authCheck !== true) return $authCheck;
 
         return view('admin/success_stories/create');
     }
 
     public function store()
     {
-        $auth = $this->checkAuth();
-        if ($auth !== true) return $auth;
-
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'name' => 'required|min_length[3]|max_length[255]',
-            'age' => 'required|integer|greater_than[0]',
-            'education' => 'required|max_length[255]',
-            'current_position' => 'required|max_length[255]',
-            'company' => 'required|max_length[255]',
-            'city' => 'required|max_length[100]',
-            'state' => 'required|max_length[100]',
-            'linkedin_url' => 'permit_empty|valid_url|max_length[500]',
-            'company_link' => 'permit_empty|valid_url|max_length[500]',
-            'story' => 'required|min_length[10]',
-            'status' => 'required|in_list[active,inactive]',
-            'image' => 'permit_empty|uploaded[image]|max_size[image,2048]|is_image[image]'
-        ]);
-
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        }
+        $authCheck = $this->checkAuth();
+        if ($authCheck !== true) return $authCheck;
 
         $data = [
             'name' => $this->request->getPost('name'),
-            'age' => $this->request->getPost('age'),
+            'age' => (int)$this->request->getPost('age'),
             'education' => $this->request->getPost('education'),
             'current_position' => $this->request->getPost('current_position'),
             'company' => $this->request->getPost('company'),
@@ -88,67 +67,51 @@ class AdminSuccessStories extends BaseController
         $image = $this->request->getFile('image');
         if ($image && $image->isValid() && !$image->hasMoved()) {
             $newName = $image->getRandomName();
+            if (!is_dir(WRITEPATH . 'uploads/success_stories')) {
+                mkdir(WRITEPATH . 'uploads/success_stories', 0755, true);
+            }
             $image->move(WRITEPATH . 'uploads/success_stories', $newName);
             $data['image'] = $newName;
         }
 
         if ($this->successStoryModel->insert($data)) {
-            return redirect()->to('/admin/success-stories')->with('success', 'Success story added successfully.');
+            $this->session->setFlashdata('success', 'Success story added successfully');
+            return redirect()->to('/admin/success-stories');
         } else {
-            return redirect()->back()->withInput()->with('error', 'Failed to add success story.');
+            $this->session->setFlashdata('error', 'Failed to add success story');
+            return redirect()->back()->withInput();
         }
     }
 
     public function edit($id)
     {
-        $auth = $this->checkAuth();
-        if ($auth !== true) return $auth;
+        $authCheck = $this->checkAuth();
+        if ($authCheck !== true) return $authCheck;
 
-        $story = $this->successStoryModel->find($id);
-        if (!$story) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Success story not found');
+        $successStory = $this->successStoryModel->find($id);
+        if (!$successStory) {
+            $this->session->setFlashdata('error', 'Success story not found');
+            return redirect()->to('/admin/success-stories');
         }
 
-        $data = [
-            'story' => $story
-        ];
-
+        $data = ['success_story' => $successStory];
         return view('admin/success_stories/edit', $data);
     }
 
     public function update($id)
     {
-        $auth = $this->checkAuth();
-        if ($auth !== true) return $auth;
+        $authCheck = $this->checkAuth();
+        if ($authCheck !== true) return $authCheck;
 
-        $story = $this->successStoryModel->find($id);
-        if (!$story) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Success story not found');
-        }
-
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'name' => 'required|min_length[3]|max_length[255]',
-            'age' => 'required|integer|greater_than[0]',
-            'education' => 'required|max_length[255]',
-            'current_position' => 'required|max_length[255]',
-            'company' => 'required|max_length[255]',
-            'city' => 'required|max_length[100]',
-            'state' => 'required|max_length[100]',
-            'linkedin_url' => 'permit_empty|valid_url|max_length[500]',
-            'company_link' => 'permit_empty|valid_url|max_length[500]',
-            'story' => 'required|min_length[10]',
-            'status' => 'required|in_list[active,inactive]',
-            'image' => 'permit_empty|uploaded[image]|max_size[image,2048]|is_image[image]'
-        ]);
-
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        $successStory = $this->successStoryModel->find($id);
+        if (!$successStory) {
+            $this->session->setFlashdata('error', 'Success story not found');
+            return redirect()->to('/admin/success-stories');
         }
 
         $data = [
             'name' => $this->request->getPost('name'),
-            'age' => $this->request->getPost('age'),
+            'age' => (int)$this->request->getPost('age'),
             'education' => $this->request->getPost('education'),
             'current_position' => $this->request->getPost('current_position'),
             'company' => $this->request->getPost('company'),
@@ -164,48 +127,50 @@ class AdminSuccessStories extends BaseController
         // Handle image upload
         $image = $this->request->getFile('image');
         if ($image && $image->isValid() && !$image->hasMoved()) {
-            // Delete old image if exists
-            if (!empty($story['image'])) {
-                $oldImagePath = WRITEPATH . 'uploads/success_stories/' . $story['image'];
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
-                }
-            }
-            
             $newName = $image->getRandomName();
+            if (!is_dir(WRITEPATH . 'uploads/success_stories')) {
+                mkdir(WRITEPATH . 'uploads/success_stories', 0755, true);
+            }
             $image->move(WRITEPATH . 'uploads/success_stories', $newName);
             $data['image'] = $newName;
+
+            // Delete old image if exists
+            if (!empty($successStory['image']) && file_exists(WRITEPATH . 'uploads/success_stories/' . $successStory['image'])) {
+                unlink(WRITEPATH . 'uploads/success_stories/' . $successStory['image']);
+            }
         }
 
         if ($this->successStoryModel->update($id, $data)) {
-            return redirect()->to('/admin/success-stories')->with('success', 'Success story updated successfully.');
+            $this->session->setFlashdata('success', 'Success story updated successfully');
+            return redirect()->to('/admin/success-stories');
         } else {
-            return redirect()->back()->withInput()->with('error', 'Failed to update success story.');
+            $this->session->setFlashdata('error', 'Failed to update success story');
+            return redirect()->back()->withInput();
         }
     }
 
     public function delete($id)
     {
-        $auth = $this->checkAuth();
-        if ($auth !== true) return $auth;
+        $authCheck = $this->checkAuth();
+        if ($authCheck !== true) return $authCheck;
 
-        $story = $this->successStoryModel->find($id);
-        if (!$story) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Success story not found');
+        $successStory = $this->successStoryModel->find($id);
+        if (!$successStory) {
+            $this->session->setFlashdata('error', 'Success story not found');
+            return redirect()->to('/admin/success-stories');
         }
 
         // Delete image if exists
-        if (!empty($story['image'])) {
-            $imagePath = WRITEPATH . 'uploads/success_stories/' . $story['image'];
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-            }
+        if (!empty($successStory['image']) && file_exists(WRITEPATH . 'uploads/success_stories/' . $successStory['image'])) {
+            unlink(WRITEPATH . 'uploads/success_stories/' . $successStory['image']);
         }
 
         if ($this->successStoryModel->delete($id)) {
-            return redirect()->to('/admin/success-stories')->with('success', 'Success story deleted successfully.');
+            $this->session->setFlashdata('success', 'Success story deleted successfully');
         } else {
-            return redirect()->back()->with('error', 'Failed to delete success story.');
+            $this->session->setFlashdata('error', 'Failed to delete success story');
         }
+
+        return redirect()->to('/admin/success-stories');
     }
 }

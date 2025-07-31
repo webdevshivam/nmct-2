@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Models;
@@ -33,31 +34,34 @@ class PublicFormModel extends Model
     protected $validationRules = [
         'form_name' => 'required|min_length[3]|max_length[255]',
         'form_type' => 'required|in_list[beneficiary,success_story]',
+        'public_url_token' => 'required|max_length[100]',
         'valid_until' => 'required|valid_date',
         'max_submissions' => 'permit_empty|integer|greater_than[0]',
+        'status' => 'required|in_list[active,expired,disabled]',
         'created_by_admin_id' => 'required|integer'
     ];
 
-    public function generateUniqueToken($type)
+    public function getActiveForms($type = null)
     {
-        do {
-            $token = strtoupper($type == 'beneficiary' ? 'BEN' : 'SUC') . '_' .
-                date('Y') . '_' .
-                bin2hex(random_bytes(4));
-        } while ($this->where('public_url_token', $token)->first());
-
-        return $token;
+        $builder = $this->where('status', 'active')
+                       ->where('valid_until >', date('Y-m-d H:i:s'));
+        
+        if ($type) {
+            $builder->where('form_type', $type);
+        }
+        
+        return $builder->findAll();
     }
 
-    public function getActiveForm($token)
+    public function getFormByToken($token)
     {
         return $this->where('public_url_token', $token)
-            ->where('status', 'active')
-            ->where('valid_until >', date('Y-m-d H:i:s'))
-            ->first();
+                   ->where('status', 'active')
+                   ->where('valid_until >', date('Y-m-d H:i:s'))
+                   ->first();
     }
 
-    public function incrementSubmissions($id)
+    public function incrementSubmissionCount($id)
     {
         $form = $this->find($id);
         if ($form) {

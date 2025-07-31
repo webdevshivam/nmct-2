@@ -1,4 +1,3 @@
-
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -98,15 +97,15 @@
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <h6 class="text-primary mb-2">
-                                            <i class="fas fa-book me-2"></i>Education Level
+                                            <i class="fas fa-graduation-cap me-2"></i>Education Level
                                         </h6>
                                         <p class="mb-0 fw-semibold"><?= esc($beneficiary['education_level']) ?></p>
                                     </div>
                                     <div class="col-6">
                                         <h6 class="text-primary mb-2">
-                                            <i class="fas fa-map-marker-alt me-2"></i>Location
+                                            <i class="fas fa-phone me-2"></i>Contact
                                         </h6>
-                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['city']) ?>, <?= esc($beneficiary['state']) ?></p>
+                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['phone'] ?? 'Not available') ?></p>
                                     </div>
                                 </div>
 

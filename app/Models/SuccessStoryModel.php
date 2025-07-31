@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Models;
@@ -44,17 +45,23 @@ class SuccessStoryModel extends Model
         'state' => 'required|max_length[100]',
         'linkedin_url' => 'permit_empty|valid_url|max_length[500]',
         'company_link' => 'permit_empty|valid_url|max_length[500]',
-        'story' => 'required|min_length[10]',
+        'story' => 'required',
         'status' => 'required|in_list[active,inactive]'
     ];
 
-    public function getActiveStories()
+    public function getPublishedStories($limit = null, $offset = null)
     {
-        return $this->where('status', 'active')->findAll();
+        $builder = $this->where('status', 'active');
+        
+        if ($limit) {
+            $builder->limit($limit, $offset);
+        }
+        
+        return $builder->orderBy('created_at', 'DESC')->findAll();
     }
 
-    public function getPublishedStories()
+    public function countPublishedStories()
     {
-        return $this->where('status', 'active')->findAll();
+        return $this->where('status', 'active')->countAllResults();
     }
 }

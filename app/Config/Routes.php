@@ -17,7 +17,7 @@ $routes->group('admin', function($routes) {
     $routes->get('login', 'Admin::login');
     $routes->post('authenticate', 'Admin::authenticate');
     $routes->get('logout', 'Admin::logout');
-    
+
     // Beneficiaries management
     $routes->get('beneficiaries', 'AdminBeneficiaries::index');
     $routes->get('beneficiaries/create', 'AdminBeneficiaries::create');
@@ -26,7 +26,7 @@ $routes->group('admin', function($routes) {
     $routes->post('beneficiaries/update/(:num)', 'AdminBeneficiaries::update/$1');
     $routes->get('beneficiaries/delete/(:num)', 'AdminBeneficiaries::delete/$1');
     $routes->get('beneficiaries/view/(:num)', 'AdminBeneficiaries::view/$1');
-    
+
     // Success stories management
     $routes->get('success-stories', 'AdminSuccessStories::index');
     $routes->get('success-stories/create', 'AdminSuccessStories::create');
@@ -34,7 +34,7 @@ $routes->group('admin', function($routes) {
     $routes->get('success-stories/edit/(:num)', 'AdminSuccessStories::edit/$1');
     $routes->post('success-stories/update/(:num)', 'AdminSuccessStories::update/$1');
     $routes->get('success-stories/delete/(:num)', 'AdminSuccessStories::delete/$1');
-    
+
     // Public forms management
     $routes->get('public-forms', 'AdminPublicForms::index');
     $routes->get('public-forms/create', 'AdminPublicForms::create');

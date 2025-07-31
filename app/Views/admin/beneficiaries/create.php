@@ -19,130 +19,126 @@
                 <!-- Basic Information -->
                 <div class="col-md-6">
                     <h6 class="text-primary mb-3"><i class="fas fa-user"></i> Personal Details</h6>
-                    
-                    <div class="mb-3">
-                        <label for="student_id" class="form-label">Student ID <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="student_id" name="student_id" 
-                               value="<?= old('student_id') ?>" required>
-                    </div>
-                    
+
                     <div class="mb-3">
                         <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="name" name="name" 
                                value="<?= old('name') ?>" required>
                     </div>
-                    
+
                     <div class="mb-3">
-                        <label for="contact_phone" class="form-label">Contact Phone <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="contact_phone" name="contact_phone" 
-                               value="<?= old('contact_phone') ?>" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" id="email" name="email" 
-                               value="<?= old('email') ?>" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
-                        <select class="form-control" id="status" name="status" required>
-                            <option value="Active" <?= old('status') == 'Active' ? 'selected' : '' ?>>Active</option>
-                            <option value="Inactive" <?= old('status') == 'Inactive' ? 'selected' : '' ?>>Inactive</option>
-                            <option value="Graduated" <?= old('status') == 'Graduated' ? 'selected' : '' ?>>Graduated</option>
-                        </select>
+                        <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="age" name="age" 
+                               value="<?= old('age') ?>" required>
                     </div>
                 </div>
-                
-                <!-- Academic Information -->
+
                 <div class="col-md-6">
-                    <h6 class="text-primary mb-3"><i class="fas fa-graduation-cap"></i> Academic Details</h6>
-                    
+                    <div class="mb-3">
+                        <label for="education_level" class="form-label">Education Level <span class="text-danger">*</span></label>
+                        <select class="form-control" id="education_level" name="education_level" required>
+                            <option value="">Select Education Level</option>
+                            <option value="Undergraduate" <?= old('education_level') == 'Undergraduate' ? 'selected' : '' ?>>Undergraduate</option>
+                            <option value="Postgraduate" <?= old('education_level') == 'Postgraduate' ? 'selected' : '' ?>>Postgraduate</option>
+                            <option value="Diploma" <?= old('education_level') == 'Diploma' ? 'selected' : '' ?>>Diploma</option>
+                            <option value="Certificate" <?= old('education_level') == 'Certificate' ? 'selected' : '' ?>>Certificate</option>
+                        </select>
+                    </div>
+
                     <div class="mb-3">
                         <label for="course" class="form-label">Course <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="course" name="course" 
                                value="<?= old('course') ?>" required>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label for="university" class="form-label">University <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="university" name="university" 
-                               value="<?= old('university') ?>" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="year" class="form-label">Current Year <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="year" name="year" 
-                               value="<?= old('year') ?>" placeholder="e.g., 3rd Year" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="enrolled_date" class="form-label">Enrolled Date <span class="text-danger">*</span></label>
-                        <input type="date" class="form-control" id="enrolled_date" name="enrolled_date" 
-                               value="<?= old('enrolled_date') ?>" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="expected_graduation" class="form-label">Expected Graduation <span class="text-danger">*</span></label>
-                        <input type="date" class="form-control" id="expected_graduation" name="expected_graduation" 
-                               value="<?= old('expected_graduation') ?>" required>
-                    </div>
                 </div>
             </div>
-            
+
             <div class="row">
-                <!-- Financial Information -->
                 <div class="col-md-6">
-                    <h6 class="text-primary mb-3"><i class="fas fa-rupee-sign"></i> Financial Details</h6>
-                    
                     <div class="mb-3">
-                        <label for="total_fees" class="form-label">Total Fees <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="total_fees" name="total_fees" 
-                               value="<?= old('total_fees') ?>" step="0.01" required>
+                        <label for="institution" class="form-label">Institution <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="institution" name="institution" 
+                               value="<?= old('institution') ?>" required>
                     </div>
-                    
+
                     <div class="mb-3">
-                        <label for="scholarship_amount" class="form-label">Scholarship Amount <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="scholarship_amount" name="scholarship_amount" 
-                               value="<?= old('scholarship_amount') ?>" step="0.01" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="family_income" class="form-label">Family Income (Annual) <span class="text-danger">*</span></label>
-                        <input type="number" class="form-control" id="family_income" name="family_income" 
-                               value="<?= old('family_income') ?>" step="0.01" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="previous_education" class="form-label">Previous Education <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="previous_education" name="previous_education" 
-                               value="<?= old('previous_education') ?>" placeholder="e.g., 12th - 85%" required>
+                        <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="city" name="city" 
+                               value="<?= old('city') ?>" required>
                     </div>
                 </div>
-                
-                <!-- Family Information -->
+
                 <div class="col-md-6">
-                    <h6 class="text-primary mb-3"><i class="fas fa-home"></i> Family Details</h6>
-                    
                     <div class="mb-3">
-                        <label for="father_name" class="form-label">Father's Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="father_name" name="father_name" 
-                               value="<?= old('father_name') ?>" required>
+                        <label for="state" class="form-label">State <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="state" name="state" 
+                               value="<?= old('state') ?>" required>
                     </div>
-                    
+
                     <div class="mb-3">
-                        <label for="father_occupation" class="form-label">Father's Occupation <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="father_occupation" name="father_occupation" 
-                               value="<?= old('father_occupation') ?>" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Address <span class="text-danger">*</span></label>
-                        <textarea class="form-control" id="address" name="address" rows="4" required><?= old('address') ?></textarea>
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" name="phone" 
+                               value="<?= old('phone') ?>">
                     </div>
                 </div>
             </div>
-            
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" 
+                               value="<?= old('email') ?>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="linkedin_url" class="form-label">LinkedIn URL</label>
+                        <input type="url" class="form-control" id="linkedin_url" name="linkedin_url" 
+                               value="<?= old('linkedin_url') ?>">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="company_link" class="form-label">Company Link</label>
+                        <input type="url" class="form-control" id="company_link" name="company_link" 
+                               value="<?= old('company_link') ?>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
+                        <select class="form-control" id="status" name="status" required>
+                            <option value="active" <?= old('status') == 'active' ? 'selected' : '' ?>>Active</option>
+                            <option value="inactive" <?= old('status') == 'inactive' ? 'selected' : '' ?>>Inactive</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="mb-3">
+                        <label for="family_background" class="form-label">Family Background</label>
+                        <textarea class="form-control" id="family_background" name="family_background" rows="3"><?= old('family_background') ?></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="academic_achievements" class="form-label">Academic Achievements</label>
+                        <textarea class="form-control" id="academic_achievements" name="academic_achievements" rows="3"><?= old('academic_achievements') ?></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="career_goals" class="form-label">Career Goals</label>
+                        <textarea class="form-control" id="career_goals" name="career_goals" rows="3"><?= old('career_goals') ?></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Profile Image</label>
+                        <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-12">
                     <hr>

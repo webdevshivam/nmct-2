@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Models;
@@ -23,42 +24,39 @@ class PublicSubmissionModel extends Model
 
     // Dates
     protected $useTimestamps = false;
-    protected $createdField = 'submitted_at';
+    protected $dateFormat = 'datetime';
+
+    // Custom date field
+    protected $submittedField = 'submitted_at';
 
     // Validation
     protected $validationRules = [
         'public_form_id' => 'required|integer',
-        'form_data' => 'required'
+        'form_data' => 'required',
+        'status' => 'required|in_list[pending,approved,rejected]'
     ];
 
-    public function getSubmissionsByForm($formId)
+    public function getSubmissionsByForm($formId, $status = null)
     {
-        return $this->where('public_form_id', $formId)
-            ->orderBy('submitted_at', 'DESC')
-            ->findAll();
+        $builder = $this->where('public_form_id', $formId);
+        
+        if ($status) {
+            $builder->where('status', $status);
+        }
+        
+        return $builder->orderBy('submitted_at', 'DESC')->findAll();
     }
 
-    public function approveSubmission($id, $targetTable)
+    public function getPendingSubmissions()
     {
-        $submission = $this->find($id);
-        if (!$submission) return false;
+        return $this->where('status', 'pending')
+                   ->orderBy('submitted_at', 'DESC')
+                   ->findAll();
+    }
 
-        $formData = json_decode($submission['form_data'], true);
-
-        // Add image if exists
-        if ($submission['image']) {
-            $formData['image'] = $submission['image'];
-        }
-
-        // Insert into target table
-        $db = \Config\Database::connect();
-        $result = $db->table($targetTable)->insert($formData);
-
-        if ($result) {
-            $this->update($id, ['status' => 'approved']);
-            return true;
-        }
-
-        return false;
+    protected function beforeInsert(array $data)
+    {
+        $data['data']['submitted_at'] = date('Y-m-d H:i:s');
+        return $data;
     }
 }
