@@ -53,7 +53,7 @@
                                 </td>
                                 <td>
                                     <small>
-                                        <?php 
+                                        <?php
                                         $location = [];
                                         if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
                                         if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
@@ -67,7 +67,7 @@
                                             class="btn btn-sm btn-outline-primary" title="View Details">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="<?= base_url('admin/beneficiaries/edit/' . $beneficiary['id']) ?>"
+                                        <a href="#"
                                             class="btn btn-sm btn-outline-warning" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>

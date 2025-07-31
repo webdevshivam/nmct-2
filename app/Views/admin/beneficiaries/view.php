@@ -22,113 +22,113 @@
                 <h5 class="mb-0"><i class="fas fa-user"></i> Personal Information</h5>
             </div>
             <div class="card-body">
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>ID:</strong></div>
-                                    <div class="col-sm-8">#<?= esc($beneficiary['id']) ?></div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>ID:</strong></div>
+                    <div class="col-sm-8">#<?= esc($beneficiary['id']) ?></div>
+                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Name:</strong></div>
-                                    <div class="col-sm-8"><?= esc($beneficiary['name']) ?></div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Name:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['name']) ?></div>
+                </div>
 
-                                <?php if (!empty($beneficiary['age'])): ?>
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Age:</strong></div>
-                                    <div class="col-sm-8"><?= esc($beneficiary['age']) ?> years</div>
-                                </div>
-                                <?php endif; ?>
+                <?php if (!empty($beneficiary['age'])): ?>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>Age:</strong></div>
+                        <div class="col-sm-8"><?= esc($beneficiary['age']) ?> years</div>
+                    </div>
+                <?php endif; ?>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Education Level:</strong></div>
-                                    <div class="col-sm-8"><?= esc($beneficiary['education_level']) ?></div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Education Level:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['education_level']) ?></div>
+                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Course:</strong></div>
-                                    <div class="col-sm-8"><?= esc($beneficiary['course']) ?></div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Course:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['course']) ?></div>
+                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Institution:</strong></div>
-                                    <div class="col-sm-8"><?= esc($beneficiary['institution']) ?></div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Institution:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['institution']) ?></div>
+                </div>
 
-                                <?php if (!empty($beneficiary['city']) || !empty($beneficiary['state'])): ?>
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Location:</strong></div>
-                                    <div class="col-sm-8">
-                                        <?php 
-                                        $location = [];
-                                        if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
-                                        if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
-                                        echo implode(', ', $location);
-                                        ?>
-                                    </div>
-                                </div>
-                                <?php endif; ?>
+                <?php if (!empty($beneficiary['city']) || !empty($beneficiary['state'])): ?>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>Location:</strong></div>
+                        <div class="col-sm-8">
+                            <?php
+                            $location = [];
+                            if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
+                            if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
+                            echo implode(', ', $location);
+                            ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Phone:</strong></div>
-                                    <div class="col-sm-8"><?= esc($beneficiary['phone'] ?? 'Not provided') ?></div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Phone:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['phone'] ?? 'Not provided') ?></div>
+                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Email:</strong></div>
-                                    <div class="col-sm-8"><?= esc($beneficiary['email'] ?? 'Not provided') ?></div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Email:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['email'] ?? 'Not provided') ?></div>
+                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>LinkedIn URL:</strong></div>
-                                    <div class="col-sm-8">
-                                        <?php if (!empty($beneficiary['linkedin_url'])): ?>
-                                            <a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank"><?= esc($beneficiary['linkedin_url']) ?></a>
-                                        <?php else: ?>
-                                            Not provided
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>LinkedIn URL:</strong></div>
+                    <div class="col-sm-8">
+                        <?php if (!empty($beneficiary['linkedin_url'])): ?>
+                            <a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank"><?= esc($beneficiary['linkedin_url']) ?></a>
+                        <?php else: ?>
+                            Not provided
+                        <?php endif; ?>
+                    </div>
+                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Company Link:</strong></div>
-                                    <div class="col-sm-8">
-                                        <?php if (!empty($beneficiary['company_link'])): ?>
-                                            <a href="<?= esc($beneficiary['company_link']) ?>" target="_blank"><?= esc($beneficiary['company_link']) ?></a>
-                                        <?php else: ?>
-                                            Not provided
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Company Link:</strong></div>
+                    <div class="col-sm-8">
+                        <?php if (!empty($beneficiary['company_link'])): ?>
+                            <a href="<?= esc($beneficiary['company_link']) ?>" target="_blank"><?= esc($beneficiary['company_link']) ?></a>
+                        <?php else: ?>
+                            Not provided
+                        <?php endif; ?>
+                    </div>
+                </div>
 
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Status:</strong></div>
-                                    <div class="col-sm-8">
-                                        <span class="badge bg-<?= $beneficiary['status'] == 'active' ? 'success' : 'secondary' ?>">
-                                            <?= esc(ucfirst($beneficiary['status'])) ?>
-                                        </span>
-                                    </div>
-                                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Status:</strong></div>
+                    <div class="col-sm-8">
+                        <span class="badge bg-<?= $beneficiary['status'] == 'active' ? 'success' : 'secondary' ?>">
+                            <?= esc(ucfirst($beneficiary['status'])) ?>
+                        </span>
+                    </div>
+                </div>
 
-                                <?php if (!empty($beneficiary['family_background'])): ?>
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Family Background:</strong></div>
-                                    <div class="col-sm-8"><?= nl2br(esc($beneficiary['family_background'])) ?></div>
-                                </div>
-                                <?php endif; ?>
+                <?php if (!empty($beneficiary['family_background'])): ?>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>Family Background:</strong></div>
+                        <div class="col-sm-8"><?= nl2br(esc($beneficiary['family_background'])) ?></div>
+                    </div>
+                <?php endif; ?>
 
-                                <?php if (!empty($beneficiary['academic_achievements'])): ?>
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Academic Achievements:</strong></div>
-                                    <div class="col-sm-8"><?= nl2br(esc($beneficiary['academic_achievements'])) ?></div>
-                                </div>
-                                <?php endif; ?>
+                <?php if (!empty($beneficiary['academic_achievements'])): ?>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>Academic Achievements:</strong></div>
+                        <div class="col-sm-8"><?= nl2br(esc($beneficiary['academic_achievements'])) ?></div>
+                    </div>
+                <?php endif; ?>
 
-                                <?php if (!empty($beneficiary['career_goals'])): ?>
-                                <div class="row mb-3">
-                                    <div class="col-sm-4"><strong>Career Goals:</strong></div>
-                                    <div class="col-sm-8"><?= nl2br(esc($beneficiary['career_goals'])) ?></div>
-                                </div>
-                                <?php endif; ?>
+                <?php if (!empty($beneficiary['career_goals'])): ?>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>Career Goals:</strong></div>
+                        <div class="col-sm-8"><?= nl2br(esc($beneficiary['career_goals'])) ?></div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -146,16 +146,10 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-sm-4"><strong>University:</strong></div>
-                    <div class="col-sm-8"><?= esc($beneficiary['university']) ?></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['institution']) ?></div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Current Year:</strong></div>
-                    <div class="col-sm-8"><?= esc($beneficiary['year']) ?></div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Enrolled:</strong></div>
-                    <div class="col-sm-8"><?= date('F j, Y', strtotime($beneficiary['enrolled_date'])) ?></div>
-                </div>
+
+
                 <div class="row mb-3">
                     <div class="col-sm-4"><strong>Education Level:</strong></div>
                     <div class="col-sm-8"><?= esc($beneficiary['education_level']) ?></div>
@@ -176,34 +170,34 @@
             </div>
             <div class="card-body">
                 <?php if (!empty($beneficiary['phone'])): ?>
-                <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Phone:</strong></div>
-                    <div class="col-sm-8"><?= esc($beneficiary['phone']) ?></div>
-                </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>Phone:</strong></div>
+                        <div class="col-sm-8"><?= esc($beneficiary['phone']) ?></div>
+                    </div>
                 <?php endif; ?>
                 <?php if (!empty($beneficiary['email'])): ?>
-                <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Email:</strong></div>
-                    <div class="col-sm-8"><?= esc($beneficiary['email']) ?></div>
-                </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>Email:</strong></div>
+                        <div class="col-sm-8"><?= esc($beneficiary['email']) ?></div>
+                    </div>
                 <?php endif; ?>
                 <?php if (!empty($beneficiary['linkedin_url'])): ?>
-                <div class="row mb-3">
-                    <div class="col-sm-4"><strong>LinkedIn:</strong></div>
-                    <div class="col-sm-8"><a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank">View Profile</a></div>
-                </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>LinkedIn:</strong></div>
+                        <div class="col-sm-8"><a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank">View Profile</a></div>
+                    </div>
                 <?php endif; ?>
                 <?php if (!empty($beneficiary['company_name'])): ?>
-                <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Company Name:</strong></div>
-                    <div class="col-sm-8"><?= esc($beneficiary['company_name']) ?></div>
-                </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>Company Name:</strong></div>
+                        <div class="col-sm-8"><?= esc($beneficiary['company_name']) ?></div>
+                    </div>
                 <?php endif; ?>
                 <?php if (!empty($beneficiary['company_link'])): ?>
-                <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Company Link:</strong></div>
-                    <div class="col-sm-8"><a href="<?= esc($beneficiary['company_link']) ?>" target="_blank">View Link</a></div>
-                </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4"><strong>Company Link:</strong></div>
+                        <div class="col-sm-8"><a href="<?= esc($beneficiary['company_link']) ?>" target="_blank">View Link</a></div>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -251,7 +245,7 @@
 </div>
 
 <script>
-var page_title = 'View Beneficiary';
+    var page_title = 'View Beneficiary';
 </script>
 
 <?= $this->endSection() ?>
