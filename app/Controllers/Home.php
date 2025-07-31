@@ -35,6 +35,8 @@ class Home extends BaseController
                 ->like('name', $search)
                 ->orLike('course', $search)
                 ->orLike('institution', $search)
+                ->orLike('city', $search)
+                ->orLike('state', $search)
                 ->groupEnd();
         }
 
@@ -50,6 +52,8 @@ class Home extends BaseController
                 ->like('name', $search)
                 ->orLike('course', $search)
                 ->orLike('institution', $search)
+                ->orLike('city', $search)
+                ->orLike('state', $search)
                 ->groupEnd();
             $totalResults = $countBuilder->countAllResults();
         }
