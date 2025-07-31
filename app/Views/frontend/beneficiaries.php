@@ -1,3 +1,4 @@
+
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -17,7 +18,7 @@
             <div class="col-lg-8">
                 <div class="card border-0 shadow-lg">
                     <div class="card-body p-4">
-                        <form method="GET" action="<?= base_url('beneficiaries') ?>" class="row g-3">
+                        <form method="GET" action="<?= base_url('beneficiaries') ?>" class="row g-3" id="searchForm">
                             <div class="col-md-8">
                                 <div class="input-group">
                                     <span class="input-group-text bg-light border-0">
@@ -65,185 +66,217 @@
 <!-- Beneficiaries Grid -->
 <section class="section-padding">
     <div class="container">
-        <?php if (!empty($beneficiaries)): ?>
-            <div class="row">
-                <?php foreach ($beneficiaries as $beneficiary): ?>
-                    <div class="col-lg-6 col-xl-4 mb-4">
-                        <div class="card h-100 border-0 shadow-lg">
-                            <div class="card-header text-center" style="background: var(--gradient-soft); border-bottom: 3px solid var(--primary-color);">
-                                <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
-                                    <i class="fas fa-user-graduate"></i>
-                                </div>
-                                <h5 class="mb-1 font-display">
-                                    <?= esc($beneficiary['name']) ?>
-                                </h5>
-                                <p class="text-muted small mb-2">Age: <?= esc($beneficiary['age']) ?> years</p>
-
-                                <div class="mt-2">
-                                    <span class="badge px-3 py-2" style="background: var(--gradient-primary); color: white;">
-                                        <?= esc($beneficiary['status']) ?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="card-body p-4">
-                                <div class="mb-4">
-                                    <h6 class="text-primary mb-2">
-                                        <i class="fas fa-graduation-cap me-2"></i>Course & University
-                                    </h6>
-                                    <p class="mb-1 fw-bold"><?= esc($beneficiary['course']) ?></p>
-                                    <p class="text-muted small mb-0"><?= esc($beneficiary['institution']) ?></p>
-                                    <?php if (!empty($beneficiary['city']) || !empty($beneficiary['state'])): ?>
-                                    <p class="text-muted small mb-0">
-                                        <i class="fas fa-map-marker-alt me-1"></i>
-                                        <?php 
-                                        $location = [];
-                                        if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
-                                        if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
-                                        echo implode(', ', $location);
-                                        ?>
-                                    </p>
+        <div id="beneficiariesContainer">
+            <?php if (!empty($beneficiaries)): ?>
+                <div class="row" id="beneficiariesGrid">
+                    <?php foreach ($beneficiaries as $beneficiary): ?>
+                        <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
+                            <div class="card h-100 border-0 shadow-lg">
+                                <div class="card-header text-center" style="background: var(--gradient-soft); border-bottom: 3px solid var(--primary-color);">
+                                    <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
+                                        <i class="fas fa-user-graduate"></i>
+                                    </div>
+                                    <h5 class="mb-1 font-display">
+                                        <?= esc($beneficiary['name']) ?>
+                                    </h5>
+                                    <?php if (!empty($beneficiary['age'])): ?>
+                                        <p class="text-muted small mb-2">Age: <?= esc($beneficiary['age']) ?> years</p>
                                     <?php endif; ?>
-                                </div>
 
-                                <div class="row mb-4">
-                                    <div class="col-6">
+                                    <div class="mt-2">
+                                        <span class="badge px-3 py-2" style="background: var(--gradient-primary); color: white;">
+                                            <?= esc($beneficiary['status']) ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                    <!-- Course & University -->
+                                    <div class="mb-3">
                                         <h6 class="text-primary mb-2">
-                                            <i class="fas fa-graduation-cap me-2"></i>Education Level
+                                            <i class="fas fa-graduation-cap me-2"></i>Course & University
+                                        </h6>
+                                        <p class="mb-1 fw-bold"><?= esc($beneficiary['course']) ?></p>
+                                        <p class="text-muted small mb-0"><?= esc($beneficiary['institution']) ?></p>
+                                    </div>
+
+                                    <!-- Education Level -->
+                                    <div class="mb-3">
+                                        <h6 class="text-primary mb-2">
+                                            <i class="fas fa-certificate me-2"></i>Education Level
                                         </h6>
                                         <p class="mb-0 fw-semibold"><?= esc($beneficiary['education_level']) ?></p>
                                     </div>
-                                    <div class="col-6">
+
+                                    <!-- Contact -->
+                                    <?php if (!empty($beneficiary['phone'])): ?>
+                                    <div class="mb-3">
                                         <h6 class="text-primary mb-2">
                                             <i class="fas fa-phone me-2"></i>Contact
                                         </h6>
-                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['phone'] ?? 'Not available') ?></p>
+                                        <p class="mb-0">
+                                            <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-decoration-none fw-semibold">
+                                                <?= esc($beneficiary['phone']) ?>
+                                            </a>
+                                        </p>
                                     </div>
-                                </div>
-
-                                <?php if (!empty($beneficiary['phone']) || !empty($beneficiary['email'])): ?>
-                                <div class="mb-4">
-                                    <h6 class="text-primary mb-2">
-                                        <i class="fas fa-address-book me-2"></i>Contact Information
-                                    </h6>
-                                    <?php if (!empty($beneficiary['phone'])): ?>
-                                        <p class="mb-1 small">
-                                            <i class="fas fa-phone me-2"></i><?= esc($beneficiary['phone']) ?>
-                                        </p>
                                     <?php endif; ?>
-                                    <?php if (!empty($beneficiary['email'])): ?>
-                                        <p class="mb-0 small">
-                                            <i class="fas fa-envelope me-2"></i><?= esc($beneficiary['email']) ?>
-                                        </p>
-                                    <?php endif; ?>
-                                </div>
-                                <?php endif; ?>
 
-                                <?php if (!empty($beneficiary['academic_achievements'])): ?>
-                                <div class="mb-4">
-                                    <h6 class="text-primary mb-2">
-                                        <i class="fas fa-trophy me-2"></i>Academic Achievements
-                                    </h6>
-                                    <p class="mb-0 small text-muted"><?= esc(substr($beneficiary['academic_achievements'], 0, 100)) ?><?= strlen($beneficiary['academic_achievements']) > 100 ? '...' : '' ?></p>
-                                </div>
-                                <?php endif; ?>
-
-                                <?php if (!empty($beneficiary['career_goals'])): ?>
-                                <div class="mb-4">
-                                    <h6 class="text-primary mb-2">
-                                        <i class="fas fa-bullseye me-2"></i>Career Goals
-                                    </h6>
-                                    <p class="mb-0 small text-muted"><?= esc(substr($beneficiary['career_goals'], 0, 100)) ?><?= strlen($beneficiary['career_goals']) > 100 ? '...' : '' ?></p>
-                                </div>
-                                <?php endif; ?>
-
-                                <div class="text-center mt-4">
-                                    <div class="row">
-                                        <?php if (!empty($beneficiary['email'])): ?>
-                                            <div class="col-6">
-                                                <a href="mailto:<?= esc($beneficiary['email']) ?>" class="btn btn-outline-primary btn-sm w-100">
-                                                    <i class="fas fa-envelope me-2"></i>Email
+                                    <!-- Contact Information -->
+                                    <?php if (!empty($beneficiary['phone']) || !empty($beneficiary['email'])): ?>
+                                    <div class="mb-3">
+                                        <h6 class="text-primary mb-2">
+                                            <i class="fas fa-address-book me-2"></i>Contact Information
+                                        </h6>
+                                        <?php if (!empty($beneficiary['phone'])): ?>
+                                            <p class="mb-1 small">
+                                                <i class="fas fa-phone me-2"></i>
+                                                <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-decoration-none">
+                                                    <?= esc($beneficiary['phone']) ?>
                                                 </a>
-                                            </div>
+                                            </p>
                                         <?php endif; ?>
-                                        <?php if (!empty($beneficiary['linkedin_url'])): ?>
-                                            <div class="col-6">
-                                                <a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank" class="btn btn-outline-info btn-sm w-100">
-                                                    <i class="fab fa-linkedin me-2"></i>LinkedIn
+                                        <?php if (!empty($beneficiary['email'])): ?>
+                                            <p class="mb-0 small">
+                                                <i class="fas fa-envelope me-2"></i>
+                                                <a href="mailto:<?= esc($beneficiary['email']) ?>" class="text-decoration-none">
+                                                    <?= esc($beneficiary['email']) ?>
                                                 </a>
-                                            </div>
+                                            </p>
+                                        <?php endif; ?>
+                                    </div>
+                                    <?php endif; ?>
+
+                                    <!-- Action Buttons -->
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <?php if (!empty($beneficiary['email'])): ?>
+                                                <div class="col-6">
+                                                    <a href="mailto:<?= esc($beneficiary['email']) ?>" class="btn btn-outline-primary btn-sm w-100">
+                                                        <i class="fas fa-envelope me-1"></i>Email
+                                                    </a>
+                                                </div>
+                                            <?php endif; ?>
+                                            <?php if (!empty($beneficiary['linkedin_url'])): ?>
+                                                <div class="col-6">
+                                                    <a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank" class="btn btn-outline-info btn-sm w-100">
+                                                        <i class="fab fa-linkedin me-1"></i>LinkedIn
+                                                    </a>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+
+                                    <!-- Read More Button -->
+                                    <div class="text-center">
+                                        <button class="btn btn-link p-0 read-more-btn" data-bs-toggle="collapse" data-bs-target="#details-<?= $beneficiary['id'] ?>" aria-expanded="false">
+                                            <small><i class="fas fa-plus me-1"></i>Read More</small>
+                                        </button>
+                                    </div>
+
+                                    <!-- Additional Details (Collapsible) -->
+                                    <div class="collapse mt-3" id="details-<?= $beneficiary['id'] ?>">
+                                        <hr>
+                                        
+                                        <?php if (!empty($beneficiary['city']) || !empty($beneficiary['state'])): ?>
+                                        <div class="mb-3">
+                                            <h6 class="text-primary mb-2">
+                                                <i class="fas fa-map-marker-alt me-2"></i>Location
+                                            </h6>
+                                            <p class="mb-0 small">
+                                                <?php 
+                                                $location = [];
+                                                if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
+                                                if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
+                                                echo implode(', ', $location);
+                                                ?>
+                                            </p>
+                                        </div>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($beneficiary['family_background'])): ?>
+                                        <div class="mb-3">
+                                            <h6 class="text-primary mb-2">
+                                                <i class="fas fa-home me-2"></i>Family Background
+                                            </h6>
+                                            <p class="mb-0 small text-muted"><?= nl2br(esc($beneficiary['family_background'])) ?></p>
+                                        </div>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($beneficiary['academic_achievements'])): ?>
+                                        <div class="mb-3">
+                                            <h6 class="text-primary mb-2">
+                                                <i class="fas fa-trophy me-2"></i>Academic Achievements
+                                            </h6>
+                                            <p class="mb-0 small text-muted"><?= nl2br(esc($beneficiary['academic_achievements'])) ?></p>
+                                        </div>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($beneficiary['career_goals'])): ?>
+                                        <div class="mb-3">
+                                            <h6 class="text-primary mb-2">
+                                                <i class="fas fa-bullseye me-2"></i>Career Goals
+                                            </h6>
+                                            <p class="mb-0 small text-muted"><?= nl2br(esc($beneficiary['career_goals'])) ?></p>
+                                        </div>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($beneficiary['company_link'])): ?>
+                                        <div class="mb-3">
+                                            <h6 class="text-primary mb-2">
+                                                <i class="fas fa-building me-2"></i>Company
+                                            </h6>
+                                            <p class="mb-0 small">
+                                                <a href="<?= esc($beneficiary['company_link']) ?>" target="_blank" class="text-decoration-none">
+                                                    View Company <i class="fas fa-external-link-alt ms-1"></i>
+                                                </a>
+                                            </p>
+                                        </div>
                                         <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
 
-            <!-- Pagination -->
-            <?php if (isset($pager) && $pager->getPageCount() > 1): ?>
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center">
-                            <nav aria-label="Beneficiaries pagination">
-                                <ul class="pagination pagination-lg">
-                                    <?php if ($pager->hasPrevious()): ?>
-                                        <li class="page-item">
-                                            <a class="page-link" href="<?= $pager->getPrevious() . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
-                                                <i class="fas fa-chevron-left"></i>
-                                            </a>
-                                        </li>
-                                    <?php endif; ?>
-
-                                    <?php foreach ($pager->links() as $link): ?>
-                                        <li class="page-item <?= $link['active'] ? 'active' : '' ?>">
-                                            <a class="page-link" href="<?= $link['uri'] . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
-                                                <?= $link['title'] ?>
-                                            </a>
-                                        </li>
-                                    <?php endforeach; ?>
-
-                                    <?php if ($pager->hasNext()): ?>
-                                        <li class="page-item">
-                                            <a class="page-link" href="<?= $pager->getNext() . (isset($search) && $search ? '&search=' . urlencode($search) : '') ?>">
-                                                <i class="fas fa-chevron-right"></i>
-                                            </a>
-                                        </li>
-                                    <?php endif; ?>
-                                </ul>
-                            </nav>
-                        </div>
-
-                        <div class="text-center mt-3">
-                            <p class="text-muted">
-                                Showing <?= $pager->getDetails()['start'] ?> to <?= $pager->getDetails()['end'] ?>
-                                of <?= $pager->getDetails()['total'] ?> entries
-                            </p>
+                <!-- Load More Section -->
+                <?php if (isset($has_more) && $has_more): ?>
+                <div class="row mt-4">
+                    <div class="col-12 text-center">
+                        <button id="loadMoreBtn" class="btn btn-primary btn-lg" data-page="<?= ($current_page ?? 1) + 1 ?>" data-search="<?= esc($search ?? '') ?>">
+                            <i class="fas fa-plus me-2"></i>Load More Students
+                        </button>
+                        <div id="loadingSpinner" class="d-none mt-3">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="text-muted mt-2">Loading more students...</p>
                         </div>
                     </div>
+                </div>
+                <?php endif; ?>
+
+            <?php else: ?>
+                <div class="text-center py-5">
+                    <div class="feature-icon mx-auto mb-4" style="width: 120px; height: 120px; font-size: 4rem; background: var(--gradient-soft); color: var(--text-light);">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="text-muted mb-3">
+                        <?= !empty($search) ? 'No Results Found' : 'No Beneficiaries Found' ?>
+                    </h3>
+                    <p class="text-muted mb-4">
+                        <?= !empty($search) ?
+                            'Try adjusting your search terms or browse all beneficiaries.' :
+                            'We\'re currently working on adding new beneficiaries to our program.' ?>
+                    </p>
+                    <?php if (!empty($search)): ?>
+                        <a href="<?= base_url('beneficiaries') ?>" class="btn btn-primary">
+                            <i class="fas fa-list me-2"></i> View All Beneficiaries
+                        </a>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
-
-        <?php else: ?>
-            <div class="text-center py-5">
-                <div class="feature-icon mx-auto mb-4" style="width: 120px; height: 120px; font-size: 4rem; background: var(--gradient-soft); color: var(--text-light);">
-                    <i class="fas fa-user-graduate"></i>
-                </div>
-                <h3 class="text-muted mb-3">
-                    <?= !empty($search) ? 'No Results Found' : 'No Beneficiaries Found' ?>
-                </h3>
-                <p class="text-muted mb-4">
-                    <?= !empty($search) ?
-                        'Try adjusting your search terms or browse all beneficiaries.' :
-                        'We\'re currently working on adding new beneficiaries to our program.' ?>
-                </p>
-                <?php if (!empty($search)): ?>
-                    <a href="<?= base_url('beneficiaries') ?>" class="btn btn-primary">
-                        <i class="fas fa-list me-2"></i> View All Beneficiaries
-                    </a>
-                <?php endif; ?>
-            </div>
-        <?php endif; ?>
+        </div>
     </div>
 </section>
 
@@ -270,5 +303,76 @@
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle read more buttons
+    document.querySelectorAll('.read-more-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const icon = this.querySelector('i');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            setTimeout(() => {
+                if (this.getAttribute('aria-expanded') === 'true') {
+                    icon.className = 'fas fa-minus me-1';
+                    this.innerHTML = '<small><i class="fas fa-minus me-1"></i>Show Less</small>';
+                } else {
+                    icon.className = 'fas fa-plus me-1';
+                    this.innerHTML = '<small><i class="fas fa-plus me-1"></i>Read More</small>';
+                }
+            }, 100);
+        });
+    });
+
+    // Handle load more functionality
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const beneficiariesGrid = document.getElementById('beneficiariesGrid');
+
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            const search = this.getAttribute('data-search');
+            
+            // Show loading state
+            loadMoreBtn.classList.add('d-none');
+            loadingSpinner.classList.remove('d-none');
+            
+            // Make AJAX request
+            const url = `<?= base_url('beneficiaries/load-more') ?>?page=${page}&search=${encodeURIComponent(search)}`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.html) {
+                        // Append new beneficiaries
+                        beneficiariesGrid.insertAdjacentHTML('beforeend', data.html);
+                        
+                        // Update page number
+                        loadMoreBtn.setAttribute('data-page', parseInt(page) + 1);
+                        
+                        // Hide load more button if no more data
+                        if (!data.has_more) {
+                            loadMoreBtn.remove();
+                            loadingSpinner.innerHTML = '<p class="text-muted">All students loaded!</p>';
+                        } else {
+                            loadMoreBtn.classList.remove('d-none');
+                        }
+                    } else {
+                        loadMoreBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Error loading more';
+                        loadMoreBtn.classList.add('btn-danger');
+                    }
+                    loadingSpinner.classList.add('d-none');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    loadMoreBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Error loading more';
+                    loadMoreBtn.classList.add('btn-danger');
+                    loadingSpinner.classList.add('d-none');
+                });
+        });
+    }
+});
+</script>
 
 <?= $this->endSection() ?>

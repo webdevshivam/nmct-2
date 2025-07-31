@@ -9,7 +9,8 @@ $routes->get('/', 'Home::index');
 
 // Frontend routes
 $routes->get('/beneficiaries', 'Home::beneficiaries');
-$routes->get('/success-stories', 'Home::success_stories');
+$routes->get('beneficiaries/load-more', 'Home::loadMoreBeneficiaries');
+$routes->get('/success-stories', 'Home::successStories');
 
 // Admin routes
 $routes->group('admin', function($routes) {
