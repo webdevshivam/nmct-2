@@ -98,13 +98,13 @@
                                         <h6 class="text-primary mb-2">
                                             <i class="fas fa-calendar-alt me-2"></i>Academic Year
                                         </h6>
-                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['year']) ?></p>
+                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['academic_year']) ?></p>
                                     </div>
                                     <div class="col-6">
                                         <h6 class="text-primary mb-2">
                                             <i class="fas fa-phone me-2"></i>Contact
                                         </h6>
-                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['contact_phone']) ?></p>
+                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['phone']) ?></p>
                                     </div>
                                 </div>
 
@@ -115,27 +115,27 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <small class="text-muted">Total Fees</small>
-                                            <p class="mb-0 fw-bold text-success">₹<?= number_format($beneficiary['total_fees']) ?></p>
+                                            <p class="mb-0 fw-bold text-success">₹<?= number_format($beneficiary['fees']) ?></p>
                                         </div>
                                         <div class="col-6">
-                                            <small class="text-muted">Scholarship</small>
-                                            <p class="mb-0 fw-bold text-primary">₹<?= number_format($beneficiary['scholarship_amount']) ?></p>
+                                            <small class="text-muted">Father's Income</small>
+                                            <p class="mb-0 fw-bold text-primary">₹<?= number_format($beneficiary['father_income']) ?></p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="mb-4">
                                     <h6 class="text-primary mb-2">
-                                        <i class="fas fa-calendar me-2"></i>Timeline
+                                        <i class="fas fa-info-circle me-2"></i>Father's Details
                                     </h6>
                                     <div class="row">
                                         <div class="col-6">
-                                            <small class="text-muted">Enrolled</small>
-                                            <p class="mb-0 fw-semibold"><?= date('M Y', strtotime($beneficiary['enrolled_date'])) ?></p>
+                                            <small class="text-muted">Father's Name</small>
+                                            <p class="mb-0 fw-semibold"><?= esc($beneficiary['father_name']) ?></p>
                                         </div>
                                         <div class="col-6">
-                                            <small class="text-muted">Expected Graduation</small>
-                                            <p class="mb-0 fw-semibold"><?= date('M Y', strtotime($beneficiary['expected_graduation'])) ?></p>
+                                            <small class="text-muted">Occupation</small>
+                                            <p class="mb-0 fw-semibold"><?= esc($beneficiary['father_occupation']) ?></p>
                                         </div>
                                     </div>
                                 </div>
