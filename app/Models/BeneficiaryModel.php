@@ -39,12 +39,12 @@ class BeneficiaryModel extends Model
     // Validation
     protected $validationRules = [
         'name' => 'required|min_length[3]|max_length[255]',
-        'age' => 'required|integer|greater_than[0]',
+        'age' => 'permit_empty|integer|greater_than[0]',
         'education_level' => 'required|max_length[100]',
         'course' => 'required|max_length[255]',
         'institution' => 'required|max_length[255]',
-        'city' => 'required|max_length[100]',
-        'state' => 'required|max_length[100]',
+        'city' => 'permit_empty|max_length[100]',
+        'state' => 'permit_empty|max_length[100]',
         'phone' => 'permit_empty|max_length[20]',
         'email' => 'permit_empty|valid_email|max_length[255]',
         'linkedin_url' => 'permit_empty|valid_url|max_length[500]',

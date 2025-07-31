@@ -27,9 +27,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                        <label for="age" class="form-label">Age</label>
                         <input type="number" class="form-control" id="age" name="age" 
-                               value="<?= old('age') ?>" required>
+                               value="<?= old('age') ?>">
                     </div>
                 </div>
 
@@ -62,17 +62,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                        <label for="city" class="form-label">City</label>
                         <input type="text" class="form-control" id="city" name="city" 
-                               value="<?= old('city') ?>" required>
+                               value="<?= old('city') ?>">
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="state" class="form-label">State <span class="text-danger">*</span></label>
+                        <label for="state" class="form-label">State</label>
                         <input type="text" class="form-control" id="state" name="state" 
-                               value="<?= old('state') ?>" required>
+                               value="<?= old('state') ?>">
                     </div>
 
                     <div class="mb-3">

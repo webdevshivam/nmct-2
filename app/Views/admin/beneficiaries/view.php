@@ -32,10 +32,12 @@
                                     <div class="col-sm-8"><?= esc($beneficiary['name']) ?></div>
                                 </div>
 
+                                <?php if (!empty($beneficiary['age'])): ?>
                                 <div class="row mb-3">
                                     <div class="col-sm-4"><strong>Age:</strong></div>
                                     <div class="col-sm-8"><?= esc($beneficiary['age']) ?> years</div>
                                 </div>
+                                <?php endif; ?>
 
                                 <div class="row mb-3">
                                     <div class="col-sm-4"><strong>Education Level:</strong></div>
@@ -52,10 +54,19 @@
                                     <div class="col-sm-8"><?= esc($beneficiary['institution']) ?></div>
                                 </div>
 
+                                <?php if (!empty($beneficiary['city']) || !empty($beneficiary['state'])): ?>
                                 <div class="row mb-3">
                                     <div class="col-sm-4"><strong>Location:</strong></div>
-                                    <div class="col-sm-8"><?= esc($beneficiary['city']) ?>, <?= esc($beneficiary['state']) ?></div>
+                                    <div class="col-sm-8">
+                                        <?php 
+                                        $location = [];
+                                        if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
+                                        if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
+                                        echo implode(', ', $location);
+                                        ?>
+                                    </div>
                                 </div>
+                                <?php endif; ?>
 
                                 <div class="row mb-3">
                                     <div class="col-sm-4"><strong>Phone:</strong></div>

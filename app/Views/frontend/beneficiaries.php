@@ -92,6 +92,17 @@
                                     </h6>
                                     <p class="mb-1 fw-bold"><?= esc($beneficiary['course']) ?></p>
                                     <p class="text-muted small mb-0"><?= esc($beneficiary['institution']) ?></p>
+                                    <?php if (!empty($beneficiary['city']) || !empty($beneficiary['state'])): ?>
+                                    <p class="text-muted small mb-0">
+                                        <i class="fas fa-map-marker-alt me-1"></i>
+                                        <?php 
+                                        $location = [];
+                                        if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
+                                        if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
+                                        echo implode(', ', $location);
+                                        ?>
+                                    </p>
+                                    <?php endif; ?>
                                 </div>
 
                                 <div class="row mb-4">

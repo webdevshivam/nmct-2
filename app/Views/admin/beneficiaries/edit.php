@@ -33,9 +33,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                        <label for="age" class="form-label">Age</label>
                         <input type="number" class="form-control" id="age" name="age" 
-                               value="<?= esc($beneficiary['age']) ?>" required>
+                               value="<?= esc($beneficiary['age']) ?>">
                     </div>
                 </div>
 
@@ -71,17 +71,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                        <label for="city" class="form-label">City</label>
                         <input type="text" class="form-control" id="city" name="city" 
-                               value="<?= esc($beneficiary['city']) ?>" required>
+                               value="<?= esc($beneficiary['city']) ?>">
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="state" class="form-label">State <span class="text-danger">*</span></label>
+                        <label for="state" class="form-label">State</label>
                         <input type="text" class="form-control" id="state" name="state" 
-                               value="<?= esc($beneficiary['state']) ?>" required>
+                               value="<?= esc($beneficiary['state']) ?>">
                     </div>
 
                     <div class="mb-3">

@@ -50,12 +50,12 @@ class AdminBeneficiaries extends BaseController
 
         $data = [
             'name' => $this->request->getPost('name'),
-            'age' => (int)$this->request->getPost('age'),
+            'age' => $this->request->getPost('age') ? (int)$this->request->getPost('age') : null,
             'education_level' => $this->request->getPost('education_level'),
             'course' => $this->request->getPost('course'),
             'institution' => $this->request->getPost('institution'),
-            'city' => $this->request->getPost('city'),
-            'state' => $this->request->getPost('state'),
+            'city' => $this->request->getPost('city') ?: null,
+            'state' => $this->request->getPost('state') ?: null,
             'phone' => $this->request->getPost('phone'),
             'email' => $this->request->getPost('email'),
             'linkedin_url' => $this->request->getPost('linkedin_url'),
@@ -129,12 +129,12 @@ class AdminBeneficiaries extends BaseController
 
         $data = [
             'name' => $this->request->getPost('name'),
-            'age' => (int)$this->request->getPost('age'),
+            'age' => $this->request->getPost('age') ? (int)$this->request->getPost('age') : null,
             'education_level' => $this->request->getPost('education_level'),
             'course' => $this->request->getPost('course'),
             'institution' => $this->request->getPost('institution'),
-            'city' => $this->request->getPost('city'),
-            'state' => $this->request->getPost('state'),
+            'city' => $this->request->getPost('city') ?: null,
+            'state' => $this->request->getPost('state') ?: null,
             'phone' => $this->request->getPost('phone'),
             'email' => $this->request->getPost('email'),
             'linkedin_url' => $this->request->getPost('linkedin_url'),

@@ -53,7 +53,12 @@
                                 </td>
                                 <td>
                                     <small>
-                                        <?= esc($beneficiary['city']) ?>, <?= esc($beneficiary['state']) ?>
+                                        <?php 
+                                        $location = [];
+                                        if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
+                                        if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
+                                        echo !empty($location) ? implode(', ', $location) : 'Not specified';
+                                        ?>
                                     </small>
                                 </td>
                                 <td>
