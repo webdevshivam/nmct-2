@@ -23,6 +23,7 @@ class BeneficiaryModel extends Model
         'phone',
         'email',
         'linkedin_url',
+        'company_name',
         'company_link',
         'family_background',
         'academic_achievements',

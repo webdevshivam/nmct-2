@@ -18,6 +18,16 @@
                         </div>
                     </div>
 
+                    <!-- Company Name - Compact -->
+                    <?php if (!empty($beneficiary['company_name'])): ?>
+                    <div class="mb-2">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-building text-primary me-2"></i>
+                            <span class="text-dark small"><?= esc($beneficiary['company_name']) ?></span>
+                        </div>
+                    </div>
+                    <?php endif; ?>
+
                     <!-- Contact Info - Compact -->
                     <?php if (!empty($beneficiary['phone']) || !empty($beneficiary['email'])): ?>
                     <div class="mb-3">
@@ -64,6 +74,7 @@
                                 data-beneficiary-phone="<?= esc($beneficiary['phone'] ?? '') ?>"
                                 data-beneficiary-email="<?= esc($beneficiary['email'] ?? '') ?>"
                                 data-beneficiary-linkedin="<?= esc($beneficiary['linkedin_url'] ?? '') ?>"
+                                data-beneficiary-company-name="<?= esc($beneficiary['company_name'] ?? '') ?>"
                                 data-beneficiary-family="<?= esc($beneficiary['family_background'] ?? '') ?>"
                                 data-beneficiary-achievements="<?= esc($beneficiary['academic_achievements'] ?? '') ?>"
                                 data-beneficiary-goals="<?= esc($beneficiary['career_goals'] ?? '') ?>"

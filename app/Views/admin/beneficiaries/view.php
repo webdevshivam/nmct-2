@@ -193,6 +193,12 @@
                     <div class="col-sm-8"><a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank">View Profile</a></div>
                 </div>
                 <?php endif; ?>
+                <?php if (!empty($beneficiary['company_name'])): ?>
+                <div class="row mb-3">
+                    <div class="col-sm-4"><strong>Company Name:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['company_name']) ?></div>
+                </div>
+                <?php endif; ?>
                 <?php if (!empty($beneficiary['company_link'])): ?>
                 <div class="row mb-3">
                     <div class="col-sm-4"><strong>Company Link:</strong></div>

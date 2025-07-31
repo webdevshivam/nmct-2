@@ -105,6 +105,12 @@
 
                 <div class="col-md-6">
                     <div class="mb-3">
+                        <label for="company_name" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="company_name" name="company_name" 
+                               value="<?= esc($beneficiary['company_name'] ?? '') ?>">
+                    </div>
+
+                    <div class="mb-3">
                         <label for="company_link" class="form-label">Company Link</label>
                         <input type="url" class="form-control" id="company_link" name="company_link" 
                                value="<?= esc($beneficiary['company_link'] ?? '') ?>">

@@ -218,6 +218,7 @@ class Home extends BaseController
                                 data-beneficiary-phone="<?= esc($beneficiary['phone'] ?? '') ?>"
                                 data-beneficiary-email="<?= esc($beneficiary['email'] ?? '') ?>"
                                 data-beneficiary-linkedin="<?= esc($beneficiary['linkedin_url'] ?? '') ?>"
+                                data-beneficiary-company-name="<?= esc($beneficiary['company_name'] ?? '') ?>"
                                 data-beneficiary-family="<?= esc($beneficiary['family_background'] ?? '') ?>"
                                 data-beneficiary-achievements="<?= esc($beneficiary['academic_achievements'] ?? '') ?>"
                                 data-beneficiary-goals="<?= esc($beneficiary['career_goals'] ?? '') ?>"

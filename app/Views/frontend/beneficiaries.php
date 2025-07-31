@@ -289,6 +289,12 @@
                             <a href="mailto:${data.beneficiaryEmail}" class="text-muted text-decoration-none">${data.beneficiaryEmail}</a>
                         </div>
                     ` : ''}
+                    ${data.beneficiaryCompanyName ? `
+                        <div class="mb-3">
+                            <strong class="text-dark">Company:</strong><br>
+                            <span class="text-muted">${data.beneficiaryCompanyName}</span>
+                        </div>
+                    ` : ''}
                     ${(data.beneficiaryCity || data.beneficiaryState) ? `
                         <div class="mb-3">
                             <strong class="text-dark">Location:</strong><br>
