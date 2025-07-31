@@ -95,49 +95,49 @@ class Home extends BaseController
         ?>
         <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
             <div class="card h-100 border-0 shadow-lg">
-                <div class="card-header text-center" style="background: var(--gradient-soft); border-bottom: 3px solid var(--primary-color);">
-                    <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
+                <div class="card-header text-center bg-light">
+                    <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--primary-color);">
                         <i class="fas fa-user-graduate"></i>
                     </div>
-                    <h5 class="mb-1 font-display">
+                    <h5 class="mb-1 font-display text-dark">
                         <?= esc($beneficiary['name']) ?>
                     </h5>
                     <?php if (!empty($beneficiary['age'])): ?>
-                        <p class="text-muted small mb-2">Age: <?= esc($beneficiary['age']) ?> years</p>
+                        <p class="text-muted small mb-2"><?= esc($beneficiary['age']) ?> years old</p>
                     <?php endif; ?>
 
                     <div class="mt-2">
-                        <span class="badge px-3 py-2" style="background: var(--gradient-primary); color: white;">
-                            <?= esc($beneficiary['status']) ?>
+                        <span class="badge bg-success px-3 py-2">
+                            <?= esc(ucfirst($beneficiary['status'])) ?>
                         </span>
                     </div>
                 </div>
                 <div class="card-body p-4">
                     <!-- Course & University -->
                     <div class="mb-3">
-                        <h6 class="text-primary mb-2">
+                        <h6 class="text-primary mb-2 fw-bold">
                             <i class="fas fa-graduation-cap me-2"></i>Course & University
                         </h6>
-                        <p class="mb-1 fw-bold"><?= esc($beneficiary['course']) ?></p>
+                        <p class="mb-1 text-dark fw-semibold"><?= esc($beneficiary['course']) ?></p>
                         <p class="text-muted small mb-0"><?= esc($beneficiary['institution']) ?></p>
                     </div>
 
                     <!-- Education Level -->
                     <div class="mb-3">
-                        <h6 class="text-primary mb-2">
+                        <h6 class="text-primary mb-2 fw-bold">
                             <i class="fas fa-certificate me-2"></i>Education Level
                         </h6>
-                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['education_level']) ?></p>
+                        <p class="mb-0 text-dark"><?= esc($beneficiary['education_level']) ?></p>
                     </div>
 
                     <!-- Contact -->
                     <?php if (!empty($beneficiary['phone'])): ?>
                     <div class="mb-3">
-                        <h6 class="text-primary mb-2">
+                        <h6 class="text-primary mb-2 fw-bold">
                             <i class="fas fa-phone me-2"></i>Contact
                         </h6>
                         <p class="mb-0">
-                            <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-decoration-none fw-semibold">
+                            <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-dark text-decoration-none fw-semibold">
                                 <?= esc($beneficiary['phone']) ?>
                             </a>
                         </p>
@@ -146,22 +146,22 @@ class Home extends BaseController
 
                     <!-- Contact Information -->
                     <?php if (!empty($beneficiary['phone']) || !empty($beneficiary['email'])): ?>
-                    <div class="mb-3">
-                        <h6 class="text-primary mb-2">
+                    <div class="mb-4">
+                        <h6 class="text-primary mb-2 fw-bold">
                             <i class="fas fa-address-book me-2"></i>Contact Information
                         </h6>
                         <?php if (!empty($beneficiary['phone'])): ?>
-                            <p class="mb-1 small">
-                                <i class="fas fa-phone me-2"></i>
-                                <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-decoration-none">
+                            <p class="mb-1 small text-dark">
+                                <i class="fas fa-phone me-2 text-muted"></i>
+                                <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-dark text-decoration-none">
                                     <?= esc($beneficiary['phone']) ?>
                                 </a>
                             </p>
                         <?php endif; ?>
                         <?php if (!empty($beneficiary['email'])): ?>
-                            <p class="mb-0 small">
-                                <i class="fas fa-envelope me-2"></i>
-                                <a href="mailto:<?= esc($beneficiary['email']) ?>" class="text-decoration-none">
+                            <p class="mb-0 small text-dark">
+                                <i class="fas fa-envelope me-2 text-muted"></i>
+                                <a href="mailto:<?= esc($beneficiary['email']) ?>" class="text-dark text-decoration-none">
                                     <?= esc($beneficiary['email']) ?>
                                 </a>
                             </p>
@@ -171,7 +171,7 @@ class Home extends BaseController
 
                     <!-- Action Buttons -->
                     <div class="mb-3">
-                        <div class="row">
+                        <div class="row g-2">
                             <?php if (!empty($beneficiary['email'])): ?>
                                 <div class="col-6">
                                     <a href="mailto:<?= esc($beneficiary['email']) ?>" class="btn btn-outline-primary btn-sm w-100">
@@ -191,70 +191,25 @@ class Home extends BaseController
 
                     <!-- Read More Button -->
                     <div class="text-center">
-                        <button class="btn btn-link p-0 read-more-btn" data-bs-toggle="collapse" data-bs-target="#details-<?= $beneficiary['id'] ?>" aria-expanded="false">
-                            <small><i class="fas fa-plus me-1"></i>Read More</small>
+                        <button class="btn btn-primary btn-sm read-more-btn" 
+                                data-beneficiary-id="<?= $beneficiary['id'] ?>"
+                                data-beneficiary-name="<?= esc($beneficiary['name']) ?>"
+                                data-beneficiary-age="<?= esc($beneficiary['age'] ?? '') ?>"
+                                data-beneficiary-education="<?= esc($beneficiary['education_level']) ?>"
+                                data-beneficiary-course="<?= esc($beneficiary['course']) ?>"
+                                data-beneficiary-institution="<?= esc($beneficiary['institution']) ?>"
+                                data-beneficiary-city="<?= esc($beneficiary['city'] ?? '') ?>"
+                                data-beneficiary-state="<?= esc($beneficiary['state'] ?? '') ?>"
+                                data-beneficiary-phone="<?= esc($beneficiary['phone'] ?? '') ?>"
+                                data-beneficiary-email="<?= esc($beneficiary['email'] ?? '') ?>"
+                                data-beneficiary-linkedin="<?= esc($beneficiary['linkedin_url'] ?? '') ?>"
+                                data-beneficiary-family="<?= esc($beneficiary['family_background'] ?? '') ?>"
+                                data-beneficiary-achievements="<?= esc($beneficiary['academic_achievements'] ?? '') ?>"
+                                data-beneficiary-goals="<?= esc($beneficiary['career_goals'] ?? '') ?>"
+                                data-beneficiary-company="<?= esc($beneficiary['company_link'] ?? '') ?>"
+                                data-beneficiary-status="<?= esc($beneficiary['status']) ?>">
+                            <i class="fas fa-info-circle me-1"></i>Read More
                         </button>
-                    </div>
-
-                    <!-- Additional Details (Collapsible) -->
-                    <div class="collapse mt-3" id="details-<?= $beneficiary['id'] ?>">
-                        <hr>
-
-                        <?php if (!empty($beneficiary['city']) || !empty($beneficiary['state'])): ?>
-                        <div class="mb-3">
-                            <h6 class="text-primary mb-2">
-                                <i class="fas fa-map-marker-alt me-2"></i>Location
-                            </h6>
-                            <p class="mb-0 small">
-                                <?php 
-                                $location = [];
-                                if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
-                                if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
-                                echo implode(', ', $location);
-                                ?>
-                            </p>
-                        </div>
-                        <?php endif; ?>
-
-                        <?php if (!empty($beneficiary['family_background'])): ?>
-                        <div class="mb-3">
-                            <h6 class="text-primary mb-2">
-                                <i class="fas fa-home me-2"></i>Family Background
-                            </h6>
-                            <p class="mb-0 small text-muted"><?= nl2br(esc($beneficiary['family_background'])) ?></p>
-                        </div>
-                        <?php endif; ?>
-
-                        <?php if (!empty($beneficiary['academic_achievements'])): ?>
-                        <div class="mb-3">
-                            <h6 class="text-primary mb-2">
-                                <i class="fas fa-trophy me-2"></i>Academic Achievements
-                            </h6>
-                            <p class="mb-0 small text-muted"><?= nl2br(esc($beneficiary['academic_achievements'])) ?></p>
-                        </div>
-                        <?php endif; ?>
-
-                        <?php if (!empty($beneficiary['career_goals'])): ?>
-                        <div class="mb-3">
-                            <h6 class="text-primary mb-2">
-                                <i class="fas fa-bullseye me-2"></i>Career Goals
-                            </h6>
-                            <p class="mb-0 small text-muted"><?= nl2br(esc($beneficiary['career_goals'])) ?></p>
-                        </div>
-                        <?php endif; ?>
-
-                        <?php if (!empty($beneficiary['company_link'])): ?>
-                        <div class="mb-3">
-                            <h6 class="text-primary mb-2">
-                                <i class="fas fa-building me-2"></i>Company
-                            </h6>
-                            <p class="mb-0 small">
-                                <a href="<?= esc($beneficiary['company_link']) ?>" target="_blank" class="text-decoration-none">
-                                    View Company <i class="fas fa-external-link-alt ms-1"></i>
-                                </a>
-                            </p>
-                        </div>
-                        <?php endif; ?>
                     </div>
                 </div>
             </div>
