@@ -112,6 +112,16 @@
                             <option value="inactive" <?= old('status') == 'inactive' ? 'selected' : '' ?>>Inactive</option>
                         </select>
                     </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="is_passout" name="is_passout" value="1" <?= old('is_passout') ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="is_passout">
+                                <strong>Passed Out</strong>
+                                <small class="text-muted d-block">Check if the student has completed their studies</small>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
 

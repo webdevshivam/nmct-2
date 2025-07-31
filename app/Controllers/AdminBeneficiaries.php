@@ -63,7 +63,8 @@ class AdminBeneficiaries extends BaseController
             'family_background' => $this->request->getPost('family_background'),
             'academic_achievements' => $this->request->getPost('academic_achievements'),
             'career_goals' => $this->request->getPost('career_goals'),
-            'status' => $this->request->getPost('status')
+            'status' => $this->request->getPost('status'),
+            'is_passout' => $this->request->getPost('is_passout') ? 1 : 0
         ];
 
         // Handle image upload
@@ -142,7 +143,8 @@ class AdminBeneficiaries extends BaseController
             'family_background' => $this->request->getPost('family_background'),
             'academic_achievements' => $this->request->getPost('academic_achievements'),
             'career_goals' => $this->request->getPost('career_goals'),
-            'status' => $this->request->getPost('status')
+            'status' => $this->request->getPost('status'),
+            'is_passout' => $this->request->getPost('is_passout') ? 1 : 0
         ];
 
         // Handle image upload
@@ -195,6 +197,3 @@ class AdminBeneficiaries extends BaseController
         return redirect()->to('/admin/beneficiaries');
     }
 }
-```
-
-The code was modified to remove `student_id` from the store and update methods in the `AdminBeneficiaries` controller.

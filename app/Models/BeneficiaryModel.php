@@ -28,7 +28,8 @@ class BeneficiaryModel extends Model
         'academic_achievements',
         'career_goals',
         'image',
-        'status'
+        'status',
+        'is_passout'
     ];
 
     // Dates
@@ -75,6 +76,44 @@ class BeneficiaryModel extends Model
     public function countActiveBeneficiaries($search = null)
     {
         $builder = $this->where('status', 'active');
+
+        if ($search) {
+            $builder->groupStart()
+                ->like('name', $search)
+                ->orLike('course', $search)
+                ->orLike('institution', $search)
+                ->orLike('city', $search)
+                ->groupEnd();
+        }
+
+        return $builder->countAllResults();
+    }
+
+    public function getActiveBeneficiariesByStatus($isPassout = false, $limit = null, $offset = null, $search = null)
+    {
+        $builder = $this->where('status', 'active')
+                        ->where('is_passout', $isPassout);
+
+        if ($search) {
+            $builder->groupStart()
+                ->like('name', $search)
+                ->orLike('course', $search)
+                ->orLike('institution', $search)
+                ->orLike('city', $search)
+                ->groupEnd();
+        }
+
+        if ($limit) {
+            $builder->limit($limit, $offset);
+        }
+
+        return $builder->findAll();
+    }
+
+    public function countActiveBeneficiariesByStatus($isPassout = false, $search = null)
+    {
+        $builder = $this->where('status', 'active')
+                        ->where('is_passout', $isPassout);
 
         if ($search) {
             $builder->groupStart()

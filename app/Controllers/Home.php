@@ -23,36 +23,29 @@ class Home extends BaseController
 
     public function beneficiaries()
     {
-        $beneficiaryModel = new BeneficiaryModel();
         $search = $this->request->getGet('search');
-        $perPage = 9; // 3x3 grid
-        $currentPage = (int)($this->request->getGet('page') ?? 1);
-        $offset = ($currentPage - 1) * $perPage;
+        $page = (int)($this->request->getGet('page') ?? 1);
+        $perPage = 6;
+        $offset = ($page - 1) * $perPage;
 
-        if ($search) {
-            $beneficiaries = $beneficiaryModel->getActiveBeneficiaries($perPage, $offset, $search);
-            $total = $beneficiaryModel->countActiveBeneficiaries($search);
-            $hasMore = ($offset + $perPage) < $total;
+        $beneficiaryModel = new BeneficiaryModel();
 
-            $data = [
-                'beneficiaries' => $beneficiaries,
-                'search' => $search,
-                'total_results' => $total,
-                'has_more' => $hasMore,
-                'current_page' => $currentPage
-            ];
-        } else {
-            $beneficiaries = $beneficiaryModel->getActiveBeneficiaries($perPage, $offset);
-            $total = $beneficiaryModel->countActiveBeneficiaries();
-            $hasMore = ($offset + $perPage) < $total;
+        // Get pursuing students (not passed out)
+        $pursuingBeneficiaries = $beneficiaryModel->getActiveBeneficiariesByStatus(false, null, null, $search);
 
-            $data = [
-                'beneficiaries' => $beneficiaries,
-                'search' => $search,
-                'has_more' => $hasMore,
-                'current_page' => $currentPage
-            ];
-        }
+        // Get passed out students
+        $passoutBeneficiaries = $beneficiaryModel->getActiveBeneficiariesByStatus(true, null, null, $search);
+
+        $totalResults = count($pursuingBeneficiaries) + count($passoutBeneficiaries);
+
+        $data = [
+            'pursuing_beneficiaries' => $pursuingBeneficiaries,
+            'passout_beneficiaries' => $passoutBeneficiaries,
+            'search' => $search,
+            'current_page' => $page,
+            'has_more' => false, // We're showing all results now
+            'total_results' => $totalResults
+        ];
 
         return view('frontend/beneficiaries', $data);
     }
