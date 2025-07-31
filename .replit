@@ -1,7 +1,9 @@
-modules = ["web", "nodejs-20", "php-8.1"]
+modules = ["php-8.2", "web", "nodejs-20"]
+run = "php spark serve"
 
 [nix]
 channel = "stable-25_05"
+packages = ["sqlite"]
 
 [agent]
 expertMode = true
@@ -30,3 +32,6 @@ waitForPort = 5000
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[deployment]
+run = ["sh", "-c", "php spark serve"]
