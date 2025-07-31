@@ -20,11 +20,7 @@
                 <div class="col-md-6">
                     <h6 class="text-primary mb-3"><i class="fas fa-user"></i> Personal Details</h6>
 
-                    <div class="mb-3">
-                        <label for="student_id" class="form-label">Student ID <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="student_id" name="student_id" 
-                               value="<?= old('student_id', $beneficiary['student_id']) ?>" required>
-                    </div>
+                    
 
                     <div class="mb-3">
                         <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
