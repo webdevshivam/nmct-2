@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Controllers;
@@ -9,13 +8,13 @@ class AdminBeneficiaries extends BaseController
 {
     protected $session;
     protected $beneficiaryModel;
-    
+
     public function __construct()
     {
         $this->session = \Config\Services::session();
         $this->beneficiaryModel = new BeneficiaryModel();
     }
-    
+
     private function checkAuth()
     {
         if (!$this->session->get('admin_logged_in')) {
@@ -23,32 +22,32 @@ class AdminBeneficiaries extends BaseController
         }
         return true;
     }
-    
+
     public function index()
     {
         $authCheck = $this->checkAuth();
         if ($authCheck !== true) return $authCheck;
-        
+
         $data = [
             'beneficiaries' => $this->beneficiaryModel->orderBy('created_at', 'DESC')->findAll()
         ];
-        
+
         return view('admin/beneficiaries/index', $data);
     }
-    
+
     public function create()
     {
         $authCheck = $this->checkAuth();
         if ($authCheck !== true) return $authCheck;
-        
+
         return view('admin/beneficiaries/create');
     }
-    
+
     public function store()
     {
         $authCheck = $this->checkAuth();
         if ($authCheck !== true) return $authCheck;
-        
+
         $data = [
             'name' => $this->request->getPost('name'),
             'age' => (int)$this->request->getPost('age'),
@@ -86,48 +85,48 @@ class AdminBeneficiaries extends BaseController
             return redirect()->back()->withInput();
         }
     }
-    
+
     public function view($id)
     {
         $authCheck = $this->checkAuth();
         if ($authCheck !== true) return $authCheck;
-        
+
         $beneficiary = $this->beneficiaryModel->find($id);
         if (!$beneficiary) {
             $this->session->setFlashdata('error', 'Beneficiary not found');
             return redirect()->to('/admin/beneficiaries');
         }
-        
+
         $data = ['beneficiary' => $beneficiary];
         return view('admin/beneficiaries/view', $data);
     }
-    
+
     public function edit($id)
     {
         $authCheck = $this->checkAuth();
         if ($authCheck !== true) return $authCheck;
-        
+
         $beneficiary = $this->beneficiaryModel->find($id);
         if (!$beneficiary) {
             $this->session->setFlashdata('error', 'Beneficiary not found');
             return redirect()->to('/admin/beneficiaries');
         }
-        
+
         $data = ['beneficiary' => $beneficiary];
         return view('admin/beneficiaries/edit', $data);
     }
-    
+
     public function update($id)
     {
         $authCheck = $this->checkAuth();
         if ($authCheck !== true) return $authCheck;
-        
+
         $beneficiary = $this->beneficiaryModel->find($id);
         if (!$beneficiary) {
             $this->session->setFlashdata('error', 'Beneficiary not found');
             return redirect()->to('/admin/beneficiaries');
         }
-        
+
         $data = [
             'name' => $this->request->getPost('name'),
             'age' => (int)$this->request->getPost('age'),
@@ -155,7 +154,7 @@ class AdminBeneficiaries extends BaseController
             }
             $image->move(WRITEPATH . 'uploads/beneficiaries', $newName);
             $data['image'] = $newName;
-            
+
             // Delete old image if exists
             if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])) {
                 unlink(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image']);
@@ -170,29 +169,29 @@ class AdminBeneficiaries extends BaseController
             return redirect()->back()->withInput();
         }
     }
-    
+
     public function delete($id)
     {
         $authCheck = $this->checkAuth();
         if ($authCheck !== true) return $authCheck;
-        
+
         $beneficiary = $this->beneficiaryModel->find($id);
         if (!$beneficiary) {
             $this->session->setFlashdata('error', 'Beneficiary not found');
             return redirect()->to('/admin/beneficiaries');
         }
-        
+
         // Delete image if exists
         if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])) {
             unlink(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image']);
         }
-        
+
         if ($this->beneficiaryModel->delete($id)) {
             $this->session->setFlashdata('success', 'Beneficiary deleted successfully');
         } else {
             $this->session->setFlashdata('error', 'Failed to delete beneficiary');
         }
-        
+
         return redirect()->to('/admin/beneficiaries');
     }
 }
