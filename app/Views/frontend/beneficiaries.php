@@ -1,3 +1,4 @@
+
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -77,6 +78,7 @@
                                 <h5 class="mb-1 font-display">
                                     <?= esc($beneficiary['name']) ?>
                                 </h5>
+                                <p class="text-muted small mb-2">Age: <?= esc($beneficiary['age']) ?> years</p>
 
                                 <div class="mt-2">
                                     <span class="badge px-3 py-2" style="background: var(--gradient-primary); color: white;">
@@ -96,57 +98,72 @@
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <h6 class="text-primary mb-2">
-                                            <i class="fas fa-calendar-alt me-2"></i>Academic Year
+                                            <i class="fas fa-book me-2"></i>Education Level
                                         </h6>
-                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['academic_year']) ?></p>
+                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['education_level']) ?></p>
                                     </div>
                                     <div class="col-6">
                                         <h6 class="text-primary mb-2">
-                                            <i class="fas fa-phone me-2"></i>Contact
+                                            <i class="fas fa-map-marker-alt me-2"></i>Location
                                         </h6>
-                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['phone']) ?></p>
+                                        <p class="mb-0 fw-semibold"><?= esc($beneficiary['city']) ?>, <?= esc($beneficiary['state']) ?></p>
                                     </div>
                                 </div>
 
+                                <?php if (!empty($beneficiary['phone']) || !empty($beneficiary['email'])): ?>
                                 <div class="mb-4">
                                     <h6 class="text-primary mb-2">
-                                        <i class="fas fa-money-bill-wave me-2"></i>Financial Support
+                                        <i class="fas fa-address-book me-2"></i>Contact Information
                                     </h6>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <small class="text-muted">Total Fees</small>
-                                            <p class="mb-0 fw-bold text-success">₹<?= number_format($beneficiary['fees']) ?></p>
-                                        </div>
-                                        <div class="col-6">
-                                            <small class="text-muted">Father's Income</small>
-                                            <p class="mb-0 fw-bold text-primary">₹<?= number_format($beneficiary['father_income']) ?></p>
-                                        </div>
-                                    </div>
+                                    <?php if (!empty($beneficiary['phone'])): ?>
+                                        <p class="mb-1 small">
+                                            <i class="fas fa-phone me-2"></i><?= esc($beneficiary['phone']) ?>
+                                        </p>
+                                    <?php endif; ?>
+                                    <?php if (!empty($beneficiary['email'])): ?>
+                                        <p class="mb-0 small">
+                                            <i class="fas fa-envelope me-2"></i><?= esc($beneficiary['email']) ?>
+                                        </p>
+                                    <?php endif; ?>
                                 </div>
-
-                                <div class="mb-4">
-                                    <h6 class="text-primary mb-2">
-                                        <i class="fas fa-info-circle me-2"></i>Father's Details
-                                    </h6>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <small class="text-muted">Father's Name</small>
-                                            <p class="mb-0 fw-semibold"><?= esc($beneficiary['father_name']) ?></p>
-                                        </div>
-                                        <div class="col-6">
-                                            <small class="text-muted">Occupation</small>
-                                            <p class="mb-0 fw-semibold"><?= esc($beneficiary['father_occupation']) ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <?php if (!empty($beneficiary['email'])): ?>
-                                    <div class="text-center mt-4">
-                                        <a href="mailto:<?= esc($beneficiary['email']) ?>" class="btn btn-outline-primary btn-sm">
-                                            <i class="fas fa-envelope me-2"></i>Contact Student
-                                        </a>
-                                    </div>
                                 <?php endif; ?>
+
+                                <?php if (!empty($beneficiary['academic_achievements'])): ?>
+                                <div class="mb-4">
+                                    <h6 class="text-primary mb-2">
+                                        <i class="fas fa-trophy me-2"></i>Academic Achievements
+                                    </h6>
+                                    <p class="mb-0 small text-muted"><?= esc(substr($beneficiary['academic_achievements'], 0, 100)) ?><?= strlen($beneficiary['academic_achievements']) > 100 ? '...' : '' ?></p>
+                                </div>
+                                <?php endif; ?>
+
+                                <?php if (!empty($beneficiary['career_goals'])): ?>
+                                <div class="mb-4">
+                                    <h6 class="text-primary mb-2">
+                                        <i class="fas fa-bullseye me-2"></i>Career Goals
+                                    </h6>
+                                    <p class="mb-0 small text-muted"><?= esc(substr($beneficiary['career_goals'], 0, 100)) ?><?= strlen($beneficiary['career_goals']) > 100 ? '...' : '' ?></p>
+                                </div>
+                                <?php endif; ?>
+
+                                <div class="text-center mt-4">
+                                    <div class="row">
+                                        <?php if (!empty($beneficiary['email'])): ?>
+                                            <div class="col-6">
+                                                <a href="mailto:<?= esc($beneficiary['email']) ?>" class="btn btn-outline-primary btn-sm w-100">
+                                                    <i class="fas fa-envelope me-2"></i>Email
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if (!empty($beneficiary['linkedin_url'])): ?>
+                                            <div class="col-6">
+                                                <a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank" class="btn btn-outline-info btn-sm w-100">
+                                                    <i class="fab fa-linkedin me-2"></i>LinkedIn
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

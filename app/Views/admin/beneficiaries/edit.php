@@ -34,8 +34,8 @@
                     
                     <div class="mb-3">
                         <label for="contact_phone" class="form-label">Contact Phone <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="contact_phone" name="contact_phone" 
-                               value="<?= old('contact_phone', $beneficiary['contact_phone']) ?>" required>
+                        <input type="text" class="form-control" id="phone" name="phone" 
+                               value="<?= old('phone', $beneficiary['phone']) ?>">
                     </div>
                     
                     <div class="mb-3">
@@ -47,9 +47,8 @@
                     <div class="mb-3">
                         <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
                         <select class="form-control" id="status" name="status" required>
-                            <option value="Active" <?= old('status', $beneficiary['status']) == 'Active' ? 'selected' : '' ?>>Active</option>
-                            <option value="Inactive" <?= old('status', $beneficiary['status']) == 'Inactive' ? 'selected' : '' ?>>Inactive</option>
-                            <option value="Graduated" <?= old('status', $beneficiary['status']) == 'Graduated' ? 'selected' : '' ?>>Graduated</option>
+                            <option value="active" <?= old('status', $beneficiary['status']) == 'active' ? 'selected' : '' ?>>Active</option>
+                            <option value="inactive" <?= old('status', $beneficiary['status']) == 'inactive' ? 'selected' : '' ?>>Inactive</option>
                         </select>
                     </div>
                 </div>
