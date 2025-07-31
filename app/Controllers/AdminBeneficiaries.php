@@ -195,3 +195,6 @@ class AdminBeneficiaries extends BaseController
         return redirect()->to('/admin/beneficiaries');
     }
 }
+```
+
+The code was modified to remove `student_id` from the store and update methods in the `AdminBeneficiaries` controller.
