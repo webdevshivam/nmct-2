@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Academic Information -->
     <div class="col-lg-6 mb-4">
         <div class="card h-100">
@@ -74,51 +74,52 @@
                     <div class="col-sm-8"><?= date('F j, Y', strtotime($beneficiary['enrolled_date'])) ?></div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Expected Graduation:</strong></div>
-                    <div class="col-sm-8"><?= date('F j, Y', strtotime($beneficiary['expected_graduation'])) ?></div>
+                    <div class="col-sm-4"><strong>Education Level:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['education_level']) ?></div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Previous Education:</strong></div>
-                    <div class="col-sm-8"><?= esc($beneficiary['previous_education']) ?></div>
+                    <div class="col-sm-4"><strong>Age:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['age']) ?> years</div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Financial Information -->
+
+    <!-- Contact & Links Information -->
     <div class="col-lg-6 mb-4">
         <div class="card h-100">
             <div class="card-header">
-                <h5 class="mb-0"><i class="fas fa-rupee-sign"></i> Financial Information</h5>
+                <h5 class="mb-0"><i class="fas fa-link"></i> Contact & Links</h5>
             </div>
             <div class="card-body">
+                <?php if (!empty($beneficiary['phone'])): ?>
                 <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Total Fees:</strong></div>
-                    <div class="col-sm-8">₹<?= number_format($beneficiary['total_fees'], 2) ?></div>
+                    <div class="col-sm-4"><strong>Phone:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['phone']) ?></div>
                 </div>
+                <?php endif; ?>
+                <?php if (!empty($beneficiary['email'])): ?>
                 <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Scholarship Amount:</strong></div>
-                    <div class="col-sm-8 text-success">₹<?= number_format($beneficiary['scholarship_amount'], 2) ?></div>
+                    <div class="col-sm-4"><strong>Email:</strong></div>
+                    <div class="col-sm-8"><?= esc($beneficiary['email']) ?></div>
                 </div>
+                <?php endif; ?>
+                <?php if (!empty($beneficiary['linkedin_url'])): ?>
                 <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Coverage:</strong></div>
-                    <div class="col-sm-8">
-                        <?php $percentage = ($beneficiary['scholarship_amount'] / $beneficiary['total_fees']) * 100; ?>
-                        <div class="progress" style="height: 20px;">
-                            <div class="progress-bar bg-success" style="width: <?= $percentage ?>%">
-                                <?= round($percentage) ?>%
-                            </div>
-                        </div>
-                    </div>
+                    <div class="col-sm-4"><strong>LinkedIn:</strong></div>
+                    <div class="col-sm-8"><a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank">View Profile</a></div>
                 </div>
+                <?php endif; ?>
+                <?php if (!empty($beneficiary['company_link'])): ?>
                 <div class="row mb-3">
-                    <div class="col-sm-4"><strong>Family Income:</strong></div>
-                    <div class="col-sm-8">₹<?= number_format($beneficiary['family_income'], 2) ?>/year</div>
+                    <div class="col-sm-4"><strong>Company Link:</strong></div>
+                    <div class="col-sm-8"><a href="<?= esc($beneficiary['company_link']) ?>" target="_blank">View Link</a></div>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
-    
+
     <!-- Family Information -->
     <div class="col-lg-6 mb-4">
         <div class="card h-100">

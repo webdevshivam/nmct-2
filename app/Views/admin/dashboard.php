@@ -109,7 +109,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Student ID</th>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Course</th>
                                 <th>Status</th>
@@ -120,12 +120,12 @@
                         <tbody>
                             <?php foreach($recent_beneficiaries as $beneficiary): ?>
                             <tr>
-                                <td><strong><?= esc($beneficiary['student_id']) ?></strong></td>
+                                <td><strong>#<?= esc($beneficiary['id']) ?></strong></td>
                                 <td><?= esc($beneficiary['name']) ?></td>
                                 <td><?= esc($beneficiary['course']) ?></td>
                                 <td>
-                                    <span class="badge bg-<?= $beneficiary['status'] == 'Active' ? 'success' : 'secondary' ?>">
-                                        <?= esc($beneficiary['status']) ?>
+                                    <span class="badge bg-<?= $beneficiary['status'] == 'active' ? 'success' : 'secondary' ?>">
+                                        <?= esc(ucfirst($beneficiary['status'])) ?>
                                     </span>
                                 </td>
                                 <td><?= date('M j, Y', strtotime($beneficiary['created_at'])) ?></td>

@@ -26,7 +26,7 @@ class Admin extends BaseController
         
         $data = [
             'total_beneficiaries' => $beneficiaryModel->countAll(),
-            'active_beneficiaries' => $beneficiaryModel->where('status', 'Active')->countAllResults(),
+            'active_beneficiaries' => $beneficiaryModel->where('status', 'active')->countAllResults(),
             'total_stories' => $successStoryModel->countAll(),
             'recent_beneficiaries' => $beneficiaryModel->orderBy('created_at', 'DESC')->limit(5)->findAll()
         ];

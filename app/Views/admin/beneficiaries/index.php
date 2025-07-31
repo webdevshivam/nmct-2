@@ -19,38 +19,41 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Course</th>
-                            <th>University</th>
+                            <th>Institution</th>
                             <th>Status</th>
                             <th>Contact</th>
-                            <th>Scholarship</th>
+                            <th>Location</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($beneficiaries as $beneficiary): ?>
                             <tr>
-
+                                <td><strong>#<?= esc($beneficiary['id']) ?></strong></td>
                                 <td><?= esc($beneficiary['name']) ?></td>
                                 <td><?= esc($beneficiary['course']) ?></td>
-                                <td><?= esc($beneficiary['university']) ?></td>
+                                <td><?= esc($beneficiary['institution']) ?></td>
                                 <td>
-                                    <span class="badge bg-<?= $beneficiary['status'] == 'Active' ? 'success' : ($beneficiary['status'] == 'Graduated' ? 'info' : 'secondary') ?>">
-                                        <?= esc($beneficiary['status']) ?>
+                                    <span class="badge bg-<?= $beneficiary['status'] == 'active' ? 'success' : 'secondary' ?>">
+                                        <?= esc(ucfirst($beneficiary['status'])) ?>
                                     </span>
                                 </td>
                                 <td>
                                     <small>
-                                        <i class="fas fa-phone"></i> <?= esc($beneficiary['contact_phone']) ?><br>
-                                        <i class="fas fa-envelope"></i> <?= esc($beneficiary['email']) ?>
+                                        <?php if (!empty($beneficiary['phone'])): ?>
+                                            <i class="fas fa-phone"></i> <?= esc($beneficiary['phone']) ?><br>
+                                        <?php endif; ?>
+                                        <?php if (!empty($beneficiary['email'])): ?>
+                                            <i class="fas fa-envelope"></i> <?= esc($beneficiary['email']) ?>
+                                        <?php endif; ?>
                                     </small>
                                 </td>
                                 <td>
-                                    <strong>₹<?= number_format($beneficiary['scholarship_amount']) ?></strong>
-                                    <small class="text-muted d-block">
-                                        of ₹<?= number_format($beneficiary['total_fees']) ?>
+                                    <small>
+                                        <?= esc($beneficiary['city']) ?>, <?= esc($beneficiary['state']) ?>
                                     </small>
                                 </td>
                                 <td>
