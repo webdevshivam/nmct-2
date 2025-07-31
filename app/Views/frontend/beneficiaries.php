@@ -1,4 +1,3 @@
-
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -68,89 +67,89 @@
     <div class="container">
         <div id="beneficiariesContainer">
             <?php if (!empty($pursuing_beneficiaries) || !empty($passout_beneficiaries)): ?>
-                
+
                 <!-- Currently Pursuing Students -->
                 <?php if (!empty($pursuing_beneficiaries)): ?>
-                <div class="mb-5">
-                    <div class="text-center mb-4">
-                        <h2 class="section-title text-primary font-display">
-                            <i class="fas fa-book-open me-2"></i>Currently Pursuing
-                        </h2>
-                        <p class="text-muted">Students who are currently studying and pursuing their dreams</p>
-                        <hr class="w-25 mx-auto">
-                    </div>
-                    <div class="row" id="pursuingGrid">
-                        <?php foreach ($pursuing_beneficiaries as $beneficiary): ?>
-                            <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
-                                <div class="card h-100 border-0 shadow-lg">
-                                    <div class="card-header text-center bg-light">
-                                        <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--primary-color);">
-                                            <i class="fas fa-user-graduate"></i>
-                                        </div>
-                                        <h5 class="mb-1 font-display text-dark">
-                                            <?= esc($beneficiary['name']) ?>
-                                        </h5>
-                                        <?php if (!empty($beneficiary['age'])): ?>
-                                            <p class="text-muted small mb-2"><?= esc($beneficiary['age']) ?> years old</p>
-                                        <?php endif; ?>
+                    <div class="mb-5">
+                        <div class="text-center mb-4">
+                            <h2 class="section-title text-primary font-display">
+                                <i class="fas fa-book-open me-2"></i>Currently Pursuing
+                            </h2>
+                            <p class="text-muted">Students who are currently studying and pursuing their dreams</p>
+                            <hr class="w-25 mx-auto">
+                        </div>
+                        <div class="row" id="pursuingGrid">
+                            <?php foreach ($pursuing_beneficiaries as $beneficiary): ?>
+                                <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
+                                    <div class="card h-100 border-0 shadow-lg">
+                                        <div class="card-header text-center bg-light">
+                                            <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--primary-color);">
+                                                <i class="fas fa-user-graduate"></i>
+                                            </div>
+                                            <h5 class="mb-1 font-display text-dark">
+                                                <?= esc($beneficiary['name']) ?>
+                                            </h5>
+                                            <?php if (!empty($beneficiary['age'])): ?>
+                                                <p class="text-muted small mb-2"><?= esc($beneficiary['age']) ?> years old</p>
+                                            <?php endif; ?>
 
-                                        <div class="mt-2">
-                                            <span class="badge bg-info px-3 py-2">
-                                                <i class="fas fa-book me-1"></i>Currently Studying
-                                            </span>
+                                            <div class="mt-2">
+                                                <span class="badge bg-info px-3 py-2">
+                                                    <i class="fas fa-book me-1"></i>Currently Studying
+                                                </span>
+                                            </div>
                                         </div>
+                                        <?php
+                                        // Include the card body content here
+                                        include('beneficiary_card_body.php');
+                                        ?>
                                     </div>
-                                    <?php 
-                                    // Include the card body content here
-                                    include('beneficiary_card_body.php');
-                                    ?>
                                 </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
                 <?php endif; ?>
 
                 <!-- Passed Out Students -->
                 <?php if (!empty($passout_beneficiaries)): ?>
-                <div class="mb-5">
-                    <div class="text-center mb-4">
-                        <h2 class="section-title text-success font-display">
-                            <i class="fas fa-graduation-cap me-2"></i>Passed Out
-                        </h2>
-                        <p class="text-muted">Students who have successfully completed their studies</p>
-                        <hr class="w-25 mx-auto">
-                    </div>
-                    <div class="row" id="passoutGrid">
-                        <?php foreach ($passout_beneficiaries as $beneficiary): ?>
-                            <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
-                                <div class="card h-100 border-0 shadow-lg">
-                                    <div class="card-header text-center bg-light">
-                                        <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--success-color);">
-                                            <i class="fas fa-graduation-cap"></i>
-                                        </div>
-                                        <h5 class="mb-1 font-display text-dark">
-                                            <?= esc($beneficiary['name']) ?>
-                                        </h5>
-                                        <?php if (!empty($beneficiary['age'])): ?>
-                                            <p class="text-muted small mb-2"><?= esc($beneficiary['age']) ?> years old</p>
-                                        <?php endif; ?>
+                    <div class="mb-5">
+                        <div class="text-center mb-4">
+                            <h2 class="section-title text-success font-display">
+                                <i class="fas fa-graduation-cap me-2"></i>Passed Out
+                            </h2>
+                            <p class="text-muted">Students who have successfully completed their studies</p>
+                            <hr class="w-25 mx-auto">
+                        </div>
+                        <div class="row" id="passoutGrid">
+                            <?php foreach ($passout_beneficiaries as $beneficiary): ?>
+                                <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
+                                    <div class="card h-100 border-0 shadow-lg">
+                                        <div class="card-header text-center bg-light">
+                                            <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--success-color);">
+                                                <i class="fas fa-graduation-cap"></i>
+                                            </div>
+                                            <h5 class="mb-1 font-display text-dark">
+                                                <?= esc($beneficiary['name']) ?>
+                                            </h5>
+                                            <?php if (!empty($beneficiary['age'])): ?>
+                                                <p class="text-muted small mb-2"><?= esc($beneficiary['age']) ?> years old</p>
+                                            <?php endif; ?>
 
-                                        <div class="mt-2">
-                                            <span class="badge bg-success px-3 py-2">
-                                                <i class="fas fa-graduation-cap me-1"></i>Graduated
-                                            </span>
+                                            <div class="mt-2">
+                                                <span class="badge bg-success px-3 py-2">
+                                                    <i class="fas fa-graduation-cap me-1"></i>Graduated
+                                                </span>
+                                            </div>
                                         </div>
+                                        <?php
+                                        // Include the card body content here
+                                        include('beneficiary_card_body.php');
+                                        ?>
                                     </div>
-                                    <?php 
-                                    // Include the card body content here
-                                    include('beneficiary_card_body.php');
-                                    ?>
                                 </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
                 <?php endif; ?>
 
             <?php else: ?>
@@ -222,24 +221,24 @@
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = new bootstrap.Modal(document.getElementById('beneficiaryModal'));
-    const modalContent = document.getElementById('modalContent');
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = new bootstrap.Modal(document.getElementById('beneficiaryModal'));
+        const modalContent = document.getElementById('modalContent');
 
-    // Handle read more buttons
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.read-more-btn')) {
-            const btn = e.target.closest('.read-more-btn');
-            const data = btn.dataset;
-            
-            const content = generateModalContent(data);
-            modalContent.innerHTML = content;
-            modal.show();
-        }
-    });
+        // Handle read more buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.read-more-btn')) {
+                const btn = e.target.closest('.read-more-btn');
+                const data = btn.dataset;
 
-    function generateModalContent(data) {
-        let html = `
+                const content = generateModalContent(data);
+                modalContent.innerHTML = content;
+                modal.show();
+            }
+        });
+
+        function generateModalContent(data) {
+            let html = `
             <div class="row">
                 <div class="col-12 text-center mb-4">
                     <div class="feature-icon mx-auto mb-3" style="width: 100px; height: 100px; font-size: 3rem; background: var(--gradient-soft); color: var(--primary-color);">
@@ -300,14 +299,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p class="text-muted">${data.beneficiaryFamily.replace(/\n/g, '<br>')}</p>
                         </div>
                     ` : ''}
-                    
+
                     ${data.beneficiaryAchievements ? `
                         <div class="col-12 mb-4">
                             <h6 class="text-primary mb-2 fw-bold"><i class="fas fa-trophy me-2"></i>Academic Achievements</h6>
                             <p class="text-muted">${data.beneficiaryAchievements.replace(/\n/g, '<br>')}</p>
                         </div>
                     ` : ''}
-                    
+
                     ${data.beneficiaryGoals ? `
                         <div class="col-12 mb-4">
                             <h6 class="text-primary mb-2 fw-bold"><i class="fas fa-bullseye me-2"></i>Career Goals</h6>
@@ -343,51 +342,51 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             ` : ''}
         `;
-        
-        return html;
-    }
 
-    // Handle load more functionality
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    const loadingSpinner = document.getElementById('loadingSpinner');
-    const beneficiariesGrid = document.getElementById('beneficiariesGrid');
+            return html;
+        }
 
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function() {
-            const page = this.getAttribute('data-page');
-            const search = this.getAttribute('data-search');
-            
-            loadMoreBtn.classList.add('d-none');
-            loadingSpinner.classList.remove('d-none');
-            
-            fetch(`<?= base_url('beneficiaries/load-more') ?>?page=${page}&search=${encodeURIComponent(search)}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success && data.html) {
-                        beneficiariesGrid.insertAdjacentHTML('beforeend', data.html);
-                        loadMoreBtn.setAttribute('data-page', parseInt(page) + 1);
-                        
-                        if (!data.has_more) {
-                            loadMoreBtn.remove();
-                            loadingSpinner.innerHTML = '<p class="text-muted">All students loaded!</p>';
+        // Handle load more functionality
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const beneficiariesGrid = document.getElementById('beneficiariesGrid');
+
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                const page = this.getAttribute('data-page');
+                const search = this.getAttribute('data-search');
+
+                loadMoreBtn.classList.add('d-none');
+                loadingSpinner.classList.remove('d-none');
+
+                fetch(`<?= base_url('beneficiaries/load-more') ?>?page=${page}&search=${encodeURIComponent(search)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success && data.html) {
+                            beneficiariesGrid.insertAdjacentHTML('beforeend', data.html);
+                            loadMoreBtn.setAttribute('data-page', parseInt(page) + 1);
+
+                            if (!data.has_more) {
+                                loadMoreBtn.remove();
+                                loadingSpinner.innerHTML = '<p class="text-muted">All students loaded!</p>';
+                            } else {
+                                loadMoreBtn.classList.remove('d-none');
+                            }
                         } else {
-                            loadMoreBtn.classList.remove('d-none');
+                            loadMoreBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Error loading more';
+                            loadMoreBtn.classList.add('btn-danger');
                         }
-                    } else {
+                        loadingSpinner.classList.add('d-none');
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
                         loadMoreBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Error loading more';
                         loadMoreBtn.classList.add('btn-danger');
-                    }
-                    loadingSpinner.classList.add('d-none');
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    loadMoreBtn.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Error loading more';
-                    loadMoreBtn.classList.add('btn-danger');
-                    loadingSpinner.classList.add('d-none');
-                });
-        });
-    }
-});
+                        loadingSpinner.classList.add('d-none');
+                    });
+            });
+        }
+    });
 </script>
 
 <?= $this->endSection() ?>
