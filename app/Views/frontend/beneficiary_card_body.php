@@ -68,6 +68,7 @@
                 data-beneficiary-id="<?= $beneficiary['id'] ?>"
                 data-beneficiary-name="<?= esc($beneficiary['name']) ?>"
                 data-beneficiary-age="<?= esc($beneficiary['age'] ?? '') ?>"
+                data-beneficiary-image="<?= !empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image']) ? base_url('uploads/beneficiaries/' . $beneficiary['image']) : '' ?>"
                 data-beneficiary-education="<?= esc($beneficiary['education_level']) ?>"
                 data-beneficiary-course="<?= esc($beneficiary['course']) ?>"
                 data-beneficiary-institution="<?= esc($beneficiary['institution']) ?>"

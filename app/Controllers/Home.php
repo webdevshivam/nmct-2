@@ -89,8 +89,14 @@ class Home extends BaseController
         <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
             <div class="card h-100 border-0 shadow-lg">
                 <div class="card-header text-center bg-light">
-                    <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--primary-color);">
-                        <i class="fas fa-user-graduate"></i>
+                    <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--primary-color); overflow: hidden; border-radius: 50%;">
+                        <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
+                            <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>" 
+                                 alt="<?= esc($beneficiary['name']) ?>" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        <?php else: ?>
+                            <i class="fas fa-user-graduate"></i>
+                        <?php endif; ?>
                     </div>
                     <h5 class="mb-1 font-display text-dark">
                         <?= esc($beneficiary['name']) ?>
@@ -191,6 +197,24 @@ class Home extends BaseController
                                 data-beneficiary-education="<?= esc($beneficiary['education_level']) ?>"
                                 data-beneficiary-course="<?= esc($beneficiary['course']) ?>"
                                 data-beneficiary-institution="<?= esc($beneficiary['institution']) ?>"
+
+
+    public function serveBeneficiaryImage($filename)
+    {
+        $filepath = WRITEPATH . 'uploads/beneficiaries/' . $filename;
+        
+        if (!file_exists($filepath)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Image not found');
+        }
+        
+        $mime = mime_content_type($filepath);
+        
+        return $this->response
+            ->setHeader('Content-Type', $mime)
+            ->setHeader('Content-Length', filesize($filepath))
+            ->setBody(file_get_contents($filepath));
+    }
+
                                 data-beneficiary-city="<?= esc($beneficiary['city'] ?? '') ?>"
                                 data-beneficiary-state="<?= esc($beneficiary['state'] ?? '') ?>"
                                 data-beneficiary-phone="<?= esc($beneficiary['phone'] ?? '') ?>"

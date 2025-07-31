@@ -83,8 +83,14 @@
                                 <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
                                     <div class="card h-100 border-0 shadow-lg">
                                         <div class="card-header text-center bg-light">
-                                            <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--primary-color);">
-                                                <i class="fas fa-user-graduate"></i>
+                                            <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--primary-color); overflow: hidden; border-radius: 50%;">
+                                                <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
+                                                    <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>" 
+                                                         alt="<?= esc($beneficiary['name']) ?>" 
+                                                         style="width: 100%; height: 100%; object-fit: cover;">
+                                                <?php else: ?>
+                                                    <i class="fas fa-user-graduate"></i>
+                                                <?php endif; ?>
                                             </div>
                                             <h5 class="mb-1 font-display text-dark">
                                                 <?= esc($beneficiary['name']) ?>
@@ -125,8 +131,14 @@
                                 <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
                                     <div class="card h-100 border-0 shadow-lg">
                                         <div class="card-header text-center bg-light">
-                                            <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--success-color);">
-                                                <i class="fas fa-graduation-cap"></i>
+                                            <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem; background: var(--gradient-soft); color: var(--success-color); overflow: hidden; border-radius: 50%;">
+                                                <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
+                                                    <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>" 
+                                                         alt="<?= esc($beneficiary['name']) ?>" 
+                                                         style="width: 100%; height: 100%; object-fit: cover;">
+                                                <?php else: ?>
+                                                    <i class="fas fa-graduation-cap"></i>
+                                                <?php endif; ?>
                                             </div>
                                             <h5 class="mb-1 font-display text-dark">
                                                 <?= esc($beneficiary['name']) ?>

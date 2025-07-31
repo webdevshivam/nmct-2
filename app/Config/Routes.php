@@ -8,9 +8,10 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 // Frontend routes
-$routes->get('/beneficiaries', 'Home::beneficiaries');
+$routes->get('beneficiaries', 'Home::beneficiaries');
 $routes->get('beneficiaries/load-more', 'Home::loadMoreBeneficiaries');
-$routes->get('/success-stories', 'Home::successStories');
+$routes->get('uploads/beneficiaries/(:any)', 'Home::serveBeneficiaryImage/$1');
+$routes->get('success-stories', 'Home::successStories');
 
 // Admin routes
 $routes->group('admin', function($routes) {
