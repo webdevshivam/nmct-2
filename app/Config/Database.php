@@ -1,7 +1,3 @@
-Updating database configuration to use MySQL and setting baseURL to https://localhost:8080/.
-```
-
-```php
 <?php
 
 namespace Config;
@@ -203,4 +199,3 @@ class Database extends Config
         }
     }
 }
-`
