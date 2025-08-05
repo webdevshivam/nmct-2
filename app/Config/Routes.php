@@ -29,6 +29,15 @@ $routes->group('admin', function($routes) {
     $routes->get('beneficiaries/delete/(:num)', 'AdminBeneficiaries::delete/$1');
     $routes->get('beneficiaries/view/(:num)', 'AdminBeneficiaries::view/$1');
 
+    // NGO Works management
+    $routes->get('ngo-works', 'AdminNgoWorks::index');
+    $routes->get('ngo-works/create', 'AdminNgoWorks::create');
+    $routes->post('ngo-works/store', 'AdminNgoWorks::store');
+    $routes->get('ngo-works/edit/(:num)', 'AdminNgoWorks::edit/$1');
+    $routes->post('ngo-works/update/(:num)', 'AdminNgoWorks::update/$1');
+    $routes->get('ngo-works/delete/(:num)', 'AdminNgoWorks::delete/$1');
+    $routes->get('ngo-works/view/(:num)', 'AdminNgoWorks::view/$1');
+
     // Success stories management
     $routes->get('success-stories', 'AdminSuccessStories::index');
     $routes->get('success-stories/create', 'AdminSuccessStories::create');
