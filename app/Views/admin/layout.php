@@ -210,6 +210,11 @@
                 </a>
             </li>
             <li>
+                <a href="<?= base_url('admin/volunteering') ?>">
+                    <i class="fas fa-heart"></i> Volunteering
+                </a>
+            </li>
+            <li>
                 <a href="<?= base_url() ?>" target="_blank">
                     <i class="fas fa-external-link-alt"></i> View Website
                 </a>

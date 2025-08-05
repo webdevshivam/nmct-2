@@ -53,11 +53,26 @@ $routes->group('admin', function($routes) {
     $routes->post('public-forms/store', 'AdminPublicForms::store');
     $routes->get('public-forms/submissions/(:num)', 'AdminPublicForms::submissions/$1');
     $routes->get('public-forms/approve/(:num)', 'AdminPublicForms::approveSubmission/$1');
+
+    // Admin Volunteering routes
+    $routes->group('volunteering', ['filter' => 'auth'], static function ($routes) {
+        $routes->get('/', 'AdminVolunteering::index');
+        $routes->get('settings', 'AdminVolunteering::settings');
+        $routes->post('settings', 'AdminVolunteering::settings');
+        $routes->post('send-reminders', 'AdminVolunteering::sendReminders');
+        $routes->get('view/(:num)', 'AdminVolunteering::viewSubmission/$1');
+        $routes->post('update-status/(:num)', 'AdminVolunteering::updateStatus/$1');
+        $routes->get('email-logs', 'AdminVolunteering::emailLogs');
+    });
 });
 
 // Public form routes
 $routes->get('public-form/(:alphanum)', 'PublicForm::index/$1');
 $routes->post('public-form/(:alphanum)/submit', 'PublicForm::submit/$1');
+
+// Public Volunteering Form
+$routes->get('volunteering-form/(:num)', 'VolunteeringForm::form/$1');
+$routes->post('volunteering-form/(:num)', 'VolunteeringForm::form/$1');
 
 // Image serving routes
 $routes->get('uploads/beneficiaries/(:any)', function($filename) {
