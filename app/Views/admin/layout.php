@@ -16,12 +16,12 @@
             --admin-sidebar: #2c3e50;
             --admin-sidebar-hover: #34495e;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
         }
-        
+
         .sidebar {
             min-height: 100vh;
             background: linear-gradient(180deg, var(--admin-sidebar), #34495e);
@@ -33,29 +33,29 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-        
+
         .sidebar-header {
             padding: 1.5rem;
             background: rgba(0,0,0,0.1);
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        
+
         .sidebar-header h4 {
             margin: 0;
             font-size: 1.1rem;
             font-weight: 600;
         }
-        
+
         .sidebar-menu {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .sidebar-menu li {
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        
+
         .sidebar-menu li a {
             display: block;
             padding: 1rem 1.5rem;
@@ -63,36 +63,36 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .sidebar-menu li a:hover,
         .sidebar-menu li a.active {
             background-color: var(--admin-sidebar-hover);
             color: white;
             border-left: 4px solid var(--admin-primary);
         }
-        
+
         .sidebar-menu li a i {
             width: 20px;
             margin-right: 10px;
         }
-        
+
         .main-content {
             margin-left: 250px;
             min-height: 100vh;
             background-color: #f8f9fa;
         }
-        
+
         .top-navbar {
             background: white;
             padding: 1rem 2rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             border-bottom: 1px solid #dee2e6;
         }
-        
+
         .content-wrapper {
             padding: 2rem;
         }
-        
+
         .stats-card {
             background: white;
             border-radius: 10px;
@@ -101,80 +101,80 @@
             border-left: 4px solid var(--admin-primary);
             transition: transform 0.3s ease;
         }
-        
+
         .stats-card:hover {
             transform: translateY(-2px);
         }
-        
+
         .stats-number {
             font-size: 2.5rem;
             font-weight: bold;
             color: var(--admin-primary);
         }
-        
+
         .card {
             border: none;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
+
         .card-header {
             background: linear-gradient(135deg, var(--admin-primary), #2980b9);
             color: white;
             border-radius: 10px 10px 0 0 !important;
             border: none;
         }
-        
+
         .btn-primary {
             background: var(--admin-primary);
             border-color: var(--admin-primary);
         }
-        
+
         .btn-primary:hover {
             background: #2980b9;
             border-color: #2980b9;
         }
-        
+
         .btn-success {
             background: var(--admin-success);
             border-color: var(--admin-success);
         }
-        
+
         .btn-danger {
             background: var(--admin-danger);
             border-color: var(--admin-danger);
         }
-        
+
         .table {
             background: white;
         }
-        
+
         .table thead th {
             background: #f8f9fa;
             border-bottom: 2px solid #dee2e6;
             font-weight: 600;
             color: var(--admin-secondary);
         }
-        
+
         .badge {
             font-size: 0.75rem;
             padding: 0.5em 0.75em;
         }
-        
+
         .alert {
             border: none;
             border-radius: 10px;
         }
-        
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
             }
-            
+
             .main-content {
                 margin-left: 0;
             }
-            
+
             .sidebar.show {
                 transform: translateX(0);
             }
@@ -202,6 +202,11 @@
             <li>
                 <a href="<?= base_url('admin/success-stories') ?>" <?= (strpos(current_url(), 'success-stories') !== false) ? 'class="active"' : '' ?>>
                     <i class="fas fa-star"></i> Success Stories
+                </a>
+            </li>
+            <li>
+                <a href="<?= base_url('admin/ngo-works') ?>" <?= (strpos(current_url(), 'ngo-works') !== false) ? 'class="active"' : '' ?>>
+                    <i class="fas fa-heart"></i> NGO Works
                 </a>
             </li>
             <li>
@@ -276,7 +281,7 @@
         document.getElementById('sidebarToggle')?.addEventListener('click', function() {
             document.querySelector('.sidebar').classList.toggle('show');
         });
-        
+
         // Auto-hide alerts after 5 seconds
         setTimeout(function() {
             const alerts = document.querySelectorAll('.alert');

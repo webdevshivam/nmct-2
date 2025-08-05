@@ -25,13 +25,13 @@
         <h5 class="mb-0"><i class="fas fa-star"></i> Success Story Information</h5>
     </div>
     <div class="card-body">
-        <form action="<?= base_url('admin/success-stories/update/' . $story['id']) ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('admin/success-stories/update/' . $success_story['id']) ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="name" class="form-label">Student Name <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="name" name="name" 
-                               value="<?= old('name', $story['name']) ?>" required>
+                               value="<?= old('name', $success_story['name']) ?>" required>
                     </div>
                     
                     <div class="mb-3">
