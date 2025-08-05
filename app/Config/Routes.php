@@ -12,6 +12,7 @@ $routes->get('beneficiaries', 'Home::beneficiaries');
 $routes->get('beneficiaries/load-more', 'Home::loadMoreBeneficiaries');
 $routes->get('uploads/beneficiaries/(:any)', 'Home::serveBeneficiaryImage/$1');
 $routes->get('success-stories', 'Home::success_stories');
+$routes->get('ngo-works', 'Home::ngo_works');
 
 // Admin routes
 $routes->group('admin', function($routes) {
@@ -77,6 +78,14 @@ $routes->get('uploads/success_stories/(:any)', function($filename) {
 
 $routes->get('uploads/public_submissions/(:any)', function($filename) {
     $path = WRITEPATH . 'uploads/public_submissions/' . $filename;
+    if (file_exists($path)) {
+        return response()->setHeader('Content-Type', mime_content_type($path))->setBody(file_get_contents($path));
+    }
+    throw new \CodeIgniter\Exceptions\PageNotFoundException('Image not found');
+});
+
+$routes->get('uploads/ngo_works/(:any)', function($filename) {
+    $path = WRITEPATH . 'uploads/ngo_works/' . $filename;
     if (file_exists($path)) {
         return response()->setHeader('Content-Type', mime_content_type($path))->setBody(file_get_contents($path));
     }

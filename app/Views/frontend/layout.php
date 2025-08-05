@@ -394,6 +394,9 @@
                             <i class="fas fa-trophy me-1"></i> Success Stories
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url('ngo-works') ?>">Our Works</a>
+                    </li>
                 </ul>
             </div>
         </div>

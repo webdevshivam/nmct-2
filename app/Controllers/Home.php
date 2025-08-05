@@ -91,8 +91,8 @@ class Home extends BaseController
                 <div class="card-header text-center bg-light py-2">
                     <div class="feature-icon mx-auto mb-2" style="width: 60px; height: 60px; font-size: 1.5rem; background: var(--gradient-soft); color: var(--primary-color); overflow: hidden; border-radius: 50%;">
                         <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
-                            <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>" 
-                                 alt="<?= esc($beneficiary['name']) ?>" 
+                            <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>"
+                                 alt="<?= esc($beneficiary['name']) ?>"
                                  style="width: 100%; height: 100%; object-fit: cover;">
                         <?php else: ?>
                             <i class="fas fa-user-graduate"></i>
@@ -188,7 +188,7 @@ class Home extends BaseController
 
                     <!-- Read More Button -->
                     <div class="text-center">
-                        <button class="btn btn-primary btn-sm read-more-btn" 
+                        <button class="btn btn-primary btn-sm read-more-btn"
                                 data-beneficiary-id="<?= $beneficiary['id'] ?>"
                                 data-beneficiary-name="<?= esc($beneficiary['name']) ?>"
                                 data-beneficiary-age="<?= esc($beneficiary['age'] ?? '') ?>"
@@ -200,13 +200,13 @@ class Home extends BaseController
     public function serveBeneficiaryImage($filename)
     {
         $filepath = WRITEPATH . 'uploads/beneficiaries/' . $filename;
-        
+
         if (!file_exists($filepath)) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Image not found');
         }
-        
+
         $mime = mime_content_type($filepath);
-        
+
         return $this->response
             ->setHeader('Content-Type', $mime)
             ->setHeader('Content-Length', filesize($filepath))
@@ -236,12 +236,22 @@ class Home extends BaseController
 
     public function success_stories()
     {
-        $successStoryModel = new SuccessStoryModel();
+        $model = new SuccessStoryModel();
         $data = [
-            'success_stories' => $successStoryModel->getPublishedStories(),
-            'title' => 'Success Stories'
+            'success_stories' => $model->where('status', 'active')->orderBy('created_at', 'DESC')->findAll()
         ];
 
         return view('frontend/success_stories', $data);
+    }
+
+    public function ngo_works()
+    {
+        helper('text'); // Load text helper for character_limiter
+        $model = new \App\Models\NgoWorkModel();
+        $data = [
+            'ngo_works' => $model->getPublishedWorks()
+        ];
+
+        return view('frontend/ngo_works', $data);
     }
 }
