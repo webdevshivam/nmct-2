@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\NgoWorkModel;
+use CodeIgniter\Controller;
 
 class AdminNgoWorks extends BaseController
 {
@@ -27,6 +28,8 @@ class AdminNgoWorks extends BaseController
     {
         $authCheck = $this->checkAuth();
         if ($authCheck !== true) return $authCheck;
+
+        helper('text'); // Load text helper for character_limiter
 
         $data = [
             'works' => $this->ngoWorkModel->orderBy('created_at', 'DESC')->findAll()

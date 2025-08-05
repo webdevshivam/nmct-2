@@ -37,25 +37,25 @@
                     <div class="mb-3">
                         <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
                         <input type="number" class="form-control" id="age" name="age" 
-                               value="<?= old('age', $story['age']) ?>" required min="18" max="100">
+                               value="<?= old('age', $success_story['age']) ?>" required min="18" max="100">
                     </div>
                     
                     <div class="mb-3">
                         <label for="education" class="form-label">Education <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="education" name="education" 
-                               value="<?= old('education', $story['education']) ?>" required>
+                               value="<?= old('education', $success_story['education']) ?>" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="current_position" class="form-label">Current Position <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="current_position" name="current_position" 
-                               value="<?= old('current_position', $story['current_position']) ?>" required>
+                               value="<?= old('current_position', $success_story['current_position']) ?>" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="company" class="form-label">Company <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="company" name="company" 
-                               value="<?= old('company', $story['company']) ?>" required>
+                               value="<?= old('company', $success_story['company']) ?>" required>
                     </div>
                 </div>
                 
@@ -63,32 +63,32 @@
                     <div class="mb-3">
                         <label for="city" class="form-label">City <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="city" name="city" 
-                               value="<?= old('city', $story['city']) ?>" required>
+                               value="<?= old('city', $success_story['city']) ?>" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="state" class="form-label">State <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="state" name="state" 
-                               value="<?= old('state', $story['state']) ?>" required>
+                               value="<?= old('state', $success_story['state']) ?>" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="linkedin_url" class="form-label">LinkedIn URL</label>
                         <input type="url" class="form-control" id="linkedin_url" name="linkedin_url" 
-                               value="<?= old('linkedin_url', $story['linkedin_url']) ?>">
+                               value="<?= old('linkedin_url', $success_story['linkedin_url']) ?>">
                     </div>
 
                     <div class="mb-3">
                         <label for="company_link" class="form-label">Company Website</label>
                         <input type="url" class="form-control" id="company_link" name="company_link" 
-                               value="<?= old('company_link', $story['company_link']) ?>">
+                               value="<?= old('company_link', $success_story['company_link']) ?>">
                     </div>
 
                     <div class="mb-3">
                         <label for="image" class="form-label">Profile Image</label>
-                        <?php if (!empty($story['image'])): ?>
+                        <?php if (!empty($success_story['image'])): ?>
                         <div class="mb-2">
-                            <img src="<?= base_url('writable/uploads/success_stories/' . $story['image']) ?>" 
+                            <img src="<?= base_url('writable/uploads/success_stories/' . $success_story['image']) ?>" 
                                  alt="Current image" class="img-thumbnail" style="max-width: 200px;">
                             <p class="text-muted small">Current image</p>
                         </div>
@@ -100,8 +100,8 @@
                     <div class="mb-3">
                         <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
                         <select class="form-control" id="status" name="status" required>
-                            <option value="active" <?= old('status', $story['status']) == 'active' ? 'selected' : '' ?>>Active</option>
-                            <option value="inactive" <?= old('status', $story['status']) == 'inactive' ? 'selected' : '' ?>>Inactive</option>
+                            <option value="active" <?= old('status', $success_story['status']) == 'active' ? 'selected' : '' ?>>Active</option>
+                            <option value="inactive" <?= old('status', $success_story['status']) == 'inactive' ? 'selected' : '' ?>>Inactive</option>
                         </select>
                     </div>
                 </div>
@@ -109,13 +109,13 @@
 
             <div class="mb-3">
                 <label for="story" class="form-label">Success Story <span class="text-danger">*</span></label>
-                <textarea class="form-control" id="story" name="story" rows="8" required><?= old('story', $story['story']) ?></textarea>
+                <textarea class="form-control" id="story" name="story" rows="8" required><?= old('story', $success_story['story']) ?></textarea>
                 <div class="form-text">Tell the inspiring journey of this student and how they achieved success.</div>
             </div>
 
             <div class="mb-3">
                 <label for="achievements" class="form-label">Key Achievements</label>
-                <textarea class="form-control" id="achievements" name="achievements" rows="4"><?= old('achievements', $story['achievements']) ?></textarea>
+                <textarea class="form-control" id="achievements" name="achievements" rows="4"><?= old('achievements', $success_story['achievements']) ?></textarea>
                 <div class="form-text">List major achievements, awards, or recognitions.</div>
             </div>
             
