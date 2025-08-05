@@ -1,9 +1,9 @@
-
 <?php
 
 namespace App\Controllers;
 
 use App\Models\NgoWorkModel;
+use CodeIgniter\Controller;
 
 class AdminNgoWorks extends BaseController
 {
@@ -28,6 +28,8 @@ class AdminNgoWorks extends BaseController
     {
         $authCheck = $this->checkAuth();
         if ($authCheck !== true) return $authCheck;
+
+        helper('text'); // Load text helper for character_limiter
 
         $data = [
             'works' => $this->ngoWorkModel->orderBy('created_at', 'DESC')->findAll()
@@ -65,7 +67,7 @@ class AdminNgoWorks extends BaseController
         // Handle multiple image uploads
         $images = $this->request->getFiles()['images'] ?? [];
         $uploadedImages = [];
-        
+
         if (!empty($images)) {
             foreach ($images as $image) {
                 if ($image && $image->isValid() && !$image->hasMoved()) {
@@ -78,7 +80,7 @@ class AdminNgoWorks extends BaseController
                 }
             }
         }
-        
+
         if (!empty($uploadedImages)) {
             $data['images'] = json_encode($uploadedImages);
         }
@@ -134,7 +136,7 @@ class AdminNgoWorks extends BaseController
         // Handle multiple image uploads
         $images = $this->request->getFiles()['images'] ?? [];
         $uploadedImages = [];
-        
+
         if (!empty($images)) {
             foreach ($images as $image) {
                 if ($image && $image->isValid() && !$image->hasMoved()) {
@@ -146,7 +148,7 @@ class AdminNgoWorks extends BaseController
                     $uploadedImages[] = $newName;
                 }
             }
-            
+
             // Delete old images if new ones are uploaded
             if (!empty($ngoWork['images'])) {
                 $oldImages = json_decode($ngoWork['images'], true);
@@ -158,7 +160,7 @@ class AdminNgoWorks extends BaseController
                     }
                 }
             }
-            
+
             $data['images'] = json_encode($uploadedImages);
         }
 
