@@ -1,0 +1,53 @@
+now add 1 admin module(it is very imrpotant)
+
+1. all active benefeicier should have to give volunterring work(on every month)
+--> on admin side , admin can set interverls (days) everu intervarls email or message will send reminfer to comlete the volunterring work(if completed than do not need , 
+ex. if admin set reminder set to 10, then in everu 10 days reminder send to all active student to complete the volunterring work)
+
+--> for mail shoudl go to all benefeciers 
+ ---> mail details for smtp (   $config = [
+    'protocol'  => 'smtp',
+    'SMTPHost'  => 'smtp.hostinger.com',
+    'SMTPUser'  => 'info@megastarpremiercricketleague.com',
+    'SMTPPass'  => '9012442784@Jms@123',
+    'SMTPPort'  => 465,
+    'SMTPCrypto' => 'ssl',
+    'mailType'  => 'html',
+    'charset'   => 'utf-8',
+    'wordWrap'  => true,
+  ];
+
+  --> all actve benefeicer should reciebce mail (in case of not send, please show to the admin side)
+
+ --> in that mail , attach the form where student enter their volunterring work , in case of emergeny benefecier unable to do volunterring work(then have option to give reason)
+
+-->  admin can see all statics , how many student completeing the voluneting work , what are the work, 
+--> give me motiveation and emporment lines to form that student can do volunterring (
+
+--> write in the form descriotion volunetting ork ccan be
+ --> Everyone  Should tell your Volunteering work this month. it can be anything like 
+स्वयंसेवी कार्य परिभाषित (Volunteering work defined):
+
+1. यदि आप किसी अनाथालय में नहीं जा सकते हैं, तो आप नीचे उल्लेख कर सकते हैं लेकिन निश्चित रूप से वर्णन करें। यदि आप कागज पर हिंदी में लिखते हैं, और स्क्रीनशॉट/तस्वीर साझा करते हैं, तो मुझे भी इसमें कोई दिक्कत नहीं है।
+
+2. क्या आपका दिमाग, आंखें और कान खुले हैं, और अपने आसपास किसी को भी फायदा पहुंचाते हैं। यह आपके या घर, मोहल्ले या स्कूल के आसपास किसी मजदूर का बच्चा हो सकता है। यह जानने के लिए कृपया उनसे बात करें कि वे क्या कर सकते हैं और उनके लिए क्या अच्छा संभव है। आपने हमारे एनजीओ से क्या सीखा? सिर्फ हमारे एनजीओ से पैसा लेने से ज्यादा जरूरी है दिमाग की तैयारी।
+
+3. क्या आपको मंदिर के आसपास कोई बूढ़ा/युवा दिखता है? अगर आपकी मदद उसकी जिंदगी बदल सकती है।
+
+4. क्या आप समारोहों/पार्टियों में किसी ऐसे व्यक्ति को देखते/मिलते हैं जो उपयुक्त उम्मीदवार हो सकता है? वह क्या करता/करती है? जीवन उनके साथ कैसा व्यवहार कर रहा है? उनके लिए पैसा कमाना महत्वपूर्ण नहीं है, सही रास्ता अधिक महत्वपूर्ण है।
+
+5. वास्तव में जिसने भी अच्छा किया है, यह जानने की कोशिश करें कि उसने माता-पिता/माता/पिता के बिना क्या किया है।
+
+6. कल्पना कीजिए कि कोई व्यक्ति व्यक्तिगत रूप से संगीत/अन्य विषय पढ़ाता है, क्या आप उसका मार्गदर्शन कर सकते हैं, ताकि वे अपने व्यवसाय का विस्तार करने के लिए ऑनलाइन पढ़ा सकें।
+7. आप किसी वृद्ध व्यक्ति की मदद कर सकते हैं !
+8. कुछ खाना वितरित कर सकते हैं !
+9. छात्रों को मार्गदर्शन कर सकते हैं ! 
+10. स्कूल/कॉलेज/पार्क आदि...को साफ-सुथरा कर सकते हैं । 
+11. अपने पुराने कपड़े  अनाथ आश्रम में गरीब बच्चों को दान कर देना।
+12. गरीब छात्रों को ट्यूशन देना और। किसी छात्र की पढ़ाई में मदद करना ! 
+13. कुछ भी दान करना जैसे अपनी पुरानी साइकिल या पुराना पंखा या आदि.. 
+14. अंधे/मूक बाधिर व्यक्ति की मदद करना ।
+15. गरीब लोगो को या वृद्ध लोगो को भोजन पैकेट वितरित करना ! 
+
+इस तरह के बहुत सारे स्वयंसेवी कार्य आप कर सकते हैं जो भी आपने किया वह सिर्फ समूह पर लिखें
+सूची चलती जाती है (list goes on)
