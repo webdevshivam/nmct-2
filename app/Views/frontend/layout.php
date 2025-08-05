@@ -9,174 +9,361 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --success-color: #27ae60;
-            --warning-color: #f39c12;
-            --text-dark: #2c3e50;
-            --text-light: #7f8c8d;
-            --bg-soft: #f8f9fa;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-soft: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --primary-color: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #059669;
+            --secondary-light: #10b981;
+            --accent-color: #dc2626;
+            --accent-light: #ef4444;
+            --success-color: #10b981;
+            --success-light: #34d399;
+            --warning-color: #f59e0b;
+            --warning-light: #fbbf24;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-light: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --bg-soft: #fefefe;
+            --border-light: #d1d5db;
+            --border-lighter: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            --gradient-secondary: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            --gradient-accent: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            --gradient-soft: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
         }
 
-        /* Enhanced UX Styles */
-        .hover-lift {
-            transition: all 0.3s ease;
+        * {
+            box-sizing: border-box;
         }
 
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            scroll-behavior: smooth;
+            font-weight: 400;
         }
 
-        .bg-gradient-primary {
-            background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%) !important;
+        .font-display {
+            font-family: 'Poppins', serif;
+            font-weight: 600;
         }
 
-        .bg-gradient-success {
-            background: linear-gradient(135deg, #198754 0%, #20c997 100%) !important;
+        /* Navigation Styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 2px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            padding: 1rem 0;
         }
 
-        .bg-gradient-info {
-            background: linear-gradient(135deg, #0dcaf0 0%, #6f42c1 100%) !important;
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            text-decoration: none;
         }
 
+        .navbar-brand:hover {
+            color: var(--primary-dark) !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            padding: 0.8rem 1.2rem !important;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+            background: var(--bg-secondary);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 120px 0 100px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .hero-section .lead {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Button Styles */
+        .btn {
+            font-weight: 600;
+            border-radius: 6px;
+            padding: 12px 24px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-lg {
+            padding: 14px 28px;
+            font-size: 1.1rem;
+        }
+
+        /* Card Styles */
         .card {
-            border-radius: 15px;
-            overflow: hidden;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            background: var(--bg-primary);
         }
 
         .card-header {
-            border-radius: 15px 15px 0 0 !important;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-light);
+            padding: 2rem;
         }
 
-        .btn {
-            border-radius: 10px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .badge {
+        /* Stats Cards */
+        .stats-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            color: var(--text-primary);
+            text-align: center;
+            padding: 2.5rem 2rem;
             border-radius: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
-            transition: all 0.2s ease;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.1);
-        }
-
-        .input-group-text {
-            border-radius: 10px 0 0 10px;
-            border: 2px solid #e9ecef;
-            border-right: none;
-        }
-
-        .input-group .form-control {
-            border-radius: 0 10px 10px 0;
-            border-left: none;
-        }
-
-        .modal-content {
-            border-radius: 15px;
-            border: none;
-        }
-
-        .modal-header {
-            border-radius: 15px 15px 0 0;
-        }
-
-        /* Smooth animations */
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Loading states */
-        .loading {
             position: relative;
-            overflow: hidden;
         }
 
-        .loading::after {
+        .stats-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: loading 1.5s infinite;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-color);
         }
 
-        @keyframes loading {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
         }
 
-        /* Enhanced mobile experience */
+        .stats-card h5 {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        /* Section Styling */
+        .section-padding {
+            padding: 7rem 0;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Feature Icons */
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .bg-soft {
+            background: var(--bg-secondary) !important;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--text-primary) 0%, #374151 100%);
+            color: white;
+            padding: 5rem 0 2rem;
+            margin-top: 8rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .footer h5 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        /* Remove animations - content always visible */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Additional Sections Styling */
+        .testimonial-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .card-body {
-                padding: 1rem !important;
+            .hero-section h1 {
+                font-size: 2.8rem;
             }
 
-            .btn {
-                padding: 0.5rem 1rem;
+            .hero-section .lead {
+                font-size: 1.1rem;
             }
 
-            .modal-dialog {
-                margin: 1rem;
+            .section-title {
+                font-size: 2.2rem;
             }
 
-            .hero-section {
-                padding: 2rem 0 !important;
+            .stats-number {
+                font-size: 2.8rem;
             }
 
-            .display-5 {
-                font-size: 2rem !important;
+            .feature-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
             }
         }
 
-        /* Custom scrollbar */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: var(--bg-tertiary);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
+            background: var(--gradient-primary);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #a8a8a8;
+            background: var(--gradient-secondary);
         }
     </style>
 </head>
@@ -185,7 +372,7 @@
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand font-display" href="<?= base_url() ?>">
-                <i class="fas fa-heart text-danger"></i> Nayantar Memorial Charitable Trust
+                <i class="fas fa-heart text-danger"></i> Nayantar Memorial Trust
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
