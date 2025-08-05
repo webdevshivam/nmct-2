@@ -29,7 +29,7 @@ class AdminSuccessStories extends BaseController
         if ($authCheck !== true) return $authCheck;
 
         $data = [
-            'success_stories' => $this->successStoryModel->orderBy('created_at', 'DESC')->findAll()
+            'stories' => $this->successStoryModel->orderBy('created_at', 'DESC')->findAll()
         ];
 
         return view('admin/success_stories/index', $data);
