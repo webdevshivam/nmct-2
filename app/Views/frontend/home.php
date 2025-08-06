@@ -28,31 +28,31 @@
                     <div class="row g-3">
                         <div class="col-6">
                             <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=400&h=300&fit=crop" 
+                                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=400&h=300&fit=crop"
                                      alt="Students studying" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=300&fit=crop" 
+                                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=300&fit=crop"
                                      alt="Graduate celebration" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop" 
+                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop"
                                      alt="Learning together" class="img-fluid w-100" style="height: 130px; object-fit: cover;">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=300&h=200&fit=crop" 
+                                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=300&h=200&fit=crop"
                                      alt="Books and learning" class="img-fluid w-100" style="height: 130px; object-fit: cover;">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=300&h=200&fit=crop" 
+                                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=300&h=200&fit=crop"
                                      alt="Student success" class="img-fluid w-100" style="height: 130px; object-fit: cover;">
                             </div>
                         </div>
@@ -69,7 +69,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
                 <div class="about-image-container position-relative">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop" 
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop"
                          alt="Nayantar Memorial Trust Founder" class="img-fluid rounded-4 shadow-lg">
                     <div class="position-absolute bottom-0 start-0 bg-white p-4 rounded-3 shadow-lg m-4">
                         <h6 class="text-primary fw-bold mb-1">5+ Years</h6>
@@ -238,7 +238,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card border-0 shadow-lg h-100 text-center process-card">
                     <div class="card-body p-5">
-                        <div class="process-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" 
+                        <div class="process-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4"
                              style="width: 70px; height: 70px; font-size: 1.5rem; font-weight: bold;">1</div>
                         <div class="icon-box bg-primary-light text-primary rounded-3 p-3 mb-3 mx-auto" style="width: 60px; height: 60px;">
                             <i class="fas fa-user-plus fs-4"></i>
@@ -251,7 +251,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card border-0 shadow-lg h-100 text-center process-card">
                     <div class="card-body p-5">
-                        <div class="process-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" 
+                        <div class="process-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4"
                              style="width: 70px; height: 70px; font-size: 1.5rem; font-weight: bold;">2</div>
                         <div class="icon-box bg-success-light text-success rounded-3 p-3 mb-3 mx-auto" style="width: 60px; height: 60px;">
                             <i class="fas fa-hands-helping fs-4"></i>
@@ -264,7 +264,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card border-0 shadow-lg h-100 text-center process-card">
                     <div class="card-body p-5">
-                        <div class="process-number bg-warning text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" 
+                        <div class="process-number bg-warning text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4"
                              style="width: 70px; height: 70px; font-size: 1.5rem; font-weight: bold;">3</div>
                         <div class="icon-box bg-warning-light text-warning rounded-3 p-3 mb-3 mx-auto" style="width: 60px; height: 60px;">
                             <i class="fas fa-star fs-4"></i>
@@ -295,7 +295,7 @@
                 <div class="card border-0 shadow-lg h-100 success-story-card">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="avatar-circle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                            <div class="avatar-circle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
                                  style="width: 60px; height: 60px; font-size: 1.5rem;">
                                 <i class="fas fa-user"></i>
                             </div>
@@ -342,7 +342,7 @@
             <div class="col-lg-4">
                 <div class="card border-0 shadow-lg h-100 news-card">
                     <div class="card-img-top position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop" 
+                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=400&h=250&fit=crop"
                              alt="New scholarship program" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
                         <div class="position-absolute top-0 end-0 m-3">
                             <span class="badge bg-primary px-3 py-2">New Program</span>
@@ -361,7 +361,7 @@
             <div class="col-lg-4">
                 <div class="card border-0 shadow-lg h-100 news-card">
                     <div class="card-img-top position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=250&fit=crop" 
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=250&fit=crop"
                              alt="Partnership announcement" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
                         <div class="position-absolute top-0 end-0 m-3">
                             <span class="badge bg-success px-3 py-2">Partnership</span>
@@ -380,7 +380,7 @@
             <div class="col-lg-4">
                 <div class="card border-0 shadow-lg h-100 news-card">
                     <div class="card-img-top position-relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=250&fit=crop" 
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=250&fit=crop"
                              alt="Annual report" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
                         <div class="position-absolute top-0 end-0 m-3">
                             <span class="badge bg-warning px-3 py-2">Report</span>
@@ -419,7 +419,7 @@
                         </div>
                         <p class="card-text fs-5 mb-4 text-muted">"The support I received from Nayantar Trust changed my entire life. From financial assistance to career guidance, they were with me every step of the way. Today, I'm proud to be working as a software engineer and giving back to the community."</p>
                         <div class="d-flex align-items-center">
-                            <div class="avatar-circle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                            <div class="avatar-circle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3"
                                  style="width: 50px; height: 50px;">
                                 <i class="fas fa-user"></i>
                             </div>
@@ -439,7 +439,7 @@
                         </div>
                         <p class="card-text fs-5 mb-4 text-muted">"Not just financial support, but the mentorship and emotional support I received made me who I am today. The trust believed in me when no one else did. Forever grateful to this amazing organization and their dedicated team."</p>
                         <div class="d-flex align-items-center">
-                            <div class="avatar-circle bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                            <div class="avatar-circle bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3"
                                  style="width: 50px; height: 50px;">
                                 <i class="fas fa-user"></i>
                             </div>

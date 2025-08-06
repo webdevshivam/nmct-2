@@ -500,7 +500,7 @@
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand font-display d-flex align-items-center" href="<?= base_url() ?>">
-                <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation Logo" style="height: 40px; margin-right: 10px;" onerror="this.style.display='none'">
+                <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation Logo" style="height: 45px; margin-right: 12px; object-fit: contain;">
                 <span>Bharatpur Foundation</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -542,7 +542,7 @@
             <div class="row">
                 <div class="col-lg-6 mb-4">
                     <h5 class="font-display d-flex align-items-center">
-                        <img src="<?= base_url('assets/images/bharatpur-logo-white.png') ?>" alt="Bharatpur Foundation" style="height: 30px; margin-right: 10px;" onerror="this.style.display='none'">
+                        <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation" style="height: 35px; margin-right: 12px; object-fit: contain; filter: brightness(0) invert(1);">
                         Bharatpur Foundation
                     </h5>
                     <p class="lead">Empowering students through education and creating brighter futures for our community. Every contribution makes a difference in someone's life.</p>
