@@ -196,4 +196,126 @@ class AdminBeneficiaries extends BaseController
 
         return redirect()->to('/admin/beneficiaries');
     }
+
+    public function deleteMultiple()
+    {
+        $authCheck = $this->checkAuth();
+        if ($authCheck !== true) return $authCheck;
+
+        $ids = $this->request->getPost('ids');
+        
+        if (!$ids || !is_array($ids)) {
+            $this->session->setFlashdata('error', 'No beneficiaries selected for deletion');
+            return redirect()->to('/admin/beneficiaries');
+        }
+
+        $deletedCount = 0;
+        $errors = [];
+
+        foreach ($ids as $id) {
+            $beneficiary = $this->beneficiaryModel->find($id);
+            if ($beneficiary) {
+                // Delete image if exists
+                if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])) {
+                    unlink(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image']);
+                }
+
+                if ($this->beneficiaryModel->delete($id)) {
+                    $deletedCount++;
+                } else {
+                    $errors[] = "Failed to delete beneficiary: " . $beneficiary['name'];
+                }
+            }
+        }
+
+        if ($deletedCount > 0) {
+            $this->session->setFlashdata('success', "$deletedCount beneficiary(ies) deleted successfully");
+        }
+
+        if (!empty($errors)) {
+            $this->session->setFlashdata('error', implode('<br>', $errors));
+        }
+
+        return redirect()->to('/admin/beneficiaries');
+    }
+
+    public function exportPdf()
+    {
+        $authCheck = $this->checkAuth();
+        if ($authCheck !== true) return $authCheck;
+
+        // Get all beneficiaries
+        $beneficiaries = $this->beneficiaryModel->orderBy('created_at', 'DESC')->findAll();
+
+        // Set response headers for PDF download
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $this->response->setHeader('Content-Disposition', 'attachment; filename="beneficiaries-report.pdf"');
+
+        // For now, we'll create a simple HTML to PDF conversion
+        // In a production environment, you might want to use a proper PDF library
+        $html = $this->generatePdfContent($beneficiaries);
+        
+        return $this->response->setBody($html);
+    }
+
+    private function generatePdfContent($beneficiaries)
+    {
+        $html = '<!DOCTYPE html>
+        <html>
+        <head>
+            <title>Beneficiaries Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; }
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .header { text-align: center; margin-bottom: 20px; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Beneficiaries Report</h1>
+                <p>Generated on: ' . date('Y-m-d H:i:s') . '</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Institution</th>
+                        <th>Status</th>
+                        <th>Contact</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>';
+
+        foreach ($beneficiaries as $beneficiary) {
+            $contact = '';
+            if (!empty($beneficiary['phone'])) $contact .= $beneficiary['phone'] . ' ';
+            if (!empty($beneficiary['email'])) $contact .= $beneficiary['email'];
+
+            $location = '';
+            if (!empty($beneficiary['city'])) $location .= $beneficiary['city'];
+            if (!empty($beneficiary['state'])) $location .= (!empty($location) ? ', ' : '') . $beneficiary['state'];
+            
+            $html .= '<tr>
+                <td>' . esc($beneficiary['id']) . '</td>
+                <td>' . esc($beneficiary['name']) . '</td>
+                <td>' . esc($beneficiary['course']) . '</td>
+                <td>' . esc($beneficiary['institution']) . '</td>
+                <td>' . esc(ucfirst($beneficiary['status'])) . '</td>
+                <td>' . esc($contact) . '</td>
+                <td>' . esc($location) . '</td>
+            </tr>';
+        }
+
+        $html .= '</tbody>
+            </table>
+        </body>
+        </html>';
+
+        return $html;
+    }
 }

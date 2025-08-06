@@ -22,13 +22,17 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('logout', 'Admin::logout');
 
     // Beneficiaries management
-    $routes->get('beneficiaries', 'AdminBeneficiaries::index');
-    $routes->get('beneficiaries/create', 'AdminBeneficiaries::create');
-    $routes->post('beneficiaries/store', 'AdminBeneficiaries::store');
-    $routes->get('beneficiaries/edit/(:num)', 'AdminBeneficiaries::edit/$1');
-    $routes->post('beneficiaries/update/(:num)', 'AdminBeneficiaries::update/$1');
-    $routes->get('beneficiaries/delete/(:num)', 'AdminBeneficiaries::delete/$1');
-    $routes->get('beneficiaries/view/(:num)', 'AdminBeneficiaries::view/$1');
+    $routes->group('beneficiaries', ['filter' => 'auth'], function($routes) {
+        $routes->get('/', 'AdminBeneficiaries::index');
+        $routes->get('create', 'AdminBeneficiaries::create');
+        $routes->post('store', 'AdminBeneficiaries::store');
+        $routes->get('view/(:num)', 'AdminBeneficiaries::view/$1');
+        $routes->get('edit/(:num)', 'AdminBeneficiaries::edit/$1');
+        $routes->post('update/(:num)', 'AdminBeneficiaries::update/$1');
+        $routes->get('delete/(:num)', 'AdminBeneficiaries::delete/$1');
+        $routes->post('delete-multiple', 'AdminBeneficiaries::deleteMultiple');
+        $routes->get('export-pdf', 'AdminBeneficiaries::exportPdf');
+    });
 
     // NGO Works management
     $routes->get('ngo-works', 'AdminNgoWorks::index');
