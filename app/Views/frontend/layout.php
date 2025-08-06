@@ -348,6 +348,100 @@
             }
         }
 
+        /* Additional Design Elements */
+        .hero-image-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .program-card {
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .process-card {
+            transition: transform 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .success-story-card {
+            transition: transform 0.3s ease;
+        }
+
+        .success-story-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card {
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card {
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-circle {
+            flex-shrink: 0;
+        }
+
+        .bg-primary-light {
+            background-color: rgba(37, 99, 235, 0.1) !important;
+        }
+
+        .bg-success-light {
+            background-color: rgba(5, 150, 105, 0.1) !important;
+        }
+
+        .bg-warning-light {
+            background-color: rgba(245, 158, 11, 0.1) !important;
+        }
+
+        .text-success {
+            color: var(--secondary-color) !important;
+        }
+
+        .text-warning {
+            color: var(--warning-color) !important;
+        }
+
+        .min-vh-100 {
+            min-height: 100vh;
+        }
+
+        /* Enhanced spacing */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        /* Enhanced hero section */
+        .hero-section {
+            padding: 140px 0 120px;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
