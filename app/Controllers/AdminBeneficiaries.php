@@ -190,6 +190,21 @@ class AdminBeneficiaries extends BaseController
 
         if ($this->beneficiaryModel->delete($id)) {
             $this->session->setFlashdata('success', 'Beneficiary deleted successfully');
+            // Send notification email if email is provided
+            if (!empty($beneficiary['email'])) {
+                $subject = "Account Deletion Notification";
+                $message = "Dear " . $beneficiary['name'] . ",<br><br>";
+                $message .= "Your account has been removed from our system.<br><br>";
+                $message .= "If you have any questions, please contact us.<br><br>";
+                $message .= "Best regards,<br>";
+                $message .= "Nayantar Memorial Charitable Trust";
+
+                // Try to send email, but don't fail the deletion if email fails
+                $emailSent = $this->sendEmail($beneficiary['email'], $subject, $message);
+                if (!$emailSent) {
+                    session()->setFlashdata('warning', 'Beneficiary deleted successfully, but notification email could not be sent.');
+                }
+            }
         } else {
             $this->session->setFlashdata('error', 'Failed to delete beneficiary');
         }
@@ -359,5 +374,29 @@ class AdminBeneficiaries extends BaseController
     private function isLoggedIn()
     {
         return $this->session->get('admin_logged_in');
+    }
+
+    private function sendEmail($to, $subject, $message)
+    {
+        try {
+            $email = \Config\Services::email();
+
+            // Clear any previous email data
+            $email->clear();
+
+            $email->setTo($to);
+            $email->setSubject($subject);
+            $email->setMessage($message);
+
+            if ($email->send()) {
+                return true;
+            } else {
+                log_message('error', 'Email failed to send: ' . $email->printDebugger(['headers']));
+                return false;
+            }
+        } catch (\Exception $e) {
+            log_message('error', 'Email sending exception: ' . $e->getMessage());
+            return false;
+        }
     }
 }
