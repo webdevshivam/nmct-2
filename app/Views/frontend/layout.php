@@ -10,34 +10,34 @@
     <link href="<?= base_url('assets/css/bharatpur-theme.css') ?>" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1a365d;
-            --primary-light: #2d5a87;
-            --primary-dark: #0f2a44;
-            --secondary-color: #d69e2e;
-            --secondary-light: #f6e05e;
-            --accent-color: #c53030;
-            --accent-light: #e53e3e;
-            --success-color: #10b981;
-            --success-light: #34d399;
-            --warning-color: #f59e0b;
-            --warning-light: #fbbf24;
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --text-light: #6b7280;
+            --primary-color: #A5661C;
+            --primary-light: #C78B2A;
+            --primary-dark: #6B3F1C;
+            --secondary-color: #D4842B;
+            --secondary-light: #E6A047;
+            --accent-color: #8B5A1A;
+            --accent-light: #A5661C;
+            --success-color: #7A8B2F;
+            --success-light: #9BAB3A;
+            --warning-color: #D4842B;
+            --warning-light: #E6A047;
+            --text-primary: #2d1810;
+            --text-secondary: #5a3822;
+            --text-light: #8B5A1A;
             --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --bg-tertiary: #f3f4f6;
-            --bg-soft: #fefefe;
-            --border-light: #d1d5db;
-            --border-lighter: #e5e7eb;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-            --gradient-secondary: linear-gradient(135deg, #059669 0%, #10b981 100%);
-            --gradient-accent: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-            --gradient-soft: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            --bg-secondary: #fdf9f5;
+            --bg-tertiary: #f8f1e8;
+            --bg-soft: #fbf5ed;
+            --border-light: #e8dcc9;
+            --border-lighter: #f0e7d6;
+            --shadow-sm: 0 1px 2px 0 rgb(165 102 28 / 0.08);
+            --shadow-md: 0 4px 6px -1px rgb(165 102 28 / 0.15), 0 2px 4px -2px rgb(165 102 28 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(165 102 28 / 0.2), 0 4px 6px -4px rgb(165 102 28 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(165 102 28 / 0.25), 0 8px 10px -6px rgb(165 102 28 / 0.15);
+            --gradient-primary: linear-gradient(135deg, #A5661C 0%, #6B3F1C 100%);
+            --gradient-secondary: linear-gradient(135deg, #D4842B 0%, #A5661C 100%);
+            --gradient-accent: linear-gradient(135deg, #E6A047 0%, #C78B2A 100%);
+            --gradient-soft: linear-gradient(135deg, #fdf9f5 0%, #f8f1e8 100%);
         }
 
         * {
@@ -93,11 +93,28 @@
 
         /* Hero Section */
         .hero-section {
-            background: var(--bg-secondary);
+            background: var(--gradient-soft);
             color: var(--text-primary);
             padding: 120px 0 100px;
             text-align: center;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 2px solid var(--border-light);
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(165, 102, 28, 0.05) 50%, transparent 70%);
+            z-index: 1;
+        }
+
+        .hero-section > * {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-section h1 {
@@ -170,13 +187,15 @@
 
         /* Stats Cards */
         .stats-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-light);
+            background: var(--gradient-soft);
+            border: 2px solid var(--border-light);
             color: var(--text-primary);
             text-align: center;
             padding: 2.5rem 2rem;
-            border-radius: 8px;
+            border-radius: 12px;
             position: relative;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
         }
 
         .stats-card::before {
@@ -185,8 +204,15 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: var(--primary-color);
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
         }
 
         .stats-number {
@@ -240,14 +266,21 @@
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: var(--primary-color);
-            border-radius: 8px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
             color: white;
             font-size: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon:hover {
+            transform: rotateY(180deg) scale(1.05);
+            background: var(--gradient-secondary);
         }
 
         .bg-soft {
@@ -256,7 +289,7 @@
 
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, var(--text-primary) 0%, #374151 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--text-primary) 100%);
             color: white;
             padding: 5rem 0 2rem;
             margin-top: 8rem;
@@ -270,7 +303,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: var(--gradient-primary);
+            background: var(--gradient-secondary);
         }
 
         .footer h5 {
@@ -286,7 +319,7 @@
         }
 
         .footer a:hover {
-            color: var(--primary-light);
+            color: var(--secondary-light);
             transform: translateX(5px);
         }
 

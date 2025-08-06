@@ -1,39 +1,42 @@
 /* Bharatpur Foundation Custom Theme */
 :root {
-    /* Color Variables */
-        :root {
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary-color: #f59e0b;
-            --accent-color: #dc2626;
-            --success-color: #059669;
-            --warning-color: #f59e0b;
-            --info-color: #0ea5e9;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-light: #f1f5f9;
-            --border-light: #e2e8f0;
-            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            --gradient-soft: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-        }
+    /* Logo-based Color Variables */
+    --primary-color: #A5661C;
+    --primary-dark: #6B3F1C;
+    --primary-light: #C78B2A;
+    --secondary-color: #8B5A1A;
+    --accent-color: #D4842B;
+    --success-color: #7A8B2F;
+    --warning-color: #D4842B;
+    --info-color: #A5661C;
+    --text-primary: #2d1810;
+    --text-secondary: #5a3822;
+    --text-light: #8B5A1A;
+    --bg-primary: #ffffff;
+    --bg-secondary: #fdf9f5;
+    --bg-light: #fbf5ed;
+    --bg-tertiary: #f8f1e8;
+    --border-light: #e8dcc9;
+    --shadow-sm: 0 1px 3px 0 rgba(165, 102, 28, 0.1), 0 1px 2px 0 rgba(165, 102, 28, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(165, 102, 28, 0.15), 0 2px 4px -1px rgba(165, 102, 28, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(165, 102, 28, 0.2), 0 4px 6px -2px rgba(165, 102, 28, 0.1);
+    --gradient-primary: linear-gradient(135deg, #A5661C 0%, #6B3F1C 100%);
+    --gradient-soft: linear-gradient(135deg, #C78B2A 0%, #A5661C 100%);
+    --gradient-light: linear-gradient(135deg, #fdf9f5 0%, #fbf5ed 100%);
 
-    /* Foundation Brand Colors */
-    --bharatpur-primary: #1a365d;
-    --bharatpur-secondary: #d69e2e;
-    --bharatpur-accent: #c53030;
-    --bharatpur-gold: #f6e05e;
-    --bharatpur-dark-blue: #0f2a44;
-    --bharatpur-light-blue: #2d5a87;
+    /* Foundation Brand Colors - Logo Based */
+    --bharatpur-primary: #A5661C;
+    --bharatpur-secondary: #6B3F1C;
+    --bharatpur-accent: #D4842B;
+    --bharatpur-gold: #E6A047;
+    --bharatpur-dark: #4A2914;
+    --bharatpur-light: #C78B2A;
 
-    /* Gradients */
-    --bharatpur-gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%);
-    --bharatpur-gradient-secondary: linear-gradient(135deg, #d69e2e 0%, #f6e05e 100%);
-    --bharatpur-gradient-accent: linear-gradient(135deg, #c53030 0%, #e53e3e 100%);
+    /* Enhanced Gradients */
+    --bharatpur-gradient-primary: linear-gradient(135deg, #A5661C 0%, #6B3F1C 100%);
+    --bharatpur-gradient-secondary: linear-gradient(135deg, #D4842B 0%, #A5661C 100%);
+    --bharatpur-gradient-accent: linear-gradient(135deg, #E6A047 0%, #C78B2A 100%);
+    --bharatpur-gradient-warm: linear-gradient(135deg, #fdf9f5 0%, #f8f1e8 100%);
 }
 
 /* Logo Styling */
