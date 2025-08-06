@@ -1,3 +1,4 @@
+
 <?= $this->extend('admin/layout') ?>
 
 <?= $this->section('content') ?>
@@ -66,45 +67,45 @@
                                 <td><?= esc($beneficiary['course']) ?></td>
                                 <td><?= esc($beneficiary['institution']) ?></td>
                                 <td>
-                                    <span class="badge bg-<?= $beneficiary['status'] == 'active' ? 'success' : 'secondary' ?>">
-                                        <?= esc(ucfirst($beneficiary['status'])) ?>
-                                    </span>
+                                    <?php if ($beneficiary['status'] === 'active'): ?>
+                                        <span class="badge bg-success">Active</span>
+                                    <?php elseif ($beneficiary['status'] === 'inactive'): ?>
+                                        <span class="badge bg-secondary">Inactive</span>
+                                    <?php else: ?>
+                                        <span class="badge bg-warning">Pending</span>
+                                    <?php endif; ?>
                                 </td>
                                 <td>
-                                    <small>
-                                        <?php if (!empty($beneficiary['phone'])): ?>
-                                            <i class="fas fa-phone"></i> <?= esc($beneficiary['phone']) ?><br>
-                                        <?php endif; ?>
-                                        <?php if (!empty($beneficiary['email'])): ?>
-                                            <i class="fas fa-envelope"></i> <?= esc($beneficiary['email']) ?>
-                                        <?php endif; ?>
-                                    </small>
+                                    <?php if (!empty($beneficiary['phone'])): ?>
+                                        <div><i class="fas fa-phone text-muted"></i> <?= esc($beneficiary['phone']) ?></div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($beneficiary['email'])): ?>
+                                        <div><i class="fas fa-envelope text-muted"></i> <?= esc($beneficiary['email']) ?></div>
+                                    <?php endif; ?>
                                 </td>
                                 <td>
-                                    <small>
-                                        <?php
-                                        $location = [];
-                                        if (!empty($beneficiary['city'])) $location[] = esc($beneficiary['city']);
-                                        if (!empty($beneficiary['state'])) $location[] = esc($beneficiary['state']);
-                                        echo !empty($location) ? implode(', ', $location) : 'Not specified';
-                                        ?>
-                                    </small>
+                                    <?php
+                                    $location = [];
+                                    if (!empty($beneficiary['city'])) $location[] = $beneficiary['city'];
+                                    if (!empty($beneficiary['state'])) $location[] = $beneficiary['state'];
+                                    echo esc(implode(', ', $location));
+                                    ?>
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="<?= base_url('admin/beneficiaries/view/' . $beneficiary['id']) ?>"
-                                            class="btn btn-sm btn-outline-primary" title="View Details">
+                                        <a href="<?= base_url('admin/beneficiaries/view/' . $beneficiary['id']) ?>" 
+                                           class="btn btn-sm btn-outline-info" title="View">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="#"
-                                            class="btn btn-sm btn-outline-warning" title="Edit">
+                                        <a href="<?= base_url('admin/beneficiaries/edit/' . $beneficiary['id']) ?>" 
+                                           class="btn btn-sm btn-outline-warning" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="<?= base_url('admin/beneficiaries/delete/' . $beneficiary['id']) ?>"
-                                            class="btn btn-sm btn-outline-danger" title="Delete"
-                                            onclick="return confirm('Are you sure you want to delete this beneficiary?')">
+                                        <button type="button" class="btn btn-sm btn-outline-danger delete-single" 
+                                                data-id="<?= $beneficiary['id'] ?>" 
+                                                data-name="<?= esc($beneficiary['name']) ?>" title="Delete">
                                             <i class="fas fa-trash"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -125,83 +126,95 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 <script>
-    var page_title = 'Manage Beneficiaries';
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        const selectAllCheckbox = document.getElementById('selectAll');
-        const checkboxes = document.querySelectorAll('.beneficiary-checkbox');
-        const bulkActions = document.getElementById('bulkActions');
-        const selectedCount = document.getElementById('selectedCount');
-        const deleteSelectedBtn = document.getElementById('deleteSelectedBtn');
-        const clearSelectionBtn = document.getElementById('clearSelectionBtn');
-        const exportPdfBtn = document.getElementById('exportPdfBtn');
+document.addEventListener('DOMContentLoaded', function() {
+    const selectAllCheckbox = document.getElementById('selectAll');
+    const beneficiaryCheckboxes = document.querySelectorAll('.beneficiary-checkbox');
+    const bulkActions = document.getElementById('bulkActions');
+    const selectedCount = document.getElementById('selectedCount');
+    const deleteSelectedBtn = document.getElementById('deleteSelectedBtn');
+    const clearSelectionBtn = document.getElementById('clearSelectionBtn');
+    const exportPdfBtn = document.getElementById('exportPdfBtn');
 
-        // Handle select all functionality
+    // Select All functionality
+    if (selectAllCheckbox) {
         selectAllCheckbox.addEventListener('change', function() {
-            checkboxes.forEach(checkbox => {
+            beneficiaryCheckboxes.forEach(checkbox => {
                 checkbox.checked = this.checked;
             });
             updateBulkActions();
         });
+    }
 
-        // Handle individual checkbox changes
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                updateBulkActions();
-                updateSelectAllState();
-            });
-        });
-
-        // Update bulk actions visibility and count
-        function updateBulkActions() {
-            const selectedCheckboxes = document.querySelectorAll('.beneficiary-checkbox:checked');
-            const count = selectedCheckboxes.length;
-            
-            if (count > 0) {
-                bulkActions.style.display = 'block';
-                selectedCount.textContent = count + ' selected';
-            } else {
-                bulkActions.style.display = 'none';
-            }
-        }
-
-        // Update select all checkbox state
-        function updateSelectAllState() {
-            const totalCheckboxes = checkboxes.length;
-            const checkedCheckboxes = document.querySelectorAll('.beneficiary-checkbox:checked').length;
-            
-            if (checkedCheckboxes === 0) {
-                selectAllCheckbox.indeterminate = false;
-                selectAllCheckbox.checked = false;
-            } else if (checkedCheckboxes === totalCheckboxes) {
-                selectAllCheckbox.indeterminate = false;
-                selectAllCheckbox.checked = true;
-            } else {
-                selectAllCheckbox.indeterminate = true;
-            }
-        }
-
-        // Clear selection
-        clearSelectionBtn.addEventListener('click', function() {
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = false;
-            });
-            selectAllCheckbox.checked = false;
-            selectAllCheckbox.indeterminate = false;
+    // Individual checkbox functionality
+    beneficiaryCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateSelectAll();
             updateBulkActions();
         });
+    });
 
-        // Delete selected beneficiaries
+    // Update Select All checkbox state
+    function updateSelectAll() {
+        if (!selectAllCheckbox) return;
+        
+        const checkedCount = document.querySelectorAll('.beneficiary-checkbox:checked').length;
+        const totalCount = beneficiaryCheckboxes.length;
+        
+        if (checkedCount === totalCount && totalCount > 0) {
+            selectAllCheckbox.checked = true;
+            selectAllCheckbox.indeterminate = false;
+        } else if (checkedCount > 0) {
+            selectAllCheckbox.checked = false;
+            selectAllCheckbox.indeterminate = true;
+        } else {
+            selectAllCheckbox.checked = false;
+            selectAllCheckbox.indeterminate = false;
+        }
+    }
+
+    // Update bulk actions visibility
+    function updateBulkActions() {
+        const checkedCount = document.querySelectorAll('.beneficiary-checkbox:checked').length;
+        
+        if (checkedCount > 0) {
+            bulkActions.style.display = 'block';
+            selectedCount.textContent = `${checkedCount} selected`;
+        } else {
+            bulkActions.style.display = 'none';
+        }
+    }
+
+    // Clear selection
+    if (clearSelectionBtn) {
+        clearSelectionBtn.addEventListener('click', function() {
+            beneficiaryCheckboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            if (selectAllCheckbox) {
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = false;
+            }
+            updateBulkActions();
+        });
+    }
+
+    // Delete selected beneficiaries
+    if (deleteSelectedBtn) {
         deleteSelectedBtn.addEventListener('click', function() {
             const selectedIds = Array.from(document.querySelectorAll('.beneficiary-checkbox:checked'))
                                    .map(cb => cb.value);
             
-            if (selectedIds.length === 0) return;
+            if (selectedIds.length === 0) {
+                alert('Please select at least one beneficiary to delete.');
+                return;
+            }
 
             if (confirm(`Are you sure you want to delete ${selectedIds.length} selected beneficiaries? This action cannot be undone.`)) {
+                // Show loading state
+                this.disabled = true;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+                
                 // Create form and submit
                 const form = document.createElement('form');
                 form.method = 'POST';
@@ -210,7 +223,7 @@
                 // Add CSRF token if available
                 const csrfInput = document.createElement('input');
                 csrfInput.type = 'hidden';
-                csrfInput.name = '_token';
+                csrfInput.name = '<?= csrf_token() ?>';
                 csrfInput.value = '<?= csrf_hash() ?>';
                 form.appendChild(csrfInput);
                 
@@ -227,52 +240,54 @@
                 form.submit();
             }
         });
+    }
 
-        // Export to PDF functionality
-        exportPdfBtn.addEventListener('click', function() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+    // Single delete functionality
+    document.querySelectorAll('.delete-single').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('data-id');
+            const name = this.getAttribute('data-name');
             
-            // Add title
-            doc.setFontSize(16);
-            doc.text('Beneficiaries Report', 14, 20);
-            
-            // Add date
-            doc.setFontSize(10);
-            doc.text('Generated on: ' + new Date().toLocaleDateString(), 14, 30);
-            
-            // Prepare table data
-            const tableData = [];
-            const rows = document.querySelectorAll('#beneficiariesTable tbody tr');
-            
-            rows.forEach(row => {
-                const cells = row.querySelectorAll('td');
-                if (cells.length > 1) { // Skip checkbox column
-                    tableData.push([
-                        cells[1].textContent.trim(), // ID
-                        cells[2].textContent.trim(), // Name
-                        cells[3].textContent.trim(), // Course
-                        cells[4].textContent.trim(), // Institution
-                        cells[5].textContent.trim(), // Status
-                        cells[6].textContent.trim().replace(/\n/g, ' '), // Contact
-                        cells[7].textContent.trim() // Location
-                    ]);
-                }
-            });
-
-            // Create table
-            doc.autoTable({
-                head: [['ID', 'Name', 'Course', 'Institution', 'Status', 'Contact', 'Location']],
-                body: tableData,
-                startY: 40,
-                styles: { fontSize: 8 },
-                headStyles: { fillColor: [41, 128, 185] }
-            });
-            
-            // Save the PDF
-            doc.save('beneficiaries-report.pdf');
+            if (confirm(`Are you sure you want to delete "${name}"? This action cannot be undone.`)) {
+                // Show loading state
+                this.disabled = true;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                
+                // Create form and submit
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '<?= base_url('admin/beneficiaries/delete/') ?>' + id;
+                
+                // Add CSRF token
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = '<?= csrf_token() ?>';
+                csrfInput.value = '<?= csrf_hash() ?>';
+                form.appendChild(csrfInput);
+                
+                document.body.appendChild(form);
+                form.submit();
+            }
         });
     });
+
+    // Export PDF functionality
+    if (exportPdfBtn) {
+        exportPdfBtn.addEventListener('click', function() {
+            this.disabled = true;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            
+            window.location.href = '<?= base_url('admin/beneficiaries/export-pdf') ?>';
+            
+            // Re-enable button after a delay
+            setTimeout(() => {
+                this.disabled = false;
+                this.innerHTML = '<i class="fas fa-file-pdf"></i> Export PDF';
+            }, 2000);
+        });
+    }
+});
 </script>
 
 <?= $this->endSection() ?>

@@ -247,53 +247,83 @@ class AdminBeneficiaries extends BaseController
         // Get all beneficiaries
         $beneficiaries = $this->beneficiaryModel->orderBy('created_at', 'DESC')->findAll();
 
-        // Set response headers for PDF download
-        $this->response->setHeader('Content-Type', 'application/pdf');
-        $this->response->setHeader('Content-Disposition', 'attachment; filename="beneficiaries-report.pdf"');
+        // Load TCPDF library
+        require_once ROOTPATH . 'vendor/tecnickcom/tcpdf/tcpdf.php';
 
-        // For now, we'll create a simple HTML to PDF conversion
-        // In a production environment, you might want to use a proper PDF library
-        $html = $this->generatePdfContent($beneficiaries);
+        // Create new PDF document
+        $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+        // Set document information
+        $pdf->SetCreator('NGO Volunteering System');
+        $pdf->SetAuthor('Admin');
+        $pdf->SetTitle('Beneficiaries Report');
+        $pdf->SetSubject('List of all beneficiaries');
+
+        // Set default header data
+        $pdf->SetHeaderData('', 0, 'Beneficiaries Report', 'Generated on: ' . date('Y-m-d H:i:s'));
+
+        // Set header and footer fonts
+        $pdf->setHeaderFont(['helvetica', '', 12]);
+        $pdf->setFooterFont(['helvetica', '', 8]);
+
+        // Set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+        // Set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+        // Set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+        // Add a page
+        $pdf->AddPage();
+
+        // Set font
+        $pdf->SetFont('helvetica', '', 10);
+
+        // Generate table content
+        $html = $this->generatePdfTableContent($beneficiaries);
         
-        return $this->response->setBody($html);
+        // Output the HTML content
+        $pdf->writeHTML($html, true, false, true, false, '');
+
+        // Close and output PDF document
+        $pdf->Output('beneficiaries-report-' . date('Y-m-d') . '.pdf', 'D');
+        
+        exit;
     }
 
-    private function generatePdfContent($beneficiaries)
+    private function generatePdfTableContent($beneficiaries)
     {
-        $html = '<!DOCTYPE html>
-        <html>
-        <head>
-            <title>Beneficiaries Report</title>
-            <style>
-                body { font-family: Arial, sans-serif; }
-                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-                th { background-color: #f2f2f2; }
-                .header { text-align: center; margin-bottom: 20px; }
-            </style>
-        </head>
-        <body>
-            <div class="header">
-                <h1>Beneficiaries Report</h1>
-                <p>Generated on: ' . date('Y-m-d H:i:s') . '</p>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Course</th>
-                        <th>Institution</th>
-                        <th>Status</th>
-                        <th>Contact</th>
-                        <th>Location</th>
-                    </tr>
-                </thead>
-                <tbody>';
+        $html = '<style>
+            table { border-collapse: collapse; width: 100%; }
+            th { background-color: #f2f2f2; font-weight: bold; padding: 8px; border: 1px solid #ddd; }
+            td { padding: 6px; border: 1px solid #ddd; font-size: 9px; }
+            .text-center { text-align: center; }
+        </style>';
+
+        $html .= '<h2 class="text-center">Beneficiaries Report</h2>';
+        $html .= '<p class="text-center">Total Records: ' . count($beneficiaries) . '</p>';
+
+        $html .= '<table>
+            <thead>
+                <tr>
+                    <th width="8%">ID</th>
+                    <th width="18%">Name</th>
+                    <th width="15%">Course</th>
+                    <th width="18%">Institution</th>
+                    <th width="10%">Status</th>
+                    <th width="18%">Contact</th>
+                    <th width="13%">Location</th>
+                </tr>
+            </thead>
+            <tbody>';
 
         foreach ($beneficiaries as $beneficiary) {
             $contact = '';
-            if (!empty($beneficiary['phone'])) $contact .= $beneficiary['phone'] . ' ';
+            if (!empty($beneficiary['phone'])) $contact .= $beneficiary['phone'] . '<br>';
             if (!empty($beneficiary['email'])) $contact .= $beneficiary['email'];
 
             $location = '';
@@ -306,15 +336,12 @@ class AdminBeneficiaries extends BaseController
                 <td>' . esc($beneficiary['course']) . '</td>
                 <td>' . esc($beneficiary['institution']) . '</td>
                 <td>' . esc(ucfirst($beneficiary['status'])) . '</td>
-                <td>' . esc($contact) . '</td>
+                <td>' . $contact . '</td>
                 <td>' . esc($location) . '</td>
             </tr>';
         }
 
-        $html .= '</tbody>
-            </table>
-        </body>
-        </html>';
+        $html .= '</tbody></table>';
 
         return $html;
     }
