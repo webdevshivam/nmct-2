@@ -1,0 +1,126 @@
+Storage engines
+InnoDB Documentation
+Supports transactions, row-level locking, foreign keys and encryption for tables
+
+[ Variables | Buffer Pool | InnoDB Status ]
+
+
+=====================================
+2025-08-06 20:35:46 0x2328 INNODB MONITOR OUTPUT
+=====================================
+Per second averages calculated from the last 4 seconds
+-----------------
+BACKGROUND THREAD
+-----------------
+srv_master_thread loops: 2 srv_active, 0 srv_shutdown, 324 srv_idle
+srv_master_thread log flush and writes: 326
+----------
+SEMAPHORES
+----------
+OS WAIT ARRAY INFO: reservation count 63
+OS WAIT ARRAY INFO: signal count 26
+RW-shared spins 25, rounds 658, OS waits 21
+RW-excl spins 58, rounds 173, OS waits 0
+RW-sx spins 0, rounds 0, OS waits 0
+Spin rounds per wait: 26.32 RW-shared, 2.98 RW-excl, 0.00 RW-sx
+------------------------
+LATEST FOREIGN KEY ERROR
+------------------------
+2025-08-06 20:35:40 0x2328 Error in foreign key constraint of table `mydatabase`.`volunteering_submissions`:
+ FOREIGN KEY (`beneficiary_id`) REFERENCES `beneficiaries`(`id`) ON DELETE CASCADE ON UPDATE CASCADE:
+Cannot find an index in the referenced table where the
+referenced columns appear as the first columns, or column types
+in the table and the referenced table do not match for constraint.
+Note that the internal storage type of ENUM and SET changed in
+tables created with >= InnoDB-4.1.12, and such columns in old tables
+cannot be referenced by such columns in new tables.
+Please refer to https://mariadb.com/kb/en/library/foreign-keys/ for correct foreign key definition.
+Alter  table `mydatabase`.`volunteering_submissions` with foreign key constraint failed. Field type or character set for column 'beneficiary_id' does not mach referenced column 'id' near ' FOREIGN KEY (`beneficiary_id`) REFERENCES `beneficiaries`(`id`) ON DELETE CASCADE ON UPDATE CASCADE'.
+------------
+TRANSACTIONS
+------------
+Trx id counter 95775
+Purge done for trx's n:o < 95775 undo n:o < 0 state: running
+History list length 24
+LIST OF TRANSACTIONS FOR EACH SESSION:
+---TRANSACTION 283737605931152, not started
+0 lock struct(s), heap size 1128, 0 row lock(s)
+--------
+FILE I/O
+--------
+I/O thread 0 state: native aio handle (insert buffer thread)
+I/O thread 1 state: native aio handle (log thread)
+I/O thread 2 state: native aio handle (read thread)
+I/O thread 3 state: native aio handle (read thread)
+I/O thread 4 state: native aio handle (read thread)
+I/O thread 5 state: native aio handle (read thread)
+I/O thread 6 state: native aio handle (write thread)
+I/O thread 7 state: native aio handle (write thread)
+I/O thread 8 state: native aio handle (write thread)
+I/O thread 9 state: native aio handle (write thread)
+Pending normal aio reads: [0, 0, 0, 0] , aio writes: [1, 0, 0, 0] ,
+ ibuf aio reads:, log i/o's:, sync i/o's:
+Pending flushes (fsync) log: 0; buffer pool: 0
+405 OS file reads, 197 OS file writes, 39 OS fsyncs
+0.00 reads/s, 0 avg bytes/read, 0.00 writes/s, 0.00 fsyncs/s
+-------------------------------------
+INSERT BUFFER AND ADAPTIVE HASH INDEX
+-------------------------------------
+Ibuf: size 1, free list len 0, seg size 2, 0 merges
+merged operations:
+ insert 0, delete mark 0, delete 0
+discarded operations:
+ insert 0, delete mark 0, delete 0
+Hash table size 4441, node heap has 0 buffer(s)
+Hash table size 4441, node heap has 0 buffer(s)
+Hash table size 4441, node heap has 0 buffer(s)
+Hash table size 4441, node heap has 0 buffer(s)
+Hash table size 4441, node heap has 0 buffer(s)
+Hash table size 4441, node heap has 0 buffer(s)
+Hash table size 4441, node heap has 0 buffer(s)
+Hash table size 4441, node heap has 1 buffer(s)
+0.00 hash searches/s, 0.00 non-hash searches/s
+---
+LOG
+---
+Log sequence number 2900982
+Log flushed up to   2900982
+Pages flushed up to 2873100
+Last checkpoint at  2873100
+0 pending log flushes, 0 pending chkp writes
+23 log i/o's done, 0.00 log i/o's/second
+----------------------
+BUFFER POOL AND MEMORY
+----------------------
+Total large memory allocated 33554432
+Dictionary memory allocated 62600
+Buffer pool size   1003
+Free buffers       746
+Database pages     256
+Old database pages 0
+Modified db pages  16
+Percent of dirty pages(LRU & free pages): 1.595
+Max dirty pages percent: 75.000
+Pending reads 0
+Pending writes: LRU 0, flush list 1, single page 0
+Pages made young 0, not young 0
+0.00 youngs/s, 0.00 non-youngs/s
+Pages read 377, created 159, written 174
+0.00 reads/s, 0.00 creates/s, 0.00 writes/s
+No buffer pool page gets since the last printout
+Pages read ahead 0.00/s, evicted without access 0.00/s, Random read ahead 0.00/s
+LRU len: 256, unzip_LRU len: 0
+I/O sum[13]:cur[0], unzip sum[0]:cur[0]
+--------------
+ROW OPERATIONS
+--------------
+0 queries inside InnoDB, 0 queries in queue
+0 read views open inside InnoDB
+Process ID=6792, Main thread ID=16236, state: sleeping
+Number of rows inserted 0, updated 0, deleted 0, read 183
+0.00 inserts/s, 0.00 updates/s, 0.00 deletes/s, 0.00 reads/s
+Number of system rows inserted 0, updated 0, deleted 0, read 0
+0.00 inserts/s, 0.00 updates/s, 0.00 deletes/s, 0.00 reads/s
+----------------------------
+END OF INNODB MONITOR OUTPUT
+============================
