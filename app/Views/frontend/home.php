@@ -1,4 +1,3 @@
-
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -9,8 +8,11 @@
         <div class="row align-items-center min-vh-100 py-5">
             <div class="col-lg-6 mb-5 mb-lg-0">
                 <div class="hero-content">
-                    <h1 class="font-display mb-4 display-3 fw-bold">Transforming Lives Through Education</h1>
-                    <p class="lead mb-5 fs-4">Empowering underprivileged students to achieve their dreams and build a brighter future for themselves and their communities through comprehensive support and guidance.</p>
+                    <div class="d-flex align-items-center justify-content-center mb-4">
+            <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation Logo" style="height: 80px; margin-right: 20px;" onerror="this.style.display='none'">
+            <h1 class="font-display">Welcome to Bharatpur Foundation</h1>
+        </div>
+        <p class="lead">Empowering communities through education, healthcare, and sustainable development. Building a stronger foundation for tomorrow's leaders.</p>
                     <div class="hero-buttons d-flex flex-wrap gap-3">
                         <a href="<?= base_url('beneficiaries') ?>" class="btn btn-primary btn-lg px-4 py-3">
                             <i class="fas fa-graduation-cap me-2"></i> Meet Our Beneficiaries
@@ -81,7 +83,7 @@
                     <h2 class="section-title font-display mb-4">Building Brighter Futures Through Education</h2>
                     <p class="lead mb-4">Nayantar Memorial Charitable Trust was founded with a vision to break the cycle of poverty through quality education and comprehensive student support.</p>
                     <p class="text-muted mb-4">We believe that every student, regardless of their economic background, deserves access to quality education and the opportunity to pursue their dreams. Our comprehensive approach includes financial assistance, mentorship, career guidance, and skill development programs.</p>
-                    
+
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center">
@@ -106,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="d-flex gap-3">
                         <a href="<?= base_url('beneficiaries') ?>" class="btn btn-primary">Learn More</a>
                         <a href="<?= base_url('ngo-works') ?>" class="btn btn-outline-primary">Our Work</a>

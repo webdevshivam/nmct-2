@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($title) ? $title . ' - ' : '' ?>Nayantar Memorial Charitable Trust</title>
+    <title><?= isset($title) ? $title . ' - ' : '' ?>Bharatpur Foundation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="<?= base_url('assets/css/bharatpur-theme.css') ?>" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --primary-light: #3b82f6;
-            --primary-dark: #1d4ed8;
-            --secondary-color: #059669;
-            --secondary-light: #10b981;
-            --accent-color: #dc2626;
-            --accent-light: #ef4444;
+            --primary-color: #1a365d;
+            --primary-light: #2d5a87;
+            --primary-dark: #0f2a44;
+            --secondary-color: #d69e2e;
+            --secondary-light: #f6e05e;
+            --accent-color: #c53030;
+            --accent-light: #e53e3e;
             --success-color: #10b981;
             --success-light: #34d399;
             --warning-color: #f59e0b;
@@ -465,8 +466,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand font-display" href="<?= base_url() ?>">
-                <i class="fas fa-heart text-danger"></i> Nayantar Memorial Trust
+            <a class="navbar-brand font-display d-flex align-items-center" href="<?= base_url() ?>">
+                <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation Logo" style="height: 40px; margin-right: 10px;" onerror="this.style.display='none'">
+                <span>Bharatpur Foundation</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -506,9 +508,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <h5 class="font-display">
-                        <i class="fas fa-heart text-danger me-2"></i>
-                        Nayantar Memorial Charitable Trust
+                    <h5 class="font-display d-flex align-items-center">
+                        <img src="<?= base_url('assets/images/bharatpur-logo-white.png') ?>" alt="Bharatpur Foundation" style="height: 30px; margin-right: 10px;" onerror="this.style.display='none'">
+                        Bharatpur Foundation
                     </h5>
                     <p class="lead">Empowering students through education and creating brighter futures for our community. Every contribution makes a difference in someone's life.</p>
                     <div class="d-flex gap-3 mt-3">
@@ -547,7 +549,7 @@
             <hr class="my-4 border-light">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; <?= date('Y') ?> Nayantar Memorial Charitable Trust. All rights reserved.</p>
+                    <p class="mb-0">&copy; <?= date('Y') ?> Bharatpur Foundation. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> for education</p>
