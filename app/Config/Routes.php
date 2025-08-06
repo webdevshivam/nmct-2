@@ -15,7 +15,7 @@ $routes->get('success-stories', 'Home::success_stories');
 $routes->get('ngo-works', 'Home::ngo_works');
 
 // Admin routes
-$routes->group('admin', function($routes) {
+$routes->group('admin', ['filter' => 'auth'], function($routes) {
     $routes->get('/', 'Admin::index');
     $routes->get('login', 'Admin::login');
     $routes->post('authenticate', 'Admin::authenticate');
