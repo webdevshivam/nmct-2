@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Controllers;
@@ -93,7 +92,7 @@ class AdminVolunteering extends BaseController
 
         $currentMonth = date('Y-m');
         $activeBeneficiaries = $this->beneficiaryModel->where('status', 'active')->findAll();
-        
+
         $sentCount = 0;
         $failedCount = 0;
 
@@ -116,7 +115,7 @@ class AdminVolunteering extends BaseController
     private function sendReminderEmail($beneficiary)
     {
         $email = new Email();
-        
+
         $config = [
             'protocol' => 'smtp',
             'SMTPHost' => 'smtp.hostinger.com',
@@ -130,11 +129,11 @@ class AdminVolunteering extends BaseController
         ];
 
         $email->initialize($config);
-        
+
         $formUrl = base_url("volunteering-form/{$beneficiary['id']}");
-        
+
         $message = $this->getEmailTemplate($beneficiary['name'], $formUrl);
-        
+
         $email->setFrom('info@megastarpremiercricketleague.com', 'Nayantar Memorial Charitable Trust');
         $email->setTo($beneficiary['email']);
         $email->setSubject('Monthly Volunteering Work Reminder - नायंतार मेमोरियल चैरिटेबल ट्रस्ट');
@@ -142,19 +141,31 @@ class AdminVolunteering extends BaseController
 
         try {
             if ($email->send()) {
-                $this->emailLogModel->logEmail($beneficiary['id'], $beneficiary['email'], 
-                                             'Monthly Volunteering Work Reminder', 'sent');
+                $this->emailLogModel->logEmail(
+                    $beneficiary['id'],
+                    $beneficiary['email'],
+                    'Monthly Volunteering Work Reminder',
+                    'sent'
+                );
                 return true;
             } else {
-                $this->emailLogModel->logEmail($beneficiary['id'], $beneficiary['email'], 
-                                             'Monthly Volunteering Work Reminder', 'failed', 
-                                             $email->printDebugger(['headers']));
+                $this->emailLogModel->logEmail(
+                    $beneficiary['id'],
+                    $beneficiary['email'],
+                    'Monthly Volunteering Work Reminder',
+                    'failed',
+                    $email->printDebugger(['headers'])
+                );
                 return false;
             }
         } catch (\Exception $e) {
-            $this->emailLogModel->logEmail($beneficiary['id'], $beneficiary['email'], 
-                                         'Monthly Volunteering Work Reminder', 'failed', 
-                                         $e->getMessage());
+            $this->emailLogModel->logEmail(
+                $beneficiary['id'],
+                $beneficiary['email'],
+                'Monthly Volunteering Work Reminder',
+                'failed',
+                $e->getMessage()
+            );
             return false;
         }
     }
@@ -166,11 +177,11 @@ class AdminVolunteering extends BaseController
         <body style='font-family: Arial, sans-serif; line-height: 1.6; color: #333;'>
             <div style='max-width: 600px; margin: 0 auto; padding: 20px;'>
                 <h2 style='color: #2c5aa0;'>प्रिय {$name},</h2>
-                
+
                 <p>नमस्कार! आशा है आप स्वस्थ और खुश होंगे।</p>
-                
+
                 <p>यह आपको याद दिलाने के लिए है कि इस महीने का आपका स्वयंसेवी कार्य (Volunteering Work) जमा करने का समय आ गया है।</p>
-                
+
                 <div style='background: #f8f9fa; padding: 15px; border-left: 4px solid #2c5aa0; margin: 20px 0;'>
                     <h3 style='margin-top: 0; color: #2c5aa0;'>स्वयंसेवी कार्य के उदाहरण:</h3>
                     <ul style='margin: 10px 0;'>
@@ -183,20 +194,20 @@ class AdminVolunteering extends BaseController
                         <li>दिव्यांग व्यक्तियों की सहायता</li>
                     </ul>
                 </div>
-                
+
                 <p style='background: #e3f2fd; padding: 15px; border-radius: 5px;'>
-                    <strong>प्रेरणा:</strong> याद रखें, आपका छोटा सा प्रयास किसी की जिंदगी में बड़ा बदलाव ला सकता है। 
+                    <strong>प्रेरणा:</strong> याद रखें, आपका छोटा सा प्रयास किसी की जिंदगी में बड़ा बदलाव ला सकता है।
                     आप जो भी अच्छा काम करते हैं, वह न केवल दूसरों की मदद करता है बल्कि आपको भी खुशी और संतुष्टि देता है।
                 </p>
-                
+
                 <div style='text-align: center; margin: 30px 0;'>
                     <a href='{$formUrl}' style='background: #2c5aa0; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;'>
                         अपना स्वयंसेवी कार्य जमा करें
                     </a>
                 </div>
-                
+
                 <p><strong>महत्वपूर्ण:</strong> यदि आप किसी कारणवश इस महीने स्वयंसेवी कार्य नहीं कर सके हैं, तो कृपया फॉर्म में इसका कारण बताएं।</p>
-                
+
                 <p>धन्यवाद!</p>
                 <p><strong>नायंतार मेमोरियल चैरिटेबल ट्रस्ट</strong></p>
             </div>
@@ -210,7 +221,7 @@ class AdminVolunteering extends BaseController
         if ($authCheck !== true) return $authCheck;
 
         $submission = $this->submissionModel->getSubmissionsWithBeneficiaries();
-        $submission = array_filter($submission, function($s) use ($id) {
+        $submission = array_filter($submission, function ($s) use ($id) {
             return $s['id'] == $id;
         });
         $submission = reset($submission);

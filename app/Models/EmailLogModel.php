@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -37,9 +36,9 @@ class EmailLogModel extends Model
     public function getRecentLogs($limit = 50)
     {
         return $this->select('email_logs.*, beneficiaries.name')
-                    ->join('beneficiaries', 'beneficiaries.id = email_logs.beneficiary_id')
-                    ->orderBy('sent_at', 'DESC')
-                    ->limit($limit)
-                    ->findAll();
+            ->join('beneficiaries', 'beneficiaries.id = email_logs.beneficiary_id')
+            ->orderBy('sent_at', 'DESC')
+            ->limit($limit)
+            ->findAll();
     }
 }

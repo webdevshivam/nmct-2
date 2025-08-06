@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Controllers;
@@ -36,7 +35,7 @@ class VolunteeringForm extends BaseController
             }
 
             $isEmergencySkip = $this->request->getPost('is_emergency_skip') ? 1 : 0;
-            
+
             $data = [
                 'beneficiary_id' => $beneficiaryId,
                 'submission_month' => $currentMonth,

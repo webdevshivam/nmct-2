@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -63,7 +62,7 @@ class NgoWorkModel extends Model
     public function getWorksByCategory($category)
     {
         return $this->where(['status' => 'active', 'category' => $category])
-                   ->orderBy('date_completed', 'DESC')
-                   ->findAll();
+            ->orderBy('date_completed', 'DESC')
+            ->findAll();
     }
 }

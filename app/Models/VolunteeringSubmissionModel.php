@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -34,29 +33,29 @@ class VolunteeringSubmissionModel extends Model
             ->select('volunteering_submissions.*, beneficiaries.name, beneficiaries.email, beneficiaries.phone')
             ->join('beneficiaries', 'beneficiaries.id = volunteering_submissions.beneficiary_id')
             ->orderBy('volunteering_submissions.created_at', 'DESC');
-        
+
         if ($month) {
             $builder->where('submission_month', $month);
         }
-        
+
         return $builder->get()->getResultArray();
     }
 
     public function getMonthlyStats($month = null)
     {
         $month = $month ?? date('Y-m');
-        
+
         $total = $this->where('submission_month', $month)->countAllResults();
         $completed = $this->where('submission_month', $month)
-                          ->where('is_emergency_skip', 0)
-                          ->countAllResults();
+            ->where('is_emergency_skip', 0)
+            ->countAllResults();
         $skipped = $this->where('submission_month', $month)
-                        ->where('is_emergency_skip', 1)
-                        ->countAllResults();
+            ->where('is_emergency_skip', 1)
+            ->countAllResults();
         $pending = $this->where('submission_month', $month)
-                        ->where('status', 'pending')
-                        ->countAllResults();
-        
+            ->where('status', 'pending')
+            ->countAllResults();
+
         return [
             'total' => $total,
             'completed' => $completed,
@@ -69,7 +68,7 @@ class VolunteeringSubmissionModel extends Model
     public function hasSubmissionForMonth($beneficiaryId, $month)
     {
         return $this->where('beneficiary_id', $beneficiaryId)
-                    ->where('submission_month', $month)
-                    ->first() !== null;
+            ->where('submission_month', $month)
+            ->first() !== null;
     }
 }
