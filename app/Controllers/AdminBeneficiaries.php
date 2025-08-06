@@ -199,150 +199,165 @@ class AdminBeneficiaries extends BaseController
 
     public function deleteMultiple()
     {
-        $authCheck = $this->checkAuth();
-        if ($authCheck !== true) return $authCheck;
+        if (!$this->isLoggedIn()) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Unauthorized access']);
+        }
 
         $ids = $this->request->getPost('ids');
-        
-        if (!$ids || !is_array($ids)) {
-            $this->session->setFlashdata('error', 'No beneficiaries selected for deletion');
-            return redirect()->to('/admin/beneficiaries');
+
+        if (empty($ids) || !is_array($ids)) {
+            return $this->response->setJSON(['success' => false, 'message' => 'No records selected']);
         }
 
-        $deletedCount = 0;
-        $errors = [];
+        $beneficiaryModel = new BeneficiaryModel();
 
-        foreach ($ids as $id) {
-            $beneficiary = $this->beneficiaryModel->find($id);
-            if ($beneficiary) {
-                // Delete image if exists
-                if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])) {
-                    unlink(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image']);
-                }
-
-                if ($this->beneficiaryModel->delete($id)) {
+        try {
+            $deletedCount = 0;
+            foreach ($ids as $id) {
+                if (is_numeric($id) && $beneficiaryModel->delete($id)) {
                     $deletedCount++;
-                } else {
-                    $errors[] = "Failed to delete beneficiary: " . $beneficiary['name'];
                 }
             }
-        }
 
-        if ($deletedCount > 0) {
-            $this->session->setFlashdata('success', "$deletedCount beneficiary(ies) deleted successfully");
+            if ($deletedCount > 0) {
+                return $this->response->setJSON([
+                    'success' => true,
+                    'message' => $deletedCount . ' record(s) deleted successfully'
+                ]);
+            } else {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'No records were deleted'
+                ]);
+            }
+        } catch (\Exception $e) {
+            log_message('error', 'Error deleting beneficiaries: ' . $e->getMessage());
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Error deleting records. Please try again.'
+            ]);
         }
-
-        if (!empty($errors)) {
-            $this->session->setFlashdata('error', implode('<br>', $errors));
-        }
-
-        return redirect()->to('/admin/beneficiaries');
     }
 
     public function exportPdf()
     {
-        $authCheck = $this->checkAuth();
-        if ($authCheck !== true) return $authCheck;
-
-        // Get all beneficiaries
-        $beneficiaries = $this->beneficiaryModel->orderBy('created_at', 'DESC')->findAll();
-
-        // Load TCPDF library
-        require_once ROOTPATH . 'vendor/tecnickcom/tcpdf/tcpdf.php';
-
-        // Create new PDF document
-        $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
-        // Set document information
-        $pdf->SetCreator('NGO Volunteering System');
-        $pdf->SetAuthor('Admin');
-        $pdf->SetTitle('Beneficiaries Report');
-        $pdf->SetSubject('List of all beneficiaries');
-
-        // Set default header data
-        $pdf->SetHeaderData('', 0, 'Beneficiaries Report', 'Generated on: ' . date('Y-m-d H:i:s'));
-
-        // Set header and footer fonts
-        $pdf->setHeaderFont(['helvetica', '', 12]);
-        $pdf->setFooterFont(['helvetica', '', 8]);
-
-        // Set default monospaced font
-        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
-        // Set margins
-        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
-        // Set auto page breaks
-        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
-        // Add a page
-        $pdf->AddPage();
-
-        // Set font
-        $pdf->SetFont('helvetica', '', 10);
-
-        // Generate table content
-        $html = $this->generatePdfTableContent($beneficiaries);
-        
-        // Output the HTML content
-        $pdf->writeHTML($html, true, false, true, false, '');
-
-        // Close and output PDF document
-        $pdf->Output('beneficiaries-report-' . date('Y-m-d') . '.pdf', 'D');
-        
-        exit;
-    }
-
-    private function generatePdfTableContent($beneficiaries)
-    {
-        $html = '<style>
-            table { border-collapse: collapse; width: 100%; }
-            th { background-color: #f2f2f2; font-weight: bold; padding: 8px; border: 1px solid #ddd; }
-            td { padding: 6px; border: 1px solid #ddd; font-size: 9px; }
-            .text-center { text-align: center; }
-        </style>';
-
-        $html .= '<h2 class="text-center">Beneficiaries Report</h2>';
-        $html .= '<p class="text-center">Total Records: ' . count($beneficiaries) . '</p>';
-
-        $html .= '<table>
-            <thead>
-                <tr>
-                    <th width="8%">ID</th>
-                    <th width="18%">Name</th>
-                    <th width="15%">Course</th>
-                    <th width="18%">Institution</th>
-                    <th width="10%">Status</th>
-                    <th width="18%">Contact</th>
-                    <th width="13%">Location</th>
-                </tr>
-            </thead>
-            <tbody>';
-
-        foreach ($beneficiaries as $beneficiary) {
-            $contact = '';
-            if (!empty($beneficiary['phone'])) $contact .= $beneficiary['phone'] . '<br>';
-            if (!empty($beneficiary['email'])) $contact .= $beneficiary['email'];
-
-            $location = '';
-            if (!empty($beneficiary['city'])) $location .= $beneficiary['city'];
-            if (!empty($beneficiary['state'])) $location .= (!empty($location) ? ', ' : '') . $beneficiary['state'];
-            
-            $html .= '<tr>
-                <td>' . esc($beneficiary['id']) . '</td>
-                <td>' . esc($beneficiary['name']) . '</td>
-                <td>' . esc($beneficiary['course']) . '</td>
-                <td>' . esc($beneficiary['institution']) . '</td>
-                <td>' . esc(ucfirst($beneficiary['status'])) . '</td>
-                <td>' . $contact . '</td>
-                <td>' . esc($location) . '</td>
-            </tr>';
+        if (!$this->isLoggedIn()) {
+            return redirect()->to('/admin/login');
         }
 
-        $html .= '</tbody></table>';
+        try {
+            $beneficiaryModel = new BeneficiaryModel();
+            $beneficiaries = $beneficiaryModel->findAll();
 
-        return $html;
+            if (empty($beneficiaries)) {
+                session()->setFlashdata('error', 'No beneficiaries found to export.');
+                return redirect()->back();
+            }
+
+            // Load TCPDF library
+            require_once ROOTPATH . 'vendor/tecnickcom/tcpdf/tcpdf.php';
+
+            // Create new PDF document
+            $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+            // Set document information
+            $pdf->SetCreator('Nayantar Memorial Charitable Trust');
+            $pdf->SetAuthor('Admin');
+            $pdf->SetTitle('Beneficiaries List');
+            $pdf->SetSubject('Beneficiaries Export');
+
+            // Set default header data
+            $pdf->SetHeaderData('', 0, 'Beneficiaries List', 'Nayantar Memorial Charitable Trust\nGenerated on: ' . date('Y-m-d H:i:s'));
+
+            // Set header and footer fonts
+            $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+            $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+            // Set default monospaced font
+            $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+            // Set margins
+            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+            $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+            $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+            // Set auto page breaks
+            $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+            // Add a page
+            $pdf->AddPage();
+
+            // Set font
+            $pdf->SetFont('helvetica', '', 9);
+
+            // Create table content with better styling
+            $html = '<style>
+                table { border-collapse: collapse; width: 100%; }
+                th { background-color: #4CAF50; color: white; font-weight: bold; text-align: center; padding: 8px; }
+                td { padding: 6px; border: 1px solid #ddd; text-align: left; }
+                tr:nth-child(even) { background-color: #f9f9f9; }
+            </style>
+
+            <h2 style="text-align: center; color: #333;">Beneficiaries List</h2>
+            <p style="text-align: center; color: #666;">Total Records: ' . count($beneficiaries) . '</p>
+
+            <table border="1" cellpadding="4" cellspacing="0">
+                <thead>
+                    <tr style="background-color: #4CAF50; color: white;">
+                        <th width="8%"><b>ID</b></th>
+                        <th width="20%"><b>Name</b></th>
+                        <th width="18%"><b>Email</b></th>
+                        <th width="12%"><b>Phone</b></th>
+                        <th width="25%"><b>Address</b></th>
+                        <th width="10%"><b>Status</b></th>
+                        <th width="12%"><b>Created</b></th>
+                    </tr>
+                </thead>
+                <tbody>';
+
+            foreach ($beneficiaries as $beneficiary) {
+                $statusColor = $beneficiary['status'] === 'active' ? '#28a745' : '#dc3545';
+                $html .= '<tr>
+                    <td style="text-align: center;">' . $beneficiary['id'] . '</td>
+                    <td>' . htmlspecialchars($beneficiary['name']) . '</td>
+                    <td>' . htmlspecialchars($beneficiary['email']) . '</td>
+                    <td>' . htmlspecialchars($beneficiary['phone']) . '</td>
+                    <td>' . htmlspecialchars(substr($beneficiary['address'], 0, 50) . (strlen($beneficiary['address']) > 50 ? '...' : '')) . '</td>
+                    <td style="color: ' . $statusColor . '; text-align: center;"><b>' . ucfirst($beneficiary['status']) . '</b></td>
+                    <td style="text-align: center;">' . date('Y-m-d', strtotime($beneficiary['created_at'])) . '</td>
+                </tr>';
+            }
+
+            $html .= '</tbody></table>
+            <br><br>
+            <p style="text-align: center; font-size: 10px; color: #888;">
+                Generated by Nayantar Memorial Charitable Trust Admin Panel<br>
+                Export Date: ' . date('Y-m-d H:i:s') . '
+            </p>';
+
+            // Print text using writeHTMLCell()
+            $pdf->writeHTML($html, true, false, true, false, '');
+
+            // Close and output PDF document
+            $filename = 'beneficiaries_export_' . date('Y-m-d_H-i-s') . '.pdf';
+
+            // Set headers for download
+            $this->response->setHeader('Content-Type', 'application/pdf');
+            $this->response->setHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+
+            $pdf->Output($filename, 'D');
+            exit();
+
+        } catch (\Exception $e) {
+            log_message('error', 'PDF Export Error: ' . $e->getMessage());
+            session()->setFlashdata('error', 'Error generating PDF export. Please try again.');
+            return redirect()->back();
+        }
+    }
+
+    // Helper method to check if admin is logged in
+    private function isLoggedIn()
+    {
+        return $this->session->get('admin_logged_in');
     }
 }

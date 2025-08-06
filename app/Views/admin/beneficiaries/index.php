@@ -1,4 +1,3 @@
-
 <?= $this->extend('admin/layout') ?>
 
 <?= $this->section('content') ?>
@@ -157,10 +156,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update Select All checkbox state
     function updateSelectAll() {
         if (!selectAllCheckbox) return;
-        
+
         const checkedCount = document.querySelectorAll('.beneficiary-checkbox:checked').length;
         const totalCount = beneficiaryCheckboxes.length;
-        
+
         if (checkedCount === totalCount && totalCount > 0) {
             selectAllCheckbox.checked = true;
             selectAllCheckbox.indeterminate = false;
@@ -176,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update bulk actions visibility
     function updateBulkActions() {
         const checkedCount = document.querySelectorAll('.beneficiary-checkbox:checked').length;
-        
+
         if (checkedCount > 0) {
             bulkActions.style.display = 'block';
             selectedCount.textContent = `${checkedCount} selected`;
@@ -204,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
         deleteSelectedBtn.addEventListener('click', function() {
             const selectedIds = Array.from(document.querySelectorAll('.beneficiary-checkbox:checked'))
                                    .map(cb => cb.value);
-            
+
             if (selectedIds.length === 0) {
                 alert('Please select at least one beneficiary to delete.');
                 return;
@@ -214,19 +213,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Show loading state
                 this.disabled = true;
                 this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
-                
+
                 // Create form and submit
                 const form = document.createElement('form');
                 form.method = 'POST';
                 form.action = '<?= base_url('admin/beneficiaries/delete-multiple') ?>';
-                
+
                 // Add CSRF token if available
                 const csrfInput = document.createElement('input');
                 csrfInput.type = 'hidden';
                 csrfInput.name = '<?= csrf_token() ?>';
                 csrfInput.value = '<?= csrf_hash() ?>';
                 form.appendChild(csrfInput);
-                
+
                 // Add selected IDs
                 selectedIds.forEach(id => {
                     const input = document.createElement('input');
@@ -235,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     input.value = id;
                     form.appendChild(input);
                 });
-                
+
                 document.body.appendChild(form);
                 form.submit();
             }
@@ -248,24 +247,24 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const id = this.getAttribute('data-id');
             const name = this.getAttribute('data-name');
-            
+
             if (confirm(`Are you sure you want to delete "${name}"? This action cannot be undone.`)) {
                 // Show loading state
                 this.disabled = true;
                 this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-                
+
                 // Create form and submit
                 const form = document.createElement('form');
                 form.method = 'POST';
                 form.action = '<?= base_url('admin/beneficiaries/delete/') ?>' + id;
-                
+
                 // Add CSRF token
                 const csrfInput = document.createElement('input');
                 csrfInput.type = 'hidden';
                 csrfInput.name = '<?= csrf_token() ?>';
                 csrfInput.value = '<?= csrf_hash() ?>';
                 form.appendChild(csrfInput);
-                
+
                 document.body.appendChild(form);
                 form.submit();
             }
@@ -277,9 +276,9 @@ document.addEventListener('DOMContentLoaded', function() {
         exportPdfBtn.addEventListener('click', function() {
             this.disabled = true;
             this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
-            
+
             window.location.href = '<?= base_url('admin/beneficiaries/export-pdf') ?>';
-            
+
             // Re-enable button after a delay
             setTimeout(() => {
                 this.disabled = false;
