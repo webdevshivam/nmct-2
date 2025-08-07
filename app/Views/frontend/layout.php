@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,7 +113,7 @@
             z-index: 1;
         }
 
-        .hero-section > * {
+        .hero-section>* {
             position: relative;
             z-index: 2;
         }
@@ -495,12 +496,13 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand font-display d-flex align-items-center" href="<?= base_url() ?>">
-                <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation Logo" style="height: 45px; margin-right: 12px; object-fit: contain;">
+
                 <span>Bharatpur Foundation</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -595,7 +597,7 @@
     <script>
         // Smooth scrolling for anchor links (keeping minimal functionality)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -608,4 +610,5 @@
         });
     </script>
 </body>
+
 </html>
