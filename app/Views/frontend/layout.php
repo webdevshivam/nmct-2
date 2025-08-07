@@ -135,6 +135,11 @@
             margin-right: auto;
         }
 
+        /* Enhanced Shadow Classes */
+        .shadow-2xl {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+        }
+
         /* Button Styles */
         .btn {
             font-weight: 600;

@@ -3,81 +3,152 @@
 
 <?= $this->section('content') ?>
 
-<!-- Hero Section with Enhanced Messaging -->
-<section class="hero-section position-relative overflow-hidden">
-    <div class="container">
+<!-- Enhanced Hero Section with Beautiful Background -->
+<section class="hero-section-enhanced position-relative overflow-hidden">
+    <!-- Background Image Overlay -->
+    <div class="hero-bg-overlay position-absolute w-100 h-100"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements position-absolute w-100 h-100">
+        <div class="float-element float-element-1"><i class="fas fa-graduation-cap"></i></div>
+        <div class="float-element float-element-2"><i class="fas fa-book"></i></div>
+        <div class="float-element float-element-3"><i class="fas fa-lightbulb"></i></div>
+        <div class="float-element float-element-4"><i class="fas fa-trophy"></i></div>
+        <div class="float-element float-element-5"><i class="fas fa-star"></i></div>
+    </div>
+    
+    <div class="container position-relative" style="z-index: 10;">
         <div class="row align-items-center min-vh-100 py-5">
-            <div class="col-lg-6 mb-5 mb-lg-0">
-                <div class="hero-content">
-                    <div class="d-flex align-items-center justify-content-center mb-4">
-                        <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation Logo" style="height: 80px; margin-right: 20px;" onerror="this.style.display='none'">
-                        <h1 class="font-display">Beyond Financial Aid</h1>
-                    </div>
-                    <p class="lead mb-4">We don't just provide money - we create professionals. Through education, mentoring, and career development, we deliver real empowerment at the ground level to uplift society.</p>
-                    
-                    <!-- Unique Value Proposition -->
-                    <div class="value-props mb-4">
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fas fa-check-circle text-success me-3"></i>
-                            <span class="fw-semibold">Education + Mentoring + Employment</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fas fa-check-circle text-success me-3"></i>
-                            <span class="fw-semibold">Industry-Ready Professional Development</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fas fa-check-circle text-success me-3"></i>
-                            <span class="fw-semibold">Sustainable Career Support</span>
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="hero-content-enhanced">
+                    <!-- Logo and Tagline -->
+                    <div class="hero-brand mb-4">
+                        <div class="d-flex align-items-center justify-content-start mb-3">
+                            <div class="logo-container me-3">
+                                <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" 
+                                     alt="Bharatpur Foundation" 
+                                     class="bharatpur-logo-hero" 
+                                     onerror="this.style.display='none'">
+                            </div>
+                            <div>
+                                <h1 class="hero-title font-display mb-2">Beyond Financial Aid</h1>
+                                <div class="hero-subtitle">Bharatpur Foundation</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="hero-buttons d-flex flex-wrap gap-3">
-                        <a href="<?= base_url('ngo-works') ?>" class="btn btn-primary btn-lg px-4 py-3">
-                            <i class="fas fa-rocket me-2"></i> See Our Unique Approach
+                    <!-- Main Message -->
+                    <div class="hero-message mb-5">
+                        <h2 class="hero-tagline mb-4">
+                            Transforming <span class="text-gradient-hero">Students</span> into 
+                            <span class="text-gradient-hero">Professionals</span>
+                        </h2>
+                        <p class="hero-description">
+                            We don't just provide money - we create careers. Through comprehensive education, 
+                            personal mentoring, and professional development, we deliver real empowerment 
+                            that transforms lives and uplifts society.
+                        </p>
+                    </div>
+                    
+                    <!-- Journey Steps -->
+                    <div class="journey-steps mb-5">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="journey-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <h6>Quality Education</h6>
+                                    <small>Foundation for Growth</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="journey-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <h6>Personal Mentoring</h6>
+                                    <small>Individual Guidance</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="journey-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <h6>Career Success</h6>
+                                    <small>Professional Achievement</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action Buttons -->
+                    <div class="hero-actions d-flex flex-wrap gap-3">
+                        <a href="<?= base_url('ngo-works') ?>" class="btn btn-hero-primary btn-lg">
+                            <i class="fas fa-rocket me-2"></i> 
+                            Our Unique Approach
                         </a>
-                        <a href="<?= base_url('success-stories') ?>" class="btn btn-outline-primary btn-lg px-4 py-3">
-                            <i class="fas fa-star me-2"></i> Success Stories
+                        <a href="<?= base_url('success-stories') ?>" class="btn btn-hero-secondary btn-lg">
+                            <i class="fas fa-star me-2"></i> 
+                            Success Stories
+                        </a>
+                        <a href="<?= base_url('beneficiaries') ?>" class="btn btn-hero-outline btn-lg">
+                            <i class="fas fa-heart me-2"></i> 
+                            Support Students
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="hero-gallery">
-                    <div class="row g-3">
-                        <div class="col-6">
-                            <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=400&h=300&fit=crop"
-                                     alt="Professional development" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=300&fit=crop"
-                                     alt="Career success" class="img-fluid w-100" style="height: 200px; object-fit: cover;">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop"
-                                     alt="Mentoring sessions" class="img-fluid w-100" style="height: 130px; object-fit: cover;">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=300&h=200&fit=crop"
-                                     alt="Skill development" class="img-fluid w-100" style="height: 130px; object-fit: cover;">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="hero-image-card rounded-3 overflow-hidden shadow-lg">
-                                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=300&h=200&fit=crop"
-                                     alt="Professional growth" class="img-fluid w-100" style="height: 130px; object-fit: cover;">
-                            </div>
-                        </div>
+            
+            <!-- Hero Visual -->
+            <div class="col-lg-5">
+                <div class="hero-visual position-relative">
+                    <!-- Main Hero Image -->
+                    <div class="hero-main-image">
+                        <img src="<?= base_url('assets/images/bharatpur-hero-image.jpg') ?>" 
+                             alt="Educational Journey - From Student to Professional" 
+                             class="img-fluid rounded-4 shadow-2xl">
+                    </div>
+                    
+                    <!-- Stats Floating Cards -->
+                    <div class="floating-stat floating-stat-1">
+                        <div class="stat-number"><?= $total_beneficiaries ?>+</div>
+                        <div class="stat-label">Students Transformed</div>
+                    </div>
+                    
+                    <div class="floating-stat floating-stat-2">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Employment Rate</div>
+                    </div>
+                    
+                    <div class="floating-stat floating-stat-3">
+                        <div class="stat-number">₹50K+</div>
+                        <div class="stat-label">Avg. Starting Salary</div>
+                    </div>
+                    
+                    <!-- Arrow Elements -->
+                    <div class="success-arrow success-arrow-1">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="success-arrow success-arrow-2">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="success-arrow success-arrow-3">
+                        <i class="fas fa-arrow-up"></i>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <!-- Bottom Wave -->
+    <div class="hero-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="currentColor"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"></path>
+        </svg>
     </div>
 </section>
 
