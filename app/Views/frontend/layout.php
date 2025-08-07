@@ -539,7 +539,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main style="margin-top: 100px;">
+    <main>
         <?= $this->renderSection('content') ?>
     </main>
 
