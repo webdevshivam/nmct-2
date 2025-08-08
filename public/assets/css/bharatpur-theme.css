@@ -102,7 +102,7 @@
   }
 }
 
-/* Indian Mehndi Pattern Background */
+/* Indianmehndi Pattern Background */
 .hero-section-enhanced::before {
   content: '';
   position: absolute;
@@ -824,62 +824,25 @@
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  .hero-title {
-    font-size: 2.8rem;
-  }
-
-  .hero-tagline {
-    font-size: 2.2rem;
-  }
-
-  .floating-stat {
-    position: relative;
-    margin: 1rem 0;
-    left: 0 !important;
-    right: 0 !important;
-    top: auto !important;
-    bottom: auto !important;
-  }
-
-  .success-arrow {
-    display: none;
-  }
+  .hero-section-enhanced { min-height: 60vh; }
+  .hero-title { font-size: 2.5rem; }
+  .hero-tagline { font-size: 1.8rem; }
+  .section-title { font-size: 2.5rem; }
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.4rem;
-  }
+  .hero-section-enhanced { min-height: 50vh; }
+  .hero-title { font-size: 2rem; }
+  .hero-tagline { font-size: 1.6rem; }
+  .hero-description { font-size: 1rem; }
+  .mandala-element { font-size: 2rem; }
+}
 
-  .hero-tagline {
-    font-size: 2rem;
-  }
-
-  .hero-description {
-    font-size: 1.1rem;
-  }
-
-  .journey-steps {
-    padding: 1.5rem;
-  }
-
-  .step-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
-  }
-
-  .btn-hero-primary,
-  .btn-hero-secondary,
-  .btn-hero-outline {
-    padding: 12px 25px;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .float-element {
-    font-size: 1.5rem;
-  }
+@media (max-width: 576px) {
+  .hero-section-enhanced { min-height: 45vh; }
+  .hero-title { font-size: 1.8rem; }
+  .hero-tagline { font-size: 1.4rem; }
+  .hero-actions .btn { width: 100%; }
 }
 
 /* Foundation Cards */
