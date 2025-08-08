@@ -2,9 +2,9 @@
 
 <?= $this->section('content') ?>
 
-<!-- Enhanced Hero Section with Optimized Height -->
+<!-- Enhanced Hero Section with Indian Elements -->
 <section class="hero-section-enhanced d-flex align-items-center"
-    style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(165, 102, 28, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%), url('<?= base_url('assets/images/bharatpur-hero-image.png') ?>'); background-size: cover; background-position: center center; background-attachment: fixed; min-height: 70vh;">
+    style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(165, 102, 28, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%), url('<?= base_url('assets/images/bharatpur-hero-image.png') ?>'); background-size: cover; background-position: center center; background-attachment: fixed; min-height: 1024px;">
 
     <!-- Traditional Indian Border -->
     <div class="traditional-border"></div>
@@ -36,28 +36,14 @@
     </div>
 
     <div class="container position-relative" style="z-index: 10;">
-        <div class="row align-items-center justify-content-center" style="min-height: 60vh;">
+        <div class="row align-items-center justify-content-center" style="min-height: 1024px;">
             <div class="col-lg-10 text-center">
                 <div class="hero-content-enhanced">
-                    <!-- Logo Section -->
-                    <div class="mb-4">
-                        <div class="logo-container mx-auto mb-3">
-                            <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation Logo" class="bharatpur-logo-hero">
-                        </div>
-                    </div>
-
                     <!-- Main Title -->
                     <h1 class="hero-title font-display mb-3">
                         <span class="lang-en">Bharatpur Foundation</span>
                         <span class="lang-hi d-none">भरतपुर फाउंडेशन</span>
                     </h1>
-
-                    <!-- Subtitle -->
-                    <p class="hero-subtitle mb-3">
-                        <span class="lang-en">Empowering Communities Through Education</span>
-                        <span class="lang-hi d-none">शिक्षा के माध्यम से समुदायों को सशक्त बनाना</span>
-                    </p>
-
                     <h2 class="hero-tagline mb-4">
                         <span class="lang-en">
                             Transforming <span class="text-gradient-hero">Students</span> into
@@ -70,13 +56,52 @@
                     </h2>
 
                     <!-- Simple Description -->
-                    <p class="hero-description mb-4">
+                    <p class="hero-description mb-5">
                         <span class="lang-en">Beyond financial aid - we create careers through education, mentoring, and professional development.</span>
                         <span class="lang-hi d-none">वित्तीय सहायता से कहीं अधिक - हम शिक्षा, मार्गदर्शन और व्यावसायिक विकास के माध्यम से करियर बनाते हैं।</span>
                     </p>
 
+                    <!-- Journey Steps in Hindi/English -->
+                    <div class="journey-steps mb-5">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="journey-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <h6 class="lang-en">Quality Education</h6>
+                                    <h6 class="lang-hi d-none">गुणवत्तापूर्ण शिक्षा</h6>
+                                    <small class="lang-en">Complete academic support</small>
+                                    <small class="lang-hi d-none">संपूर्ण शैक्षणिक सहायता</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="journey-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <h6 class="lang-en">Personal Mentoring</h6>
+                                    <h6 class="lang-hi d-none">व्यक्तिगत मार्गदर्शन</h6>
+                                    <small class="lang-en">Industry guidance</small>
+                                    <small class="lang-hi d-none">उद्योग मार्गदर्शन</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="journey-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <h6 class="lang-en">Career Development</h6>
+                                    <h6 class="lang-hi d-none">करियर विकास</h6>
+                                    <small class="lang-en">Job placement support</small>
+                                    <small class="lang-hi d-none">नौकरी प्लेसमेंट सहायता</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Call to Action Buttons -->
-                    <div class="hero-actions d-flex flex-wrap justify-content-center gap-3 mt-4">
+                    <div class="hero-actions d-flex flex-wrap justify-content-center gap-3">
                         <a href="<?= base_url('ngo-works') ?>" class="btn btn-hero-primary btn-lg">
                             <span class="lang-en">Our Approach</span>
                             <span class="lang-hi d-none">हमारा दृष्टिकोण</span>
@@ -101,249 +126,8 @@
     </div>
 </section>
 
-<!-- Three Pillars Section -->
+<!-- Unique Approach Section -->
 <section class="section-padding bg-soft">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-lg-8 mx-auto text-center">
-                <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">
-                    <span class="lang-en">Our Three Pillars</span>
-                    <span class="lang-hi d-none">हमारे तीन स्तंभ</span>
-                </span>
-                <h2 class="section-title font-display mb-4">
-                    <span class="lang-en">Complete Transformation Journey</span>
-                    <span class="lang-hi d-none">संपूर्ण परिवर्तन यात्रा</span>
-                </h2>
-                <p class="lead text-muted">
-                    <span class="lang-en">The first NGO to offer comprehensive empowerment through our unique three-pillar approach</span>
-                    <span class="lang-hi d-none">हमारे अनूठे तीन-स्तंभीय दृष्टिकोण के माध्यम से व्यापक सशक्तिकरण प्रदान करने वाला पहला एनजीओ</span>
-                </p>
-            </div>
-        </div>
-
-        <!-- Journey Steps -->
-        <div class="journey-steps mb-5">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="journey-step">
-                        <div class="step-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h6 class="lang-en">Quality Education</h6>
-                        <h6 class="lang-hi d-none">गुणवत्तापूर्ण शिक्षा</h6>
-                        <small class="lang-en">Complete academic support with industry-relevant curriculum</small>
-                        <small class="lang-hi d-none">उद्योग-प्रासंगिक पाठ्यक्रम के साथ संपूर्ण शैक्षणिक सहायता</small>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="journey-step">
-                        <div class="step-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h6 class="lang-en">Personal Mentoring</h6>
-                        <h6 class="lang-hi d-none">व्यक्तिगत मार्गदर्शन</h6>
-                        <small class="lang-en">One-on-one guidance from industry professionals</small>
-                        <small class="lang-hi d-none">उद्योग पेशेवरों से एक-पर-एक मार्गदर्शन</small>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="journey-step">
-                        <div class="step-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h6 class="lang-en">Career Development</h6>
-                        <h6 class="lang-hi d-none">करियर विकास</h6>
-                        <small class="lang-en">Job placement and continuous career support</small>
-                        <small class="lang-hi d-none">नौकरी प्लेसमेंट और निरंतर करियर सहायता</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-lg h-100 pillar-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 20px;">
-                    <div class="card-body p-5 text-center">
-                        <div class="pillar-icon mb-4">
-                            <i class="fas fa-graduation-cap fa-4x"></i>
-                        </div>
-                        <h3 class="card-title font-display mb-4">
-                            <span class="lang-en">Quality Education</span>
-                            <span class="lang-hi d-none">गुणवत्तापूर्ण शिक्षा</span>
-                        </h3>
-                        <p class="card-text mb-4">
-                            <span class="lang-en">Complete academic support with modern learning tools and industry-relevant skills.</span>
-                            <span class="lang-hi d-none">आधुनिक शिक्षा उपकरणों और उद्योग-प्रासंगिक कौशल के साथ संपूर्ण शैक्षणिक सहायता।</span>
-                        </p>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> 
-                                <span class="lang-en">Full academic coverage</span>
-                                <span class="lang-hi d-none">पूर्ण शैक्षणिक कवरेज</span>
-                            </li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> 
-                                <span class="lang-en">Modern learning tools</span>
-                                <span class="lang-hi d-none">आधुनिक शिक्षण उपकरण</span>
-                            </li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> 
-                                <span class="lang-en">Skill workshops</span>
-                                <span class="lang-hi d-none">कौशल कार्यशालाएं</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-lg h-100 pillar-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 20px;">
-                    <div class="card-body p-5 text-center">
-                        <div class="pillar-icon mb-4">
-                            <i class="fas fa-users fa-4x"></i>
-                        </div>
-                        <h3 class="card-title font-display mb-4">
-                            <span class="lang-en">Personal Mentoring</span>
-                            <span class="lang-hi d-none">व्यक्तिगत मार्गदर्शन</span>
-                        </h3>
-                        <p class="card-text mb-4">
-                            <span class="lang-en">Personal guidance from industry professionals for career and personal growth.</span>
-                            <span class="lang-hi d-none">करियर और व्यक्तिगत विकास के लिए उद्योग पेशेवरों से व्यक्तिगत मार्गदर्शन।</span>
-                        </p>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> 
-                                <span class="lang-en">Industry mentors</span>
-                                <span class="lang-hi d-none">उद्योग सलाहकार</span>
-                            </li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> 
-                                <span class="lang-en">Regular guidance</span>
-                                <span class="lang-hi d-none">नियमित मार्गदर्शन</span>
-                            </li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> 
-                                <span class="lang-en">Personality development</span>
-                                <span class="lang-hi d-none">व्यक्तित्व विकास</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-lg h-100 pillar-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 20px;">
-                    <div class="card-body p-5 text-center">
-                        <div class="pillar-icon mb-4">
-                            <i class="fas fa-briefcase fa-4x"></i>
-                        </div>
-                        <h3 class="card-title font-display mb-4">
-                            <span class="lang-en">Career Development</span>
-                            <span class="lang-hi d-none">करियर विकास</span>
-                        </h3>
-                        <p class="card-text mb-4">
-                            <span class="lang-en">Job placement assistance and professional training for sustainable careers.</span>
-                            <span class="lang-hi d-none">टिकाऊ करियर के लिए नौकरी प्लेसमेंट सहायता और व्यावसायिक प्रशिक्षण।</span>
-                        </p>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> 
-                                <span class="lang-en">Job placement</span>
-                                <span class="lang-hi d-none">नौकरी प्लेसमेंट</span>
-                            </li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> 
-                                <span class="lang-en">Interview training</span>
-                                <span class="lang-hi d-none">इंटरव्यू प्रशिक्षण</span>
-                            </li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> 
-                                <span class="lang-en">Career support</span>
-                                <span class="lang-hi d-none">करियर सहायता</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Statistics Section -->
-<section class="section-padding" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); color: white;">
-    <div class="container">
-        <div class="row text-center mb-5">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="section-title text-white font-display mb-4">
-                    <span class="lang-en">Real Impact, Real Results</span>
-                    <span class="lang-hi d-none">वास्तविक प्रभाव, वास्तविक परिणाम</span>
-                </h2>
-                <p class="lead text-white-50">
-                    <span class="lang-en">Numbers that prove our comprehensive approach works</span>
-                    <span class="lang-hi d-none">संख्याएं जो साबित करती हैं कि हमारा व्यापक दृष्टिकोण काम करता है</span>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="text-center text-white">
-                    <div class="icon-box bg-white text-primary rounded-3 p-4 mb-3 mx-auto" style="width: 80px; height: 80px;">
-                        <i class="fas fa-users fs-2"></i>
-                    </div>
-                    <h3 class="fw-bold mb-2"><?= $total_beneficiaries ?? '200' ?>+</h3>
-                    <h5 class="fw-semibold mb-2">
-                        <span class="lang-en">Students Transformed</span>
-                        <span class="lang-hi d-none">छात्र परिवर्तित</span>
-                    </h5>
-                    <p class="text-white-50 mb-0">
-                        <span class="lang-en">Into industry professionals</span>
-                        <span class="lang-hi d-none">उद्योग पेशेवरों में</span>
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="text-center text-white">
-                    <div class="icon-box bg-white text-primary rounded-3 p-4 mb-3 mx-auto" style="width: 80px; height: 80px;">
-                        <i class="fas fa-briefcase fs-2"></i>
-                    </div>
-                    <h3 class="fw-bold mb-2">95%</h3>
-                    <h5 class="fw-semibold mb-2">
-                        <span class="lang-en">Employment Rate</span>
-                        <span class="lang-hi d-none">रोजगार दर</span>
-                    </h5>
-                    <p class="text-white-50 mb-0">
-                        <span class="lang-en">In their chosen fields</span>
-                        <span class="lang-hi d-none">उनके चुने गए क्षेत्रों में</span>
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="text-center text-white">
-                    <div class="icon-box bg-white text-primary rounded-3 p-4 mb-3 mx-auto" style="width: 80px; height: 80px;">
-                        <i class="fas fa-user-tie fs-2"></i>
-                    </div>
-                    <h3 class="fw-bold mb-2">50+</h3>
-                    <h5 class="fw-semibold mb-2">
-                        <span class="lang-en">Industry Mentors</span>
-                        <span class="lang-hi d-none">उद्योग सलाहकार</span>
-                    </h5>
-                    <p class="text-white-50 mb-0">
-                        <span class="lang-en">Professional guidance</span>
-                        <span class="lang-hi d-none">व्यावसायिक मार्गदर्शन</span>
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="text-center text-white">
-                    <div class="icon-box bg-white text-primary rounded-3 p-4 mb-3 mx-auto" style="width: 80px; height: 80px;">
-                        <i class="fas fa-rupee-sign fs-2"></i>
-                    </div>
-                    <h3 class="fw-bold mb-2">₹50K+</h3>
-                    <h5 class="fw-semibold mb-2">
-                        <span class="lang-en">Average Starting Salary</span>
-                        <span class="lang-hi d-none">औसत प्रारंभिक वेतन</span>
-                    </h5>
-                    <p class="text-white-50 mb-0">
-                        <span class="lang-en">Sustainable livelihoods</span>
-                        <span class="lang-hi d-none">टिकाऊ आजीविका</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Our Approach Section -->
-<section class="section-padding">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
@@ -353,7 +137,7 @@
                         class="img-fluid rounded-4 shadow-lg"
                         style="width: 100%; height: 450px; object-fit: cover;"
                         onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=450&fit=crop&crop=faces,entropy&auto=format&q=80'">
-
+                    
                     <!-- Hindi Decorative Elements on Image -->
                     <div class="image-overlay-decorations">
                         <div class="hindi-symbol symbol-1">🕉️</div>
@@ -384,14 +168,8 @@
                                     <i class="fas fa-brain"></i>
                                 </div>
                                 <div>
-                                    <h6 class="fw-bold mb-1">
-                                        <span class="lang-en">Holistic Development</span>
-                                        <span class="lang-hi d-none">सर्वांगीण विकास</span>
-                                    </h6>
-                                    <small class="text-muted">
-                                        <span class="lang-en">Mind + Skills + Career</span>
-                                        <span class="lang-hi d-none">मन + कौशल + करियर</span>
-                                    </small>
+                                    <h6 class="fw-bold mb-1">Holistic Development</h6>
+                                    <small class="text-muted">Mind + Skills + Career</small>
                                 </div>
                             </div>
                         </div>
@@ -401,28 +179,196 @@
                                     <i class="fas fa-briefcase"></i>
                                 </div>
                                 <div>
-                                    <h6 class="fw-bold mb-1">
-                                        <span class="lang-en">Industry Ready</span>
-                                        <span class="lang-hi d-none">उद्योग तैयार</span>
-                                    </h6>
-                                    <small class="text-muted">
-                                        <span class="lang-en">Real-World Skills</span>
-                                        <span class="lang-hi d-none">वास्तविक-विश्व कौशल</span>
-                                    </small>
+                                    <h6 class="fw-bold mb-1">Industry Ready</h6>
+                                    <small class="text-muted">Real-World Skills</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="d-flex gap-3">
-                        <a href="<?= base_url('ngo-works') ?>" class="btn btn-primary">
-                            <span class="lang-en">Our Approach</span>
-                            <span class="lang-hi d-none">हमारा दृष्टिकोण</span>
-                        </a>
-                        <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-primary">
-                            <span class="lang-en">Meet Beneficiaries</span>
-                            <span class="lang-hi d-none">लाभार्थियों से मिलें</span>
-                        </a>
+                        <a href="<?= base_url('ngo-works') ?>" class="btn btn-primary">Our Approach</a>
+                        <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-primary">Meet Beneficiaries</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Three Pillars Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">
+                    <span class="lang-en">Our Three Pillars</span>
+                    <span class="lang-hi d-none">हमारे तीन स्तंभ</span>
+                </span>
+                <h2 class="section-title font-display mb-4">
+                    <span class="lang-en">Complete Transformation Journey</span>
+                    <span class="lang-hi d-none">संपूर्ण परिवर्तन यात्रा</span>
+                </h2>
+                <p class="lead text-muted">
+                    <span class="lang-en">The first NGO to offer comprehensive empowerment through our unique three-pillar approach</span>
+                    <span class="lang-hi d-none">हमारे अनूठे तीन-स्तंभीय दृष्टिकोण के माध्यम से व्यापक सशक्तिकरण प्रदान करने वाला पहला एनजीओ</span>
+                </p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-lg h-100 pillar-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 20px;">
+                    <div class="card-body p-5 text-center">
+                        <div class="pillar-icon mb-4">
+                            <i class="fas fa-graduation-cap fa-4x"></i>
+                        </div>
+                        <h3 class="card-title font-display mb-4">Quality Education</h3>
+                        <p class="card-text mb-4">Complete academic support with modern learning tools and industry-relevant skills.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Full academic coverage</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Modern learning tools</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Skill workshops</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-lg h-100 pillar-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 20px;">
+                    <div class="card-body p-5 text-center">
+                        <div class="pillar-icon mb-4">
+                            <i class="fas fa-users fa-4x"></i>
+                        </div>
+                        <h3 class="card-title font-display mb-4">Personal Mentoring</h3>
+                        <p class="card-text mb-4">Personal guidance from industry professionals for career and personal growth.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Industry mentors</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Regular guidance</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Personality development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-lg h-100 pillar-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 20px;">
+                    <div class="card-body p-5 text-center">
+                        <div class="pillar-icon mb-4">
+                            <i class="fas fa-briefcase fa-4x"></i>
+                        </div>
+                        <h3 class="card-title font-display mb-4">Career Development</h3>
+                        <p class="card-text mb-4">Job placement assistance and professional training for sustainable careers.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Job placement</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Interview training</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> Career support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="section-padding" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); color: white;">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="section-title text-white font-display mb-4">Real Impact, Real Results</h2>
+                <p class="lead text-white-50">Numbers that prove our comprehensive approach works</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center text-white">
+                    <div class="icon-box bg-white text-primary rounded-3 p-4 mb-3 mx-auto" style="width: 80px; height: 80px;">
+                        <i class="fas fa-users fs-2"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2"><?= $total_beneficiaries ?>+</h3>
+                    <h5 class="fw-semibold mb-2">Students Transformed</h5>
+                    <p class="text-white-50 mb-0">Into industry professionals</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center text-white">
+                    <div class="icon-box bg-white text-primary rounded-3 p-4 mb-3 mx-auto" style="width: 80px; height: 80px;">
+                        <i class="fas fa-briefcase fs-2"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">95%</h3>
+                    <h5 class="fw-semibold mb-2">Employment Rate</h5>
+                    <p class="text-white-50 mb-0">In their chosen fields</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center text-white">
+                    <div class="icon-box bg-white text-primary rounded-3 p-4 mb-3 mx-auto" style="width: 80px; height: 80px;">
+                        <i class="fas fa-user-tie fs-2"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">50+</h3>
+                    <h5 class="fw-semibold mb-2">Industry Mentors</h5>
+                    <p class="text-white-50 mb-0">Professional guidance</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center text-white">
+                    <div class="icon-box bg-white text-primary rounded-3 p-4 mb-3 mx-auto" style="width: 80px; height: 80px;">
+                        <i class="fas fa-rupee-sign fs-2"></i>
+                    </div>
+                    <h3 class="fw-bold mb-2">₹50K+</h3>
+                    <h5 class="fw-semibold mb-2">Average Starting Salary</h5>
+                    <p class="text-white-50 mb-0">Sustainable livelihoods</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How We Work Section -->
+<section class="section-padding bg-soft">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">How We Work</span>
+                <h2 class="section-title font-display mb-4">Comprehensive Empowerment Process</h2>
+                <p class="lead text-muted">Our systematic approach to creating professionals, not just providing aid</p>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-lg h-100 text-center process-card">
+                    <div class="card-body p-5">
+                        <div class="process-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4"
+                            style="width: 70px; height: 70px; font-size: 1.5rem; font-weight: bold;">1</div>
+                        <div class="icon-box bg-primary-light text-primary rounded-3 p-3 mb-3 mx-auto" style="width: 60px; height: 60px;">
+                            <i class="fas fa-graduation-cap fs-4"></i>
+                        </div>
+                        <h5 class="card-title font-display mb-3">Quality Education</h5>
+                        <p class="card-text text-muted">Quality education with industry-relevant curriculum and modern tools.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-lg h-100 text-center process-card">
+                    <div class="card-body p-5">
+                        <div class="process-number bg-success text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4"
+                            style="width: 70px; height: 70px; font-size: 1.5rem; font-weight: bold;">2</div>
+                        <div class="icon-box bg-success-light text-success rounded-3 p-3 mb-3 mx-auto" style="width: 60px; height: 60px;">
+                            <i class="fas fa-user-tie fs-4"></i>
+                        </div>
+                        <h5 class="card-title font-display mb-3">Personal Mentoring</h5>
+                        <p class="card-text text-muted">Personal guidance from industry experts for career growth.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-lg h-100 text-center process-card">
+                    <div class="card-body p-5">
+                        <div class="process-number bg-warning text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4"
+                            style="width: 70px; height: 70px; font-size: 1.5rem; font-weight: bold;">3</div>
+                        <div class="icon-box bg-warning-light text-warning rounded-3 p-3 mb-3 mx-auto" style="width: 60px; height: 60px;">
+                            <i class="fas fa-briefcase fs-4"></i>
+                        </div>
+                        <h5 class="card-title font-display mb-3">Career Placement</h5>
+                        <p class="card-text text-muted">Job placement and professional support for career success.</p>
                     </div>
                 </div>
             </div>
@@ -432,22 +378,13 @@
 
 <!-- Success Stories Section -->
 <?php if (!empty($success_stories)): ?>
-    <section class="section-padding bg-soft">
+    <section class="section-padding">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-lg-8 mx-auto text-center">
-                    <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">
-                        <span class="lang-en">Professional Success</span>
-                        <span class="lang-hi d-none">व्यावसायिक सफलता</span>
-                    </span>
-                    <h2 class="section-title font-display mb-4">
-                        <span class="lang-en">From Students to Professionals</span>
-                        <span class="lang-hi d-none">छात्रों से पेशेवरों तक</span>
-                    </h2>
-                    <p class="lead text-muted">
-                        <span class="lang-en">Real stories of transformation through our comprehensive approach</span>
-                        <span class="lang-hi d-none">हमारे व्यापक दृष्टिकोण के माध्यम से परिवर्तन की वास्तविक कहानियां</span>
-                    </p>
+                    <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">Professional Success</span>
+                    <h2 class="section-title font-display mb-4">From Students to Professionals</h2>
+                    <p class="lead text-muted">Real stories of transformation through our comprehensive approach</p>
                 </div>
             </div>
             <div class="row g-4">
@@ -468,9 +405,7 @@
                                 <p class="card-text text-muted mb-3"><?= esc(substr($story['story'], 0, 150)) ?>...</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="badge bg-success px-3 py-2">
-                                        <i class="fas fa-briefcase me-1"></i> 
-                                        <span class="lang-en">Professional</span>
-                                        <span class="lang-hi d-none">पेशेवर</span>
+                                        <i class="fas fa-briefcase me-1"></i> Professional
                                     </div>
                                     <small class="text-muted">
                                         <i class="fas fa-calendar-alt me-1"></i>
@@ -484,9 +419,7 @@
             </div>
             <div class="text-center mt-5">
                 <a href="<?= base_url('success-stories') ?>" class="btn btn-primary btn-lg px-5">
-                    <i class="fas fa-arrow-right me-2"></i> 
-                    <span class="lang-en">View All Success Stories</span>
-                    <span class="lang-hi d-none">सभी सफलता की कहानियां देखें</span>
+                    <i class="fas fa-arrow-right me-2"></i> View All Success Stories
                 </a>
             </div>
         </div>
@@ -498,34 +431,22 @@
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="font-display mb-4 display-5">
-                    <span class="lang-en">Join the Education Revolution</span>
-                    <span class="lang-hi d-none">शिक्षा क्रांति में शामिल हों</span>
-                </h2>
-                <p class="lead mb-5 fs-4">
-                    <span class="lang-en">Help us transform students into industry professionals through our unique approach.</span>
-                    <span class="lang-hi d-none">हमारे अनूठे दृष्टिकोण के माध्यम से छात्रों को उद्योग पेशेवरों में बदलने में हमारी सहायता करें।</span>
-                </p>
+                <h2 class="font-display mb-4 display-5">Join the Education Revolution</h2>
+                <p class="lead mb-5 fs-4">Help us transform students into industry professionals through our unique approach.</p>
                 <div class="row justify-content-center g-3">
                     <div class="col-md-4">
                         <a href="<?= base_url('ngo-works') ?>" class="btn btn-light btn-lg w-100 py-3">
-                            <i class="fas fa-rocket me-2"></i> 
-                            <span class="lang-en">Our Approach</span>
-                            <span class="lang-hi d-none">हमारा दृष्टिकोण</span>
+                            <i class="fas fa-rocket me-2"></i> Our Approach
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-light btn-lg w-100 py-3">
-                            <i class="fas fa-users me-2"></i> 
-                            <span class="lang-en">Support Students</span>
-                            <span class="lang-hi d-none">छात्रों की सहायता करें</span>
+                            <i class="fas fa-users me-2"></i> Support Students
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a href="<?= base_url('success-stories') ?>" class="btn btn-outline-light btn-lg w-100 py-3">
-                            <i class="fas fa-handshake me-2"></i> 
-                            <span class="lang-en">Become Mentor</span>
-                            <span class="lang-hi d-none">मार्गदर्शक बनें</span>
+                            <i class="fas fa-handshake me-2"></i> Become Mentor
                         </a>
                     </div>
                 </div>
@@ -533,5 +454,216 @@
         </div>
     </div>
 </section>
+
+<style>
+    /* Hero Section Enhancements */
+    .hero-section-enhanced {
+        position: relative;
+        overflow: hidden;
+        padding-top: 150px; /* Adjust as needed for content */
+        padding-bottom: 150px; /* Adjust as needed for content */
+    }
+
+    /* Traditional Indian Border */
+    .traditional-border {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px; /* Height of the border */
+        background: linear-gradient(90deg, #daa520 0%, #ffd700 50%, #daa520 100%); /* Golden Indian border */
+        z-index: 5;
+    }
+    .traditional-border::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px; /* Height of the border */
+        background: linear-gradient(90deg, #b8860b 0%, #ffc107 50%, #b8860b 100%); /* Darker golden Indian border */
+        z-index: 5;
+    }
+
+
+    /* Indian Decorative Elements */
+    .hero-decorative-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; /* Allow interaction with elements behind */
+    }
+
+    .mandala-element {
+        position: absolute;
+        font-size: 3rem; /* Adjust size as needed */
+        color: rgba(218, 165, 32, 0.5); /* Golden color with transparency */
+        opacity: 0.8;
+        text-shadow: 0 0 10px rgba(218, 165, 32, 0.8);
+    }
+
+    .mandala-1 { top: 10%; left: 15%; animation: spin 20s linear infinite; }
+    .mandala-2 { top: 70%; left: 80%; animation: spin 25s linear reverse infinite; }
+    .mandala-3 { top: 40%; left: 45%; animation: spin-slow 30s linear infinite; }
+
+    .paisley-element {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C77.6,10 100,32.4 100,60 C100,87.6 77.6,110 50,110 C22.4,110 0,87.6 0,60 C0,32.4 22.4,10 50,10 Z M50,30 C61.0,30 70,39.0 70,50 C70,61.0 61.0,70 50,70 C39.0,70 30,61.0 30,50 C30,39.0 39.0,30 50,30 Z M70,60 C70,70.8 62.8,78 50,78 C37.2,78 30,70.8 30,60 C30,49.2 37.2,42 50,42 C62.8,42 70,49.2 70,60 Z" fill="%23daa520" transform="translate(0, -10)"/></svg>');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.7;
+    }
+
+    .paisley-1 { top: 20%; left: 75%; transform: rotate(30deg); animation: float 5s ease-in-out infinite; }
+    .paisley-2 { top: 50%; left: 25%; transform: rotate(-30deg); animation: float 6s ease-in-out infinite reverse; }
+    .paisley-3 { top: 80%; left: 50%; transform: rotate(60deg); animation: float 4s ease-in-out infinite; }
+
+    /* Floating Elements */
+    .floating-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .float-element {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.3); /* White with transparency */
+        font-size: 2rem;
+        animation: float 5s ease-in-out infinite alternate;
+    }
+
+    .float-element-1 { top: 10%; left: 5%; animation-delay: -1s; }
+    .float-element-2 { top: 80%; left: 20%; animation-delay: -2s; font-size: 1.5rem; color: rgba(218, 165, 32, 0.2); }
+    .float-element-3 { top: 40%; left: 60%; animation-delay: -3s; font-size: 2.5rem; }
+    .float-element-4 { top: 60%; left: 90%; animation-delay: -4s; color: rgba(218, 165, 32, 0.3); }
+    .float-element-5 { top: 25%; left: 35%; animation-delay: -5s; font-size: 1.8rem; animation-duration: 6s; }
+
+    /* Font Enhancements */
+    .font-display {
+        font-family: 'Playfair Display', serif; /* Example display font */
+    }
+
+    .hero-title {
+        font-size: 4rem; /* Larger for hero title */
+        line-height: 1.2;
+    }
+
+    .hero-tagline {
+        font-size: 2.5rem; /* Adjust as needed */
+        line-height: 1.3;
+    }
+
+    .hero-description {
+        font-size: 1.2rem; /* Slightly larger description */
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif; /* Apply to section titles */
+        font-size: 2.8rem; /* Larger section titles */
+    }
+
+    /* Custom Button Styles for Hero */
+    .btn-hero-primary {
+        background-color: #e0a03a; /* Warm golden primary button */
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif; /* Modern font for buttons */
+        transition: all 0.3s ease;
+    }
+
+    .btn-hero-primary:hover {
+        background-color: #c48f31; /* Darker shade on hover */
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-hero-outline {
+        background-color: transparent;
+        color: #e0a03a; /* Golden outline */
+        border: 2px solid #e0a03a;
+        padding: 10px 30px;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif; /* Modern font for buttons */
+        transition: all 0.3s ease;
+    }
+
+    .btn-hero-outline:hover {
+        background-color: #e0a03a; /* Fill with gold on hover */
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Text Gradient for Hero Tagline */
+    .text-gradient-hero {
+        background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: bold;
+    }
+
+    /* Animation Keyframes */
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes spin-slow {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(-360deg); }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+        50% { transform: translateY(-20px) rotate(15deg); opacity: 1; }
+        100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .hero-title { font-size: 3rem; }
+        .hero-tagline { font-size: 2rem; }
+        .section-title { font-size: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title { font-size: 2.5rem; }
+        .hero-tagline { font-size: 1.8rem; }
+        .hero-section-enhanced { padding-top: 100px; padding-bottom: 100px; }
+        .mandala-element { font-size: 2rem; }
+    }
+
+    @media (max-width: 576px) {
+        .hero-actions .btn { width: 100%; }
+    }
+
+    /* General Styles from Original File */
+    .pillar-card {
+        transition: all 0.3s ease;
+    }
+
+    .pillar-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .value-props {
+        background: rgba(165, 102, 28, 0.1);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid var(--primary-color);
+    }
+</style>
 
 <?= $this->endSection() ?>
