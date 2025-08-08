@@ -2,10 +2,34 @@
 
 <?= $this->section('content') ?>
 
-<!-- Simplified Hero Section with Focus on Background Image -->
-<section class="hero-section-enhanced position-relative overflow-hidden">
-    <!-- Background Image Overlay -->
+<!-- Enhanced Hero Section with Indian Elements -->
+<section class="hero-section-enhanced d-flex align-items-center"
+    style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(165, 102, 28, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%), url('<?= base_url('assets/images/bharatpur-hero-image.png') ?>'); background-size: cover; background-position: right center; background-attachment: fixed;">
+
+    <!-- Traditional Indian Border -->
+    <div class="traditional-border"></div>
+
+    <!-- Background Overlay -->
     <div class="hero-bg-overlay position-absolute w-100 h-100"></div>
+
+    <!-- Indian Decorative Elements -->
+    <div class="hero-decorative-elements">
+        <div class="mandala-element mandala-1">❋</div>
+        <div class="mandala-element mandala-2">✧</div>
+        <div class="mandala-element mandala-3">❃</div>
+        <div class="paisley-element paisley-1"></div>
+        <div class="paisley-element paisley-2"></div>
+        <div class="paisley-element paisley-3"></div>
+    </div>
+
+    <!-- Floating Indian Elements -->
+    <div class="floating-elements position-absolute w-100 h-100">
+        <div class="float-element float-element-1"></div>
+        <div class="float-element float-element-2"></div>
+        <div class="float-element float-element-3"></div>
+        <div class="float-element float-element-4"></div>
+        <div class="float-element float-element-5"></div>
+    </div>
 
     <div class="container position-relative" style="z-index: 10;">
         <div class="row align-items-center justify-content-center min-vh-100 py-5">
@@ -355,6 +379,200 @@
 </section>
 
 <style>
+    /* Hero Section Enhancements */
+    .hero-section-enhanced {
+        position: relative;
+        overflow: hidden;
+        padding-top: 150px; /* Adjust as needed for content */
+        padding-bottom: 150px; /* Adjust as needed for content */
+    }
+
+    /* Traditional Indian Border */
+    .traditional-border {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10px; /* Height of the border */
+        background: linear-gradient(90deg, #daa520 0%, #ffd700 50%, #daa520 100%); /* Golden Indian border */
+        z-index: 5;
+    }
+    .traditional-border::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px; /* Height of the border */
+        background: linear-gradient(90deg, #b8860b 0%, #ffc107 50%, #b8860b 100%); /* Darker golden Indian border */
+        z-index: 5;
+    }
+
+
+    /* Indian Decorative Elements */
+    .hero-decorative-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; /* Allow interaction with elements behind */
+    }
+
+    .mandala-element {
+        position: absolute;
+        font-size: 3rem; /* Adjust size as needed */
+        color: rgba(218, 165, 32, 0.5); /* Golden color with transparency */
+        opacity: 0.8;
+        text-shadow: 0 0 10px rgba(218, 165, 32, 0.8);
+    }
+
+    .mandala-1 { top: 10%; left: 15%; animation: spin 20s linear infinite; }
+    .mandala-2 { top: 70%; left: 80%; animation: spin 25s linear reverse infinite; }
+    .mandala-3 { top: 40%; left: 45%; animation: spin-slow 30s linear infinite; }
+
+    .paisley-element {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C77.6,10 100,32.4 100,60 C100,87.6 77.6,110 50,110 C22.4,110 0,87.6 0,60 C0,32.4 22.4,10 50,10 Z M50,30 C61.0,30 70,39.0 70,50 C70,61.0 61.0,70 50,70 C39.0,70 30,61.0 30,50 C30,39.0 39.0,30 50,30 Z M70,60 C70,70.8 62.8,78 50,78 C37.2,78 30,70.8 30,60 C30,49.2 37.2,42 50,42 C62.8,42 70,49.2 70,60 Z" fill="%23daa520" transform="translate(0, -10)"/></svg>');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.7;
+    }
+
+    .paisley-1 { top: 20%; left: 75%; transform: rotate(30deg); animation: float 5s ease-in-out infinite; }
+    .paisley-2 { top: 50%; left: 25%; transform: rotate(-30deg); animation: float 6s ease-in-out infinite reverse; }
+    .paisley-3 { top: 80%; left: 50%; transform: rotate(60deg); animation: float 4s ease-in-out infinite; }
+
+    /* Floating Elements */
+    .floating-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .float-element {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.3); /* White with transparency */
+        font-size: 2rem;
+        animation: float 5s ease-in-out infinite alternate;
+    }
+
+    .float-element-1 { top: 10%; left: 5%; animation-delay: -1s; }
+    .float-element-2 { top: 80%; left: 20%; animation-delay: -2s; font-size: 1.5rem; color: rgba(218, 165, 32, 0.2); }
+    .float-element-3 { top: 40%; left: 60%; animation-delay: -3s; font-size: 2.5rem; }
+    .float-element-4 { top: 60%; left: 90%; animation-delay: -4s; color: rgba(218, 165, 32, 0.3); }
+    .float-element-5 { top: 25%; left: 35%; animation-delay: -5s; font-size: 1.8rem; animation-duration: 6s; }
+
+    /* Font Enhancements */
+    .font-display {
+        font-family: 'Playfair Display', serif; /* Example display font */
+    }
+
+    .hero-title {
+        font-size: 4rem; /* Larger for hero title */
+        line-height: 1.2;
+    }
+
+    .hero-tagline {
+        font-size: 2.5rem; /* Adjust as needed */
+        line-height: 1.3;
+    }
+
+    .hero-description {
+        font-size: 1.2rem; /* Slightly larger description */
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif; /* Apply to section titles */
+        font-size: 2.8rem; /* Larger section titles */
+    }
+
+    /* Custom Button Styles for Hero */
+    .btn-hero-primary {
+        background-color: #e0a03a; /* Warm golden primary button */
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif; /* Modern font for buttons */
+        transition: all 0.3s ease;
+    }
+
+    .btn-hero-primary:hover {
+        background-color: #c48f31; /* Darker shade on hover */
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-hero-outline {
+        background-color: transparent;
+        color: #e0a03a; /* Golden outline */
+        border: 2px solid #e0a03a;
+        padding: 10px 30px;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif; /* Modern font for buttons */
+        transition: all 0.3s ease;
+    }
+
+    .btn-hero-outline:hover {
+        background-color: #e0a03a; /* Fill with gold on hover */
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Text Gradient for Hero Tagline */
+    .text-gradient-hero {
+        background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: bold;
+    }
+
+    /* Animation Keyframes */
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    @keyframes spin-slow {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(-360deg); }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+        50% { transform: translateY(-20px) rotate(15deg); opacity: 1; }
+        100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .hero-title { font-size: 3rem; }
+        .hero-tagline { font-size: 2rem; }
+        .section-title { font-size: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+        .hero-title { font-size: 2.5rem; }
+        .hero-tagline { font-size: 1.8rem; }
+        .hero-section-enhanced { padding-top: 100px; padding-bottom: 100px; }
+        .mandala-element { font-size: 2rem; }
+    }
+
+    @media (max-width: 576px) {
+        .hero-actions .btn { width: 100%; }
+    }
+
+    /* General Styles from Original File */
     .pillar-card {
         transition: all 0.3s ease;
     }

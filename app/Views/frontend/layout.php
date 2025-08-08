@@ -7,7 +7,7 @@
     <title><?= isset($title) ? $title . ' - ' : '' ?>Bharatpur Foundation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700;800&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Merriweather:wght@300;400;700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <link href="<?= base_url('assets/css/bharatpur-theme.css') ?>" rel="stylesheet">
     <style>
         :root {
@@ -46,7 +46,7 @@
         }
 
         body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Lora', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.7;
             color: var(--text-primary);
             background-color: var(--bg-primary);
@@ -55,8 +55,22 @@
         }
 
         .font-display {
-            font-family: 'Poppins', serif;
+            font-family: 'Playfair Display', 'Crimson Text', serif;
             font-weight: 600;
+        }
+
+        /* Enhanced Typography Classes */
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-subheading {
+            font-family: 'Merriweather', serif;
+        }
+
+        .font-accent {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
         }
 
         /* Navigation Styles */
