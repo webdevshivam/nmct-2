@@ -6,10 +6,13 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('/beneficiaries', 'Home::beneficiaries');
-$routes->get('/success-stories', 'Home::success_stories');
-$routes->get('/ngo-works', 'Home::ngo_works');
-$routes->get('/set-language/(:segment)', 'Home::setLanguage/$1');
+
+// Frontend routes
+$routes->get('beneficiaries', 'Home::beneficiaries');
+$routes->get('beneficiaries/load-more', 'Home::loadMoreBeneficiaries');
+$routes->get('uploads/beneficiaries/(:any)', 'Home::serveBeneficiaryImage/$1');
+$routes->get('success-stories', 'Home::success_stories');
+$routes->get('ngo-works', 'Home::ngo_works');
 
 // Admin routes
 $routes->group('admin', function($routes) {

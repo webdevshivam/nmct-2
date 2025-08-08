@@ -7,13 +7,6 @@ use App\Models\SuccessStoryModel;
 
 class Home extends BaseController
 {
-    protected $session;
-    
-    public function __construct()
-    {
-        $this->session = \Config\Services::session();
-    }
-    
     public function index()
     {
         $successStoryModel = new SuccessStoryModel();
@@ -22,19 +15,10 @@ class Home extends BaseController
         $data = [
             'success_stories' => $successStoryModel->getPublishedStories(),
             'total_beneficiaries' => $beneficiaryModel->countAll(),
-            'active_beneficiaries' => $beneficiaryModel->where('status', 'active')->countAllResults(),
-            'current_lang' => $this->session->get('language') ?? 'en'
+            'active_beneficiaries' => $beneficiaryModel->where('status', 'active')->countAllResults()
         ];
 
         return view('frontend/home', $data);
-    }
-    
-    public function setLanguage($lang = 'en')
-    {
-        if (in_array($lang, ['en', 'hi'])) {
-            $this->session->set('language', $lang);
-        }
-        return redirect()->back();
     }
 
     public function beneficiaries()

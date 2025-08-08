@@ -1,163 +1,121 @@
-
 <!DOCTYPE html>
-<html lang="<?= $current_lang ?? 'en' ?>">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= isset($title) ? $title . ' - ' : '' ?>Bharatpur Foundation</title>
-    
-    <!-- Bootstrap 5.3 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome 6 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700;800&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Merriweather:wght@300;400;700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="<?= base_url('assets/css/bharatpur-theme.css') ?>" rel="stylesheet">
     <style>
-        <?php $lang = session()->get('language') ?? 'en'; ?>
-        
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            --light-gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            
-            --primary-color: #667eea;
-            --secondary-color: #f5576c;
-            --accent-color: #4facfe;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --danger-color: #ef4444;
-            
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --text-muted: #9ca3af;
-            
+            --primary-color: #A5661C;
+            --primary-light: #C78B2A;
+            --primary-dark: #6B3F1C;
+            --secondary-color: #D4842B;
+            --secondary-light: #E6A047;
+            --accent-color: #8B5A1A;
+            --accent-light: #A5661C;
+            --success-color: #7A8B2F;
+            --success-light: #9BAB3A;
+            --warning-color: #D4842B;
+            --warning-light: #E6A047;
+            --text-primary: #2d1810;
+            --text-secondary: #5a3822;
+            --text-light: #8B5A1A;
             --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --bg-tertiary: #f3f4f6;
-            
-            --border-color: #e5e7eb;
-            --border-light: #f3f4f6;
-            
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            
-            --border-radius: 12px;
-            --border-radius-sm: 8px;
-            --border-radius-lg: 16px;
+            --bg-secondary: #fdf9f5;
+            --bg-tertiary: #f8f1e8;
+            --bg-soft: #fbf5ed;
+            --border-light: #e8dcc9;
+            --border-lighter: #f0e7d6;
+            --shadow-sm: 0 1px 2px 0 rgb(165 102 28 / 0.08);
+            --shadow-md: 0 4px 6px -1px rgb(165 102 28 / 0.15), 0 2px 4px -2px rgb(165 102 28 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(165 102 28 / 0.2), 0 4px 6px -4px rgb(165 102 28 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(165 102 28 / 0.25), 0 8px 10px -6px rgb(165 102 28 / 0.15);
+            --gradient-primary: linear-gradient(135deg, #A5661C 0%, #6B3F1C 100%);
+            --gradient-secondary: linear-gradient(135deg, #D4842B 0%, #A5661C 100%);
+            --gradient-accent: linear-gradient(135deg, #E6A047 0%, #C78B2A 100%);
+            --gradient-soft: linear-gradient(135deg, #fdf9f5 0%, #f8f1e8 100%);
         }
-        
+
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
-        
+
         body {
-            font-family: <?= $lang === 'hi' ? "'Noto Sans Devanagari', " : '' ?>'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
+            font-family: 'Lora', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
             color: var(--text-primary);
-            background: var(--bg-primary);
+            background-color: var(--bg-primary);
             scroll-behavior: smooth;
             font-weight: 400;
         }
-        
+
         .font-display {
-            font-family: <?= $lang === 'hi' ? "'Noto Sans Devanagari', " : '' ?>'Playfair Display', serif;
-        }
-        
-        .font-heading {
-            font-family: <?= $lang === 'hi' ? "'Noto Sans Devanagari', " : '' ?>'Poppins', sans-serif;
+            font-family: 'Playfair Display', 'Crimson Text', serif;
             font-weight: 600;
         }
-        
-        /* Modern Navigation */
+
+        /* Enhanced Typography Classes */
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-subheading {
+            font-family: 'Merriweather', serif;
+        }
+
+        .font-accent {
+            font-family: 'Crimson Text', serif;
+            font-style: italic;
+        }
+
+        /* Navigation Styles */
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 2px solid var(--border-light);
             box-shadow: var(--shadow-sm);
             padding: 1rem 0;
-            transition: all 0.3s ease;
         }
-        
-        .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: var(--shadow-md);
-        }
-        
+
         .navbar-brand {
-            font-size: 1.75rem;
-            font-weight: 800;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none !important;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            text-decoration: none;
         }
-        
-        .nav-link {
+
+        .navbar-brand:hover {
+            color: var(--primary-dark) !important;
+        }
+
+        .navbar-nav .nav-link {
             color: var(--text-primary) !important;
             font-weight: 500;
             margin: 0 0.5rem;
-            padding: 0.75rem 1.25rem !important;
-            border-radius: var(--border-radius-sm);
-            transition: all 0.3s ease;
-            position: relative;
+            padding: 0.8rem 1.2rem !important;
+            border-radius: 6px;
+            font-size: 0.95rem;
         }
-        
-        .nav-link:hover {
-            background: var(--bg-secondary);
+
+        .navbar-nav .nav-link:hover {
             color: var(--primary-color) !important;
-            transform: translateY(-2px);
-        }
-        
-        .nav-link.active {
-            background: var(--primary-gradient);
-            color: white !important;
-        }
-        
-        /* Language Switcher */
-        .language-switcher .dropdown-toggle {
-            background: var(--accent-gradient);
-            color: white !important;
-            border: none;
-            border-radius: var(--border-radius-sm);
-            padding: 0.5rem 1rem;
-            font-weight: 600;
-        }
-        
-        .language-switcher .dropdown-menu {
-            border: none;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
-            padding: 0.5rem;
-        }
-        
-        .language-switcher .dropdown-item {
-            border-radius: var(--border-radius-sm);
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .language-switcher .dropdown-item:hover {
             background: var(--bg-secondary);
-            transform: translateX(4px);
         }
-        
-        /* Hero Section - Modern Design */
+
+        /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            color: white;
-            padding: 160px 0 120px;
+            background: var(--gradient-soft);
+            color: var(--text-primary);
+            padding: 120px 0 100px;
+            text-align: center;
+            border-bottom: 2px solid var(--border-light);
             position: relative;
-            overflow: hidden;
         }
-        
+
         .hero-section::before {
             content: '';
             position: absolute;
@@ -165,253 +123,395 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="30" cy="30" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="70" cy="40" r="1" fill="white" opacity="0.05"/><circle cx="90" cy="15" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
+            background: linear-gradient(45deg, transparent 30%, rgba(165, 102, 28, 0.05) 50%, transparent 70%);
+            z-index: 1;
         }
-        
-        .hero-section .container {
+
+        .hero-section>* {
             position: relative;
             z-index: 2;
         }
-        
-        .hero-title {
+
+        .hero-section h1 {
             font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            color: var(--primary-color);
         }
-        
-        .hero-subtitle {
-            font-size: 1.25rem;
+
+        .hero-section .lead {
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
-            opacity: 0.9;
-            max-width: 600px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
-        
-        /* Modern Buttons */
+
+        /* Enhanced Shadow Classes */
+        .shadow-2xl {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        /* Button Styles */
         .btn {
             font-weight: 600;
-            border-radius: var(--border-radius);
-            padding: 0.875rem 2rem;
+            border-radius: 6px;
+            padding: 12px 24px;
             border: none;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-family: 'Poppins', sans-serif;
         }
-        
+
         .btn-primary {
-            background: var(--primary-gradient);
+            background: var(--primary-color);
             color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-lg {
+            padding: 14px 28px;
+            font-size: 1.1rem;
+        }
+
+        /* Card Styles */
+        .card {
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            background: var(--bg-primary);
+        }
+
+        .card-header {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border-light);
+            padding: 2rem;
+        }
+
+        /* Stats Cards */
+        .stats-card {
+            background: var(--gradient-soft);
+            border: 2px solid var(--border-light);
+            color: var(--text-primary);
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.3s ease;
             box-shadow: var(--shadow-md);
         }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            color: white;
+
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 12px 12px 0 0;
         }
-        
-        .btn-outline-light {
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-        
-        .btn-outline-light:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Stats Cards - Glassmorphism */
-        .stats-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: var(--border-radius-lg);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            color: white;
-        }
-        
+
         .stats-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
         }
-        
+
         .stats-number {
             font-size: 3rem;
             font-weight: 800;
             display: block;
-            margin-bottom: 0.5rem;
+            line-height: 1;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
         }
-        
-        .stats-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
+
+        .stats-card h5 {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
         }
-        
-        /* Modern Cards */
-        .modern-card {
-            background: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .modern-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary-color);
-        }
-        
-        /* Feature Icons */
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: var(--border-radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-icon.primary {
-            background: var(--primary-gradient);
-        }
-        
-        .feature-icon.secondary {
-            background: var(--secondary-gradient);
-        }
-        
-        .feature-icon.accent {
-            background: var(--accent-gradient);
-        }
-        
-        .feature-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
+
         /* Section Styling */
         .section-padding {
-            padding: 100px 0;
+            padding: 7rem 0;
         }
-        
+
         .section-title {
-            font-size: 2.75rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--dark-gradient);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+
+        /* Feature Icons */
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
         }
-        
+
+        .feature-icon:hover {
+            transform: rotateY(180deg) scale(1.05);
+            background: var(--gradient-secondary);
+        }
+
+        .bg-soft {
+            background: var(--bg-secondary) !important;
+        }
+
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--text-primary) 100%);
             color: white;
-            padding: 4rem 0 2rem;
-            margin-top: 6rem;
+            padding: 5rem 0 2rem;
+            margin-top: 8rem;
+            position: relative;
         }
-        
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-secondary);
+        }
+
         .footer h5 {
             color: white;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
-        
+
         .footer a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .footer a:hover {
-            color: white;
-            transform: translateX(4px);
+            color: var(--secondary-light);
+            transform: translateX(5px);
         }
-        
-        /* Responsive Design */
+
+        /* Remove animations - content always visible */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Additional Sections Styling */
+        .testimonial-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+            .hero-section h1 {
+                font-size: 2.8rem;
             }
-            
-            .hero-subtitle {
+
+            .hero-section .lead {
                 font-size: 1.1rem;
             }
-            
+
             .section-title {
-                font-size: 2.25rem;
+                font-size: 2.2rem;
             }
-            
+
             .stats-number {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
-            
-            .hero-section {
-                padding: 120px 0 80px;
-            }
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .feature-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
             }
         }
-        
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
+
+        /* Additional Design Elements */
+        .hero-image-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
+        .hero-image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .program-card {
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .process-card {
+            transition: transform 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .success-story-card {
+            transition: transform 0.3s ease;
+        }
+
+        .success-story-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-card {
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card {
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .icon-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-circle {
+            flex-shrink: 0;
+        }
+
+        .bg-primary-light {
+            background-color: rgba(37, 99, 235, 0.1) !important;
+        }
+
+        .bg-success-light {
+            background-color: rgba(5, 150, 105, 0.1) !important;
+        }
+
+        .bg-warning-light {
+            background-color: rgba(245, 158, 11, 0.1) !important;
+        }
+
+        .text-success {
+            color: var(--secondary-color) !important;
+        }
+
+        .text-warning {
+            color: var(--warning-color) !important;
+        }
+
+        .min-vh-100 {
+            min-height: 100vh;
+        }
+
+        /* Enhanced spacing */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        /* Enhanced hero section */
+        .hero-section {
+            padding: 140px 0 120px;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
-        
+
         ::-webkit-scrollbar-track {
             background: var(--bg-tertiary);
         }
-        
+
         ::-webkit-scrollbar-thumb {
-            background: var(--primary-gradient);
+            background: var(--gradient-primary);
             border-radius: 4px;
         }
-        
+
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-gradient);
+            background: var(--gradient-secondary);
         }
     </style>
 </head>
@@ -420,62 +520,45 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
         <div class="container">
-            <a class="navbar-brand font-display" href="<?= base_url() ?>">
-                Bharatpur Foundation
+            <a class="navbar-brand font-display d-flex align-items-center" href="<?= base_url() ?>">
+
+                <span>Bharatpur Foundation</span>
             </a>
-            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url() ?>">
-                            <i class="fas fa-home me-2"></i>
-                            <?= $lang === 'hi' ? 'होम' : 'Home' ?>
+                            <i class="fas fa-home me-1"></i> <span class="lang-en">Home</span><span class="lang-hi d-none">होम</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('beneficiaries') ?>">
-                            <i class="fas fa-users me-2"></i>
-                            <?= $lang === 'hi' ? 'लाभार्थी' : 'Beneficiaries' ?>
+                            <i class="fas fa-users me-1"></i> <span class="lang-en">Beneficiaries</span><span class="lang-hi d-none">लाभार्थी</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('success-stories') ?>">
-                            <i class="fas fa-trophy me-2"></i>
-                            <?= $lang === 'hi' ? 'सफलता की कहानियां' : 'Success Stories' ?>
+                            <i class="fas fa-trophy me-1"></i> <span class="lang-en">Success Stories</span><span class="lang-hi d-none">सफलता की कहानियां</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('ngo-works') ?>">
-                            <i class="fas fa-hands-helping me-2"></i>
-                            <?= $lang === 'hi' ? 'हमारे कार्य' : 'Our Works' ?>
+                            <span class="lang-en">Our Works</span><span class="lang-hi d-none">हमारे कार्य</span>
                         </a>
                     </li>
-                </ul>
-                
-                <div class="language-switcher">
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-globe me-2"></i>
-                            <?= $lang === 'hi' ? 'हिंदी' : 'English' ?>
-                        </button>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe me-1"></i> <span id="currentLang">English</span>
+                        </a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="<?= base_url('set-language/en') ?>">
-                                    🇬🇧 English
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="<?= base_url('set-language/hi') ?>">
-                                    🇮🇳 हिंदी
-                                </a>
-                            </li>
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('en')">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('hi')">🇮🇳 हिंदी</a></li>
                         </ul>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -490,15 +573,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <h5 class="font-display">
+                    <h5 class="font-display d-flex align-items-center">
+                        <img src="<?= base_url('assets/images/bharatpur-logo.png') ?>" alt="Bharatpur Foundation" style="height: 35px; margin-right: 12px; object-fit: contain; filter: brightness(0) invert(1);">
                         Bharatpur Foundation
                     </h5>
-                    <p class="lead">
-                        <?= $lang === 'hi' 
-                            ? 'शिक्षा के माध्यम से छात्रों को सशक्त बनाना और हमारे समुदाय के लिए उज्ज्वल भविष्य का निर्माण करना। हर योगदान किसी के जीवन में बदलाव लाता है।'
-                            : 'Empowering students through education and creating brighter futures for our community. Every contribution makes a difference in someone\'s life.'
-                        ?>
-                    </p>
+                    <p class="lead">Empowering students through education and creating brighter futures for our community. Every contribution makes a difference in someone's life.</p>
                     <div class="d-flex gap-3 mt-3">
                         <a href="#" class="text-white fs-4"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="text-white fs-4"><i class="fab fa-twitter"></i></a>
@@ -507,28 +586,27 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <h6><?= $lang === 'hi' ? 'त्वरित लिंक' : 'Quick Links' ?></h6>
+                    <h6 class="text-uppercase fw-bold">Quick Links</h6>
                     <ul class="list-unstyled">
-                        <li><a href="<?= base_url() ?>"><?= $lang === 'hi' ? 'होम' : 'Home' ?></a></li>
-                        <li><a href="<?= base_url('beneficiaries') ?>"><?= $lang === 'hi' ? 'लाभार्थी' : 'Beneficiaries' ?></a></li>
-                        <li><a href="<?= base_url('success-stories') ?>"><?= $lang === 'hi' ? 'सफलता की कहानियां' : 'Success Stories' ?></a></li>
-                        <li><a href="<?= base_url('ngo-works') ?>"><?= $lang === 'hi' ? 'हमारे कार्य' : 'Our Works' ?></a></li>
+                        <li><a href="<?= base_url() ?>" class="text-light">Home</a></li>
+                        <li><a href="<?= base_url('beneficiaries') ?>" class="text-light">Our Beneficiaries</a></li>
+                        <li><a href="<?= base_url('success-stories') ?>" class="text-light">Success Stories</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <h6><?= $lang === 'hi' ? 'संपर्क जानकारी' : 'Contact Info' ?></h6>
+                    <h6 class="text-uppercase fw-bold">Contact Info</h6>
                     <div class="contact-info">
                         <p class="mb-2">
                             <i class="fas fa-envelope me-2"></i>
-                            <a href="mailto:info@bharatpurfoundation.org">info@bharatpurfoundation.org</a>
+                            <a href="mailto:info@nayantar.org" class="text-light">info@nayantar.org</a>
                         </p>
                         <p class="mb-2">
                             <i class="fas fa-phone me-2"></i>
-                            <a href="tel:+919876543210">+91 98765 43210</a>
+                            <a href="tel:+919876543210" class="text-light">+91 98765 43210</a>
                         </p>
                         <p class="mb-0">
                             <i class="fas fa-map-marker-alt me-2"></i>
-                            <?= $lang === 'hi' ? 'मुंबई, महाराष्ट्र, भारत' : 'Mumbai, Maharashtra, India' ?>
+                            Mumbai, Maharashtra, India
                         </p>
                     </div>
                 </div>
@@ -536,35 +614,43 @@
             <hr class="my-4 border-light">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">
-                        &copy; <?= date('Y') ?> Bharatpur Foundation. 
-                        <?= $lang === 'hi' ? 'सभी अधिकार सुरक्षित।' : 'All rights reserved.' ?>
-                    </p>
+                    <p class="mb-0">&copy; <?= date('Y') ?> Bharatpur Foundation. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <p class="mb-0">
-                        <?= $lang === 'hi' ? 'शिक्षा के लिए' : 'Made with' ?> 
-                        <i class="fas fa-heart text-danger"></i> 
-                        <?= $lang === 'hi' ? 'प्रेम से बनाया गया' : 'for education' ?>
-                    </p>
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> for education</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('mainNavbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
+        // Language switching functionality
+        function switchLanguage(lang) {
+            const englishElements = document.querySelectorAll('.lang-en');
+            const hindiElements = document.querySelectorAll('.lang-hi');
+            const currentLangSpan = document.getElementById('currentLang');
+            
+            if (lang === 'hi') {
+                englishElements.forEach(el => el.classList.add('d-none'));
+                hindiElements.forEach(el => el.classList.remove('d-none'));
+                currentLangSpan.textContent = 'हिंदी';
+                localStorage.setItem('preferred-language', 'hi');
             } else {
-                navbar.classList.remove('scrolled');
+                englishElements.forEach(el => el.classList.remove('d-none'));
+                hindiElements.forEach(el => el.classList.add('d-none'));
+                currentLangSpan.textContent = 'English';
+                localStorage.setItem('preferred-language', 'en');
             }
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            switchLanguage(savedLang);
         });
-        
-        // Smooth scrolling for anchor links
+
+        // Smooth scrolling for anchor links (keeping minimal functionality)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -579,4 +665,5 @@
         });
     </script>
 </body>
+
 </html>
