@@ -4,7 +4,7 @@
 
 <!-- Enhanced Hero Section with Indian Elements -->
 <section class="hero-section-enhanced d-flex align-items-center"
-    style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(165, 102, 28, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%), url('<?= base_url('assets/images/bharatpur-hero-image.png') ?>'); background-size: cover; background-position: right center; background-attachment: fixed;">
+    style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(165, 102, 28, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%), url('<?= base_url('assets/images/bharatpur-hero-image.png') ?>'); background-size: cover; background-position: center center; background-attachment: fixed; min-height: 1024px;">
 
     <!-- Traditional Indian Border -->
     <div class="traditional-border"></div>
@@ -17,45 +17,98 @@
         <div class="mandala-element mandala-1">❋</div>
         <div class="mandala-element mandala-2">✧</div>
         <div class="mandala-element mandala-3">❃</div>
-        <div class="paisley-element paisley-1"></div>
-        <div class="paisley-element paisley-2"></div>
-        <div class="paisley-element paisley-3"></div>
+        <div class="paisley-element paisley-1">🪷</div>
+        <div class="paisley-element paisley-2">🕉️</div>
+        <div class="paisley-element paisley-3">🪔</div>
+        <div class="hindi-decorative hindi-1">ॐ</div>
+        <div class="hindi-decorative hindi-2">श्री</div>
+        <div class="hindi-decorative hindi-3">गणेश</div>
     </div>
 
     <!-- Floating Indian Elements -->
     <div class="floating-elements position-absolute w-100 h-100">
-        <div class="float-element float-element-1"></div>
-        <div class="float-element float-element-2"></div>
-        <div class="float-element float-element-3"></div>
-        <div class="float-element float-element-4"></div>
-        <div class="float-element float-element-5"></div>
+        <div class="float-element float-element-1">🌺</div>
+        <div class="float-element float-element-2">🪔</div>
+        <div class="float-element float-element-3">🙏</div>
+        <div class="float-element float-element-4">⚛️</div>
+        <div class="float-element float-element-5">🕉️</div>
+        <div class="float-element float-element-6">🪷</div>
     </div>
 
     <div class="container position-relative" style="z-index: 10;">
-        <div class="row align-items-center justify-content-center min-vh-100 py-5">
-            <div class="col-lg-8 text-center">
+        <div class="row align-items-center justify-content-center" style="min-height: 1024px;">
+            <div class="col-lg-10 text-center">
                 <div class="hero-content-enhanced">
-
-
                     <!-- Main Title -->
-                    <h1 class="hero-title font-display mb-3">Bharatpur Foundation</h1>
+                    <h1 class="hero-title font-display mb-3">
+                        <span class="lang-en">Bharatpur Foundation</span>
+                        <span class="lang-hi d-none">भरतपुर फाउंडेशन</span>
+                    </h1>
                     <h2 class="hero-tagline mb-4">
-                        Transforming <span class="text-gradient-hero">Students</span> into
-                        <span class="text-gradient-hero">Professionals</span>
+                        <span class="lang-en">
+                            Transforming <span class="text-gradient-hero">Students</span> into
+                            <span class="text-gradient-hero">Professionals</span>
+                        </span>
+                        <span class="lang-hi d-none">
+                            <span class="text-gradient-hero">छात्रों</span> को 
+                            <span class="text-gradient-hero">पेशेवरों</span> में बदलना
+                        </span>
                     </h2>
 
                     <!-- Simple Description -->
                     <p class="hero-description mb-5">
-                        Beyond financial aid - we create careers through education, mentoring, and professional development.
+                        <span class="lang-en">Beyond financial aid - we create careers through education, mentoring, and professional development.</span>
+                        <span class="lang-hi d-none">वित्तीय सहायता से कहीं अधिक - हम शिक्षा, मार्गदर्शन और व्यावसायिक विकास के माध्यम से करियर बनाते हैं।</span>
                     </p>
+
+                    <!-- Journey Steps in Hindi/English -->
+                    <div class="journey-steps mb-5">
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="journey-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <h6 class="lang-en">Quality Education</h6>
+                                    <h6 class="lang-hi d-none">गुणवत्तापूर्ण शिक्षा</h6>
+                                    <small class="lang-en">Complete academic support</small>
+                                    <small class="lang-hi d-none">संपूर्ण शैक्षणिक सहायता</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="journey-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <h6 class="lang-en">Personal Mentoring</h6>
+                                    <h6 class="lang-hi d-none">व्यक्तिगत मार्गदर्शन</h6>
+                                    <small class="lang-en">Industry guidance</small>
+                                    <small class="lang-hi d-none">उद्योग मार्गदर्शन</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="journey-step">
+                                    <div class="step-icon">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <h6 class="lang-en">Career Development</h6>
+                                    <h6 class="lang-hi d-none">करियर विकास</h6>
+                                    <small class="lang-en">Job placement support</small>
+                                    <small class="lang-hi d-none">नौकरी प्लेसमेंट सहायता</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Call to Action Buttons -->
                     <div class="hero-actions d-flex flex-wrap justify-content-center gap-3">
                         <a href="<?= base_url('ngo-works') ?>" class="btn btn-hero-primary btn-lg">
-                            Our Approach
+                            <span class="lang-en">Our Approach</span>
+                            <span class="lang-hi d-none">हमारा दृष्टिकोण</span>
                         </a>
                         <a href="<?= base_url('beneficiaries') ?>" class="btn btn-hero-outline btn-lg">
-                            Support Students
+                            <span class="lang-en">Support Students</span>
+                            <span class="lang-hi d-none">छात्रों की सहायता करें</span>
                         </a>
                     </div>
                 </div>
@@ -84,14 +137,29 @@
                         class="img-fluid rounded-4 shadow-lg"
                         style="width: 100%; height: 450px; object-fit: cover;"
                         onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=450&fit=crop&crop=faces,entropy&auto=format&q=80'">
-
+                    
+                    <!-- Hindi Decorative Elements on Image -->
+                    <div class="image-overlay-decorations">
+                        <div class="hindi-symbol symbol-1">🕉️</div>
+                        <div class="hindi-symbol symbol-2">🪔</div>
+                        <div class="hindi-symbol symbol-3">🌺</div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="about-content">
-                    <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">Our Difference</span>
-                    <h2 class="section-title font-display mb-4">Creating Professionals, Not Just Providing Aid</h2>
-                    <p class="lead mb-4">Most NGOs only offer monetary help. We create complete professionals through Education + Mentoring + Career Placement.</p>
+                    <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">
+                        <span class="lang-en">Our Difference</span>
+                        <span class="lang-hi d-none">हमारा अंतर</span>
+                    </span>
+                    <h2 class="section-title font-display mb-4">
+                        <span class="lang-en">Creating Professionals, Not Just Providing Aid</span>
+                        <span class="lang-hi d-none">केवल सहायता नहीं, पेशेवर बनाना</span>
+                    </h2>
+                    <p class="lead mb-4">
+                        <span class="lang-en">Most NGOs only offer monetary help. We create complete professionals through Education + Mentoring + Career Placement.</span>
+                        <span class="lang-hi d-none">अधिकांश एनजीओ केवल वित्तीय सहायता प्रदान करते हैं। हम शिक्षा + मार्गदर्शन + करियर प्लेसमेंट के माध्यम से संपूर्ण पेशेवर तैयार करते हैं।</span>
+                    </p>
 
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6">
@@ -133,9 +201,18 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-                <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">Our Three Pillars</span>
-                <h2 class="section-title font-display mb-4">Complete Transformation Journey</h2>
-                <p class="lead text-muted">The first NGO to offer comprehensive empowerment through our unique three-pillar approach</p>
+                <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">
+                    <span class="lang-en">Our Three Pillars</span>
+                    <span class="lang-hi d-none">हमारे तीन स्तंभ</span>
+                </span>
+                <h2 class="section-title font-display mb-4">
+                    <span class="lang-en">Complete Transformation Journey</span>
+                    <span class="lang-hi d-none">संपूर्ण परिवर्तन यात्रा</span>
+                </h2>
+                <p class="lead text-muted">
+                    <span class="lang-en">The first NGO to offer comprehensive empowerment through our unique three-pillar approach</span>
+                    <span class="lang-hi d-none">हमारे अनूठे तीन-स्तंभीय दृष्टिकोण के माध्यम से व्यापक सशक्तिकरण प्रदान करने वाला पहला एनजीओ</span>
+                </p>
             </div>
         </div>
         <div class="row g-4">

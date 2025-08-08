@@ -531,21 +531,32 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url() ?>">
-                            <i class="fas fa-home me-1"></i> Home
+                            <i class="fas fa-home me-1"></i> <span class="lang-en">Home</span><span class="lang-hi d-none">होम</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('beneficiaries') ?>">
-                            <i class="fas fa-users me-1"></i> Beneficiaries
+                            <i class="fas fa-users me-1"></i> <span class="lang-en">Beneficiaries</span><span class="lang-hi d-none">लाभार्थी</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('success-stories') ?>">
-                            <i class="fas fa-trophy me-1"></i> Success Stories
+                            <i class="fas fa-trophy me-1"></i> <span class="lang-en">Success Stories</span><span class="lang-hi d-none">सफलता की कहानियां</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('ngo-works') ?>">Our Works</a>
+                        <a class="nav-link" href="<?= base_url('ngo-works') ?>">
+                            <span class="lang-en">Our Works</span><span class="lang-hi d-none">हमारे कार्य</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe me-1"></i> <span id="currentLang">English</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('en')">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('hi')">🇮🇳 हिंदी</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -614,6 +625,31 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Language switching functionality
+        function switchLanguage(lang) {
+            const englishElements = document.querySelectorAll('.lang-en');
+            const hindiElements = document.querySelectorAll('.lang-hi');
+            const currentLangSpan = document.getElementById('currentLang');
+            
+            if (lang === 'hi') {
+                englishElements.forEach(el => el.classList.add('d-none'));
+                hindiElements.forEach(el => el.classList.remove('d-none'));
+                currentLangSpan.textContent = 'हिंदी';
+                localStorage.setItem('preferred-language', 'hi');
+            } else {
+                englishElements.forEach(el => el.classList.remove('d-none'));
+                hindiElements.forEach(el => el.classList.add('d-none'));
+                currentLangSpan.textContent = 'English';
+                localStorage.setItem('preferred-language', 'en');
+            }
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            switchLanguage(savedLang);
+        });
+
         // Smooth scrolling for anchor links (keeping minimal functionality)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
