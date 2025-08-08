@@ -55,11 +55,12 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
                 <div class="about-image-container position-relative">
+                    <img src="<?= base_url('assets/images/our-difference-image.jpg') ?>"
+                        alt="Creating Professionals - Students in professional training"
+                        class="img-fluid rounded-4 shadow-lg"
+                        style="width: 100%; height: 450px; object-fit: cover;"
+                        onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=450&fit=crop&crop=faces,entropy&auto=format&q=80'">
 
-                    <div class="position-absolute bottom-0 start-0 bg-white p-4 rounded-3 shadow-lg m-4">
-                        <h6 class="text-primary fw-bold mb-1">95% Employment</h6>
-                        <small class="text-muted">Success Rate</small>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
