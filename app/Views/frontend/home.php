@@ -18,7 +18,7 @@
             <div class="floating-icon icon-5"><i class="fas fa-rocket"></i></div>
         </div>
     </div>
-    
+
     <div class="container">
         <div class="row min-vh-100 align-items-center">
             <!-- Left Content -->
@@ -30,20 +30,20 @@
                         Empowering Students Since 2010
                     </span>
                 </div>
-                
+
                 <div class="hero-content-left">
                     <h1 class="modern-hero-title mb-3">
                         <?= $translations['hero_title'] ?>
                     </h1>
-                    
+
                     <h2 class="modern-hero-subtitle mb-4">
                         <?= $translations['hero_tagline'] ?>
                     </h2>
-                    
+
                     <p class="modern-hero-description mb-4">
                         <?= $translations['hero_description'] ?>
                     </p>
-                    
+
                     <!-- Feature Icons Row -->
                     <div class="hero-features-row mb-5">
                         <div class="feature-item">
@@ -65,7 +65,7 @@
                             <span class="feature-text"><?= $translations['career_development'] ?></span>
                         </div>
                     </div>
-                    
+
                     <!-- Modern CTA Buttons -->
                     <div class="hero-cta-buttons mb-5">
                         <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-modern-primary btn-xl me-3 mb-3">
@@ -77,7 +77,7 @@
                             <?= $translations['support_students'] ?>
                         </a>
                     </div>
-                    
+
                     <!-- Animated Statistics -->
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -97,17 +97,17 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Right Visual -->
             <div class="col-lg-6 order-1 order-lg-2 mb-5 mb-lg-0">
                 <div class="hero-visual-container">
                     <!-- Image Frame -->
                     <div class="hero-image-frame">
-                        <img src="<?= base_url('assets/images/bharatpur-hero-image.png') ?>" 
-                             alt="Educational Transformation - Students becoming professionals" 
-                             class="hero-main-image"
-                             onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=450&fit=crop&crop=faces,entropy&auto=format&q=80'">
-                        
+                        <img src="<?= base_url('assets/images/bharatpur-hero-image.png') ?>"
+                            alt="Educational Transformation - Students becoming professionals"
+                            class="hero-main-image"
+                            onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=450&fit=crop&crop=faces,entropy&auto=format&q=80'">
+
                         <!-- Decorative Elements on Image -->
                         <div class="image-decorations">
                             <div class="decoration-circle circle-1"></div>
@@ -115,13 +115,13 @@
                             <div class="decoration-triangle"></div>
                         </div>
                     </div>
-                    
+
                     <!-- Testimonial Quote -->
                     <div class="floating-testimonial">
                         <div class="testimonial-content">
                             <div class="testimonial-avatar">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face&auto=format&q=80" 
-                                     alt="Student testimonial" class="avatar-img">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face&auto=format&q=80"
+                                    alt="Student testimonial" class="avatar-img">
                             </div>
                             <div class="testimonial-text">
                                 <p class="quote">"Transformed my career completely!"</p>
@@ -133,7 +133,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Wave Bottom -->
     <div class="hero-wave-bottom">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -144,43 +144,45 @@
 
 <!-- Counter Animation Script -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Animate counters
-    const counters = document.querySelectorAll('.stat-number[data-count]');
-    
-    function animateCounter(counter) {
-        const target = parseInt(counter.getAttribute('data-count'));
-        const increment = target / 100;
-        let current = 0;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                counter.textContent = target + (counter.textContent.includes('%') ? '%' : '+');
-                clearInterval(timer);
-            } else {
-                counter.textContent = Math.floor(current) + (target === 95 ? '%' : '+');
-            }
-        }, 20);
-    }
-    
-    // Intersection Observer for animation trigger
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                if (!counter.classList.contains('animated')) {
-                    counter.classList.add('animated');
-                    animateCounter(counter);
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate counters
+        const counters = document.querySelectorAll('.stat-number[data-count]');
+
+        function animateCounter(counter) {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const increment = target / 100;
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    counter.textContent = target + (counter.textContent.includes('%') ? '%' : '+');
+                    clearInterval(timer);
+                } else {
+                    counter.textContent = Math.floor(current) + (target === 95 ? '%' : '+');
                 }
-            }
+            }, 20);
+        }
+
+        // Intersection Observer for animation trigger
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    if (!counter.classList.contains('animated')) {
+                        counter.classList.add('animated');
+                        animateCounter(counter);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.7
         });
-    }, { threshold: 0.7 });
-    
-    counters.forEach(counter => {
-        observer.observe(counter);
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
     });
-});
 </script>
 
 <!-- Unique Approach Section -->
@@ -517,7 +519,7 @@ document.addEventListener('DOMContentLoaded', function() {
         align-items: center;
         padding: 60px 0;
     }
-    
+
     /* Animated Background Elements */
     .hero-background-animation {
         position: absolute;
@@ -528,14 +530,14 @@ document.addEventListener('DOMContentLoaded', function() {
         z-index: 1;
         pointer-events: none;
     }
-    
+
     .floating-shape {
         position: absolute;
         border-radius: 50%;
         background: rgba(255, 215, 0, 0.1);
         animation: floatShape 20s infinite linear;
     }
-    
+
     .shape-1 {
         width: 100px;
         height: 100px;
@@ -543,7 +545,7 @@ document.addEventListener('DOMContentLoaded', function() {
         left: 10%;
         animation-delay: 0s;
     }
-    
+
     .shape-2 {
         width: 60px;
         height: 60px;
@@ -552,7 +554,7 @@ document.addEventListener('DOMContentLoaded', function() {
         animation-delay: -5s;
         background: rgba(165, 102, 28, 0.15);
     }
-    
+
     .shape-3 {
         width: 80px;
         height: 80px;
@@ -561,7 +563,7 @@ document.addEventListener('DOMContentLoaded', function() {
         animation-delay: -10s;
         background: rgba(255, 140, 0, 0.1);
     }
-    
+
     .shape-4 {
         width: 120px;
         height: 120px;
@@ -569,7 +571,7 @@ document.addEventListener('DOMContentLoaded', function() {
         left: 15%;
         animation-delay: -15s;
     }
-    
+
     .floating-icons {
         position: absolute;
         top: 0;
@@ -577,45 +579,99 @@ document.addEventListener('DOMContentLoaded', function() {
         right: 0;
         bottom: 0;
     }
-    
+
     .floating-icon {
         position: absolute;
         font-size: 1.5rem;
         color: rgba(165, 102, 28, 0.3);
         animation: floatIcon 15s infinite ease-in-out;
     }
-    
-    .icon-1 { top: 15%; left: 5%; animation-delay: 0s; }
-    .icon-2 { top: 25%; right: 8%; animation-delay: -3s; }
-    .icon-3 { top: 60%; left: 8%; animation-delay: -6s; }
-    .icon-4 { bottom: 30%; right: 12%; animation-delay: -9s; }
-    .icon-5 { bottom: 20%; left: 20%; animation-delay: -12s; }
-    
+
+    .icon-1 {
+        top: 15%;
+        left: 5%;
+        animation-delay: 0s;
+    }
+
+    .icon-2 {
+        top: 25%;
+        right: 8%;
+        animation-delay: -3s;
+    }
+
+    .icon-3 {
+        top: 60%;
+        left: 8%;
+        animation-delay: -6s;
+    }
+
+    .icon-4 {
+        bottom: 30%;
+        right: 12%;
+        animation-delay: -9s;
+    }
+
+    .icon-5 {
+        bottom: 20%;
+        left: 20%;
+        animation-delay: -12s;
+    }
+
     @keyframes floatShape {
-        0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
-        25% { transform: translateY(-30px) rotate(90deg); opacity: 0.3; }
-        50% { transform: translateY(-20px) rotate(180deg); opacity: 0.2; }
-        75% { transform: translateY(-40px) rotate(270deg); opacity: 0.25; }
+
+        0%,
+        100% {
+            transform: translateY(0px) rotate(0deg);
+            opacity: 0.1;
+        }
+
+        25% {
+            transform: translateY(-30px) rotate(90deg);
+            opacity: 0.3;
+        }
+
+        50% {
+            transform: translateY(-20px) rotate(180deg);
+            opacity: 0.2;
+        }
+
+        75% {
+            transform: translateY(-40px) rotate(270deg);
+            opacity: 0.25;
+        }
     }
-    
+
     @keyframes floatIcon {
-        0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
-        33% { transform: translateY(-20px) scale(1.1); opacity: 0.6; }
-        66% { transform: translateY(-10px) scale(0.9); opacity: 0.4; }
+
+        0%,
+        100% {
+            transform: translateY(0px) scale(1);
+            opacity: 0.3;
+        }
+
+        33% {
+            transform: translateY(-20px) scale(1.1);
+            opacity: 0.6;
+        }
+
+        66% {
+            transform: translateY(-10px) scale(0.9);
+            opacity: 0.4;
+        }
     }
-    
+
     /* Content Styling */
     .hero-content-left {
         position: relative;
         z-index: 10;
     }
-    
+
     /* Tagline Ribbon */
     .hero-ribbon {
         display: inline-block;
         margin-bottom: 1.5rem;
     }
-    
+
     .ribbon-text {
         background: linear-gradient(135deg, #d4a574 0%, #a5661c 100%);
         color: white;
@@ -629,12 +685,17 @@ document.addEventListener('DOMContentLoaded', function() {
         align-items: center;
         animation: ribbonGlow 3s ease-in-out infinite alternate;
     }
-    
+
     @keyframes ribbonGlow {
-        0% { box-shadow: 0 4px 15px rgba(165, 102, 28, 0.3); }
-        100% { box-shadow: 0 6px 25px rgba(165, 102, 28, 0.5); }
+        0% {
+            box-shadow: 0 4px 15px rgba(165, 102, 28, 0.3);
+        }
+
+        100% {
+            box-shadow: 0 6px 25px rgba(165, 102, 28, 0.5);
+        }
     }
-    
+
     /* Modern Typography */
     .modern-hero-title {
         font-family: 'Montserrat', 'Poppins', sans-serif;
@@ -645,7 +706,7 @@ document.addEventListener('DOMContentLoaded', function() {
         margin-bottom: 1rem;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
-    
+
     .modern-hero-subtitle {
         font-family: 'Poppins', sans-serif;
         font-size: 1.6rem;
@@ -656,7 +717,7 @@ document.addEventListener('DOMContentLoaded', function() {
         line-height: 1.3;
         margin-bottom: 1.5rem;
     }
-    
+
     .modern-hero-description {
         font-family: 'Lora', serif;
         font-size: 1.2rem;
@@ -665,7 +726,7 @@ document.addEventListener('DOMContentLoaded', function() {
         font-weight: 400;
         max-width: 500px;
     }
-    
+
     /* Feature Icons Row */
     .hero-features-row {
         display: flex;
@@ -674,7 +735,7 @@ document.addEventListener('DOMContentLoaded', function() {
         justify-content: flex-start;
         flex-wrap: wrap;
     }
-    
+
     .feature-item {
         display: flex;
         flex-direction: column;
@@ -683,11 +744,11 @@ document.addEventListener('DOMContentLoaded', function() {
         max-width: 120px;
         transition: all 0.3s ease;
     }
-    
+
     .feature-item:hover {
         transform: translateY(-5px);
     }
-    
+
     .feature-icon-circle {
         width: 70px;
         height: 70px;
@@ -702,12 +763,12 @@ document.addEventListener('DOMContentLoaded', function() {
         box-shadow: 0 8px 25px rgba(165, 102, 28, 0.3);
         transition: all 0.3s ease;
     }
-    
+
     .feature-item:hover .feature-icon-circle {
         transform: scale(1.1);
         box-shadow: 0 12px 35px rgba(165, 102, 28, 0.5);
     }
-    
+
     .feature-text {
         font-size: 0.85rem;
         font-weight: 600;
@@ -715,14 +776,14 @@ document.addEventListener('DOMContentLoaded', function() {
         text-align: center;
         line-height: 1.2;
     }
-    
+
     /* Modern CTA Buttons */
     .hero-cta-buttons {
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
     }
-    
+
     .btn-modern-primary {
         background: linear-gradient(135deg, #d4a574 0%, #a5661c 100%);
         border: none;
@@ -742,7 +803,7 @@ document.addEventListener('DOMContentLoaded', function() {
         position: relative;
         overflow: hidden;
     }
-    
+
     .btn-modern-primary::before {
         content: '';
         position: absolute;
@@ -753,17 +814,17 @@ document.addEventListener('DOMContentLoaded', function() {
         background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
         transition: left 0.6s;
     }
-    
+
     .btn-modern-primary:hover::before {
         left: 100%;
     }
-    
+
     .btn-modern-primary:hover {
         transform: translateY(-3px);
         box-shadow: 0 15px 40px rgba(165, 102, 28, 0.6);
         color: white;
     }
-    
+
     .btn-modern-secondary {
         background: transparent;
         border: 3px solid #a5661c;
@@ -780,19 +841,19 @@ document.addEventListener('DOMContentLoaded', function() {
         display: inline-flex;
         align-items: center;
     }
-    
+
     .btn-modern-secondary:hover {
         background: #a5661c;
         color: white;
         transform: translateY(-3px);
         box-shadow: 0 10px 30px rgba(165, 102, 28, 0.4);
     }
-    
+
     .btn-xl {
         font-size: 1.1rem;
         padding: 18px 40px;
     }
-    
+
     /* Animated Statistics */
     .hero-stats {
         display: flex;
@@ -801,11 +862,11 @@ document.addEventListener('DOMContentLoaded', function() {
         margin-top: 2rem;
         flex-wrap: wrap;
     }
-    
+
     .stat-item {
         text-align: center;
     }
-    
+
     .stat-number {
         font-family: 'Montserrat', sans-serif;
         font-size: 2.5rem;
@@ -814,7 +875,7 @@ document.addEventListener('DOMContentLoaded', function() {
         line-height: 1;
         margin-bottom: 0.3rem;
     }
-    
+
     .stat-label {
         font-size: 0.85rem;
         color: #666;
@@ -822,19 +883,19 @@ document.addEventListener('DOMContentLoaded', function() {
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
-    
+
     .stat-divider {
         width: 2px;
         height: 40px;
         background: linear-gradient(to bottom, transparent, #ddd, transparent);
     }
-    
+
     /* Right Visual Container */
     .hero-visual-container {
         position: relative;
         z-index: 10;
     }
-    
+
     .hero-image-frame {
         position: relative;
         background: linear-gradient(135deg, #ffd700 0%, #a5661c 100%);
@@ -844,12 +905,12 @@ document.addEventListener('DOMContentLoaded', function() {
         transform: perspective(1000px) rotateY(-5deg);
         transition: all 0.3s ease;
     }
-    
+
     .hero-image-frame:hover {
         transform: perspective(1000px) rotateY(0deg) scale(1.02);
         box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
     }
-    
+
     .hero-main-image {
         width: 100%;
         height: auto;
@@ -858,7 +919,7 @@ document.addEventListener('DOMContentLoaded', function() {
         max-height: 500px;
         object-fit: cover;
     }
-    
+
     /* Image Decorations */
     .image-decorations {
         position: absolute;
@@ -868,14 +929,14 @@ document.addEventListener('DOMContentLoaded', function() {
         bottom: 0;
         pointer-events: none;
     }
-    
+
     .decoration-circle {
         position: absolute;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(10px);
     }
-    
+
     .circle-1 {
         width: 60px;
         height: 60px;
@@ -883,7 +944,7 @@ document.addEventListener('DOMContentLoaded', function() {
         right: -15px;
         animation: float 4s ease-in-out infinite;
     }
-    
+
     .circle-2 {
         width: 40px;
         height: 40px;
@@ -891,7 +952,7 @@ document.addEventListener('DOMContentLoaded', function() {
         left: -10px;
         animation: float 5s ease-in-out infinite reverse;
     }
-    
+
     .decoration-triangle {
         position: absolute;
         width: 0;
@@ -903,12 +964,19 @@ document.addEventListener('DOMContentLoaded', function() {
         left: -25px;
         animation: float 6s ease-in-out infinite;
     }
-    
+
     @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
+
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
     }
-    
+
     /* Floating Testimonial */
     .floating-testimonial {
         position: absolute;
@@ -921,29 +989,36 @@ document.addEventListener('DOMContentLoaded', function() {
         max-width: 300px;
         animation: floatTestimonial 8s ease-in-out infinite;
     }
-    
+
     @keyframes floatTestimonial {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
     }
-    
+
     .testimonial-content {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
-    
+
     .testimonial-avatar {
         flex-shrink: 0;
     }
-    
+
     .avatar-img {
         width: 50px;
         height: 50px;
         border-radius: 50%;
         border: 3px solid #ffd700;
     }
-    
+
     .testimonial-text .quote {
         font-size: 0.9rem;
         color: #333;
@@ -951,13 +1026,13 @@ document.addEventListener('DOMContentLoaded', function() {
         font-style: italic;
         font-weight: 500;
     }
-    
+
     .testimonial-text .author {
         font-size: 0.75rem;
         color: #a5661c;
         font-weight: 600;
     }
-    
+
     /* Wave Bottom */
     .hero-wave-bottom {
         position: absolute;
@@ -969,7 +1044,7 @@ document.addEventListener('DOMContentLoaded', function() {
         transform: rotate(180deg);
         z-index: 5;
     }
-    
+
     .hero-wave-bottom svg {
         position: relative;
         display: block;
@@ -977,27 +1052,27 @@ document.addEventListener('DOMContentLoaded', function() {
         height: 60px;
         fill: #ffffff;
     }
-    
+
     /* Responsive Design */
     @media (max-width: 992px) {
         .modern-hero-title {
             font-size: 3rem;
         }
-        
+
         .modern-hero-subtitle {
             font-size: 1.3rem;
             letter-spacing: 2px;
         }
-        
+
         .hero-features-row {
             justify-content: center;
             gap: 1.5rem;
         }
-        
+
         .hero-stats {
             justify-content: center;
         }
-        
+
         .floating-testimonial {
             position: relative;
             bottom: auto;
@@ -1006,72 +1081,72 @@ document.addEventListener('DOMContentLoaded', function() {
             max-width: 100%;
         }
     }
-    
+
     @media (max-width: 768px) {
         .modern-hero-title {
             font-size: 2.5rem;
         }
-        
+
         .modern-hero-subtitle {
             font-size: 1.1rem;
             letter-spacing: 1.5px;
         }
-        
+
         .hero-features-row {
             gap: 1rem;
         }
-        
+
         .feature-icon-circle {
             width: 60px;
             height: 60px;
             font-size: 1.5rem;
         }
-        
+
         .hero-cta-buttons {
             flex-direction: column;
             align-items: center;
         }
-        
+
         .btn-modern-primary,
         .btn-modern-secondary {
             width: 100%;
             max-width: 300px;
             justify-content: center;
         }
-        
+
         .hero-stats {
             gap: 1rem;
         }
-        
+
         .stat-number {
             font-size: 2rem;
         }
-        
+
         .hero-image-frame {
             transform: none;
             padding: 15px;
         }
     }
-    
+
     @media (max-width: 576px) {
         .modern-hero-title {
             font-size: 2rem;
         }
-        
+
         .hero-features-row {
             flex-direction: column;
             gap: 1.5rem;
         }
-        
+
         .floating-shape,
         .floating-icon {
             display: none;
         }
-        
+
         .stat-divider {
             display: none;
         }
-        
+
         .hero-stats {
             flex-direction: column;
             gap: 1.5rem;
