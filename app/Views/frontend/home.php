@@ -1605,9 +1605,10 @@
 
     /* Enhanced Three Pillars Section */
     .pillars-section {
-        background: linear-gradient(135deg, #fafafa 0%, #f8f9ff 100%);
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
         position: relative;
         overflow: hidden;
+        padding: 100px 0;
     }
     
     .pillars-section::before {
@@ -1617,8 +1618,9 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: radial-gradient(circle at 20% 30%, rgba(103, 126, 234, 0.05) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 70%, rgba(165, 102, 28, 0.05) 0%, transparent 50%);
+        background: 
+            radial-gradient(circle at 25% 25%, rgba(165, 102, 28, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
         z-index: 1;
     }
     
@@ -1629,45 +1631,53 @@
     
     /* Badge Styling */
     .pillars-badge .badge {
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        letter-spacing: 0.5px;
-        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
-        border: 2px solid rgba(37, 99, 235, 0.1);
+        letter-spacing: 0.8px;
+        box-shadow: 0 8px 25px rgba(165, 102, 28, 0.2);
+        border: 2px solid rgba(165, 102, 28, 0.15);
+        background: linear-gradient(135deg, #a5661c 0%, #d4a574 100%);
+        color: white;
         transition: all 0.3s ease;
+        padding: 12px 24px;
     }
     
     .pillars-badge .badge:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
+        transform: scale(1.08);
+        box-shadow: 0 12px 35px rgba(165, 102, 28, 0.35);
     }
     
     /* Main Title */
     .pillars-main-title {
-        font-size: 3.2rem;
-        font-weight: 800;
-        color: #2d3748;
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: #1a202c;
         line-height: 1.1;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         margin-bottom: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
     }
     
     /* Subtitle */
     .pillars-subtitle {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         font-weight: 600;
         color: #4a5568;
-        line-height: 1.6;
-        max-width: 600px;
+        line-height: 1.7;
+        max-width: 650px;
         margin: 0 auto;
+        font-family: 'Poppins', sans-serif;
     }
     
     /* Pillar Cards Container */
     .pillars-row {
-        margin-top: 4rem;
+        margin-top: 5rem;
+        display: flex;
+        align-items: stretch;
     }
     
     .pillar-col {
+        display: flex;
         animation: fadeInUp 0.8s ease-out;
         animation-fill-mode: both;
     }
@@ -1679,13 +1689,15 @@
     /* Enhanced Pillar Cards */
     .pillar-card {
         border: none;
-        border-radius: 24px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         position: relative;
         overflow: hidden;
-        min-height: 500px;
-        color: white;
+        min-height: 580px;
+        display: flex;
+        flex-direction: column;
+        background: white;
     }
     
     .pillar-card::before {
@@ -1694,132 +1706,185 @@
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
-        background: inherit;
+        height: 6px;
         transition: all 0.4s ease;
-        z-index: -1;
+        z-index: 2;
     }
     
     .pillar-card:hover {
-        transform: translateY(-12px) scale(1.02);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        transform: translateY(-15px);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
     }
     
-    .pillar-card:hover::before {
-        filter: brightness(1.1) saturate(1.2);
+    /* Card-specific top borders and hover effects */
+    .education-pillar::before {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
     
-    /* Card-specific gradients */
-    .education-pillar {
-        background: linear-gradient(135deg, #a8c8ff 0%, #667eea 50%, #5a6fd8 100%);
+    .education-pillar:hover {
+        box-shadow: 0 25px 70px rgba(102, 126, 234, 0.3);
     }
     
-    .mentoring-pillar {
-        background: linear-gradient(135deg, #ffb3d4 0%, #f093fb 50%, #e97ff0 100%);
+    .mentoring-pillar::before {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     }
     
-    .career-pillar {
-        background: linear-gradient(135deg, #81e6d9 0%, #4facfe 50%, #00b4db 100%);
+    .mentoring-pillar:hover {
+        box-shadow: 0 25px 70px rgba(240, 147, 251, 0.3);
+    }
+    
+    .career-pillar::before {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    .career-pillar:hover {
+        box-shadow: 0 25px 70px rgba(79, 172, 254, 0.3);
+    }
+    
+    /* Card Body */
+    .pillar-card .card-body {
+        padding: 3rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        text-align: center;
+        background: white;
+        position: relative;
+        z-index: 3;
     }
     
     /* Icon Container */
     .pillar-icon-container {
         position: relative;
         display: inline-block;
+        margin-bottom: 2rem;
     }
     
     .pillar-icon {
-        width: 100px;
-        height: 100px;
-        background: rgba(255, 255, 255, 0.2);
+        width: 90px;
+        height: 90px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         color: white;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-        border: 3px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.4s ease;
         position: relative;
+        margin: 0 auto;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .education-pillar .pillar-icon {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .mentoring-pillar .pillar-icon {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .career-pillar .pillar-icon {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     }
     
     .pillar-card:hover .pillar-icon {
-        transform: scale(1.1) rotate(5deg);
-        background: rgba(255, 255, 255, 0.3);
-        animation: iconBounce 0.6s ease;
+        transform: scale(1.15) rotate(10deg);
+        animation: iconPulse 0.6s ease;
     }
     
-    @keyframes iconBounce {
-        0%, 100% { transform: scale(1.1) rotate(5deg); }
-        50% { transform: scale(1.2) rotate(-2deg); }
+    @keyframes iconPulse {
+        0%, 100% { transform: scale(1.15) rotate(10deg); }
+        50% { transform: scale(1.25) rotate(-5deg); }
     }
     
     /* Title Styling */
     .pillar-title {
-        font-family: 'Montserrat', 'Poppins', sans-serif;
-        font-size: 1.8rem;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.6rem;
         font-weight: 700;
-        color: white;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        color: #2d3748;
         line-height: 1.3;
+        margin-bottom: 1.5rem;
     }
     
     /* Description */
     .pillar-description {
-        font-size: 1.1rem;
+        font-size: 1rem;
         line-height: 1.7;
-        color: rgba(255, 255, 255, 0.9);
+        color: #4a5568;
         font-weight: 400;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        flex-grow: 1;
     }
     
     /* Feature List */
     .pillar-features {
         text-align: left;
-        max-width: 280px;
-        margin: 0 auto;
+        padding-left: 0;
+        margin: 0;
     }
     
     .pillar-features li {
         display: flex;
-        align-items: center;
-        font-size: 1rem;
-        line-height: 1.5;
-        color: rgba(255, 255, 255, 0.95);
+        align-items: flex-start;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #2d3748;
         font-weight: 500;
-        transition: all 0.2s ease;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
     }
     
     .pillar-features li:hover {
-        color: white;
-        transform: translateX(5px);
+        background: rgba(0, 0, 0, 0.02);
+        transform: translateX(8px);
+        padding-left: 1rem;
+    }
+    
+    .pillar-features li:last-child {
+        margin-bottom: 0;
     }
     
     .feature-icon {
-        width: 20px;
-        height: 20px;
-        background: rgba(255, 255, 255, 0.2);
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         color: white;
         flex-shrink: 0;
+        margin-right: 12px;
+        margin-top: 2px;
         transition: all 0.3s ease;
     }
     
+    .education-pillar .feature-icon {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .mentoring-pillar .feature-icon {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .career-pillar .feature-icon {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
     .pillar-features li:hover .feature-icon {
-        background: rgba(255, 255, 255, 0.4);
         transform: scale(1.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
     
     /* Fade in animation */
     @keyframes fadeInUp {
         from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
         }
         to {
             opacity: 1;
@@ -1830,7 +1895,7 @@
     /* Responsive Design */
     @media (max-width: 992px) {
         .pillars-main-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
         }
         
         .pillars-subtitle {
@@ -1838,8 +1903,12 @@
         }
         
         .pillar-card {
-            min-height: 450px;
-            margin-bottom: 2rem;
+            min-height: 520px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .pillar-card .card-body {
+            padding: 2.5rem 2rem;
         }
         
         .pillar-icon {
@@ -1849,21 +1918,34 @@
         }
         
         .pillar-title {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
     }
     
     @media (max-width: 768px) {
+        .pillars-section {
+            padding: 80px 0;
+        }
+        
         .pillars-main-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
         
         .pillars-subtitle {
             font-size: 1.1rem;
         }
         
+        .pillars-row {
+            margin-top: 3rem;
+        }
+        
         .pillar-card {
-            min-height: 400px;
+            min-height: 480px;
+            margin-bottom: 2rem;
+        }
+        
+        .pillar-card .card-body {
+            padding: 2rem 1.5rem;
         }
         
         .pillar-icon {
@@ -1877,11 +1959,37 @@
         }
         
         .pillar-description {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
         
         .pillar-features li {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .feature-icon {
+            width: 22px;
+            height: 22px;
+            margin-right: 10px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .pillars-badge .badge {
+            font-size: 1rem;
+            padding: 10px 20px;
+        }
+        
+        .pillar-card .card-body {
+            padding: 1.5rem 1.2rem;
+        }
+        
+        .pillar-features li {
+            padding: 0.4rem;
+        }
+        
+        .pillar-features li:hover {
+            padding-left: 0.8rem;
         }
     }
 
