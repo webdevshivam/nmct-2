@@ -365,22 +365,9 @@
 
 /* Professional Hero Section */
 .hero-section-professional {
-    background: linear-gradient(135deg, var(--cream) 0%, #ffffff 100%);
+    background: #ffffff;
     padding: 140px 0 100px 0;
     position: relative;
-}
-
-.hero-section-professional::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, var(--navy-light) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, var(--gold-light) 0%, transparent 50%);
-    z-index: 1;
 }
 
 .hero-content {
@@ -402,7 +389,7 @@
 
 /* Hero Typography */
 .hero-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', 'Roboto', sans-serif;
     font-size: 3.2rem;
     font-weight: 700;
     color: var(--navy);
@@ -497,14 +484,18 @@
 /* Hero Image */
 .hero-image-container {
     position: relative;
+    z-index: 10;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 .hero-image-frame {
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     border: 3px solid var(--gold);
+    background: #ffffff;
 }
 
 .hero-image {
@@ -512,17 +503,18 @@
     height: 400px;
     object-fit: cover;
     display: block;
+    background: #ffffff;
 }
 
 .impact-badge {
     position: absolute;
     bottom: 20px;
     left: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: #ffffff;
     padding: 16px 20px;
     border-radius: 12px;
     border: 2px solid var(--gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .impact-content {
@@ -552,7 +544,7 @@
 }
 
 .section-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', 'Roboto', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--navy);
@@ -779,7 +771,7 @@
 }
 
 .cta-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Inter', 'Roboto', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
     color: white;
