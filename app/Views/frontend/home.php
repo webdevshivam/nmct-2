@@ -365,7 +365,7 @@
 
 /* Professional Hero Section */
 .hero-section-professional {
-    background: #ffffff;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--gold) 100%);
     padding: 140px 0 100px 0;
     position: relative;
 }
@@ -389,17 +389,17 @@
 
 /* Hero Typography */
 .hero-title {
-    font-family: 'Inter', 'Roboto', sans-serif;
+    font-family: 'Playfair Display', serif;
     font-size: 3.2rem;
     font-weight: 700;
-    color: var(--navy);
+    color: white;
     line-height: 1.2;
     margin-bottom: 1.5rem;
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
-    color: var(--gray-text);
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
     font-weight: 400;
 }
@@ -461,13 +461,13 @@
     display: block;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--navy);
+    color: white;
     line-height: 1;
 }
 
 .stat-label {
     font-size: 0.875rem;
-    color: var(--gray-text);
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
 }
 
@@ -478,7 +478,7 @@
 }
 
 .text-gold {
-    color: var(--gold) !important;
+    color: var(--gold-light) !important;
 }
 
 /* Hero Image */
