@@ -189,62 +189,115 @@
 <section class="section-padding bg-soft">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6 mb-5 mb-lg-0">
+            <!-- Image Column - Reduced width for better balance -->
+            <div class="col-lg-5 mb-5 mb-lg-0">
                 <div class="about-image-container position-relative">
+                    <!-- Gradient overlay for better text contrast -->
+                    <div class="image-gradient-overlay"></div>
                     <img src="<?= base_url('assets/images/our-difference-image.jpg') ?>"
-                        alt="Creating Professionals - Students in professional training"
-                        class="img-fluid rounded-4 shadow-lg"
+                        alt="Creating Professionals - Students in mentoring and professional training"
+                        class="img-fluid rounded-4 shadow-lg contextual-image"
                         style="width: 100%; height: 450px; object-fit: cover;"
-                        onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=450&fit=crop&crop=faces,entropy&auto=format&q=80'">
+                        onerror="this.src='https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=450&fit=crop&crop=faces,entropy&auto=format&q=80'">
 
-                    <!-- Hindi Decorative Elements on Image -->
+                    <!-- Enhanced decorative elements -->
                     <div class="image-overlay-decorations">
-                        <div class="hindi-symbol symbol-1">🕉️</div>
-                        <div class="hindi-symbol symbol-2">🪔</div>
-                        <div class="hindi-symbol symbol-3">🌺</div>
+                        <div class="floating-element element-1">
+                            <div class="icon-circle">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <div class="floating-element element-2">
+                            <div class="icon-circle">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="floating-element element-3">
+                            <div class="icon-circle">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            
+            <!-- Content Column - Increased width for better breathing room -->
+            <div class="col-lg-7">
                 <div class="about-content">
-                    <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">
+                    <span class="badge bg-primary-light text-primary px-4 py-2 rounded-pill mb-4 section-badge">
+                        <i class="fas fa-star me-2"></i>
                         <?= $translations['our_difference'] ?>
                     </span>
-                    <h2 class="section-title font-display mb-4">
-                        <?= $translations['creating_professionals'] ?>
-                    </h2>
-                    <p class="lead mb-4">
-                        <?= $translations['professionals_description'] ?>
+                    
+                    <!-- Enhanced headline with better hierarchy -->
+                    <div class="headline-container mb-4">
+                        <h2 class="section-title font-display enhanced-headline">
+                            We Don't Just Provide <span class="text-highlight">Education</span>
+                            <br>
+                            We Create <span class="text-primary-gradient">Professionals</span>
+                        </h2>
+                        <div class="headline-underline"></div>
+                    </div>
+                    
+                    <!-- Enhanced subheading -->
+                    <p class="lead enhanced-description mb-5">
+                        Unlike traditional NGOs that only offer monetary support, we provide comprehensive 
+                        <span class="text-emphasis">Education</span>, 
+                        <span class="text-emphasis">Mentoring</span>, and 
+                        <span class="text-emphasis">Career Placement</span> 
+                        to transform students into industry-ready professionals.
                     </p>
 
-                    <div class="row g-4 mb-4">
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="icon-box bg-primary text-white rounded-3 p-3 me-3">
-                                    <i class="fas fa-brain"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold mb-1"><?= $translations['holistic_development'] ?></h6>
-                                    <small class="text-muted"><?= $translations['mind_skills_career'] ?></small>
+                    <!-- Enhanced benefit cards with more spacing -->
+                    <div class="benefits-container mb-5">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="benefit-card h-100">
+                                    <div class="benefit-icon-large bg-gradient-primary">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <div class="benefit-content">
+                                        <h5 class="benefit-title"><?= $translations['holistic_development'] ?></h5>
+                                        <p class="benefit-description">
+                                            Complete intellectual, emotional and professional growth.
+                                            <br>
+                                            <small class="text-muted">Mind + Skills + Character</small>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="d-flex align-items-center">
-                                <div class="icon-box bg-success text-white rounded-3 p-3 me-3">
-                                    <i class="fas fa-briefcase"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold mb-1"><?= $translations['industry_ready'] ?></h6>
-                                    <small class="text-muted"><?= $translations['real_world_skills'] ?></small>
+                            <div class="col-md-6">
+                                <div class="benefit-card h-100">
+                                    <div class="benefit-icon-large bg-gradient-success">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <div class="benefit-content">
+                                        <h5 class="benefit-title"><?= $translations['industry_ready'] ?></h5>
+                                        <p class="benefit-description">
+                                            Practical skills and real-world experience.
+                                            <br>
+                                            <small class="text-muted">Ready for Professional Success</small>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="d-flex gap-3">
-                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-primary"><?= $translations['our_approach'] ?></a>
-                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-outline-primary"><?= $translations['meet_beneficiaries'] ?></a>
+                    <!-- Enhanced CTA buttons with better differentiation -->
+                    <div class="cta-buttons-container">
+                        <div class="d-flex flex-column flex-sm-row gap-3">
+                            <a href="<?= base_url($language . '/ngo-works') ?>" 
+                               class="btn btn-primary-enhanced btn-lg">
+                                <i class="fas fa-rocket me-2"></i>
+                                <?= $translations['our_approach'] ?>
+                            </a>
+                            <a href="<?= base_url($language . '/beneficiaries') ?>" 
+                               class="btn btn-outline-primary-enhanced btn-lg">
+                                <i class="fas fa-users me-2"></i>
+                                <?= $translations['meet_beneficiaries'] ?>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1154,6 +1207,357 @@
         .hero-stats {
             flex-direction: column;
             gap: 1.5rem;
+        }
+    }
+
+    /* Enhanced Our Difference Section Styles */
+    
+    /* Image enhancements */
+    .about-image-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+    
+    .image-gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(165, 102, 28, 0.1) 0%, transparent 50%);
+        z-index: 2;
+        border-radius: 20px;
+    }
+    
+    .contextual-image {
+        transition: all 0.3s ease;
+        border-radius: 20px;
+    }
+    
+    .contextual-image:hover {
+        transform: scale(1.02);
+    }
+    
+    /* Floating decorative elements */
+    .floating-element {
+        position: absolute;
+        z-index: 3;
+        animation: floatElement 6s ease-in-out infinite;
+    }
+    
+    .element-1 {
+        top: 20px;
+        right: 20px;
+        animation-delay: 0s;
+    }
+    
+    .element-2 {
+        bottom: 80px;
+        left: 20px;
+        animation-delay: 2s;
+    }
+    
+    .element-3 {
+        top: 50%;
+        right: -15px;
+        animation-delay: 4s;
+    }
+    
+    .floating-element .icon-circle {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+    
+    @keyframes floatElement {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        33% { transform: translateY(-10px) scale(1.05); }
+        66% { transform: translateY(5px) scale(0.98); }
+    }
+    
+    /* Enhanced badge styling */
+    .section-badge {
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+    }
+    
+    /* Enhanced headline styling */
+    .headline-container {
+        position: relative;
+    }
+    
+    .enhanced-headline {
+        font-size: 2.8rem;
+        line-height: 1.2;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1rem;
+    }
+    
+    .text-highlight {
+        color: #667eea;
+        position: relative;
+    }
+    
+    .text-highlight::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 2px;
+    }
+    
+    .text-primary-gradient {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #667eea 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+    }
+    
+    .headline-underline {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), #ffd700);
+        border-radius: 2px;
+        margin-bottom: 1rem;
+    }
+    
+    /* Enhanced description styling */
+    .enhanced-description {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #4a5568;
+        font-weight: 500;
+    }
+    
+    .text-emphasis {
+        color: var(--primary-color);
+        font-weight: 700;
+        position: relative;
+    }
+    
+    .text-emphasis::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-color), transparent);
+        opacity: 0.3;
+    }
+    
+    /* Enhanced benefit cards */
+    .benefits-container {
+        margin-top: 3rem;
+    }
+    
+    .benefit-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .benefit-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), #667eea);
+    }
+    
+    .benefit-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .benefit-icon-large {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #667eea 100%);
+    }
+    
+    .bg-gradient-success {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+    
+    .benefit-card:hover .benefit-icon-large {
+        transform: scale(1.1) rotate(5deg);
+    }
+    
+    .benefit-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 0.8rem;
+    }
+    
+    .benefit-description {
+        font-size: 1rem;
+        color: #4a5568;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+    
+    /* Enhanced CTA buttons */
+    .cta-buttons-container {
+        margin-top: 2.5rem;
+    }
+    
+    .btn-primary-enhanced {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #667eea 100%);
+        border: none;
+        color: white;
+        font-weight: 700;
+        padding: 16px 32px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn-primary-enhanced::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.6s;
+    }
+    
+    .btn-primary-enhanced:hover::before {
+        left: 100%;
+    }
+    
+    .btn-primary-enhanced:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+        color: white;
+    }
+    
+    .btn-outline-primary-enhanced {
+        background: transparent;
+        border: 3px solid var(--primary-color);
+        color: var(--primary-color);
+        font-weight: 700;
+        padding: 13px 29px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn-outline-primary-enhanced::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary-color) 0%, #667eea 100%);
+        transition: width 0.3s ease;
+        z-index: -1;
+    }
+    
+    .btn-outline-primary-enhanced:hover::before {
+        width: 100%;
+    }
+    
+    .btn-outline-primary-enhanced:hover {
+        color: white;
+        border-color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .enhanced-headline {
+            font-size: 2.3rem;
+        }
+        
+        .benefit-card {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-icon-large {
+            width: 70px;
+            height: 70px;
+            font-size: 1.8rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .enhanced-headline {
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .headline-underline {
+            margin: 1rem auto;
+        }
+        
+        .enhanced-description {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .cta-buttons-container .d-flex {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .btn-primary-enhanced,
+        .btn-outline-primary-enhanced {
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .floating-element {
+            display: none;
         }
     }
 
