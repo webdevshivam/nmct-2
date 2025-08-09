@@ -1,3 +1,4 @@
+
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -41,24 +42,15 @@
                 <div class="hero-content-enhanced">
                     <!-- Main Title -->
                     <h1 class="hero-title font-display mb-3">
-                        <span class="lang-en">Bharatpur Foundation</span>
-                        <span class="lang-hi d-none">भरतपुर फाउंडेशन</span>
+                        <?= $translations['hero_title'] ?>
                     </h1>
                     <h2 class="hero-tagline mb-4">
-                        <span class="lang-en">
-                            Transforming <span class="text-gradient-hero">Students</span> into
-                            <span class="text-gradient-hero">Professionals</span>
-                        </span>
-                        <span class="lang-hi d-none">
-                            <span class="text-gradient-hero">छात्रों</span> को 
-                            <span class="text-gradient-hero">पेशेवरों</span> में बदलना
-                        </span>
+                        <?= $translations['hero_tagline'] ?>
                     </h2>
 
                     <!-- Simple Description -->
                     <p class="hero-description mb-5">
-                        <span class="lang-en">Beyond financial aid - we create careers through education, mentoring, and professional development.</span>
-                        <span class="lang-hi d-none">वित्तीय सहायता से कहीं अधिक - हम शिक्षा, मार्गदर्शन और व्यावसायिक विकास के माध्यम से करियर बनाते हैं।</span>
+                        <?= $translations['hero_description'] ?>
                     </p>
 
                     <!-- Journey Steps in Hindi/English -->
@@ -69,10 +61,8 @@
                                     <div class="step-icon">
                                         <i class="fas fa-graduation-cap"></i>
                                     </div>
-                                    <h6 class="lang-en">Quality Education</h6>
-                                    <h6 class="lang-hi d-none">गुणवत्तापूर्ण शिक्षा</h6>
-                                    <small class="lang-en">Complete academic support</small>
-                                    <small class="lang-hi d-none">संपूर्ण शैक्षणिक सहायता</small>
+                                    <h6><?= $translations['quality_education'] ?></h6>
+                                    <small><?= $translations['complete_academic_support'] ?></small>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -80,10 +70,8 @@
                                     <div class="step-icon">
                                         <i class="fas fa-user-tie"></i>
                                     </div>
-                                    <h6 class="lang-en">Personal Mentoring</h6>
-                                    <h6 class="lang-hi d-none">व्यक्तिगत मार्गदर्शन</h6>
-                                    <small class="lang-en">Industry guidance</small>
-                                    <small class="lang-hi d-none">उद्योग मार्गदर्शन</small>
+                                    <h6><?= $translations['personal_mentoring'] ?></h6>
+                                    <small><?= $translations['industry_guidance'] ?></small>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -91,10 +79,8 @@
                                     <div class="step-icon">
                                         <i class="fas fa-briefcase"></i>
                                     </div>
-                                    <h6 class="lang-en">Career Development</h6>
-                                    <h6 class="lang-hi d-none">करियर विकास</h6>
-                                    <small class="lang-en">Job placement support</small>
-                                    <small class="lang-hi d-none">नौकरी प्लेसमेंट सहायता</small>
+                                    <h6><?= $translations['career_development'] ?></h6>
+                                    <small><?= $translations['job_placement_support'] ?></small>
                                 </div>
                             </div>
                         </div>
@@ -102,13 +88,11 @@
 
                     <!-- Call to Action Buttons -->
                     <div class="hero-actions d-flex flex-wrap justify-content-center gap-3">
-                        <a href="<?= base_url('ngo-works') ?>" class="btn btn-hero-primary btn-lg">
-                            <span class="lang-en">Our Approach</span>
-                            <span class="lang-hi d-none">हमारा दृष्टिकोण</span>
+                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-hero-primary btn-lg">
+                            <?= $translations['our_approach'] ?>
                         </a>
-                        <a href="<?= base_url('beneficiaries') ?>" class="btn btn-hero-outline btn-lg">
-                            <span class="lang-en">Support Students</span>
-                            <span class="lang-hi d-none">छात्रों की सहायता करें</span>
+                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-hero-outline btn-lg">
+                            <?= $translations['support_students'] ?>
                         </a>
                     </div>
                 </div>
@@ -149,16 +133,13 @@
             <div class="col-lg-6">
                 <div class="about-content">
                     <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">
-                        <span class="lang-en">Our Difference</span>
-                        <span class="lang-hi d-none">हमारा अंतर</span>
+                        <?= $translations['our_difference'] ?>
                     </span>
                     <h2 class="section-title font-display mb-4">
-                        <span class="lang-en">Creating Professionals, Not Just Providing Aid</span>
-                        <span class="lang-hi d-none">केवल सहायता नहीं, पेशेवर बनाना</span>
+                        <?= $translations['creating_professionals'] ?>
                     </h2>
                     <p class="lead mb-4">
-                        <span class="lang-en">Most NGOs only offer monetary help. We create complete professionals through Education + Mentoring + Career Placement.</span>
-                        <span class="lang-hi d-none">अधिकांश एनजीओ केवल वित्तीय सहायता प्रदान करते हैं। हम शिक्षा + मार्गदर्शन + करियर प्लेसमेंट के माध्यम से संपूर्ण पेशेवर तैयार करते हैं।</span>
+                        <?= $translations['professionals_description'] ?>
                     </p>
 
                     <div class="row g-4 mb-4">
@@ -168,8 +149,8 @@
                                     <i class="fas fa-brain"></i>
                                 </div>
                                 <div>
-                                    <h6 class="fw-bold mb-1">Holistic Development</h6>
-                                    <small class="text-muted">Mind + Skills + Career</small>
+                                    <h6 class="fw-bold mb-1"><?= $translations['holistic_development'] ?></h6>
+                                    <small class="text-muted"><?= $translations['mind_skills_career'] ?></small>
                                 </div>
                             </div>
                         </div>
@@ -179,16 +160,16 @@
                                     <i class="fas fa-briefcase"></i>
                                 </div>
                                 <div>
-                                    <h6 class="fw-bold mb-1">Industry Ready</h6>
-                                    <small class="text-muted">Real-World Skills</small>
+                                    <h6 class="fw-bold mb-1"><?= $translations['industry_ready'] ?></h6>
+                                    <small class="text-muted"><?= $translations['real_world_skills'] ?></small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="d-flex gap-3">
-                        <a href="<?= base_url('ngo-works') ?>" class="btn btn-primary">Our Approach</a>
-                        <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-primary">Meet Beneficiaries</a>
+                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-primary"><?= $translations['our_approach'] ?></a>
+                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-outline-primary"><?= $translations['meet_beneficiaries'] ?></a>
                     </div>
                 </div>
             </div>
@@ -202,16 +183,13 @@
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
                 <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">
-                    <span class="lang-en">Our Three Pillars</span>
-                    <span class="lang-hi d-none">हमारे तीन स्तंभ</span>
+                    <?= $translations['our_three_pillars'] ?>
                 </span>
                 <h2 class="section-title font-display mb-4">
-                    <span class="lang-en">Complete Transformation Journey</span>
-                    <span class="lang-hi d-none">संपूर्ण परिवर्तन यात्रा</span>
+                    <?= $translations['complete_transformation'] ?>
                 </h2>
                 <p class="lead text-muted">
-                    <span class="lang-en">The first NGO to offer comprehensive empowerment through our unique three-pillar approach</span>
-                    <span class="lang-hi d-none">हमारे अनूठे तीन-स्तंभीय दृष्टिकोण के माध्यम से व्यापक सशक्तिकरण प्रदान करने वाला पहला एनजीओ</span>
+                    <?= $translations['transformation_description'] ?>
                 </p>
             </div>
         </div>
@@ -222,12 +200,12 @@
                         <div class="pillar-icon mb-4">
                             <i class="fas fa-graduation-cap fa-4x"></i>
                         </div>
-                        <h3 class="card-title font-display mb-4">Quality Education</h3>
-                        <p class="card-text mb-4">Complete academic support with modern learning tools and industry-relevant skills.</p>
+                        <h3 class="card-title font-display mb-4"><?= $translations['quality_education'] ?></h3>
+                        <p class="card-text mb-4"><?= $translations['complete_academic_support'] ?> with modern learning tools and industry-relevant skills.</p>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> Full academic coverage</li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> Modern learning tools</li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> Skill workshops</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['full_academic_coverage'] ?></li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['modern_learning_tools'] ?></li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['skill_workshops'] ?></li>
                         </ul>
                     </div>
                 </div>
@@ -238,12 +216,12 @@
                         <div class="pillar-icon mb-4">
                             <i class="fas fa-users fa-4x"></i>
                         </div>
-                        <h3 class="card-title font-display mb-4">Personal Mentoring</h3>
+                        <h3 class="card-title font-display mb-4"><?= $translations['personal_mentoring'] ?></h3>
                         <p class="card-text mb-4">Personal guidance from industry professionals for career and personal growth.</p>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> Industry mentors</li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> Regular guidance</li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> Personality development</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['industry_mentors_text'] ?></li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['regular_guidance'] ?></li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['personality_development'] ?></li>
                         </ul>
                     </div>
                 </div>
@@ -254,12 +232,12 @@
                         <div class="pillar-icon mb-4">
                             <i class="fas fa-briefcase fa-4x"></i>
                         </div>
-                        <h3 class="card-title font-display mb-4">Career Development</h3>
+                        <h3 class="card-title font-display mb-4"><?= $translations['career_development'] ?></h3>
                         <p class="card-text mb-4">Job placement assistance and professional training for sustainable careers.</p>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> Job placement</li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> Interview training</li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> Career support</li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['job_placement'] ?></li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['interview_training'] ?></li>
+                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['career_support'] ?></li>
                         </ul>
                     </div>
                 </div>
@@ -273,8 +251,8 @@
     <div class="container">
         <div class="row text-center mb-5">
             <div class="col-lg-8 mx-auto">
-                <h2 class="section-title text-white font-display mb-4">Real Impact, Real Results</h2>
-                <p class="lead text-white-50">Numbers that prove our comprehensive approach works</p>
+                <h2 class="section-title text-white font-display mb-4"><?= $translations['real_impact'] ?></h2>
+                <p class="lead text-white-50"><?= $translations['impact_description'] ?></p>
             </div>
         </div>
         <div class="row">
@@ -284,8 +262,8 @@
                         <i class="fas fa-users fs-2"></i>
                     </div>
                     <h3 class="fw-bold mb-2"><?= $total_beneficiaries ?>+</h3>
-                    <h5 class="fw-semibold mb-2">Students Transformed</h5>
-                    <p class="text-white-50 mb-0">Into industry professionals</p>
+                    <h5 class="fw-semibold mb-2"><?= $translations['students_transformed'] ?></h5>
+                    <p class="text-white-50 mb-0"><?= $translations['into_professionals'] ?></p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
@@ -294,8 +272,8 @@
                         <i class="fas fa-briefcase fs-2"></i>
                     </div>
                     <h3 class="fw-bold mb-2">95%</h3>
-                    <h5 class="fw-semibold mb-2">Employment Rate</h5>
-                    <p class="text-white-50 mb-0">In their chosen fields</p>
+                    <h5 class="fw-semibold mb-2"><?= $translations['employment_rate'] ?></h5>
+                    <p class="text-white-50 mb-0"><?= $translations['in_chosen_fields'] ?></p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
@@ -304,8 +282,8 @@
                         <i class="fas fa-user-tie fs-2"></i>
                     </div>
                     <h3 class="fw-bold mb-2">50+</h3>
-                    <h5 class="fw-semibold mb-2">Industry Mentors</h5>
-                    <p class="text-white-50 mb-0">Professional guidance</p>
+                    <h5 class="fw-semibold mb-2"><?= $translations['industry_mentors'] ?></h5>
+                    <p class="text-white-50 mb-0"><?= $translations['professional_guidance'] ?></p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
@@ -314,8 +292,8 @@
                         <i class="fas fa-rupee-sign fs-2"></i>
                     </div>
                     <h3 class="fw-bold mb-2">₹50K+</h3>
-                    <h5 class="fw-semibold mb-2">Average Starting Salary</h5>
-                    <p class="text-white-50 mb-0">Sustainable livelihoods</p>
+                    <h5 class="fw-semibold mb-2"><?= $translations['average_salary'] ?></h5>
+                    <p class="text-white-50 mb-0"><?= $translations['sustainable_livelihoods'] ?></p>
                 </div>
             </div>
         </div>
@@ -327,9 +305,9 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-                <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">How We Work</span>
-                <h2 class="section-title font-display mb-4">Comprehensive Empowerment Process</h2>
-                <p class="lead text-muted">Our systematic approach to creating professionals, not just providing aid</p>
+                <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3"><?= $translations['how_we_work'] ?></span>
+                <h2 class="section-title font-display mb-4"><?= $translations['empowerment_process'] ?></h2>
+                <p class="lead text-muted"><?= $translations['process_description'] ?></p>
             </div>
         </div>
         <div class="row g-4">
@@ -341,7 +319,7 @@
                         <div class="icon-box bg-primary-light text-primary rounded-3 p-3 mb-3 mx-auto" style="width: 60px; height: 60px;">
                             <i class="fas fa-graduation-cap fs-4"></i>
                         </div>
-                        <h5 class="card-title font-display mb-3">Quality Education</h5>
+                        <h5 class="card-title font-display mb-3"><?= $translations['quality_education'] ?></h5>
                         <p class="card-text text-muted">Quality education with industry-relevant curriculum and modern tools.</p>
                     </div>
                 </div>
@@ -354,7 +332,7 @@
                         <div class="icon-box bg-success-light text-success rounded-3 p-3 mb-3 mx-auto" style="width: 60px; height: 60px;">
                             <i class="fas fa-user-tie fs-4"></i>
                         </div>
-                        <h5 class="card-title font-display mb-3">Personal Mentoring</h5>
+                        <h5 class="card-title font-display mb-3"><?= $translations['personal_mentoring'] ?></h5>
                         <p class="card-text text-muted">Personal guidance from industry experts for career growth.</p>
                     </div>
                 </div>
@@ -367,7 +345,7 @@
                         <div class="icon-box bg-warning-light text-warning rounded-3 p-3 mb-3 mx-auto" style="width: 60px; height: 60px;">
                             <i class="fas fa-briefcase fs-4"></i>
                         </div>
-                        <h5 class="card-title font-display mb-3">Career Placement</h5>
+                        <h5 class="card-title font-display mb-3"><?= $translations['career_development'] ?></h5>
                         <p class="card-text text-muted">Job placement and professional support for career success.</p>
                     </div>
                 </div>
@@ -382,9 +360,9 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-lg-8 mx-auto text-center">
-                    <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">Professional Success</span>
-                    <h2 class="section-title font-display mb-4">From Students to Professionals</h2>
-                    <p class="lead text-muted">Real stories of transformation through our comprehensive approach</p>
+                    <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3"><?= $translations['professional_success'] ?></span>
+                    <h2 class="section-title font-display mb-4"><?= $translations['from_students'] ?></h2>
+                    <p class="lead text-muted"><?= $translations['success_description'] ?></p>
                 </div>
             </div>
             <div class="row g-4">
@@ -418,8 +396,8 @@
                 <?php endforeach; ?>
             </div>
             <div class="text-center mt-5">
-                <a href="<?= base_url('success-stories') ?>" class="btn btn-primary btn-lg px-5">
-                    <i class="fas fa-arrow-right me-2"></i> View All Success Stories
+                <a href="<?= base_url($language . '/success-stories') ?>" class="btn btn-primary btn-lg px-5">
+                    <i class="fas fa-arrow-right me-2"></i> <?= $translations['view_all_stories'] ?>
                 </a>
             </div>
         </div>
@@ -431,22 +409,22 @@
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="font-display mb-4 display-5">Join the Education Revolution</h2>
-                <p class="lead mb-5 fs-4">Help us transform students into industry professionals through our unique approach.</p>
+                <h2 class="font-display mb-4 display-5"><?= $translations['education_revolution'] ?></h2>
+                <p class="lead mb-5 fs-4"><?= $translations['revolution_description'] ?></p>
                 <div class="row justify-content-center g-3">
                     <div class="col-md-4">
-                        <a href="<?= base_url('ngo-works') ?>" class="btn btn-light btn-lg w-100 py-3">
-                            <i class="fas fa-rocket me-2"></i> Our Approach
+                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-light btn-lg w-100 py-3">
+                            <i class="fas fa-rocket me-2"></i> <?= $translations['our_approach'] ?>
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-light btn-lg w-100 py-3">
-                            <i class="fas fa-users me-2"></i> Support Students
+                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-outline-light btn-lg w-100 py-3">
+                            <i class="fas fa-users me-2"></i> <?= $translations['support_students'] ?>
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="<?= base_url('success-stories') ?>" class="btn btn-outline-light btn-lg w-100 py-3">
-                            <i class="fas fa-handshake me-2"></i> Become Mentor
+                        <a href="<?= base_url($language . '/success-stories') ?>" class="btn btn-outline-light btn-lg w-100 py-3">
+                            <i class="fas fa-handshake me-2"></i> <?= $translations['become_mentor'] ?>
                         </a>
                     </div>
                 </div>

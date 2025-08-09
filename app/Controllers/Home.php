@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Controllers;
@@ -7,22 +8,170 @@ use App\Models\SuccessStoryModel;
 
 class Home extends BaseController
 {
-    public function index()
+    private $language = 'en';
+    private $translations = [];
+
+    public function __construct()
     {
+        $this->loadTranslations();
+    }
+
+    private function loadTranslations()
+    {
+        $this->translations = [
+            'en' => [
+                'site_title' => 'Bharatpur Foundation',
+                'hero_title' => 'Bharatpur Foundation',
+                'hero_tagline' => 'Transforming Students into Professionals',
+                'hero_description' => 'Beyond financial aid - we create careers through education, mentoring, and professional development.',
+                'quality_education' => 'Quality Education',
+                'complete_academic_support' => 'Complete academic support',
+                'personal_mentoring' => 'Personal Mentoring',
+                'industry_guidance' => 'Industry guidance',
+                'career_development' => 'Career Development',
+                'job_placement_support' => 'Job placement support',
+                'our_approach' => 'Our Approach',
+                'support_students' => 'Support Students',
+                'nav_home' => 'Home',
+                'nav_beneficiaries' => 'Beneficiaries',
+                'nav_success_stories' => 'Success Stories',
+                'nav_our_works' => 'Our Works',
+                'our_difference' => 'Our Difference',
+                'creating_professionals' => 'Creating Professionals, Not Just Providing Aid',
+                'professionals_description' => 'Most NGOs only offer monetary help. We create complete professionals through Education + Mentoring + Career Placement.',
+                'holistic_development' => 'Holistic Development',
+                'mind_skills_career' => 'Mind + Skills + Career',
+                'industry_ready' => 'Industry Ready',
+                'real_world_skills' => 'Real-World Skills',
+                'meet_beneficiaries' => 'Meet Beneficiaries',
+                'our_three_pillars' => 'Our Three Pillars',
+                'complete_transformation' => 'Complete Transformation Journey',
+                'transformation_description' => 'The first NGO to offer comprehensive empowerment through our unique three-pillar approach',
+                'real_impact' => 'Real Impact, Real Results',
+                'impact_description' => 'Numbers that prove our comprehensive approach works',
+                'students_transformed' => 'Students Transformed',
+                'into_professionals' => 'Into industry professionals',
+                'employment_rate' => 'Employment Rate',
+                'in_chosen_fields' => 'In their chosen fields',
+                'industry_mentors' => 'Industry Mentors',
+                'professional_guidance' => 'Professional guidance',
+                'average_salary' => 'Average Starting Salary',
+                'sustainable_livelihoods' => 'Sustainable livelihoods',
+                'how_we_work' => 'How We Work',
+                'empowerment_process' => 'Comprehensive Empowerment Process',
+                'process_description' => 'Our systematic approach to creating professionals, not just providing aid',
+                'professional_success' => 'Professional Success',
+                'from_students' => 'From Students to Professionals',
+                'success_description' => 'Real stories of transformation through our comprehensive approach',
+                'view_all_stories' => 'View All Success Stories',
+                'education_revolution' => 'Join the Education Revolution',
+                'revolution_description' => 'Help us transform students into industry professionals through our unique approach.',
+                'become_mentor' => 'Become Mentor',
+                'full_academic_coverage' => 'Full academic coverage',
+                'modern_learning_tools' => 'Modern learning tools',
+                'skill_workshops' => 'Skill workshops',
+                'industry_mentors_text' => 'Industry mentors',
+                'regular_guidance' => 'Regular guidance',
+                'personality_development' => 'Personality development',
+                'job_placement' => 'Job placement',
+                'interview_training' => 'Interview training',
+                'career_support' => 'Career support'
+            ],
+            'hi' => [
+                'site_title' => 'भरतपुर फाउंडेशन',
+                'hero_title' => 'भरतपुर फाउंडेशन',
+                'hero_tagline' => 'छात्रों को पेशेवरों में बदलना',
+                'hero_description' => 'वित्तीय सहायता से कहीं अधिक - हम शिक्षा, मार्गदर्शन और व्यावसायिक विकास के माध्यम से करियर बनाते हैं।',
+                'quality_education' => 'गुणवत्तापूर्ण शिक्षा',
+                'complete_academic_support' => 'संपूर्ण शैक्षणिक सहायता',
+                'personal_mentoring' => 'व्यक्तिगत मार्गदर्शन',
+                'industry_guidance' => 'उद्योग मार्गदर्शन',
+                'career_development' => 'करियर विकास',
+                'job_placement_support' => 'नौकरी प्लेसमेंट सहायता',
+                'our_approach' => 'हमारा दृष्टिकोण',
+                'support_students' => 'छात्रों की सहायता करें',
+                'nav_home' => 'होम',
+                'nav_beneficiaries' => 'लाभार्थी',
+                'nav_success_stories' => 'सफलता की कहानियां',
+                'nav_our_works' => 'हमारे कार्य',
+                'our_difference' => 'हमारा अंतर',
+                'creating_professionals' => 'केवल सहायता नहीं, पेशेवर बनाना',
+                'professionals_description' => 'अधिकांश एनजीओ केवल वित्तीय सहायता प्रदान करते हैं। हम शिक्षा + मार्गदर्शन + करियर प्लेसमेंट के माध्यम से संपूर्ण पेशेवर तैयार करते हैं।',
+                'holistic_development' => 'समग्र विकास',
+                'mind_skills_career' => 'मन + कौशल + करियर',
+                'industry_ready' => 'उद्योग तैयार',
+                'real_world_skills' => 'वास्तविक-विश्व कौशल',
+                'meet_beneficiaries' => 'लाभार्थियों से मिलें',
+                'our_three_pillars' => 'हमारे तीन स्तंभ',
+                'complete_transformation' => 'संपूर्ण परिवर्तन यात्रा',
+                'transformation_description' => 'हमारे अनूठे तीन-स्तंभीय दृष्टिकोण के माध्यम से व्यापक सशक्तिकरण प्रदान करने वाला पहला एनजीओ',
+                'real_impact' => 'वास्तविक प्रभाव, वास्तविक परिणाम',
+                'impact_description' => 'ऐसे आंकड़े जो साबित करते हैं कि हमारा व्यापक दृष्टिकोण काम करता है',
+                'students_transformed' => 'छात्र परिवर्तित',
+                'into_professionals' => 'उद्योग पेशेवरों में',
+                'employment_rate' => 'रोजगार दर',
+                'in_chosen_fields' => 'अपने चुने गए क्षेत्रों में',
+                'industry_mentors' => 'उद्योग मार्गदर्शक',
+                'professional_guidance' => 'पेशेवर मार्गदर्शन',
+                'average_salary' => 'औसत शुरुआती वेतन',
+                'sustainable_livelihoods' => 'टिकाऊ आजीविका',
+                'how_we_work' => 'हम कैसे काम करते हैं',
+                'empowerment_process' => 'व्यापक सशक्तिकरण प्रक्रिया',
+                'process_description' => 'केवल सहायता प्रदान नहीं, बल्कि पेशेवर बनाने के लिए हमारा व्यवस्थित दृष्टिकोण',
+                'professional_success' => 'पेशेवर सफलता',
+                'from_students' => 'छात्रों से पेशेवरों तक',
+                'success_description' => 'हमारे व्यापक दृष्टिकोण के माध्यम से परिवर्तन की वास्तविक कहानियां',
+                'view_all_stories' => 'सभी सफलता की कहानियां देखें',
+                'education_revolution' => 'शिक्षा क्रांति में शामिल हों',
+                'revolution_description' => 'हमारे अनूठे दृष्टिकोण के माध्यम से छात्रों को उद्योग पेशेवरों में बदलने में हमारी सहायता करें।',
+                'become_mentor' => 'मेंटर बनें',
+                'full_academic_coverage' => 'पूर्ण शैक्षणिक कवरेज',
+                'modern_learning_tools' => 'आधुनिक शिक्षण उपकरण',
+                'skill_workshops' => 'कौशल कार्यशालाएं',
+                'industry_mentors_text' => 'उद्योग मेंटर्स',
+                'regular_guidance' => 'नियमित मार्गदर्शन',
+                'personality_development' => 'व्यक्तित्व विकास',
+                'job_placement' => 'नौकरी प्लेसमेंट',
+                'interview_training' => 'साक्षात्कार प्रशिक्षण',
+                'career_support' => 'करियर सहायता'
+            ]
+        ];
+    }
+
+    private function setLanguage($lang)
+    {
+        $this->language = in_array($lang, ['en', 'hi']) ? $lang : 'en';
+        return $this->language;
+    }
+
+    private function translate($key)
+    {
+        return $this->translations[$this->language][$key] ?? $key;
+    }
+
+    public function index($lang = 'en')
+    {
+        $this->setLanguage($lang);
+        
         $successStoryModel = new SuccessStoryModel();
         $beneficiaryModel = new BeneficiaryModel();
 
         $data = [
             'success_stories' => $successStoryModel->getPublishedStories(),
             'total_beneficiaries' => $beneficiaryModel->countAll(),
-            'active_beneficiaries' => $beneficiaryModel->where('status', 'active')->countAllResults()
+            'active_beneficiaries' => $beneficiaryModel->where('status', 'active')->countAllResults(),
+            'language' => $this->language,
+            'translations' => $this->translations[$this->language],
+            'title' => $this->translate('site_title')
         ];
 
         return view('frontend/home', $data);
     }
 
-    public function beneficiaries()
+    public function beneficiaries($lang = 'en')
     {
+        $this->setLanguage($lang);
+        
         $search = $this->request->getGet('search');
         $page = (int)($this->request->getGet('page') ?? 1);
         $perPage = 6;
@@ -43,11 +192,45 @@ class Home extends BaseController
             'passout_beneficiaries' => $passoutBeneficiaries,
             'search' => $search,
             'current_page' => $page,
-            'has_more' => false, // We're showing all results now
-            'total_results' => $totalResults
+            'has_more' => false,
+            'total_results' => $totalResults,
+            'language' => $this->language,
+            'translations' => $this->translations[$this->language],
+            'title' => $this->translate('nav_beneficiaries')
         ];
 
         return view('frontend/beneficiaries', $data);
+    }
+
+    public function success_stories($lang = 'en')
+    {
+        $this->setLanguage($lang);
+        
+        $model = new SuccessStoryModel();
+        $data = [
+            'success_stories' => $model->where('status', 'active')->orderBy('created_at', 'DESC')->findAll(),
+            'language' => $this->language,
+            'translations' => $this->translations[$this->language],
+            'title' => $this->translate('nav_success_stories')
+        ];
+
+        return view('frontend/success_stories', $data);
+    }
+
+    public function ngo_works($lang = 'en')
+    {
+        $this->setLanguage($lang);
+        
+        helper('text');
+        $model = new \App\Models\NgoWorkModel();
+        $data = [
+            'ngo_works' => $model->getPublishedWorks(),
+            'language' => $this->language,
+            'translations' => $this->translations[$this->language],
+            'title' => $this->translate('nav_our_works')
+        ];
+
+        return view('frontend/ngo_works', $data);
     }
 
     public function loadMoreBeneficiaries()
@@ -195,24 +378,6 @@ class Home extends BaseController
                                 data-beneficiary-education="<?= esc($beneficiary['education_level']) ?>"
                                 data-beneficiary-course="<?= esc($beneficiary['course']) ?>"
                                 data-beneficiary-institution="<?= esc($beneficiary['institution']) ?>"
-
-
-    public function serveBeneficiaryImage($filename)
-    {
-        $filepath = WRITEPATH . 'uploads/beneficiaries/' . $filename;
-
-        if (!file_exists($filepath)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Image not found');
-        }
-
-        $mime = mime_content_type($filepath);
-
-        return $this->response
-            ->setHeader('Content-Type', $mime)
-            ->setHeader('Content-Length', filesize($filepath))
-            ->setBody(file_get_contents($filepath));
-    }
-
                                 data-beneficiary-city="<?= esc($beneficiary['city'] ?? '') ?>"
                                 data-beneficiary-state="<?= esc($beneficiary['state'] ?? '') ?>"
                                 data-beneficiary-phone="<?= esc($beneficiary['phone'] ?? '') ?>"
@@ -234,24 +399,19 @@ class Home extends BaseController
         return ob_get_clean();
     }
 
-    public function success_stories()
+    public function serveBeneficiaryImage($filename)
     {
-        $model = new SuccessStoryModel();
-        $data = [
-            'success_stories' => $model->where('status', 'active')->orderBy('created_at', 'DESC')->findAll()
-        ];
+        $filepath = WRITEPATH . 'uploads/beneficiaries/' . $filename;
 
-        return view('frontend/success_stories', $data);
-    }
+        if (!file_exists($filepath)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Image not found');
+        }
 
-    public function ngo_works()
-    {
-        helper('text'); // Load text helper for character_limiter
-        $model = new \App\Models\NgoWorkModel();
-        $data = [
-            'ngo_works' => $model->getPublishedWorks()
-        ];
+        $mime = mime_content_type($filepath);
 
-        return view('frontend/ngo_works', $data);
+        return $this->response
+            ->setHeader('Content-Type', $mime)
+            ->setHeader('Content-Length', filesize($filepath))
+            ->setBody(file_get_contents($filepath));
     }
 }
