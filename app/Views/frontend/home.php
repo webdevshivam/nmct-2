@@ -2,77 +2,186 @@
 
 <?= $this->section('content') ?>
 
-<!-- Hero Section with Background Image -->
-<section class="hero-section-background">
-    <div class="hero-overlay"></div>
+<!-- Modern Hero Section -->
+<section class="modern-hero-section">
+    <!-- Animated Background Elements -->
+    <div class="hero-background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-icons">
+            <div class="floating-icon icon-1"><i class="fas fa-graduation-cap"></i></div>
+            <div class="floating-icon icon-2"><i class="fas fa-book"></i></div>
+            <div class="floating-icon icon-3"><i class="fas fa-lightbulb"></i></div>
+            <div class="floating-icon icon-4"><i class="fas fa-users"></i></div>
+            <div class="floating-icon icon-5"><i class="fas fa-rocket"></i></div>
+        </div>
+    </div>
+    
     <div class="container">
-        <div class="row min-vh-100 align-items-center justify-content-center">
-            <div class="col-lg-8 text-center">
-                <div class="hero-content">
-                    <!-- Foundation Logo/Icon -->
-                    <div class="hero-logo mb-4">
-                        <div class="logo-circle">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                    </div>
-                    
-                    <h1 class="hero-title mb-4">
+        <div class="row min-vh-100 align-items-center">
+            <!-- Left Content -->
+            <div class="col-lg-6 order-2 order-lg-1">
+                <!-- Tagline Ribbon -->
+                <div class="hero-ribbon mb-4">
+                    <span class="ribbon-text">
+                        <i class="fas fa-star me-2"></i>
+                        Empowering Students Since 2010
+                    </span>
+                </div>
+                
+                <div class="hero-content-left">
+                    <h1 class="modern-hero-title mb-3">
                         <?= $translations['hero_title'] ?>
                     </h1>
-                    <h2 class="hero-subtitle mb-4">
+                    
+                    <h2 class="modern-hero-subtitle mb-4">
                         <?= $translations['hero_tagline'] ?>
                     </h2>
-                    <p class="hero-description mb-5">
+                    
+                    <p class="modern-hero-description mb-4">
                         <?= $translations['hero_description'] ?>
                     </p>
                     
-                    <!-- Feature Pills -->
-                    <div class="hero-features mb-5">
-                        <div class="feature-pill">
-                            <i class="fas fa-graduation-cap me-2"></i>
-                            <?= $translations['quality_education'] ?>
+                    <!-- Feature Icons Row -->
+                    <div class="hero-features-row mb-5">
+                        <div class="feature-item">
+                            <div class="feature-icon-circle">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <span class="feature-text"><?= $translations['quality_education'] ?></span>
                         </div>
-                        <div class="feature-pill">
-                            <i class="fas fa-user-tie me-2"></i>
-                            <?= $translations['personal_mentoring'] ?>
+                        <div class="feature-item">
+                            <div class="feature-icon-circle">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <span class="feature-text"><?= $translations['personal_mentoring'] ?></span>
                         </div>
-                        <div class="feature-pill">
-                            <i class="fas fa-briefcase me-2"></i>
-                            <?= $translations['career_development'] ?>
+                        <div class="feature-item">
+                            <div class="feature-icon-circle">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <span class="feature-text"><?= $translations['career_development'] ?></span>
                         </div>
                     </div>
                     
-                    <!-- Call to Action Buttons -->
-                    <div class="hero-actions">
-                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-hero-primary btn-lg me-3 mb-3">
-                            <i class="fas fa-rocket me-2"></i><?= $translations['our_approach'] ?>
+                    <!-- Modern CTA Buttons -->
+                    <div class="hero-cta-buttons mb-5">
+                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-modern-primary btn-xl me-3 mb-3">
+                            <i class="fas fa-rocket me-2"></i>
+                            <?= $translations['our_approach'] ?>
                         </a>
-                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-hero-outline btn-lg mb-3">
-                            <i class="fas fa-users me-2"></i><?= $translations['support_students'] ?>
+                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-modern-secondary btn-xl mb-3">
+                            <i class="fas fa-users me-2"></i>
+                            <?= $translations['support_students'] ?>
                         </a>
+                    </div>
+                    
+                    <!-- Animated Statistics -->
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="500">0</div>
+                            <div class="stat-label">Students Supported</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="95">0</div>
+                            <div class="stat-label">Employment Rate</div>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="50">0</div>
+                            <div class="stat-label">Industry Partners</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Visual -->
+            <div class="col-lg-6 order-1 order-lg-2 mb-5 mb-lg-0">
+                <div class="hero-visual-container">
+                    <!-- Image Frame -->
+                    <div class="hero-image-frame">
+                        <img src="<?= base_url('assets/images/bharatpur-hero-image.png') ?>" 
+                             alt="Educational Transformation - Students becoming professionals" 
+                             class="hero-main-image"
+                             onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=450&fit=crop&crop=faces,entropy&auto=format&q=80'">
+                        
+                        <!-- Decorative Elements on Image -->
+                        <div class="image-decorations">
+                            <div class="decoration-circle circle-1"></div>
+                            <div class="decoration-circle circle-2"></div>
+                            <div class="decoration-triangle"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial Quote -->
+                    <div class="floating-testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face&auto=format&q=80" 
+                                     alt="Student testimonial" class="avatar-img">
+                            </div>
+                            <div class="testimonial-text">
+                                <p class="quote">"Transformed my career completely!"</p>
+                                <span class="author">- Rajesh K., Software Developer</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Decorative Elements -->
-    <div class="hero-decorative-elements">
-        <div class="float-element float-1">🌟</div>
-        <div class="float-element float-2">📚</div>
-        <div class="float-element float-3">🎓</div>
-        <div class="float-element float-4">💼</div>
-        <div class="float-element float-5">🎯</div>
-        <div class="float-element float-6">✨</div>
-    </div>
-    
-    <!-- Bottom Wave -->
-    <div class="hero-wave">
+    <!-- Wave Bottom -->
+    <div class="hero-wave-bottom">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
         </svg>
     </div>
 </section>
+
+<!-- Counter Animation Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animate counters
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    
+    function animateCounter(counter) {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const increment = target / 100;
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                counter.textContent = target + (counter.textContent.includes('%') ? '%' : '+');
+                clearInterval(timer);
+            } else {
+                counter.textContent = Math.floor(current) + (target === 95 ? '%' : '+');
+            }
+        }, 20);
+    }
+    
+    // Intersection Observer for animation trigger
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                if (!counter.classList.contains('animated')) {
+                    counter.classList.add('animated');
+                    animateCounter(counter);
+                }
+            }
+        });
+    }, { threshold: 0.7 });
+    
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+});
+</script>
 
 <!-- Unique Approach Section -->
 <section class="section-padding bg-soft">
@@ -398,280 +507,459 @@
 </section>
 
 <style>
-    /* Background Hero Section */
-    .hero-section-background {
+    /* Modern Hero Section */
+    .modern-hero-section {
         min-height: 100vh;
-        background: 
-            linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(165, 102, 28, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%),
-            url('<?= base_url('assets/images/bharatpur-hero-image.png') ?>');
-        background-size: cover;
-        background-position: center center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
+        background: linear-gradient(135deg, #ffd700 0%, #fff8e1 30%, #ffffff 70%, #f5f5f5 100%);
         position: relative;
         overflow: hidden;
-        color: white;
         display: flex;
         align-items: center;
+        padding: 60px 0;
     }
     
-    .hero-overlay {
+    /* Animated Background Elements */
+    .hero-background-animation {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: 
-            radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 70% 80%, rgba(165, 102, 28, 0.1) 0%, transparent 50%),
-            linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.3) 100%);
         z-index: 1;
-    }
-    
-    .hero-content {
-        position: relative;
-        z-index: 10;
-        text-align: center;
-    }
-    
-    .hero-logo {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2rem;
-    }
-    
-    .logo-circle {
-        width: 100px;
-        height: 100px;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        backdrop-filter: blur(20px);
-        box-shadow: 
-            0 8px 32px rgba(0, 0, 0, 0.3), 
-            0 4px 16px rgba(165, 102, 28, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        border: 3px solid rgba(255, 215, 0, 0.3);
-        animation: glow 3s ease-in-out infinite alternate;
-    }
-    
-    .logo-circle i {
-        font-size: 2.5rem;
-        color: #ffd700;
-        text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-    }
-    
-    @keyframes glow {
-        0% { 
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3), 
-                0 4px 16px rgba(165, 102, 28, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                0 0 20px rgba(255, 215, 0, 0.2);
-        }
-        100% { 
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3), 
-                0 4px 16px rgba(165, 102, 28, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                0 0 40px rgba(255, 215, 0, 0.4);
-        }
-    }
-    
-    .hero-title {
-        font-size: 4rem;
-        font-weight: 800;
-        color: white;
-        font-family: 'Playfair Display', serif;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-        text-shadow: 
-            0 4px 12px rgba(0, 0, 0, 0.7), 
-            0 2px 6px rgba(0, 0, 0, 0.9),
-            0 1px 0 rgba(255, 215, 0, 0.3);
-        background: linear-gradient(135deg, #ffd700 0%, #ff8c00 30%, #ffa500 70%, #ff6347 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    .hero-subtitle {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: white;
-        font-family: 'Merriweather', serif;
-        line-height: 1.3;
-        margin-bottom: 1.5rem;
-        text-shadow: 
-            0 4px 12px rgba(0, 0, 0, 0.7), 
-            0 2px 6px rgba(0, 0, 0, 0.9);
-    }
-    
-    .hero-description {
-        font-size: 1.3rem;
-        color: rgba(255, 255, 255, 0.95);
-        line-height: 1.7;
-        margin-bottom: 2rem;
-        font-family: 'Lora', serif;
-        font-weight: 500;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .hero-features {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 3rem;
-    }
-    
-    .feature-pill {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        padding: 1rem 1.5rem;
-        border-radius: 50px;
-        color: white;
-        font-weight: 600;
-        font-size: 0.95rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    }
-    
-    .feature-pill:hover {
-        background: rgba(255, 255, 255, 0.25);
-        transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-    }
-    
-    .feature-pill i {
-        color: #ffd700;
-        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-    }
-    
-    .btn-hero-primary {
-        background: linear-gradient(135deg, #ffd700 0%, #ffb000 100%);
-        border: none;
-        color: #333;
-        font-weight: 700;
-        padding: 15px 35px;
-        border-radius: 12px;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        text-shadow: none;
-    }
-    
-    .btn-hero-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(255, 215, 0, 0.5);
-        color: #333;
-        background: linear-gradient(135deg, #fff700 0%, #ffb000 100%);
-    }
-    
-    .btn-hero-outline {
-        background: transparent;
-        border: 3px solid rgba(255, 255, 255, 0.8);
-        color: white;
-        font-weight: 700;
-        padding: 12px 32px;
-        border-radius: 12px;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    .btn-hero-outline:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-color: white;
-        transform: translateY(-3px);
-        color: white;
-        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
-    }
-    
-    /* Decorative Elements */
-    .hero-decorative-elements {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 2;
         pointer-events: none;
     }
     
-    .float-element {
+    .floating-shape {
         position: absolute;
-        font-size: 2.5rem;
-        opacity: 0.6;
-        animation: float 8s ease-in-out infinite;
-        color: rgba(255, 215, 0, 0.8);
-        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        border-radius: 50%;
+        background: rgba(255, 215, 0, 0.1);
+        animation: floatShape 20s infinite linear;
     }
     
-    .float-1 {
-        top: 15%;
+    .shape-1 {
+        width: 100px;
+        height: 100px;
+        top: 10%;
         left: 10%;
         animation-delay: 0s;
     }
     
-    .float-2 {
-        top: 25%;
-        right: 15%;
-        animation-delay: -2s;
-    }
-    
-    .float-3 {
-        top: 60%;
-        left: 5%;
-        animation-delay: -4s;
-    }
-    
-    .float-4 {
-        bottom: 25%;
-        right: 8%;
-        animation-delay: -1s;
-    }
-    
-    .float-5 {
-        top: 45%;
-        left: 15%;
-        animation-delay: -3s;
-    }
-    
-    .float-6 {
-        bottom: 15%;
-        left: 20%;
+    .shape-2 {
+        width: 60px;
+        height: 60px;
+        top: 70%;
+        right: 20%;
         animation-delay: -5s;
+        background: rgba(165, 102, 28, 0.15);
+    }
+    
+    .shape-3 {
+        width: 80px;
+        height: 80px;
+        top: 30%;
+        right: 10%;
+        animation-delay: -10s;
+        background: rgba(255, 140, 0, 0.1);
+    }
+    
+    .shape-4 {
+        width: 120px;
+        height: 120px;
+        bottom: 10%;
+        left: 15%;
+        animation-delay: -15s;
+    }
+    
+    .floating-icons {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .floating-icon {
+        position: absolute;
+        font-size: 1.5rem;
+        color: rgba(165, 102, 28, 0.3);
+        animation: floatIcon 15s infinite ease-in-out;
+    }
+    
+    .icon-1 { top: 15%; left: 5%; animation-delay: 0s; }
+    .icon-2 { top: 25%; right: 8%; animation-delay: -3s; }
+    .icon-3 { top: 60%; left: 8%; animation-delay: -6s; }
+    .icon-4 { bottom: 30%; right: 12%; animation-delay: -9s; }
+    .icon-5 { bottom: 20%; left: 20%; animation-delay: -12s; }
+    
+    @keyframes floatShape {
+        0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+        25% { transform: translateY(-30px) rotate(90deg); opacity: 0.3; }
+        50% { transform: translateY(-20px) rotate(180deg); opacity: 0.2; }
+        75% { transform: translateY(-40px) rotate(270deg); opacity: 0.25; }
+    }
+    
+    @keyframes floatIcon {
+        0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+        33% { transform: translateY(-20px) scale(1.1); opacity: 0.6; }
+        66% { transform: translateY(-10px) scale(0.9); opacity: 0.4; }
+    }
+    
+    /* Content Styling */
+    .hero-content-left {
+        position: relative;
+        z-index: 10;
+    }
+    
+    /* Tagline Ribbon */
+    .hero-ribbon {
+        display: inline-block;
+        margin-bottom: 1.5rem;
+    }
+    
+    .ribbon-text {
+        background: linear-gradient(135deg, #d4a574 0%, #a5661c 100%);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(165, 102, 28, 0.3);
+        display: inline-flex;
+        align-items: center;
+        animation: ribbonGlow 3s ease-in-out infinite alternate;
+    }
+    
+    @keyframes ribbonGlow {
+        0% { box-shadow: 0 4px 15px rgba(165, 102, 28, 0.3); }
+        100% { box-shadow: 0 6px 25px rgba(165, 102, 28, 0.5); }
+    }
+    
+    /* Modern Typography */
+    .modern-hero-title {
+        font-family: 'Montserrat', 'Poppins', sans-serif;
+        font-size: 3.8rem;
+        font-weight: 800;
+        color: #2d1810;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .modern-hero-subtitle {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #a5661c;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+    }
+    
+    .modern-hero-description {
+        font-family: 'Lora', serif;
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.7;
+        font-weight: 400;
+        max-width: 500px;
+    }
+    
+    /* Feature Icons Row */
+    .hero-features-row {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    
+    .feature-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 120px;
+        transition: all 0.3s ease;
+    }
+    
+    .feature-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .feature-icon-circle {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #ffd700 0%, #a5661c 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+        box-shadow: 0 8px 25px rgba(165, 102, 28, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .feature-item:hover .feature-icon-circle {
+        transform: scale(1.1);
+        box-shadow: 0 12px 35px rgba(165, 102, 28, 0.5);
+    }
+    
+    .feature-text {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #666;
+        text-align: center;
+        line-height: 1.2;
+    }
+    
+    /* Modern CTA Buttons */
+    .hero-cta-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .btn-modern-primary {
+        background: linear-gradient(135deg, #d4a574 0%, #a5661c 100%);
+        border: none;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        padding: 18px 40px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 10px 30px rgba(165, 102, 28, 0.4);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn-modern-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.6s;
+    }
+    
+    .btn-modern-primary:hover::before {
+        left: 100%;
+    }
+    
+    .btn-modern-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(165, 102, 28, 0.6);
+        color: white;
+    }
+    
+    .btn-modern-secondary {
+        background: transparent;
+        border: 3px solid #a5661c;
+        color: #a5661c;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        padding: 15px 37px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .btn-modern-secondary:hover {
+        background: #a5661c;
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(165, 102, 28, 0.4);
+    }
+    
+    .btn-xl {
+        font-size: 1.1rem;
+        padding: 18px 40px;
+    }
+    
+    /* Animated Statistics */
+    .hero-stats {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #a5661c;
+        line-height: 1;
+        margin-bottom: 0.3rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+        color: #666;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .stat-divider {
+        width: 2px;
+        height: 40px;
+        background: linear-gradient(to bottom, transparent, #ddd, transparent);
+    }
+    
+    /* Right Visual Container */
+    .hero-visual-container {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .hero-image-frame {
+        position: relative;
+        background: linear-gradient(135deg, #ffd700 0%, #a5661c 100%);
+        border-radius: 30px;
+        padding: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        transform: perspective(1000px) rotateY(-5deg);
+        transition: all 0.3s ease;
+    }
+    
+    .hero-image-frame:hover {
+        transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero-main-image {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        display: block;
+        max-height: 500px;
+        object-fit: cover;
+    }
+    
+    /* Image Decorations */
+    .image-decorations {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+    }
+    
+    .decoration-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+    }
+    
+    .circle-1 {
+        width: 60px;
+        height: 60px;
+        top: -15px;
+        right: -15px;
+        animation: float 4s ease-in-out infinite;
+    }
+    
+    .circle-2 {
+        width: 40px;
+        height: 40px;
+        bottom: -10px;
+        left: -10px;
+        animation: float 5s ease-in-out infinite reverse;
+    }
+    
+    .decoration-triangle {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 35px solid rgba(255, 255, 255, 0.3);
+        top: 50%;
+        left: -25px;
+        animation: float 6s ease-in-out infinite;
     }
     
     @keyframes float {
-        0%, 100% { 
-            transform: translateY(0px) rotate(0deg); 
-            opacity: 0.4; 
-        }
-        33% { 
-            transform: translateY(-25px) rotate(5deg); 
-            opacity: 0.8; 
-        }
-        66% { 
-            transform: translateY(-15px) rotate(-3deg); 
-            opacity: 0.6; 
-        }
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+    }
+    
+    /* Floating Testimonial */
+    .floating-testimonial {
+        position: absolute;
+        bottom: -30px;
+        right: -20px;
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+        animation: floatTestimonial 8s ease-in-out infinite;
+    }
+    
+    @keyframes floatTestimonial {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .testimonial-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .testimonial-avatar {
+        flex-shrink: 0;
+    }
+    
+    .avatar-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 3px solid #ffd700;
+    }
+    
+    .testimonial-text .quote {
+        font-size: 0.9rem;
+        color: #333;
+        margin-bottom: 0.3rem;
+        font-style: italic;
+        font-weight: 500;
+    }
+    
+    .testimonial-text .author {
+        font-size: 0.75rem;
+        color: #a5661c;
+        font-weight: 600;
     }
     
     /* Wave Bottom */
-    .hero-wave {
+    .hero-wave-bottom {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -682,110 +970,115 @@
         z-index: 5;
     }
     
-    .hero-wave svg {
+    .hero-wave-bottom svg {
         position: relative;
         display: block;
         width: calc(100% + 1.3px);
-        height: 80px;
+        height: 60px;
         fill: #ffffff;
     }
-
+    
     /* Responsive Design */
     @media (max-width: 992px) {
-        .hero-title {
-            font-size: 3.2rem;
+        .modern-hero-title {
+            font-size: 3rem;
         }
         
-        .hero-subtitle {
-            font-size: 1.8rem;
+        .modern-hero-subtitle {
+            font-size: 1.3rem;
+            letter-spacing: 2px;
         }
         
-        .logo-circle {
-            width: 80px;
-            height: 80px;
+        .hero-features-row {
+            justify-content: center;
+            gap: 1.5rem;
         }
         
-        .logo-circle i {
-            font-size: 2rem;
+        .hero-stats {
+            justify-content: center;
         }
         
-        .hero-features {
+        .floating-testimonial {
+            position: relative;
+            bottom: auto;
+            right: auto;
+            margin-top: 2rem;
+            max-width: 100%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .modern-hero-title {
+            font-size: 2.5rem;
+        }
+        
+        .modern-hero-subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+        }
+        
+        .hero-features-row {
+            gap: 1rem;
+        }
+        
+        .feature-icon-circle {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+        
+        .hero-cta-buttons {
             flex-direction: column;
             align-items: center;
         }
         
-        .feature-pill {
+        .btn-modern-primary,
+        .btn-modern-secondary {
+            width: 100%;
             max-width: 300px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-section-background {
-            background-attachment: scroll;
+            justify-content: center;
         }
         
-        .hero-title {
-            font-size: 2.8rem;
+        .hero-stats {
+            gap: 1rem;
         }
         
-        .hero-subtitle {
-            font-size: 1.6rem;
-        }
-        
-        .hero-description {
-            font-size: 1.1rem;
-        }
-        
-        .float-element {
+        .stat-number {
             font-size: 2rem;
         }
         
-        .btn-hero-primary,
-        .btn-hero-outline {
-            padding: 12px 25px;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero-image-frame {
+            transform: none;
+            padding: 15px;
         }
     }
-
+    
     @media (max-width: 576px) {
-        .hero-title {
-            font-size: 2.4rem;
+        .modern-hero-title {
+            font-size: 2rem;
         }
         
-        .hero-subtitle {
-            font-size: 1.4rem;
+        .hero-features-row {
+            flex-direction: column;
+            gap: 1.5rem;
         }
         
-        .hero-description {
-            font-size: 1rem;
-        }
-        
-        .logo-circle {
-            width: 70px;
-            height: 70px;
-        }
-        
-        .logo-circle i {
-            font-size: 1.8rem;
-        }
-        
-        .float-element {
+        .floating-shape,
+        .floating-icon {
             display: none;
         }
         
-        .feature-pill {
-            font-size: 0.9rem;
-            padding: 0.8rem 1.2rem;
+        .stat-divider {
+            display: none;
+        }
+        
+        .hero-stats {
+            flex-direction: column;
+            gap: 1.5rem;
         }
     }
 
-    /* General Styles from Original File */
+    /* General Styles */
     .pillar-card {
         transition: all 0.3s ease;
     }
