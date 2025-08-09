@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Controllers;
@@ -152,7 +151,7 @@ class Home extends BaseController
     public function index($lang = 'en')
     {
         $this->setLanguage($lang);
-        
+
         $successStoryModel = new SuccessStoryModel();
         $beneficiaryModel = new BeneficiaryModel();
 
@@ -171,7 +170,7 @@ class Home extends BaseController
     public function beneficiaries($lang = 'en')
     {
         $this->setLanguage($lang);
-        
+
         $search = $this->request->getGet('search');
         $page = (int)($this->request->getGet('page') ?? 1);
         $perPage = 6;
@@ -205,7 +204,7 @@ class Home extends BaseController
     public function success_stories($lang = 'en')
     {
         $this->setLanguage($lang);
-        
+
         $model = new SuccessStoryModel();
         $data = [
             'success_stories' => $model->where('status', 'active')->orderBy('created_at', 'DESC')->findAll(),
@@ -220,7 +219,7 @@ class Home extends BaseController
     public function ngo_works($lang = 'en')
     {
         $this->setLanguage($lang);
-        
+
         helper('text');
         $model = new \App\Models\NgoWorkModel();
         $data = [
@@ -268,15 +267,15 @@ class Home extends BaseController
     private function generateBeneficiaryCard($beneficiary)
     {
         ob_start();
-        ?>
+?>
         <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
             <div class="card h-100 border-0 shadow-lg">
                 <div class="card-header text-center bg-light py-2">
                     <div class="feature-icon mx-auto mb-2" style="width: 60px; height: 60px; font-size: 1.5rem; background: var(--gradient-soft); color: var(--primary-color); overflow: hidden; border-radius: 50%;">
                         <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
                             <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>"
-                                 alt="<?= esc($beneficiary['name']) ?>"
-                                 style="width: 100%; height: 100%; object-fit: cover;">
+                                alt="<?= esc($beneficiary['name']) ?>"
+                                style="width: 100%; height: 100%; object-fit: cover;">
                         <?php else: ?>
                             <i class="fas fa-user-graduate"></i>
                         <?php endif; ?>
@@ -312,41 +311,41 @@ class Home extends BaseController
 
                     <!-- Contact -->
                     <?php if (!empty($beneficiary['phone'])): ?>
-                    <div class="mb-3">
-                        <h6 class="text-primary mb-2 fw-bold">
-                            <i class="fas fa-phone me-2"></i>Contact
-                        </h6>
-                        <p class="mb-0">
-                            <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-dark text-decoration-none fw-semibold">
-                                <?= esc($beneficiary['phone']) ?>
-                            </a>
-                        </p>
-                    </div>
+                        <div class="mb-3">
+                            <h6 class="text-primary mb-2 fw-bold">
+                                <i class="fas fa-phone me-2"></i>Contact
+                            </h6>
+                            <p class="mb-0">
+                                <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-dark text-decoration-none fw-semibold">
+                                    <?= esc($beneficiary['phone']) ?>
+                                </a>
+                            </p>
+                        </div>
                     <?php endif; ?>
 
                     <!-- Contact Information -->
                     <?php if (!empty($beneficiary['phone']) || !empty($beneficiary['email'])): ?>
-                    <div class="mb-4">
-                        <h6 class="text-primary mb-2 fw-bold">
-                            <i class="fas fa-address-book me-2"></i>Contact Information
-                        </h6>
-                        <?php if (!empty($beneficiary['phone'])): ?>
-                            <p class="mb-1 small text-dark">
-                                <i class="fas fa-phone me-2 text-muted"></i>
-                                <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-dark text-decoration-none">
-                                    <?= esc($beneficiary['phone']) ?>
-                                </a>
-                            </p>
-                        <?php endif; ?>
-                        <?php if (!empty($beneficiary['email'])): ?>
-                            <p class="mb-0 small text-dark">
-                                <i class="fas fa-envelope me-2 text-muted"></i>
-                                <a href="mailto:<?= esc($beneficiary['email']) ?>" class="text-dark text-decoration-none">
-                                    <?= esc($beneficiary['email']) ?>
-                                </a>
-                            </p>
-                        <?php endif; ?>
-                    </div>
+                        <div class="mb-4">
+                            <h6 class="text-primary mb-2 fw-bold">
+                                <i class="fas fa-address-book me-2"></i>Contact Information
+                            </h6>
+                            <?php if (!empty($beneficiary['phone'])): ?>
+                                <p class="mb-1 small text-dark">
+                                    <i class="fas fa-phone me-2 text-muted"></i>
+                                    <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-dark text-decoration-none">
+                                        <?= esc($beneficiary['phone']) ?>
+                                    </a>
+                                </p>
+                            <?php endif; ?>
+                            <?php if (!empty($beneficiary['email'])): ?>
+                                <p class="mb-0 small text-dark">
+                                    <i class="fas fa-envelope me-2 text-muted"></i>
+                                    <a href="mailto:<?= esc($beneficiary['email']) ?>" class="text-dark text-decoration-none">
+                                        <?= esc($beneficiary['email']) ?>
+                                    </a>
+                                </p>
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
 
                     <!-- Action Buttons -->
@@ -372,30 +371,30 @@ class Home extends BaseController
                     <!-- Read More Button -->
                     <div class="text-center">
                         <button class="btn btn-primary btn-sm read-more-btn"
-                                data-beneficiary-id="<?= $beneficiary['id'] ?>"
-                                data-beneficiary-name="<?= esc($beneficiary['name']) ?>"
-                                data-beneficiary-age="<?= esc($beneficiary['age'] ?? '') ?>"
-                                data-beneficiary-education="<?= esc($beneficiary['education_level']) ?>"
-                                data-beneficiary-course="<?= esc($beneficiary['course']) ?>"
-                                data-beneficiary-institution="<?= esc($beneficiary['institution']) ?>"
-                                data-beneficiary-city="<?= esc($beneficiary['city'] ?? '') ?>"
-                                data-beneficiary-state="<?= esc($beneficiary['state'] ?? '') ?>"
-                                data-beneficiary-phone="<?= esc($beneficiary['phone'] ?? '') ?>"
-                                data-beneficiary-email="<?= esc($beneficiary['email'] ?? '') ?>"
-                                data-beneficiary-linkedin="<?= esc($beneficiary['linkedin_url'] ?? '') ?>"
-                                data-beneficiary-company-name="<?= esc($beneficiary['company_name'] ?? '') ?>"
-                                data-beneficiary-family="<?= esc($beneficiary['family_background'] ?? '') ?>"
-                                data-beneficiary-achievements="<?= esc($beneficiary['academic_achievements'] ?? '') ?>"
-                                data-beneficiary-goals="<?= esc($beneficiary['career_goals'] ?? '') ?>"
-                                data-beneficiary-company="<?= esc($beneficiary['company_link'] ?? '') ?>"
-                                data-beneficiary-status="<?= esc($beneficiary['status']) ?>">
+                            data-beneficiary-id="<?= $beneficiary['id'] ?>"
+                            data-beneficiary-name="<?= esc($beneficiary['name']) ?>"
+                            data-beneficiary-age="<?= esc($beneficiary['age'] ?? '') ?>"
+                            data-beneficiary-education="<?= esc($beneficiary['education_level']) ?>"
+                            data-beneficiary-course="<?= esc($beneficiary['course']) ?>"
+                            data-beneficiary-institution="<?= esc($beneficiary['institution']) ?>"
+                            data-beneficiary-city="<?= esc($beneficiary['city'] ?? '') ?>"
+                            data-beneficiary-state="<?= esc($beneficiary['state'] ?? '') ?>"
+                            data-beneficiary-phone="<?= esc($beneficiary['phone'] ?? '') ?>"
+                            data-beneficiary-email="<?= esc($beneficiary['email'] ?? '') ?>"
+                            data-beneficiary-linkedin="<?= esc($beneficiary['linkedin_url'] ?? '') ?>"
+                            data-beneficiary-company-name="<?= esc($beneficiary['company_name'] ?? '') ?>"
+                            data-beneficiary-family="<?= esc($beneficiary['family_background'] ?? '') ?>"
+                            data-beneficiary-achievements="<?= esc($beneficiary['academic_achievements'] ?? '') ?>"
+                            data-beneficiary-goals="<?= esc($beneficiary['career_goals'] ?? '') ?>"
+                            data-beneficiary-company="<?= esc($beneficiary['company_link'] ?? '') ?>"
+                            data-beneficiary-status="<?= esc($beneficiary['status']) ?>">
                             <i class="fas fa-info-circle me-1"></i>Read More
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <?php
+<?php
         return ob_get_clean();
     }
 

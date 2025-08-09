@@ -1,4 +1,3 @@
-
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -121,7 +120,7 @@
                         class="img-fluid rounded-4 shadow-lg"
                         style="width: 100%; height: 450px; object-fit: cover;"
                         onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=450&fit=crop&crop=faces,entropy&auto=format&q=80'">
-                    
+
                     <!-- Hindi Decorative Elements on Image -->
                     <div class="image-overlay-decorations">
                         <div class="hindi-symbol symbol-1">🕉️</div>
@@ -438,8 +437,10 @@
     .hero-section-enhanced {
         position: relative;
         overflow: hidden;
-        padding-top: 150px; /* Adjust as needed for content */
-        padding-bottom: 150px; /* Adjust as needed for content */
+        padding-top: 150px;
+        /* Adjust as needed for content */
+        padding-bottom: 150px;
+        /* Adjust as needed for content */
     }
 
     /* Traditional Indian Border */
@@ -448,18 +449,23 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 10px; /* Height of the border */
-        background: linear-gradient(90deg, #daa520 0%, #ffd700 50%, #daa520 100%); /* Golden Indian border */
+        height: 10px;
+        /* Height of the border */
+        background: linear-gradient(90deg, #daa520 0%, #ffd700 50%, #daa520 100%);
+        /* Golden Indian border */
         z-index: 5;
     }
+
     .traditional-border::after {
         content: '';
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 5px; /* Height of the border */
-        background: linear-gradient(90deg, #b8860b 0%, #ffc107 50%, #b8860b 100%); /* Darker golden Indian border */
+        height: 5px;
+        /* Height of the border */
+        background: linear-gradient(90deg, #b8860b 0%, #ffc107 50%, #b8860b 100%);
+        /* Darker golden Indian border */
         z-index: 5;
     }
 
@@ -471,20 +477,37 @@
         left: 0;
         width: 100%;
         height: 100%;
-        pointer-events: none; /* Allow interaction with elements behind */
+        pointer-events: none;
+        /* Allow interaction with elements behind */
     }
 
     .mandala-element {
         position: absolute;
-        font-size: 3rem; /* Adjust size as needed */
-        color: rgba(218, 165, 32, 0.5); /* Golden color with transparency */
+        font-size: 3rem;
+        /* Adjust size as needed */
+        color: rgba(218, 165, 32, 0.5);
+        /* Golden color with transparency */
         opacity: 0.8;
         text-shadow: 0 0 10px rgba(218, 165, 32, 0.8);
     }
 
-    .mandala-1 { top: 10%; left: 15%; animation: spin 20s linear infinite; }
-    .mandala-2 { top: 70%; left: 80%; animation: spin 25s linear reverse infinite; }
-    .mandala-3 { top: 40%; left: 45%; animation: spin-slow 30s linear infinite; }
+    .mandala-1 {
+        top: 10%;
+        left: 15%;
+        animation: spin 20s linear infinite;
+    }
+
+    .mandala-2 {
+        top: 70%;
+        left: 80%;
+        animation: spin 25s linear reverse infinite;
+    }
+
+    .mandala-3 {
+        top: 40%;
+        left: 45%;
+        animation: spin-slow 30s linear infinite;
+    }
 
     .paisley-element {
         position: absolute;
@@ -497,9 +520,26 @@
         opacity: 0.7;
     }
 
-    .paisley-1 { top: 20%; left: 75%; transform: rotate(30deg); animation: float 5s ease-in-out infinite; }
-    .paisley-2 { top: 50%; left: 25%; transform: rotate(-30deg); animation: float 6s ease-in-out infinite reverse; }
-    .paisley-3 { top: 80%; left: 50%; transform: rotate(60deg); animation: float 4s ease-in-out infinite; }
+    .paisley-1 {
+        top: 20%;
+        left: 75%;
+        transform: rotate(30deg);
+        animation: float 5s ease-in-out infinite;
+    }
+
+    .paisley-2 {
+        top: 50%;
+        left: 25%;
+        transform: rotate(-30deg);
+        animation: float 6s ease-in-out infinite reverse;
+    }
+
+    .paisley-3 {
+        top: 80%;
+        left: 50%;
+        transform: rotate(60deg);
+        animation: float 4s ease-in-out infinite;
+    }
 
     /* Floating Elements */
     .floating-elements {
@@ -514,70 +554,113 @@
 
     .float-element {
         position: absolute;
-        color: rgba(255, 255, 255, 0.3); /* White with transparency */
+        color: rgba(255, 255, 255, 0.3);
+        /* White with transparency */
         font-size: 2rem;
         animation: float 5s ease-in-out infinite alternate;
     }
 
-    .float-element-1 { top: 10%; left: 5%; animation-delay: -1s; }
-    .float-element-2 { top: 80%; left: 20%; animation-delay: -2s; font-size: 1.5rem; color: rgba(218, 165, 32, 0.2); }
-    .float-element-3 { top: 40%; left: 60%; animation-delay: -3s; font-size: 2.5rem; }
-    .float-element-4 { top: 60%; left: 90%; animation-delay: -4s; color: rgba(218, 165, 32, 0.3); }
-    .float-element-5 { top: 25%; left: 35%; animation-delay: -5s; font-size: 1.8rem; animation-duration: 6s; }
+    .float-element-1 {
+        top: 10%;
+        left: 5%;
+        animation-delay: -1s;
+    }
+
+    .float-element-2 {
+        top: 80%;
+        left: 20%;
+        animation-delay: -2s;
+        font-size: 1.5rem;
+        color: rgba(218, 165, 32, 0.2);
+    }
+
+    .float-element-3 {
+        top: 40%;
+        left: 60%;
+        animation-delay: -3s;
+        font-size: 2.5rem;
+    }
+
+    .float-element-4 {
+        top: 60%;
+        left: 90%;
+        animation-delay: -4s;
+        color: rgba(218, 165, 32, 0.3);
+    }
+
+    .float-element-5 {
+        top: 25%;
+        left: 35%;
+        animation-delay: -5s;
+        font-size: 1.8rem;
+        animation-duration: 6s;
+    }
 
     /* Font Enhancements */
     .font-display {
-        font-family: 'Playfair Display', serif; /* Example display font */
+        font-family: 'Playfair Display', serif;
+        /* Example display font */
     }
 
     .hero-title {
-        font-size: 4rem; /* Larger for hero title */
+        font-size: 4rem;
+        /* Larger for hero title */
         line-height: 1.2;
     }
 
     .hero-tagline {
-        font-size: 2.5rem; /* Adjust as needed */
+        font-size: 2.5rem;
+        /* Adjust as needed */
         line-height: 1.3;
     }
 
     .hero-description {
-        font-size: 1.2rem; /* Slightly larger description */
+        font-size: 1.2rem;
+        /* Slightly larger description */
     }
 
     .section-title {
-        font-family: 'Playfair Display', serif; /* Apply to section titles */
-        font-size: 2.8rem; /* Larger section titles */
+        font-family: 'Playfair Display', serif;
+        /* Apply to section titles */
+        font-size: 2.8rem;
+        /* Larger section titles */
     }
 
     /* Custom Button Styles for Hero */
     .btn-hero-primary {
-        background-color: #e0a03a; /* Warm golden primary button */
+        background-color: #e0a03a;
+        /* Warm golden primary button */
         color: white;
         border: none;
         padding: 12px 30px;
         font-weight: bold;
-        font-family: 'Montserrat', sans-serif; /* Modern font for buttons */
+        font-family: 'Montserrat', sans-serif;
+        /* Modern font for buttons */
         transition: all 0.3s ease;
     }
 
     .btn-hero-primary:hover {
-        background-color: #c48f31; /* Darker shade on hover */
+        background-color: #c48f31;
+        /* Darker shade on hover */
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .btn-hero-outline {
         background-color: transparent;
-        color: #e0a03a; /* Golden outline */
+        color: #e0a03a;
+        /* Golden outline */
         border: 2px solid #e0a03a;
         padding: 10px 30px;
         font-weight: bold;
-        font-family: 'Montserrat', sans-serif; /* Modern font for buttons */
+        font-family: 'Montserrat', sans-serif;
+        /* Modern font for buttons */
         transition: all 0.3s ease;
     }
 
     .btn-hero-outline:hover {
-        background-color: #e0a03a; /* Fill with gold on hover */
+        background-color: #e0a03a;
+        /* Fill with gold on hover */
         color: white;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -594,37 +677,80 @@
 
     /* Animation Keyframes */
     @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
     @keyframes spin-slow {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(-360deg); }
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(-360deg);
+        }
     }
 
     @keyframes float {
-        0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
-        50% { transform: translateY(-20px) rotate(15deg); opacity: 1; }
-        100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+        0% {
+            transform: translateY(0px) rotate(0deg);
+            opacity: 0.8;
+        }
+
+        50% {
+            transform: translateY(-20px) rotate(15deg);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(0px) rotate(0deg);
+            opacity: 0.8;
+        }
     }
 
     /* Responsive Adjustments */
     @media (max-width: 992px) {
-        .hero-title { font-size: 3rem; }
-        .hero-tagline { font-size: 2rem; }
-        .section-title { font-size: 2.5rem; }
+        .hero-title {
+            font-size: 3rem;
+        }
+
+        .hero-tagline {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+        }
     }
 
     @media (max-width: 768px) {
-        .hero-title { font-size: 2.5rem; }
-        .hero-tagline { font-size: 1.8rem; }
-        .hero-section-enhanced { padding-top: 100px; padding-bottom: 100px; }
-        .mandala-element { font-size: 2rem; }
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.8rem;
+        }
+
+        .hero-section-enhanced {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        .mandala-element {
+            font-size: 2rem;
+        }
     }
 
     @media (max-width: 576px) {
-        .hero-actions .btn { width: 100%; }
+        .hero-actions .btn {
+            width: 100%;
+        }
     }
 
     /* General Styles from Original File */
