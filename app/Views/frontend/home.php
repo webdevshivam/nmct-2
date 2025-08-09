@@ -2,110 +2,61 @@
 
 <?= $this->section('content') ?>
 
-<!-- Enhanced Hero Section with Indian Elements -->
-<section class="hero-section-enhanced d-flex align-items-center"
-    style="background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(165, 102, 28, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%), url('<?= base_url('assets/images/bharatpur-hero-image.png') ?>'); background-size: cover; background-position: center center; background-attachment: fixed; min-height: 1024px;">
-
-    <!-- Traditional Indian Border -->
-    <div class="traditional-border"></div>
-
-    <!-- Background Overlay -->
-    <div class="hero-bg-overlay position-absolute w-100 h-100"></div>
-
-    <!-- Indian Decorative Elements -->
-    <div class="hero-decorative-elements">
-        <div class="mandala-element mandala-1">❋</div>
-        <div class="mandala-element mandala-2">✧</div>
-        <div class="mandala-element mandala-3">❃</div>
-        <div class="paisley-element paisley-1">🪷</div>
-        <div class="paisley-element paisley-2">🕉️</div>
-        <div class="paisley-element paisley-3">🪔</div>
-        <div class="hindi-decorative hindi-1">ॐ</div>
-        <div class="hindi-decorative hindi-2">श्री</div>
-        <div class="hindi-decorative hindi-3">गणेश</div>
+<!-- Simple Hero Section -->
+<section class="hero-section-simple">
+    <div class="hero-background">
+        <img src="<?= base_url('assets/images/bharatpur-hero-image.png') ?>" alt="Bharatpur Foundation" class="hero-bg-image">
+        <div class="hero-overlay"></div>
     </div>
-
-    <!-- Floating Indian Elements -->
-    <div class="floating-elements position-absolute w-100 h-100">
-        <div class="float-element float-element-1">🌺</div>
-        <div class="float-element float-element-2">🪔</div>
-        <div class="float-element float-element-3">🙏</div>
-        <div class="float-element float-element-4">⚛️</div>
-        <div class="float-element float-element-5">🕉️</div>
-        <div class="float-element float-element-6">🪷</div>
-    </div>
-
-    <div class="container position-relative" style="z-index: 10;">
-        <div class="row align-items-center justify-content-center" style="min-height: 1024px;">
-            <div class="col-lg-10 text-center">
-                <div class="hero-content-enhanced">
-                    <!-- Main Title -->
-                    <h1 class="hero-title font-display mb-3">
+    
+    <div class="container">
+        <div class="row min-vh-100 align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="hero-content">
+                    <h1 class="hero-title mb-4">
                         <?= $translations['hero_title'] ?>
                     </h1>
-                    <h2 class="hero-tagline mb-4">
+                    <h2 class="hero-subtitle mb-4">
                         <?= $translations['hero_tagline'] ?>
                     </h2>
-
-                    <!-- Simple Description -->
                     <p class="hero-description mb-5">
                         <?= $translations['hero_description'] ?>
                     </p>
-
-                    <!-- Journey Steps in Hindi/English -->
-                    <div class="journey-steps mb-5">
-                        <div class="row g-4">
-                            <div class="col-md-4">
-                                <div class="journey-step">
-                                    <div class="step-icon">
-                                        <i class="fas fa-graduation-cap"></i>
-                                    </div>
-                                    <h6><?= $translations['quality_education'] ?></h6>
-                                    <small><?= $translations['complete_academic_support'] ?></small>
-                                </div>
+                    
+                    <!-- Simple Feature Icons -->
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-4">
+                            <div class="hero-feature">
+                                <i class="fas fa-graduation-cap mb-3"></i>
+                                <h6><?= $translations['quality_education'] ?></h6>
                             </div>
-                            <div class="col-md-4">
-                                <div class="journey-step">
-                                    <div class="step-icon">
-                                        <i class="fas fa-user-tie"></i>
-                                    </div>
-                                    <h6><?= $translations['personal_mentoring'] ?></h6>
-                                    <small><?= $translations['industry_guidance'] ?></small>
-                                </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="hero-feature">
+                                <i class="fas fa-user-tie mb-3"></i>
+                                <h6><?= $translations['personal_mentoring'] ?></h6>
                             </div>
-                            <div class="col-md-4">
-                                <div class="journey-step">
-                                    <div class="step-icon">
-                                        <i class="fas fa-briefcase"></i>
-                                    </div>
-                                    <h6><?= $translations['career_development'] ?></h6>
-                                    <small><?= $translations['job_placement_support'] ?></small>
-                                </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="hero-feature">
+                                <i class="fas fa-briefcase mb-3"></i>
+                                <h6><?= $translations['career_development'] ?></h6>
                             </div>
                         </div>
                     </div>
-
+                    
                     <!-- Call to Action Buttons -->
-                    <div class="hero-actions d-flex flex-wrap justify-content-center gap-3">
-                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-hero-primary btn-lg">
+                    <div class="hero-actions">
+                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-primary btn-lg me-3 mb-3">
                             <?= $translations['our_approach'] ?>
                         </a>
-                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-hero-outline btn-lg">
+                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-outline-light btn-lg mb-3">
                             <?= $translations['support_students'] ?>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Bottom Wave -->
-    <div class="hero-wave">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"></path>
-            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="currentColor"></path>
-            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"></path>
-        </svg>
     </div>
 </section>
 
@@ -433,297 +384,125 @@
 </section>
 
 <style>
-    /* Hero Section Enhancements */
-    .hero-section-enhanced {
+    /* Simple Hero Section */
+    .hero-section-simple {
         position: relative;
+        min-height: 100vh;
         overflow: hidden;
-        padding-top: 150px;
-        /* Adjust as needed for content */
-        padding-bottom: 150px;
-        /* Adjust as needed for content */
+        display: flex;
+        align-items: center;
     }
-
-    /* Traditional Indian Border */
-    .traditional-border {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 10px;
-        /* Height of the border */
-        background: linear-gradient(90deg, #daa520 0%, #ffd700 50%, #daa520 100%);
-        /* Golden Indian border */
-        z-index: 5;
-    }
-
-    .traditional-border::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        /* Height of the border */
-        background: linear-gradient(90deg, #b8860b 0%, #ffc107 50%, #b8860b 100%);
-        /* Darker golden Indian border */
-        z-index: 5;
-    }
-
-
-    /* Indian Decorative Elements */
-    .hero-decorative-elements {
+    
+    .hero-background {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        pointer-events: none;
-        /* Allow interaction with elements behind */
+        z-index: 1;
     }
-
-    .mandala-element {
-        position: absolute;
-        font-size: 3rem;
-        /* Adjust size as needed */
-        color: rgba(218, 165, 32, 0.5);
-        /* Golden color with transparency */
-        opacity: 0.8;
-        text-shadow: 0 0 10px rgba(218, 165, 32, 0.8);
+    
+    .hero-bg-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
     }
-
-    .mandala-1 {
-        top: 10%;
-        left: 15%;
-        animation: spin 20s linear infinite;
-    }
-
-    .mandala-2 {
-        top: 70%;
-        left: 80%;
-        animation: spin 25s linear reverse infinite;
-    }
-
-    .mandala-3 {
-        top: 40%;
-        left: 45%;
-        animation: spin-slow 30s linear infinite;
-    }
-
-    .paisley-element {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 C77.6,10 100,32.4 100,60 C100,87.6 77.6,110 50,110 C22.4,110 0,87.6 0,60 C0,32.4 22.4,10 50,10 Z M50,30 C61.0,30 70,39.0 70,50 C70,61.0 61.0,70 50,70 C39.0,70 30,61.0 30,50 C30,39.0 39.0,30 50,30 Z M70,60 C70,70.8 62.8,78 50,78 C37.2,78 30,70.8 30,60 C30,49.2 37.2,42 50,42 C62.8,42 70,49.2 70,60 Z" fill="%23daa520" transform="translate(0, -10)"/></svg>');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        opacity: 0.7;
-    }
-
-    .paisley-1 {
-        top: 20%;
-        left: 75%;
-        transform: rotate(30deg);
-        animation: float 5s ease-in-out infinite;
-    }
-
-    .paisley-2 {
-        top: 50%;
-        left: 25%;
-        transform: rotate(-30deg);
-        animation: float 6s ease-in-out infinite reverse;
-    }
-
-    .paisley-3 {
-        top: 80%;
-        left: 50%;
-        transform: rotate(60deg);
-        animation: float 4s ease-in-out infinite;
-    }
-
-    /* Floating Elements */
-    .floating-elements {
+    
+    .hero-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        pointer-events: none;
-        overflow: hidden;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(165, 102, 28, 0.3) 50%, rgba(0, 0, 0, 0.6) 100%);
+        z-index: 2;
     }
-
-    .float-element {
-        position: absolute;
-        color: rgba(255, 255, 255, 0.3);
-        /* White with transparency */
-        font-size: 2rem;
-        animation: float 5s ease-in-out infinite alternate;
+    
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        color: white;
     }
-
-    .float-element-1 {
-        top: 10%;
-        left: 5%;
-        animation-delay: -1s;
-    }
-
-    .float-element-2 {
-        top: 80%;
-        left: 20%;
-        animation-delay: -2s;
-        font-size: 1.5rem;
-        color: rgba(218, 165, 32, 0.2);
-    }
-
-    .float-element-3 {
-        top: 40%;
-        left: 60%;
-        animation-delay: -3s;
-        font-size: 2.5rem;
-    }
-
-    .float-element-4 {
-        top: 60%;
-        left: 90%;
-        animation-delay: -4s;
-        color: rgba(218, 165, 32, 0.3);
-    }
-
-    .float-element-5 {
-        top: 25%;
-        left: 35%;
-        animation-delay: -5s;
-        font-size: 1.8rem;
-        animation-duration: 6s;
-    }
-
-    /* Font Enhancements */
-    .font-display {
-        font-family: 'Playfair Display', serif;
-        /* Example display font */
-    }
-
+    
     .hero-title {
-        font-size: 4rem;
-        /* Larger for hero title */
-        line-height: 1.2;
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        font-family: 'Playfair Display', serif;
     }
-
-    .hero-tagline {
-        font-size: 2.5rem;
-        /* Adjust as needed */
-        line-height: 1.3;
+    
+    .hero-subtitle {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #ffd700;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        font-family: 'Merriweather', serif;
     }
-
+    
     .hero-description {
         font-size: 1.2rem;
-        /* Slightly larger description */
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
     }
-
-    .section-title {
-        font-family: 'Playfair Display', serif;
-        /* Apply to section titles */
-        font-size: 2.8rem;
-        /* Larger section titles */
-    }
-
-    /* Custom Button Styles for Hero */
-    .btn-hero-primary {
-        background-color: #e0a03a;
-        /* Warm golden primary button */
+    
+    .hero-feature {
+        text-align: center;
         color: white;
-        border: none;
+    }
+    
+    .hero-feature i {
+        font-size: 3rem;
+        color: #ffd700;
+        display: block;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+    
+    .hero-feature h6 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        margin: 0;
+    }
+    
+    .hero-actions .btn {
+        font-size: 1.1rem;
+        font-weight: 600;
         padding: 12px 30px;
-        font-weight: bold;
-        font-family: 'Montserrat', sans-serif;
-        /* Modern font for buttons */
-        transition: all 0.3s ease;
+        border-radius: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
-
-    .btn-hero-primary:hover {
-        background-color: #c48f31;
-        /* Darker shade on hover */
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-hero-outline {
-        background-color: transparent;
-        color: #e0a03a;
-        /* Golden outline */
-        border: 2px solid #e0a03a;
-        padding: 10px 30px;
-        font-weight: bold;
-        font-family: 'Montserrat', sans-serif;
-        /* Modern font for buttons */
-        transition: all 0.3s ease;
-    }
-
-    .btn-hero-outline:hover {
-        background-color: #e0a03a;
-        /* Fill with gold on hover */
+    
+    .btn-outline-light {
+        border: 2px solid rgba(255, 255, 255, 0.8);
         color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-outline-light:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: white;
+        color: white;
     }
 
-    /* Text Gradient for Hero Tagline */
-    .text-gradient-hero {
-        background: linear-gradient(90deg, #f39c12 0%, #e67e22 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        font-weight: bold;
-    }
+    
 
-    /* Animation Keyframes */
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    @keyframes spin-slow {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(-360deg);
-        }
-    }
-
-    @keyframes float {
-        0% {
-            transform: translateY(0px) rotate(0deg);
-            opacity: 0.8;
-        }
-
-        50% {
-            transform: translateY(-20px) rotate(15deg);
-            opacity: 1;
-        }
-
-        100% {
-            transform: translateY(0px) rotate(0deg);
-            opacity: 0.8;
-        }
-    }
-
-    /* Responsive Adjustments */
+    /* Responsive Design */
     @media (max-width: 992px) {
         .hero-title {
             font-size: 3rem;
         }
-
-        .hero-tagline {
-            font-size: 2rem;
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
         }
-
-        .section-title {
+        
+        .hero-feature i {
             font-size: 2.5rem;
         }
     }
@@ -732,24 +511,33 @@
         .hero-title {
             font-size: 2.5rem;
         }
-
-        .hero-tagline {
-            font-size: 1.8rem;
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
         }
-
-        .hero-section-enhanced {
-            padding-top: 100px;
-            padding-bottom: 100px;
+        
+        .hero-description {
+            font-size: 1.1rem;
         }
-
-        .mandala-element {
+        
+        .hero-feature i {
             font-size: 2rem;
         }
     }
 
     @media (max-width: 576px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+        }
+        
         .hero-actions .btn {
+            display: block;
             width: 100%;
+            margin: 0 0 1rem 0;
         }
     }
 

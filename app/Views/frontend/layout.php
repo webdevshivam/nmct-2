@@ -555,8 +555,8 @@
                             <span id="currentLang"><?= ($language ?? 'en') === 'hi' ? 'हिंदी' : 'English' ?></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= base_url('en' . (uri_string() ? '/' . ltrim(str_replace(['en/', 'hi/'], '', uri_string()), '/') : '')) ?>">🇬🇧 English</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('hi' . (uri_string() ? '/' . ltrim(str_replace(['en/', 'hi/'], '', uri_string()), '/') : '')) ?>">🇮🇳 हिंदी</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('en') ?>">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('hi') ?>">🇮🇳 हिंदी</a></li>
                         </ul>
                     </li>
                 </ul>
