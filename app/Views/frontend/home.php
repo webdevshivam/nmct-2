@@ -2,13 +2,20 @@
 
 <?= $this->section('content') ?>
 
-<!-- Hero Section with Split Layout -->
-<section class="hero-section-split">
-    <div class="container-fluid">
-        <div class="row min-vh-100 align-items-center">
-            <!-- Left Side - Content -->
-            <div class="col-lg-6 hero-content-left">
-                <div class="content-wrapper">
+<!-- Hero Section with Background Image -->
+<section class="hero-section-background">
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="row min-vh-100 align-items-center justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="hero-content">
+                    <!-- Foundation Logo/Icon -->
+                    <div class="hero-logo mb-4">
+                        <div class="logo-circle">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    
                     <h1 class="hero-title mb-4">
                         <?= $translations['hero_title'] ?>
                     </h1>
@@ -19,54 +26,51 @@
                         <?= $translations['hero_description'] ?>
                     </p>
                     
-                    <!-- Feature Icons in Left Side -->
-                    <div class="row g-3 mb-5">
-                        <div class="col-md-6">
-                            <div class="hero-feature-left">
-                                <i class="fas fa-graduation-cap me-3"></i>
-                                <span><?= $translations['quality_education'] ?></span>
-                            </div>
+                    <!-- Feature Pills -->
+                    <div class="hero-features mb-5">
+                        <div class="feature-pill">
+                            <i class="fas fa-graduation-cap me-2"></i>
+                            <?= $translations['quality_education'] ?>
                         </div>
-                        <div class="col-md-6">
-                            <div class="hero-feature-left">
-                                <i class="fas fa-user-tie me-3"></i>
-                                <span><?= $translations['personal_mentoring'] ?></span>
-                            </div>
+                        <div class="feature-pill">
+                            <i class="fas fa-user-tie me-2"></i>
+                            <?= $translations['personal_mentoring'] ?>
                         </div>
-                        <div class="col-12">
-                            <div class="hero-feature-left">
-                                <i class="fas fa-briefcase me-3"></i>
-                                <span><?= $translations['career_development'] ?></span>
-                            </div>
+                        <div class="feature-pill">
+                            <i class="fas fa-briefcase me-2"></i>
+                            <?= $translations['career_development'] ?>
                         </div>
                     </div>
                     
                     <!-- Call to Action Buttons -->
                     <div class="hero-actions">
-                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-primary btn-lg me-3 mb-3">
-                            <?= $translations['our_approach'] ?>
+                        <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-hero-primary btn-lg me-3 mb-3">
+                            <i class="fas fa-rocket me-2"></i><?= $translations['our_approach'] ?>
                         </a>
-                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-outline-primary btn-lg mb-3">
-                            <?= $translations['support_students'] ?>
+                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-hero-outline btn-lg mb-3">
+                            <i class="fas fa-users me-2"></i><?= $translations['support_students'] ?>
                         </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Right Side - Image -->
-            <div class="col-lg-6 hero-image-right">
-                <div class="image-container">
-                    <img src="<?= base_url('assets/images/bharatpur-hero-image.png') ?>" alt="Bharatpur Foundation" class="hero-main-image">
-                    <!-- Decorative Elements -->
-                    <div class="decorative-elements">
-                        <div class="float-element float-1">🌟</div>
-                        <div class="float-element float-2">📚</div>
-                        <div class="float-element float-3">🎓</div>
-                        <div class="float-element float-4">💼</div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <!-- Decorative Elements -->
+    <div class="hero-decorative-elements">
+        <div class="float-element float-1">🌟</div>
+        <div class="float-element float-2">📚</div>
+        <div class="float-element float-3">🎓</div>
+        <div class="float-element float-4">💼</div>
+        <div class="float-element float-5">🎯</div>
+        <div class="float-element float-6">✨</div>
+    </div>
+    
+    <!-- Bottom Wave -->
+    <div class="hero-wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+        </svg>
     </div>
 </section>
 
@@ -394,214 +398,330 @@
 </section>
 
 <style>
-    /* Split Hero Section */
-    .hero-section-split {
+    /* Background Hero Section */
+    .hero-section-background {
         min-height: 100vh;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        padding: 0;
-    }
-    
-    .hero-content-left {
-        padding: 4rem 3rem;
+        background: 
+            linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(165, 102, 28, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%),
+            url('<?= base_url('assets/images/bharatpur-hero-image.png') ?>');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        position: relative;
+        overflow: hidden;
+        color: white;
         display: flex;
         align-items: center;
-        min-height: 100vh;
-        background: rgba(255, 255, 255, 0.95);
-        position: relative;
     }
     
-    .hero-content-left::before {
-        content: '';
+    .hero-overlay {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         background: 
-            radial-gradient(circle at 20% 20%, rgba(165, 102, 28, 0.05) 2px, transparent 2px),
-            radial-gradient(circle at 80% 80%, rgba(212, 132, 43, 0.03) 1px, transparent 1px);
-        background-size: 40px 40px, 60px 60px;
+            radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 70% 80%, rgba(165, 102, 28, 0.1) 0%, transparent 50%),
+            linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.3) 100%);
         z-index: 1;
     }
     
-    .content-wrapper {
+    .hero-content {
         position: relative;
-        z-index: 2;
-        width: 100%;
-        max-width: 500px;
+        z-index: 10;
+        text-align: center;
     }
     
-    .hero-image-right {
-        padding: 2rem;
+    .hero-logo {
         display: flex;
-        align-items: center;
         justify-content: center;
-        min-height: 100vh;
-        position: relative;
-    }
-    
-    .image-container {
-        position: relative;
-        width: 100%;
-        max-width: 600px;
-    }
-    
-    .hero-main-image {
-        width: 100%;
-        height: auto;
-        max-height: 80vh;
-        object-fit: cover;
-        border-radius: 20px;
-        box-shadow: 
-            0 20px 60px rgba(0, 0, 0, 0.15),
-            0 10px 30px rgba(165, 102, 28, 0.1);
-        border: 3px solid rgba(165, 102, 28, 0.2);
-    }
-    
-    .hero-title {
-        font-size: 3.2rem;
-        font-weight: 800;
-        color: var(--primary-color);
-        font-family: 'Playfair Display', serif;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.8rem;
-        font-weight: 600;
-        color: var(--secondary-color);
-        font-family: 'Merriweather', serif;
-        line-height: 1.3;
-        margin-bottom: 1.5rem;
-    }
-    
-    .hero-description {
-        font-size: 1.1rem;
-        color: var(--text-secondary);
-        line-height: 1.7;
         margin-bottom: 2rem;
     }
     
-    .hero-feature-left {
+    .logo-circle {
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
         display: flex;
         align-items: center;
-        margin-bottom: 1rem;
-        padding: 0.8rem;
-        background: rgba(165, 102, 28, 0.05);
-        border-radius: 8px;
-        border-left: 4px solid var(--primary-color);
-        transition: all 0.3s ease;
+        justify-content: center;
+        backdrop-filter: blur(20px);
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.3), 
+            0 4px 16px rgba(165, 102, 28, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        border: 3px solid rgba(255, 215, 0, 0.3);
+        animation: glow 3s ease-in-out infinite alternate;
     }
     
-    .hero-feature-left:hover {
-        background: rgba(165, 102, 28, 0.1);
-        transform: translateX(5px);
+    .logo-circle i {
+        font-size: 2.5rem;
+        color: #ffd700;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
     
-    .hero-feature-left i {
-        font-size: 1.5rem;
-        color: var(--primary-color);
-        min-width: 40px;
+    @keyframes glow {
+        0% { 
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3), 
+                0 4px 16px rgba(165, 102, 28, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                0 0 20px rgba(255, 215, 0, 0.2);
+        }
+        100% { 
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3), 
+                0 4px 16px rgba(165, 102, 28, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.4);
+        }
     }
     
-    .hero-feature-left span {
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        color: white;
+        font-family: 'Playfair Display', serif;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        text-shadow: 
+            0 4px 12px rgba(0, 0, 0, 0.7), 
+            0 2px 6px rgba(0, 0, 0, 0.9),
+            0 1px 0 rgba(255, 215, 0, 0.3);
+        background: linear-gradient(135deg, #ffd700 0%, #ff8c00 30%, #ffa500 70%, #ff6347 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .hero-subtitle {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: white;
+        font-family: 'Merriweather', serif;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+        text-shadow: 
+            0 4px 12px rgba(0, 0, 0, 0.7), 
+            0 2px 6px rgba(0, 0, 0, 0.9);
+    }
+    
+    .hero-description {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.95);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        font-family: 'Lora', serif;
+        font-weight: 500;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-features {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .feature-pill {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 1rem 1.5rem;
+        border-radius: 50px;
+        color: white;
         font-weight: 600;
-        color: var(--text-primary);
         font-size: 0.95rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
     
-    .hero-actions .btn {
-        font-size: 1rem;
-        font-weight: 600;
-        padding: 12px 28px;
-        border-radius: 8px;
+    .feature-pill:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+    }
+    
+    .feature-pill i {
+        color: #ffd700;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    
+    .btn-hero-primary {
+        background: linear-gradient(135deg, #ffd700 0%, #ffb000 100%);
+        border: none;
+        color: #333;
+        font-weight: 700;
+        padding: 15px 35px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        transition: all 0.3s ease;
+        text-shadow: none;
     }
     
-    .btn-outline-primary {
-        border: 2px solid var(--primary-color);
-        color: var(--primary-color);
+    .btn-hero-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(255, 215, 0, 0.5);
+        color: #333;
+        background: linear-gradient(135deg, #fff700 0%, #ffb000 100%);
+    }
+    
+    .btn-hero-outline {
         background: transparent;
-    }
-    
-    .btn-outline-primary:hover {
-        background: var(--primary-color);
+        border: 3px solid rgba(255, 255, 255, 0.8);
         color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(165, 102, 28, 0.3);
+        font-weight: 700;
+        padding: 12px 32px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
     
-    .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(165, 102, 28, 0.4);
+    .btn-hero-outline:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: white;
+        transform: translateY(-3px);
+        color: white;
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
     }
     
     /* Decorative Elements */
-    .decorative-elements {
+    .hero-decorative-elements {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        pointer-events: none;
         z-index: 2;
+        pointer-events: none;
     }
     
     .float-element {
         position: absolute;
-        font-size: 2rem;
+        font-size: 2.5rem;
         opacity: 0.6;
-        animation: float 6s ease-in-out infinite;
+        animation: float 8s ease-in-out infinite;
+        color: rgba(255, 215, 0, 0.8);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     }
     
     .float-1 {
-        top: 10%;
-        right: 15%;
+        top: 15%;
+        left: 10%;
         animation-delay: 0s;
     }
     
     .float-2 {
-        top: 70%;
-        left: 10%;
+        top: 25%;
+        right: 15%;
         animation-delay: -2s;
     }
     
     .float-3 {
-        top: 25%;
+        top: 60%;
         left: 5%;
         animation-delay: -4s;
     }
     
     .float-4 {
-        bottom: 15%;
-        right: 5%;
+        bottom: 25%;
+        right: 8%;
+        animation-delay: -1s;
+    }
+    
+    .float-5 {
+        top: 45%;
+        left: 15%;
         animation-delay: -3s;
+    }
+    
+    .float-6 {
+        bottom: 15%;
+        left: 20%;
+        animation-delay: -5s;
     }
     
     @keyframes float {
         0%, 100% { 
             transform: translateY(0px) rotate(0deg); 
-            opacity: 0.6; 
+            opacity: 0.4; 
         }
-        50% { 
-            transform: translateY(-20px) rotate(5deg); 
+        33% { 
+            transform: translateY(-25px) rotate(5deg); 
             opacity: 0.8; 
         }
+        66% { 
+            transform: translateY(-15px) rotate(-3deg); 
+            opacity: 0.6; 
+        }
+    }
+    
+    /* Wave Bottom */
+    .hero-wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        transform: rotate(180deg);
+        z-index: 5;
+    }
+    
+    .hero-wave svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 80px;
+        fill: #ffffff;
     }
 
     /* Responsive Design */
     @media (max-width: 992px) {
-        .hero-content-left {
-            min-height: auto;
-            padding: 3rem 2rem;
+        .hero-title {
+            font-size: 3.2rem;
         }
         
-        .hero-image-right {
-            min-height: 50vh;
-            padding: 2rem 1rem;
+        .hero-subtitle {
+            font-size: 1.8rem;
+        }
+        
+        .logo-circle {
+            width: 80px;
+            height: 80px;
+        }
+        
+        .logo-circle i {
+            font-size: 2rem;
+        }
+        
+        .hero-features {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .feature-pill {
+            max-width: 300px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-section-background {
+            background-attachment: scroll;
         }
         
         .hero-title {
@@ -612,25 +732,28 @@
             font-size: 1.6rem;
         }
         
+        .hero-description {
+            font-size: 1.1rem;
+        }
+        
         .float-element {
-            font-size: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .btn-hero-primary,
+        .btn-hero-outline {
+            padding: 12px 25px;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 
-    @media (max-width: 768px) {
-        .hero-section-split .row {
-            flex-direction: column-reverse;
-        }
-        
-        .hero-content-left {
-            padding: 2rem 1.5rem;
-        }
-        
-        .hero-image-right {
-            min-height: 40vh;
-            padding: 1rem;
-        }
-        
+    @media (max-width: 576px) {
         .hero-title {
             font-size: 2.4rem;
         }
@@ -643,36 +766,22 @@
             font-size: 1rem;
         }
         
-        .hero-feature-left {
-            padding: 0.6rem;
+        .logo-circle {
+            width: 70px;
+            height: 70px;
         }
         
-        .hero-feature-left i {
-            font-size: 1.3rem;
-        }
-        
-        .hero-feature-left span {
-            font-size: 0.9rem;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .hero-title {
-            font-size: 2rem;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-        }
-        
-        .hero-actions .btn {
-            display: block;
-            width: 100%;
-            margin: 0 0 1rem 0;
+        .logo-circle i {
+            font-size: 1.8rem;
         }
         
         .float-element {
             display: none;
+        }
+        
+        .feature-pill {
+            font-size: 0.9rem;
+            padding: 0.8rem 1.2rem;
         }
     }
 
