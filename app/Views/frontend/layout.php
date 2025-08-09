@@ -11,23 +11,23 @@
     <link href="<?= base_url('assets/css/bharatpur-theme.css') ?>" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #A5661C;
-            --primary-light: #C78B2A;
-            --primary-dark: #6B3F1C;
-            --secondary-color: #D4842B;
-            --secondary-light: #E6A047;
-            --accent-color: #8B5A1A;
-            --accent-light: #A5661C;
-            --success-color: #7A8B2F;
-            --success-light: #9BAB3A;
-            --warning-color: #D4842B;
-            --warning-light: #E6A047;
-            --text-primary: #2d1810;
-            --text-secondary: #5a3822;
-            --text-light: #8B5A1A;
+            --primary-color: #0F3A66;
+            --primary-light: #1A4F7A;
+            --primary-dark: #0A2644;
+            --secondary-color: #D69A2A;
+            --secondary-light: #E0A95F;
+            --accent-color: #D69A2A;
+            --accent-light: #E0A95F;
+            --success-color: #16A085;
+            --success-light: #48C9B0;
+            --warning-color: #F39C12;
+            --warning-light: #F4D03F;
+            --text-primary: #1A2B3D;
+            --text-secondary: #4A5568;
+            --text-light: #6B7280;
             --bg-primary: #ffffff;
-            --bg-secondary: #fdf9f5;
-            --bg-tertiary: #f8f1e8;
+            --bg-secondary: #FFF8F0;
+            --bg-tertiary: #F8F9FA;
             --bg-soft: #fbf5ed;
             --border-light: #e8dcc9;
             --border-lighter: #f0e7d6;

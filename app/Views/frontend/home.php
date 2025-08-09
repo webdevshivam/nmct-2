@@ -348,16 +348,19 @@
 </section>
 
 <style>
-/* Professional Color Palette */
+/* Professional Color Palette - Navy & Gold Theme */
 :root {
     --navy: #0F3A66;
+    --navy-dark: #0A2644;
+    --navy-light: #1A4F7A;
     --gold: #D69A2A;
     --gold-soft: #E0A95F;
+    --gold-light: #F4B942;
     --cream: #FFF8F0;
-    --gray-text: #6B7280;
+    --gray-text: #4A5568;
     --success-color: #16A085;
-    --navy-light: rgba(15, 58, 102, 0.1);
-    --gold-light: rgba(214, 154, 42, 0.1);
+    --navy-light-bg: rgba(15, 58, 102, 0.1);
+    --gold-light-bg: rgba(214, 154, 42, 0.1);
 }
 
 /* Professional Hero Section */
@@ -428,10 +431,10 @@
 }
 
 .btn-primary-navy:hover {
-    background: #0d2f52;
+    background: var(--navy-dark);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(15, 58, 102, 0.4);
+    box-shadow: 0 8px 20px rgba(10, 38, 68, 0.4);
 }
 
 .btn-outline-gold {
@@ -770,7 +773,7 @@
 
 /* Call to Action Section */
 .cta-section {
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
     padding: 100px 0;
     color: white;
 }

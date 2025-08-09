@@ -1,57 +1,57 @@
 /* Bharatpur Foundation Custom Theme */
 :root {
-  /* Logo-based Color Variables */
-  --primary-color: #a5661c;
-  --primary-dark: #6b3f1c;
-  --primary-light: #c78b2a;
-  --secondary-color: #8b5a1a;
-  --accent-color: #d4842b;
-  --success-color: #7a8b2f;
-  --warning-color: #d4842b;
-  --info-color: #a5661c;
-  --text-primary: #2d1810;
-  --text-secondary: #5a3822;
-  --text-light: #8b5a1a;
+  /* Navy Blue and Golden Theme */
+  --primary-color: #0F3A66;
+  --primary-dark: #0A2644;
+  --primary-light: #1A4F7A;
+  --secondary-color: #D69A2A;
+  --accent-color: #E0A95F;
+  --success-color: #16A085;
+  --warning-color: #F39C12;
+  --info-color: #0F3A66;
+  --text-primary: #1A2B3D;
+  --text-secondary: #4A5568;
+  --text-light: #6B7280;
   --bg-primary: #ffffff;
-  --bg-secondary: #fdf9f5;
-  --bg-light: #fbf5ed;
-  --bg-tertiary: #f8f1e8;
-  --border-light: #e8dcc9;
-  --shadow-sm: 0 1px 3px 0 rgba(165, 102, 28, 0.1),
-    0 1px 2px 0 rgba(165, 102, 28, 0.06);
-  --shadow-md: 0 4px 6px -1px rgba(165, 102, 28, 0.15),
-    0 2px 4px -1px rgba(165, 102, 28, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(165, 102, 28, 0.2),
-    0 4px 6px -2px rgba(165, 102, 28, 0.1);
-  --gradient-primary: linear-gradient(135deg, #a5661c 0%, #6b3f1c 100%);
-  --gradient-soft: linear-gradient(135deg, #c78b2a 0%, #a5661c 100%);
-  --gradient-light: linear-gradient(135deg, #fdf9f5 0%, #fbf5ed 100%);
+  --bg-secondary: #FFF8F0;
+  --bg-light: #F8F9FA;
+  --bg-tertiary: #F1F3F4;
+  --border-light: #E2E8F0;
+  --shadow-sm: 0 1px 3px 0 rgba(15, 58, 102, 0.1),
+    0 1px 2px 0 rgba(15, 58, 102, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 58, 102, 0.15),
+    0 2px 4px -1px rgba(15, 58, 102, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 58, 102, 0.2),
+    0 4px 6px -2px rgba(15, 58, 102, 0.1);
+  --gradient-primary: linear-gradient(135deg, #0F3A66 0%, #0A2644 100%);
+  --gradient-soft: linear-gradient(135deg, #1A4F7A 0%, #0F3A66 100%);
+  --gradient-light: linear-gradient(135deg, #FFF8F0 0%, #F8F9FA 100%);
 
-  /* Foundation Brand Colors - Logo Based */
-  --bharatpur-primary: #a5661c;
-  --bharatpur-secondary: #6b3f1c;
-  --bharatpur-accent: #d4842b;
-  --bharatpur-gold: #e6a047;
-  --bharatpur-dark: #4a2914;
-  --bharatpur-light: #c78b2a;
+  /* Foundation Brand Colors - Navy & Gold Theme */
+  --bharatpur-primary: #0F3A66;
+  --bharatpur-secondary: #D69A2A;
+  --bharatpur-accent: #E0A95F;
+  --bharatpur-gold: #D69A2A;
+  --bharatpur-dark: #0A2644;
+  --bharatpur-light: #1A4F7A;
 
   /* Enhanced Gradients */
   --bharatpur-gradient-primary: linear-gradient(
     135deg,
-    #a5661c 0%,
-    #6b3f1c 100%
+    #0F3A66 0%,
+    #0A2644 100%
   );
   --bharatpur-gradient-secondary: linear-gradient(
     135deg,
-    #d4842b 0%,
-    #a5661c 100%
+    #D69A2A 0%,
+    #E0A95F 100%
   );
   --bharatpur-gradient-accent: linear-gradient(
     135deg,
-    #e6a047 0%,
-    #c78b2a 100%
+    #E0A95F 0%,
+    #D69A2A 100%
   );
-  --bharatpur-gradient-warm: linear-gradient(135deg, #fdf9f5 0%, #f8f1e8 100%);
+  --bharatpur-gradient-warm: linear-gradient(135deg, #FFF8F0 0%, #F8F9FA 100%);
 }
 
 /* Logo Styling */
@@ -133,7 +133,7 @@
 
 .mandala-element {
   position: absolute;
-  color: rgba(165, 102, 28, 0.15);
+  color: rgba(15, 58, 102, 0.15);
   font-size: 4rem;
   animation: rotate-mandala 20s linear infinite;
 }
@@ -172,7 +172,7 @@
   right: 0;
   height: 8px;
   background: linear-gradient(90deg, 
-    #a5661c 0%, #d4842b 25%, #e6a047 50%, #d4842b 75%, #a5661c 100%);
+    #0F3A66 0%, #D69A2A 25%, #E0A95F 50%, #D69A2A 75%, #0F3A66 100%);
   z-index: 10;
 }
 
@@ -205,7 +205,7 @@
 
 .float-element {
   position: absolute;
-  color: rgba(230, 160, 71, 0.2);
+  color: rgba(214, 154, 42, 0.2);
   font-size: 2rem;
   animation: float 6s ease-in-out infinite;
   font-family: 'Devanagari', 'Hindi', serif;
@@ -250,7 +250,7 @@
 /* Paisley Pattern Elements */
 .paisley-element {
   position: absolute;
-  color: rgba(165, 102, 28, 0.12);
+  color: rgba(15, 58, 102, 0.12);
   font-size: 3rem;
   animation: paisley-dance 12s ease-in-out infinite;
 }
@@ -305,11 +305,11 @@
 /* Hindi Decorative Elements */
 .hindi-decorative {
   position: absolute;
-  color: rgba(230, 160, 71, 0.2);
+  color: rgba(214, 154, 42, 0.2);
   font-size: 2.5rem;
   font-family: 'Devanagari', 'Noto Sans Devanagari', 'Hindi', serif;
   animation: hindu-glow 8s ease-in-out infinite;
-  text-shadow: 0 0 10px rgba(230, 160, 71, 0.3);
+  text-shadow: 0 0 10px rgba(214, 154, 42, 0.3);
 }
 
 .hindi-1 {
@@ -463,7 +463,7 @@
     0 8px 32px rgba(0, 0, 0, 0.3), 
     0 4px 16px rgba(165, 102, 28, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  border: 3px solid rgba(230, 160, 71, 0.4);
+  border: 3px solid rgba(214, 154, 42, 0.4);
   position: relative;
 }
 
@@ -475,7 +475,7 @@
   right: -5px;
   bottom: -5px;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, #a5661c, #d4842b, #e6a047, #d4842b, #a5661c);
+  background: conic-gradient(from 0deg, #0F3A66, #D69A2A, #E0A95F, #D69A2A, #0F3A66);
   z-index: -1;
   animation: rotate-border 8s linear infinite;
 }
@@ -594,21 +594,21 @@
 .step-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  background: linear-gradient(135deg, #D69A2A 0%, #E0A95F 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
-  color: #2d1810;
+  color: white;
   font-size: 1.5rem;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(214, 154, 42, 0.3);
   transition: all 0.3s ease;
 }
 
 .step-icon:hover {
   transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 25px rgba(214, 154, 42, 0.5);
 }
 
 .journey-step h6 {
@@ -627,28 +627,28 @@
 
 /* Hero Buttons */
 .btn-hero-primary {
-  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  background: linear-gradient(135deg, #D69A2A 0%, #E0A95F 100%);
   border: none;
-  color: #2d1810;
+  color: white;
   font-weight: 700;
   padding: 15px 35px;
   border-radius: 12px;
   font-size: 1.1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 8px 25px rgba(214, 154, 42, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .btn-hero-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(255, 215, 0, 0.5);
-  color: #2d1810;
-  background: linear-gradient(135deg, #fff700 0%, #ffb000 100%);
+  box-shadow: 0 12px 35px rgba(214, 154, 42, 0.5);
+  color: white;
+  background: linear-gradient(135deg, #E0A95F 0%, #F4B942 100%);
 }
 
 .btn-hero-secondary {
-  background: linear-gradient(135deg, #ff6347 0%, #dc143c 100%);
+  background: linear-gradient(135deg, #0F3A66 0%, #0A2644 100%);
   border: none;
   color: white;
   font-weight: 700;
@@ -656,16 +656,16 @@
   border-radius: 12px;
   font-size: 1.1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(220, 20, 60, 0.3);
+  box-shadow: 0 8px 25px rgba(15, 58, 102, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .btn-hero-secondary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(220, 20, 60, 0.5);
+  box-shadow: 0 12px 35px rgba(15, 58, 102, 0.5);
   color: white;
-  background: linear-gradient(135deg, #ff7f50 0%, #e6143c 100%);
+  background: linear-gradient(135deg, #1A4F7A 0%, #0F3A66 100%);
 }
 
 .btn-hero-outline {
