@@ -306,66 +306,108 @@
 </section>
 
 <!-- Three Pillars Section -->
-<section class="section-padding">
+<section class="section-padding pillars-section">
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-                <span class="badge bg-primary-light text-primary px-3 py-2 rounded-pill mb-3">
-                    <?= $translations['our_three_pillars'] ?>
-                </span>
-                <h2 class="section-title font-display mb-4">
+                <div class="pillars-badge mb-4">
+                    <span class="badge bg-primary-light text-primary px-4 py-3 rounded-pill fs-6 fw-bold">
+                        <i class="fas fa-columns me-2"></i>
+                        <?= $translations['our_three_pillars'] ?>
+                    </span>
+                </div>
+                <h2 class="pillars-main-title font-display mb-4">
                     <?= $translations['complete_transformation'] ?>
                 </h2>
-                <p class="lead text-muted">
-                    <?= $translations['transformation_description'] ?>
+                <p class="pillars-subtitle lead text-muted mb-5">
+                    Empowering students through education, mentorship, and career opportunities.
                 </p>
             </div>
         </div>
-        <div class="row g-4">
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-lg h-100 pillar-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 20px;">
+        
+        <div class="row g-4 pillars-row">
+            <!-- Education Pillar -->
+            <div class="col-lg-4 pillar-col">
+                <div class="pillar-card education-pillar h-100">
                     <div class="card-body p-5 text-center">
-                        <div class="pillar-icon mb-4">
-                            <i class="fas fa-graduation-cap fa-4x"></i>
+                        <div class="pillar-icon-container mb-4">
+                            <div class="pillar-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
                         </div>
-                        <h3 class="card-title font-display mb-4"><?= $translations['quality_education'] ?></h3>
-                        <p class="card-text mb-4"><?= $translations['complete_academic_support'] ?> with modern learning tools and industry-relevant skills.</p>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['full_academic_coverage'] ?></li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['modern_learning_tools'] ?></li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['skill_workshops'] ?></li>
+                        <h3 class="pillar-title mb-4"><?= $translations['quality_education'] ?></h3>
+                        <p class="pillar-description mb-4"><?= $translations['complete_academic_support'] ?> with modern learning tools and industry-relevant skills.</p>
+                        <ul class="pillar-features list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-book feature-icon me-2"></i> 
+                                <?= $translations['full_academic_coverage'] ?>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-laptop-code feature-icon me-2"></i> 
+                                <?= $translations['modern_learning_tools'] ?>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-tools feature-icon me-2"></i> 
+                                <?= $translations['skill_workshops'] ?>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-lg h-100 pillar-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 20px;">
+
+            <!-- Mentoring Pillar -->
+            <div class="col-lg-4 pillar-col">
+                <div class="pillar-card mentoring-pillar h-100">
                     <div class="card-body p-5 text-center">
-                        <div class="pillar-icon mb-4">
-                            <i class="fas fa-users fa-4x"></i>
+                        <div class="pillar-icon-container mb-4">
+                            <div class="pillar-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
                         </div>
-                        <h3 class="card-title font-display mb-4"><?= $translations['personal_mentoring'] ?></h3>
-                        <p class="card-text mb-4">Personal guidance from industry professionals for career and personal growth.</p>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['industry_mentors_text'] ?></li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['regular_guidance'] ?></li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['personality_development'] ?></li>
+                        <h3 class="pillar-title mb-4"><?= $translations['personal_mentoring'] ?></h3>
+                        <p class="pillar-description mb-4">Personal guidance from industry professionals for career and personal growth.</p>
+                        <ul class="pillar-features list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-handshake feature-icon me-2"></i> 
+                                <?= $translations['industry_mentors_text'] ?>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-compass feature-icon me-2"></i> 
+                                <?= $translations['regular_guidance'] ?>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-user-graduate feature-icon me-2"></i> 
+                                <?= $translations['personality_development'] ?>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-lg h-100 pillar-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 20px;">
+
+            <!-- Career Development Pillar -->
+            <div class="col-lg-4 pillar-col">
+                <div class="pillar-card career-pillar h-100">
                     <div class="card-body p-5 text-center">
-                        <div class="pillar-icon mb-4">
-                            <i class="fas fa-briefcase fa-4x"></i>
+                        <div class="pillar-icon-container mb-4">
+                            <div class="pillar-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
                         </div>
-                        <h3 class="card-title font-display mb-4"><?= $translations['career_development'] ?></h3>
-                        <p class="card-text mb-4">Job placement assistance and professional training for sustainable careers.</p>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['job_placement'] ?></li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['interview_training'] ?></li>
-                            <li class="mb-2"><i class="fas fa-check me-2"></i> <?= $translations['career_support'] ?></li>
+                        <h3 class="pillar-title mb-4"><?= $translations['career_development'] ?></h3>
+                        <p class="pillar-description mb-4">Job placement assistance and professional training for sustainable careers.</p>
+                        <ul class="pillar-features list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-briefcase feature-icon me-2"></i> 
+                                <?= $translations['job_placement'] ?>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-comments feature-icon me-2"></i> 
+                                <?= $translations['interview_training'] ?>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-chart-line feature-icon me-2"></i> 
+                                <?= $translations['career_support'] ?>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -1561,15 +1603,289 @@
         }
     }
 
-    /* General Styles */
-    .pillar-card {
+    /* Enhanced Three Pillars Section */
+    .pillars-section {
+        background: linear-gradient(135deg, #fafafa 0%, #f8f9ff 100%);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .pillars-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 30%, rgba(103, 126, 234, 0.05) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(165, 102, 28, 0.05) 0%, transparent 50%);
+        z-index: 1;
+    }
+    
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Badge Styling */
+    .pillars-badge .badge {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
+        border: 2px solid rgba(37, 99, 235, 0.1);
         transition: all 0.3s ease;
     }
-
+    
+    .pillars-badge .badge:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
+    }
+    
+    /* Main Title */
+    .pillars-main-title {
+        font-size: 3.2rem;
+        font-weight: 800;
+        color: #2d3748;
+        line-height: 1.1;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Subtitle */
+    .pillars-subtitle {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #4a5568;
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    /* Pillar Cards Container */
+    .pillars-row {
+        margin-top: 4rem;
+    }
+    
+    .pillar-col {
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
+    }
+    
+    .pillar-col:nth-child(1) { animation-delay: 0.2s; }
+    .pillar-col:nth-child(2) { animation-delay: 0.4s; }
+    .pillar-col:nth-child(3) { animation-delay: 0.6s; }
+    
+    /* Enhanced Pillar Cards */
+    .pillar-card {
+        border: none;
+        border-radius: 24px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        min-height: 500px;
+        color: white;
+    }
+    
+    .pillar-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit;
+        transition: all 0.4s ease;
+        z-index: -1;
+    }
+    
     .pillar-card:hover {
-        transform: translateY(-10px);
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+    
+    .pillar-card:hover::before {
+        filter: brightness(1.1) saturate(1.2);
+    }
+    
+    /* Card-specific gradients */
+    .education-pillar {
+        background: linear-gradient(135deg, #a8c8ff 0%, #667eea 50%, #5a6fd8 100%);
+    }
+    
+    .mentoring-pillar {
+        background: linear-gradient(135deg, #ffb3d4 0%, #f093fb 50%, #e97ff0 100%);
+    }
+    
+    .career-pillar {
+        background: linear-gradient(135deg, #81e6d9 0%, #4facfe 50%, #00b4db 100%);
+    }
+    
+    /* Icon Container */
+    .pillar-icon-container {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .pillar-icon {
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: white;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        position: relative;
+    }
+    
+    .pillar-card:hover .pillar-icon {
+        transform: scale(1.1) rotate(5deg);
+        background: rgba(255, 255, 255, 0.3);
+        animation: iconBounce 0.6s ease;
+    }
+    
+    @keyframes iconBounce {
+        0%, 100% { transform: scale(1.1) rotate(5deg); }
+        50% { transform: scale(1.2) rotate(-2deg); }
+    }
+    
+    /* Title Styling */
+    .pillar-title {
+        font-family: 'Montserrat', 'Poppins', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        line-height: 1.3;
+    }
+    
+    /* Description */
+    .pillar-description {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 400;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Feature List */
+    .pillar-features {
+        text-align: left;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    .pillar-features li {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    
+    .pillar-features li:hover {
+        color: white;
+        transform: translateX(5px);
+    }
+    
+    .feature-icon {
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        color: white;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+    }
+    
+    .pillar-features li:hover .feature-icon {
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(1.2);
+    }
+    
+    /* Fade in animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .pillars-main-title {
+            font-size: 2.5rem;
+        }
+        
+        .pillars-subtitle {
+            font-size: 1.2rem;
+        }
+        
+        .pillar-card {
+            min-height: 450px;
+            margin-bottom: 2rem;
+        }
+        
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            font-size: 2rem;
+        }
+        
+        .pillar-title {
+            font-size: 1.6rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .pillars-main-title {
+            font-size: 2rem;
+        }
+        
+        .pillars-subtitle {
+            font-size: 1.1rem;
+        }
+        
+        .pillar-card {
+            min-height: 400px;
+        }
+        
+        .pillar-icon {
+            width: 70px;
+            height: 70px;
+            font-size: 1.8rem;
+        }
+        
+        .pillar-title {
+            font-size: 1.4rem;
+        }
+        
+        .pillar-description {
+            font-size: 1rem;
+        }
+        
+        .pillar-features li {
+            font-size: 0.95rem;
+        }
     }
 
+    /* General Styles */
     .value-props {
         background: rgba(165, 102, 28, 0.1);
         padding: 1.5rem;
