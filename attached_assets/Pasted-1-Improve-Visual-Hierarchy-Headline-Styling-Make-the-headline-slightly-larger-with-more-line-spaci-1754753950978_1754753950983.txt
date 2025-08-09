@@ -1,0 +1,37 @@
+1. Improve Visual Hierarchy
+Headline Styling: Make the headline slightly larger with more line spacing so it breathes. Consider breaking it into two lines with a bolder emphasis on “Creating Professionals”.
+
+Highlight Key Words: Use a subtle color highlight or underline for words like Professionals, Education, Mentoring, Career Placement.
+
+Subheading Contrast: Increase font weight or switch to a softer color for the subheading so it’s readable but doesn’t overpower the headline.
+
+2. Image & Text Balance
+Reduce Image Width slightly so text doesn’t feel cramped and both sides have breathing room.
+
+Add Gradient Overlay on the left side of the image so the text has better contrast and the focus shifts towards the copy.
+
+Make Image Contextual – instead of a casual café image, use one showing mentoring, classrooms, or professional growth to directly match the message.
+
+3. Buttons & CTAs
+Differentiate Actions: Give Our Approach a solid filled button and Meet Beneficiaries a clear outlined button but make them bigger for better click appeal.
+
+Spacing: Add more vertical space between the benefits (Holistic Development, Industry Ready) and the buttons so it’s less cramped.
+
+Hover Effects: Subtle animations on hover make CTAs more engaging.
+
+4. Benefit Section (Holistic Development & Industry Ready)
+Make Icons Bigger: Increase icon size for better visual impact.
+
+Add Short Descriptions: Instead of “Mind + Skills + Career”, try 1–2 short lines explaining why it matters.
+
+Equal Sizing: Ensure both benefit cards have equal width and height for balance.
+
+5. Background & Color
+Subtle Pattern or Gradient: Add a light background gradient or NGO-themed pattern so it feels warm and professional.
+
+Consistent Brand Color: The orange accent should be used strategically in buttons, icons, and highlights—not scattered.
+
+6. Layout Structure
+Center Align Content Vertically: Currently, the image feels heavy on top; center-align both sides vertically so text is aligned with the middle of the image.
+
+Responsive Scaling: On smaller screens, make the image stack above and text below, but keep buttons in view without too much scrolling.
