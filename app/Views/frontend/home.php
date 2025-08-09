@@ -24,7 +24,7 @@
             <!-- Left Content -->
             <div class="col-lg-6 order-2 order-lg-1">
                 <!-- Tagline Ribbon -->
-                <div class="hero-ribbon mb-4">
+                <div class="hero-ribbon mb-4" style="margin-top: 20px;">
                     <span class="ribbon-text">
                         <i class="fas fa-star me-2"></i>
                         Empowering Students Since 2010
@@ -517,7 +517,7 @@
         overflow: hidden;
         display: flex;
         align-items: center;
-        padding: 60px 0;
+        padding: 140px 0 60px 0;
     }
 
     /* Animated Background Elements */
@@ -1083,6 +1083,10 @@
     }
 
     @media (max-width: 768px) {
+        .modern-hero-section {
+            padding: 120px 0 60px 0;
+        }
+        
         .modern-hero-title {
             font-size: 2.5rem;
         }
