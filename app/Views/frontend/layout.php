@@ -566,7 +566,7 @@
 
     <!-- Main Content -->
     <main>
-        <?= $this->renderSection('content') ?>
+        <?= isset($yield) ? $yield : $this->renderSection('content') ?>
     </main>
 
     <!-- Footer -->

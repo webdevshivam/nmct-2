@@ -308,7 +308,7 @@ class Home extends BaseController
             'translations' => $allTranslations
         ];
 
-        return view('frontend/layout', $data, ['yield' => view('frontend/beneficiaries', $data)]);
+        return view('frontend/beneficiaries', $data);
     }
 
 
@@ -368,7 +368,7 @@ class Home extends BaseController
             'translations' => $allTranslations
         ];
 
-        return view('frontend/layout', $data, ['yield' => view('frontend/success_stories', $data)]);
+        return view('frontend/success_stories', $data);
     }
 
     public function ngo_works($lang = 'en')
