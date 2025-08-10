@@ -256,63 +256,63 @@
 
 <!-- Success Stories Preview -->
 <?php if (!empty($success_stories)): ?>
-<section class="success-stories-section">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-title mb-4">From Tears of Struggle to Tears of Joy</h2>
-                <p class="section-subtitle">
-                    Meet the brave souls who refused to let their circumstances define them. Their journeys from hardship to hope will touch your heart
-                </p>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            <?php foreach (array_slice($success_stories, 0, 3) as $story): ?>
-            <div class="col-lg-4">
-                <div class="success-card-professional h-100">
-                    <div class="success-header">
-                        <div class="success-avatar">
-                            <?php if (!empty($story['image'])): ?>
-                            <img src="<?= base_url('uploads/success_stories/' . $story['image']) ?>"
-                                alt="<?= esc($story['name']) ?>" class="avatar-img">
-                            <?php else: ?>
-                            <div class="avatar-placeholder">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="success-info">
-                            <h5 class="success-name"><?= esc($story['name']) ?></h5>
-                            <p class="success-position"><?= esc($story['current_position']) ?></p>
-                            <span class="badge bg-success-soft text-success">
-                                <i class="fas fa-check-circle me-1"></i>
-                                Employed
-                            </span>
-                        </div>
-                    </div>
-                    <div class="success-content">
-                        <p class="success-story"><?= esc(substr($story['story'], 0, 120)) ?>...</p>
-                        <div class="success-meta">
-                            <small class="text-muted">
-                                <i class="fas fa-calendar me-1"></i>
-                                Program Graduate <?= date('Y', strtotime($story['created_at'] ?? 'now')) ?>
-                            </small>
-                        </div>
-                    </div>
+    <section class="success-stories-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title mb-4">From Tears of Struggle to Tears of Joy</h2>
+                    <p class="section-subtitle">
+                        Meet the brave souls who refused to let their circumstances define them. Their journeys from hardship to hope will touch your heart
+                    </p>
                 </div>
             </div>
-            <?php endforeach; ?>
-        </div>
 
-        <div class="text-center mt-5">
-            <a href="<?= base_url($language . '/success-stories') ?>" class="btn btn-outline-navy btn-lg">
-                <i class="fas fa-arrow-right me-2"></i>
-                View All Success Stories
-            </a>
+            <div class="row g-4">
+                <?php foreach (array_slice($success_stories, 0, 3) as $story): ?>
+                    <div class="col-lg-4">
+                        <div class="success-card-professional h-100">
+                            <div class="success-header">
+                                <div class="success-avatar">
+                                    <?php if (!empty($story['image'])): ?>
+                                        <img src="<?= base_url('uploads/success_stories/' . $story['image']) ?>"
+                                            alt="<?= esc($story['name']) ?>" class="avatar-img">
+                                    <?php else: ?>
+                                        <div class="avatar-placeholder">
+                                            <i class="fas fa-user"></i>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="success-info">
+                                    <h5 class="success-name"><?= esc($story['name']) ?></h5>
+                                    <p class="success-position"><?= esc($story['current_position']) ?></p>
+                                    <span class="badge bg-success-soft text-success">
+                                        <i class="fas fa-check-circle me-1"></i>
+                                        Employed
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="success-content">
+                                <p class="success-story"><?= esc(substr($story['story'], 0, 120)) ?>...</p>
+                                <div class="success-meta">
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar me-1"></i>
+                                        Program Graduate <?= date('Y', strtotime($story['created_at'] ?? 'now')) ?>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="<?= base_url($language . '/success-stories') ?>" class="btn btn-outline-navy btn-lg">
+                    <i class="fas fa-arrow-right me-2"></i>
+                    View All Success Stories
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 <?php endif; ?>
 
 <!-- Call to Action -->
