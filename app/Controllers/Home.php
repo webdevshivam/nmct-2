@@ -169,51 +169,93 @@ class Home extends BaseController
 
     public function beneficiaries($lang = 'en')
     {
-        $this->setLanguage($lang);
+        $language = $this->setLanguage($lang);
 
-        $search = $this->request->getGet('search');
-        $page = (int)($this->request->getGet('page') ?? 1);
-        $perPage = 6;
-        $offset = ($page - 1) * $perPage;
+        $beneficiaryModel = new \App\Models\BeneficiaryModel();
+        $beneficiaries = $beneficiaryModel->findAll();
 
-        $beneficiaryModel = new BeneficiaryModel();
-
-        // Get pursuing students (not passed out)
-        $pursuingBeneficiaries = $beneficiaryModel->getActiveBeneficiariesByStatus(false, null, null, $search);
-
-        // Get passed out students
-        $passoutBeneficiaries = $beneficiaryModel->getActiveBeneficiariesByStatus(true, null, null, $search);
-
-        $totalResults = count($pursuingBeneficiaries) + count($passoutBeneficiaries);
-
-        $data = [
-            'pursuing_beneficiaries' => $pursuingBeneficiaries,
-            'passout_beneficiaries' => $passoutBeneficiaries,
-            'search' => $search,
-            'current_page' => $page,
-            'has_more' => false,
-            'total_results' => $totalResults,
-            'language' => $this->language,
-            'translations' => $this->translations[$this->language],
-            'title' => $this->translate('nav_beneficiaries')
+        $pageTranslations = [
+            'en' => [
+                'page_title' => 'Beneficiaries',
+                'beneficiaries_title' => 'Our Beneficiaries',
+                'beneficiaries_subtitle' => 'Students on their journey to success',
+                'beneficiaries_description' => 'Meet the amazing students who are part of our comprehensive empowerment program.',
+                'age' => 'Age',
+                'years_old' => 'years old',
+                'course' => 'Course',
+                'contact' => 'Contact',
+                'email' => 'Email',
+                'phone' => 'Phone',
+                'no_beneficiaries' => 'No beneficiaries available at the moment.',
+                'back_to_home' => 'Back to Home'
+            ],
+            'hi' => [
+                'page_title' => 'लाभार्थी',
+                'beneficiaries_title' => 'हमारे लाभार्थी',
+                'beneficiaries_subtitle' => 'सफलता की यात्रा पर छात्र',
+                'beneficiaries_description' => 'उन अद्भुत छात्रों से मिलें जो हमारे व्यापक सशक्तिकरण कार्यक्रम का हिस्सा हैं।',
+                'age' => 'आयु',
+                'years_old' => 'साल की उम्र',
+                'course' => 'कोर्स',
+                'contact' => 'संपर्क',
+                'email' => 'ईमेल',
+                'phone' => 'फोन',
+                'no_beneficiaries' => 'फिलहाल कोई लाभार्थी उपलब्ध नहीं है।',
+                'back_to_home' => 'होम पर वापस जाएं'
+            ]
         ];
 
-        return view('frontend/beneficiaries', $data);
+        $allTranslations = array_merge($this->translations[$language], $pageTranslations[$language]);
+
+        $data = [
+            'title' => $pageTranslations[$language]['page_title'],
+            'beneficiaries' => $beneficiaries,
+            'language' => $language,
+            'translations' => $allTranslations
+        ];
+
+        return view('frontend/layout', $data, ['yield' => view('frontend/beneficiaries', $data)]);
     }
+
 
     public function success_stories($lang = 'en')
     {
-        $this->setLanguage($lang);
+        $language = $this->setLanguage($lang);
 
-        $model = new SuccessStoryModel();
-        $data = [
-            'success_stories' => $model->where('status', 'active')->orderBy('created_at', 'DESC')->findAll(),
-            'language' => $this->language,
-            'translations' => $this->translations[$this->language],
-            'title' => $this->translate('nav_success_stories')
+        $successStoryModel = new \App\Models\SuccessStoryModel();
+        $stories = $successStoryModel->findAll();
+
+        $pageTranslations = [
+            'en' => [
+                'page_title' => 'Success Stories',
+                'success_stories_title' => 'Success Stories',
+                'success_stories_subtitle' => 'Real transformations, Real impact',
+                'success_stories_description' => 'Discover inspiring journeys of students who transformed their lives through our comprehensive empowerment program.',
+                'read_more' => 'Read More',
+                'no_stories' => 'No success stories available at the moment.',
+                'back_to_home' => 'Back to Home'
+            ],
+            'hi' => [
+                'page_title' => 'सफलता की कहानियां',
+                'success_stories_title' => 'सफलता की कहानियां',
+                'success_stories_subtitle' => 'वास्तविक परिवर्तन, वास्तविक प्रभाव',
+                'success_stories_description' => 'उन छात्रों की प्रेरणादायक यात्राओं को जानें जिन्होंने हमारे व्यापक सशक्तिकरण कार्यक्रम के माध्यम से अपना जीवन बदला।',
+                'read_more' => 'और पढ़ें',
+                'no_stories' => 'फिलहाल कोई सफलता की कहानी उपलब्ध नहीं है।',
+                'back_to_home' => 'होम पर वापस जाएं'
+            ]
         ];
 
-        return view('frontend/success_stories', $data);
+        $allTranslations = array_merge($this->translations[$language], $pageTranslations[$language]);
+
+        $data = [
+            'title' => $pageTranslations[$language]['page_title'],
+            'stories' => $stories,
+            'language' => $language,
+            'translations' => $allTranslations
+        ];
+
+        return view('frontend/layout', $data, ['yield' => view('frontend/success_stories', $data)]);
     }
 
     public function ngo_works($lang = 'en')

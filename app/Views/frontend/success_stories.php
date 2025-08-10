@@ -1,4 +1,3 @@
-
 <?= $this->extend('frontend/layout') ?>
 
 <?= $this->section('content') ?>
@@ -35,6 +34,11 @@
 .card-header {
     border-bottom: none !important;
 }
+
+/* Hindi font support */
+.lang-hi {
+    font-family: 'Noto Sans Devanagari', 'Devanagari', 'Hindi', serif;
+}
 </style>
 
 <!-- Page Header -->
@@ -42,8 +46,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="font-display mb-4">Success Stories</h1>
-                <p class="lead mb-0">Inspiring journeys of our graduates who have achieved their dreams through education and hard work</p>
+                <h1 class="font-display mb-4"><?= $translations['success_stories_title'] ?></h1>
+                <p class="lead mb-0"><?= $translations['success_stories_subtitle'] ?> - <?= $translations['success_stories_description'] ?></p>
             </div>
         </div>
     </div>
@@ -72,18 +76,18 @@
                             </div>
                             <?php endif; ?>
                             <div class="flex-grow-1">
-                                <h4 class="mb-1"><?= esc($story['name']) ?></h4>
+                                <h4 class="mb-1 <?= ($language ?? 'en') === 'hi' ? 'lang-hi' : '' ?>"><?= esc($story['name']) ?></h4>
                                 <h6 class="text-light mb-0">
                                     <i class="fas fa-briefcase"></i> <?= esc($story['current_position']) ?>
                                 </h6>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body <?= ($language ?? 'en') === 'hi' ? 'lang-hi' : '' ?>">
                         <div class="mb-4">
                             <p class="card-text"><?= nl2br(esc($story['story'])) ?></p>
                         </div>
-                        
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <h6 class="text-primary">Company</h6>
@@ -106,7 +110,7 @@
                                 </p>
                             </div>
                         </div>
-                        
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <h6 class="text-primary">Location</h6>
@@ -123,7 +127,7 @@
                                 </p>
                             </div>
                         </div>
-                        
+
                         <?php if (!empty($story['achievements'])): ?>
                         <div class="row mb-3">
                             <div class="col-12">
@@ -155,10 +159,14 @@
             <?php endforeach; ?>
         </div>
         <?php else: ?>
-        <div class="text-center py-5">
-            <i class="fas fa-star fa-5x text-muted mb-4"></i>
-            <h3 class="text-muted">No Success Stories Yet</h3>
-            <p class="text-muted">Check back soon for inspiring stories from our beneficiaries.</p>
+        <div class="col-12 text-center">
+            <div class="alert alert-info <?= ($language ?? 'en') === 'hi' ? 'lang-hi' : '' ?>">
+                <i class="fas fa-info-circle me-2"></i>
+                <?= $translations['no_stories'] ?>
+            </div>
+            <a href="<?= base_url($language ?? 'en') ?>" class="btn btn-bharatpur-primary <?= ($language ?? 'en') === 'hi' ? 'lang-hi' : '' ?>">
+                <i class="fas fa-home me-2"></i><?= $translations['back_to_home'] ?>
+            </a>
         </div>
         <?php endif; ?>
     </div>
