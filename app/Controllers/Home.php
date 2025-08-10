@@ -174,11 +174,22 @@ class Home extends BaseController
         $beneficiaryModel = new \App\Models\BeneficiaryModel();
         
         // Get search parameter
-        $search = $this->request->getGet('search');
+        $search = $this->request->getGet('search') ?? '';
         
-        // Get beneficiaries based on search and status
-        $pursuing_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(false, null, null, $search);
-        $passout_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(true, null, null, $search);
+        // First check if table exists and has data
+        $total_count = $beneficiaryModel->countAll();
+        log_message('debug', 'Total beneficiaries in database: ' . $total_count);
+        
+        // If no data, get all records for debugging
+        if ($total_count == 0) {
+            // Try to get sample data
+            $pursuing_beneficiaries = [];
+            $passout_beneficiaries = [];
+        } else {
+            // Get beneficiaries based on search and status
+            $pursuing_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(false, null, null, $search);
+            $passout_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(true, null, null, $search);
+        }
         
         // Debug: log the count of beneficiaries found
         log_message('debug', 'Pursuing beneficiaries found: ' . count($pursuing_beneficiaries));
@@ -306,8 +317,23 @@ class Home extends BaseController
         $language = $this->setLanguage($lang);
 
         $successStoryModel = new \App\Models\SuccessStoryModel();
-        // Get all active stories
-        $stories = $successStoryModel->where('status', 'active')->orderBy('created_at', 'DESC')->findAll();
+        
+        // First check if table exists and has data
+        $total_count = $successStoryModel->countAll();
+        log_message('debug', 'Total success stories in database: ' . $total_count);
+        
+        // Try different approaches to get stories
+        if ($total_count == 0) {
+            $stories = [];
+        } else {
+            // Try to get all stories first
+            $stories = $successStoryModel->findAll();
+            
+            // If no stories, check if status filtering is the issue
+            if (empty($stories)) {
+                $stories = $successStoryModel->where('status', 'active')->findAll();
+            }
+        }
         
         // Debug: log the count of stories found
         log_message('debug', 'Success stories found: ' . count($stories));
