@@ -19,12 +19,12 @@
 
                     <!-- Main Headline -->
                     <h1 class="hero-title mb-3">
-                        Transforming Students into Industry-Ready Professionals
+                        Help Underprivileged Students Transform into Industry-Ready Professionals
                     </h1>
 
                     <!-- Supporting Text -->
                     <p class="hero-subtitle mb-4">
-                        Education, mentoring and career placement for under-served youth through our comprehensive three-pillar approach.
+                        Every underprivileged student deserves a chance to break the cycle of poverty. Through education, mentoring and career placement, we're not just changing lives—we're building dreams and creating hope for families who need it most.
                     </p>
 
                     <!-- Primary CTAs -->
@@ -88,9 +88,9 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-title mb-4">Our Comprehensive Approach</h2>
+                <h2 class="section-title mb-4">Lifting Underprivileged Students Through Love & Care</h2>
                 <p class="section-subtitle">
-                    The first NGO to offer complete empowerment through education, mentoring, and career placement
+                    Every deserving student gets a complete transformation journey—because every child's dream matters, regardless of their background
                 </p>
             </div>
         </div>
@@ -191,9 +191,9 @@
     <div class="container">
         <div class="row text-center mb-5">
             <div class="col-lg-8 mx-auto">
-                <h2 class="section-title text-white mb-4">Verified Impact & Results</h2>
+                <h2 class="section-title text-white mb-4">Hearts Touched, Lives Changed Forever</h2>
                 <p class="section-subtitle text-white-75">
-                    Independently audited numbers that demonstrate our comprehensive approach works
+                    Behind every number is a family that now has hope, a student who can dream big, and a community that's growing stronger
                 </p>
             </div>
         </div>
@@ -205,8 +205,8 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="impact-number"><?= $total_beneficiaries ?? '500' ?>+</div>
-                    <div class="impact-label">Students Transformed</div>
-                    <div class="impact-sublabel">Into industry professionals</div>
+                    <div class="impact-label">Underprivileged Lives Transformed</div>
+                    <div class="impact-sublabel">From struggle to success</div>
                 </div>
             </div>
 
@@ -256,6 +256,7 @@
 
 <!-- Success Stories Preview -->
 <?php if (!empty($success_stories)): ?>
+<<<<<<< HEAD
     <section class="success-stories-section">
         <div class="container">
             <div class="row mb-5">
@@ -264,6 +265,45 @@
                     <p class="section-subtitle">
                         Meet some of the professionals we've helped create through our comprehensive program
                     </p>
+=======
+<section class="success-stories-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title mb-4">From Tears of Struggle to Tears of Joy</h2>
+                <p class="section-subtitle">
+                    Meet the brave souls who refused to let their circumstances define them. Their journeys from hardship to hope will touch your heart
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <?php foreach (array_slice($success_stories, 0, 3) as $story): ?>
+            <div class="col-lg-4">
+                <div class="success-card-professional h-100">
+                    <div class="success-header">
+                        <div class="success-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format&q=80"
+                                alt="<?= esc($story['name']) ?>" class="avatar-img">
+                        </div>
+                        <div class="success-info">
+                            <h5 class="success-name"><?= esc($story['name']) ?></h5>
+                            <p class="success-position"><?= esc($story['current_position']) ?></p>
+                            <span class="badge bg-success-soft text-success">
+                                <i class="fas fa-check-circle me-1"></i>
+                                Employed
+                            </span>
+                        </div>
+                    </div>
+                    <div class="success-content">
+                        <p class="success-story"><?= esc(substr($story['story'], 0, 120)) ?>...</p>
+                        <div class="success-meta">
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>
+                                Program Graduate <?= date('Y', strtotime($story['created_at'] ?? 'now')) ?>
+                            </small>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -314,9 +354,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="cta-title mb-4">Ready to Create the Next Professional?</h2>
+                <h2 class="cta-title mb-4">Be the Reason an Underprivileged Student Smiles</h2>
                 <p class="cta-description mb-5">
-                    Your contribution doesn't just provide education—it creates a complete transformation that lasts a lifetime.
+                    Your kindness can change a life forever. Help a deserving student break free from poverty, achieve their dreams, and give their family the hope they've been waiting for. Together, we can create miracles.
                 </p>
 
                 <div class="cta-buttons mb-5">
