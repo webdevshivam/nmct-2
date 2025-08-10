@@ -56,9 +56,9 @@
 <!-- Success Stories -->
 <section class="section-padding">
     <div class="container">
-        <?php if (!empty($success_stories)): ?>
+        <?php if (!empty($stories)): ?>
         <div class="row">
-            <?php foreach($success_stories as $story): ?>
+            <?php foreach($stories as $story): ?>
             <div class="col-lg-6 mb-5">
                 <div class="card h-100 border-0 shadow-lg">
                     <div class="card-header" style="background: var(--gradient-primary); color: white; position: relative; padding: 20px;">

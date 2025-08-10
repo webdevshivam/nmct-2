@@ -287,7 +287,7 @@ class Home extends BaseController
             'title' => $pageTranslations[$language]['page_title'],
             'pursuing_beneficiaries' => $pursuing_beneficiaries,
             'passout_beneficiaries' => $passout_beneficiaries,
-            'search' => $search,
+            'search' => $search ?? '',
             'total_results' => $total_results,
             'language' => $language,
             'translations' => $allTranslations
@@ -302,7 +302,7 @@ class Home extends BaseController
         $language = $this->setLanguage($lang);
 
         $successStoryModel = new \App\Models\SuccessStoryModel();
-        $stories = $successStoryModel->findAll();
+        $stories = $successStoryModel->getPublishedStories();
 
         $pageTranslations = [
             'en' => [
