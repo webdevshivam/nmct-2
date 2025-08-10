@@ -12,7 +12,7 @@
                     <!-- Education Level Badge -->
                     <div class="mb-3">
                         <span class="badge bg-light text-dark border" style="font-size: 0.75rem;">
-                            <i class="fas fa-graduation-cap me-1"></i><?= esc($beneficiary['education_level']) ?>
+                            <i class="fas fa-graduation-cap me-1"></i><?= $beneficiary['is_passout'] ? 'Graduated' : esc($beneficiary['education_level']) ?>
                         </span>
                     </div>
 
