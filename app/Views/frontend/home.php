@@ -274,7 +274,7 @@
                     <div class="success-header">
                         <div class="success-avatar">
                             <?php if (!empty($story['image'])): ?>
-                            <img src="<?= base_url('writable/uploads/success_stories/' . $story['image']) ?>"
+                            <img src="<?= base_url('uploads/success_stories/' . $story['image']) ?>"
                                 alt="<?= esc($story['name']) ?>" class="avatar-img">
                             <?php else: ?>
                             <div class="avatar-placeholder">

@@ -61,7 +61,7 @@
                         <div class="d-flex align-items-center">
                             <?php if (!empty($story['image'])): ?>
                             <div class="profile-photo-container me-3">
-                                <img src="<?= base_url('writable/uploads/success_stories/' . $story['image']) ?>" 
+                                <img src="<?= base_url('uploads/success_stories/' . $story['image']) ?>" 
                                      class="profile-photo" alt="<?= esc($story['name']) ?>">
                             </div>
                             <?php else: ?>

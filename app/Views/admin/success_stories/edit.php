@@ -25,7 +25,7 @@
         <h5 class="mb-0"><i class="fas fa-star"></i> Success Story Information</h5>
     </div>
     <div class="card-body">
-        <form action="<?= base_url('admin/success-stories/update/' . $success_story['id']) ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('admin/success-stories/update/' . $success_story['id']) ?>" method="post" enctype="multipart/form-data" id="success-story-form">
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -88,7 +88,7 @@
                         <label for="image" class="form-label">Profile Image</label>
                         <?php if (!empty($success_story['image'])): ?>
                         <div class="mb-2">
-                            <img src="<?= base_url('writable/uploads/success_stories/' . $success_story['image']) ?>" 
+                            <img src="<?= base_url('uploads/success_stories/' . $success_story['image']) ?>" 
                                  alt="Current image" class="img-thumbnail" style="max-width: 200px;">
                             <p class="text-muted small">Current image</p>
                         </div>

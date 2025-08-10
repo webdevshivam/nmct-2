@@ -74,17 +74,30 @@ class AdminSuccessStories extends BaseController
                 mkdir($uploadPath, 0755, true);
             }
             
-            // Validate file type
+            // Validate file type and size
             $validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
-            if (in_array($image->getMimeType(), $validTypes)) {
+            $maxSize = 2 * 1024 * 1024; // 2MB
+            
+            if (in_array($image->getMimeType(), $validTypes) && $image->getSize() <= $maxSize) {
                 // Move the file
-                if ($image->move($uploadPath, $newName)) {
-                    $data['image'] = $newName;
-                } else {
-                    $this->session->setFlashdata('error', 'Failed to upload image');
+                try {
+                    if ($image->move($uploadPath, $newName)) {
+                        $data['image'] = $newName;
+                    } else {
+                        $this->session->setFlashdata('error', 'Failed to upload image - file move error');
+                        return redirect()->back()->withInput();
+                    }
+                } catch (\Exception $e) {
+                    $this->session->setFlashdata('error', 'Upload error: ' . $e->getMessage());
+                    return redirect()->back()->withInput();
                 }
             } else {
-                $this->session->setFlashdata('error', 'Invalid image format. Please use JPG, PNG, or GIF');
+                if (!in_array($image->getMimeType(), $validTypes)) {
+                    $this->session->setFlashdata('error', 'Invalid image format. Please use JPG, PNG, or GIF');
+                } else {
+                    $this->session->setFlashdata('error', 'Image size too large. Maximum 2MB allowed');
+                }
+                return redirect()->back()->withInput();
             }
         }
 
@@ -149,22 +162,35 @@ class AdminSuccessStories extends BaseController
                 mkdir($uploadPath, 0755, true);
             }
             
-            // Validate file type
+            // Validate file type and size
             $validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
-            if (in_array($image->getMimeType(), $validTypes)) {
+            $maxSize = 2 * 1024 * 1024; // 2MB
+            
+            if (in_array($image->getMimeType(), $validTypes) && $image->getSize() <= $maxSize) {
                 // Move the file
-                if ($image->move($uploadPath, $newName)) {
-                    $data['image'] = $newName;
-                    
-                    // Delete old image if exists
-                    if (!empty($successStory['image']) && file_exists($uploadPath . $successStory['image'])) {
-                        unlink($uploadPath . $successStory['image']);
+                try {
+                    if ($image->move($uploadPath, $newName)) {
+                        $data['image'] = $newName;
+                        
+                        // Delete old image if exists
+                        if (!empty($successStory['image']) && file_exists($uploadPath . $successStory['image'])) {
+                            unlink($uploadPath . $successStory['image']);
+                        }
+                    } else {
+                        $this->session->setFlashdata('error', 'Failed to upload image - file move error');
+                        return redirect()->back()->withInput();
                     }
-                } else {
-                    $this->session->setFlashdata('error', 'Failed to upload image');
+                } catch (\Exception $e) {
+                    $this->session->setFlashdata('error', 'Upload error: ' . $e->getMessage());
+                    return redirect()->back()->withInput();
                 }
             } else {
-                $this->session->setFlashdata('error', 'Invalid image format. Please use JPG, PNG, or GIF');
+                if (!in_array($image->getMimeType(), $validTypes)) {
+                    $this->session->setFlashdata('error', 'Invalid image format. Please use JPG, PNG, or GIF');
+                } else {
+                    $this->session->setFlashdata('error', 'Image size too large. Maximum 2MB allowed');
+                }
+                return redirect()->back()->withInput();
             }
         }
 
