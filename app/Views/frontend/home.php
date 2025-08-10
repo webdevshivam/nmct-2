@@ -364,10 +364,6 @@
                 <div class="impact-visual">
                     <div class="stats-grid">
                         <div class="stat-box">
-                            <div class="stat-number">15+</div>
-                            <div class="stat-label">Villages Reached</div>
-                        </div>
-                        <div class="stat-box">
                             <div class="stat-number">200+</div>
                             <div class="stat-label">Families Supported</div>
                         </div>
@@ -376,8 +372,12 @@
                             <div class="stat-label">Stay in Rural Areas</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-number">3x</div>
-                            <div class="stat-label">Income Increase</div>
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Mentorship Hours</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Partner Companies</div>
                         </div>
                     </div>
                 </div>

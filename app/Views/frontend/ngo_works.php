@@ -107,8 +107,8 @@
                         </div>
                         <div class="col-6">
                             <div class="stat-card text-center p-4 rounded-4" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white;">
-                                <div class="stat-number fs-1 fw-bold mb-2">₹50K+</div>
-                                <div class="stat-label <?= ($language ?? 'en') === 'hi' ? 'lang-hi' : '' ?>"><?= $translations['avg_starting_salary'] ?? 'Avg. Starting Salary' ?></div>
+                                <div class="stat-number fs-1 fw-bold mb-2">95%</div>
+                                <div class="stat-label <?= ($language ?? 'en') === 'hi' ? 'lang-hi' : '' ?>"><?= $translations['success_rate'] ?? 'Success Rate' ?></div>
                             </div>
                         </div>
                     </div>
