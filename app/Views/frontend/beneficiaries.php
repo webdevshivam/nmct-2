@@ -300,6 +300,25 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Define translations for JavaScript
+        const translations = {
+            alumni: '<?= $translations['alumni'] ?>',
+            active_student: '<?= $translations['active_student'] ?>',
+            studying: '<?= $translations['studying'] ?>',
+            academic_profile: '<?= $translations['academic_profile'] ?>',
+            level: '<?= $translations['level'] ?>',
+            course: '<?= $translations['course'] ?>',
+            institution: '<?= $translations['institution'] ?>',
+            contact_status: '<?= $translations['contact_status'] ?>',
+            family_background: '<?= $translations['family_background'] ?>',
+            academic_achievements: '<?= $translations['academic_achievements'] ?>',
+            career_goals: '<?= $translations['career_goals'] ?>',
+            quick_actions: '<?= $translations['quick_actions'] ?>',
+            send_email: '<?= $translations['send_email'] ?>',
+            linkedin_profile: '<?= $translations['linkedin_profile'] ?>',
+            company_link: '<?= $translations['company_link'] ?>'
+        };
+
         const modal = new bootstrap.Modal(document.getElementById('beneficiaryModal'));
         const modalContent = document.getElementById('modalContent');
 
@@ -324,7 +343,7 @@
                     </div>
                     <div class="d-flex align-items-center justify-content-center gap-3">
                         <h4 class="text-dark mb-0 fw-bold <?= ($language ?? 'en') === 'hi' ? 'lang-hi' : '' ?>">${data.beneficiaryName}</h4>
-                        <span class="badge bg-primary px-3 py-2 fs-6">${data.beneficiaryStatus === 'active' ? (data.beneficiaryStatus.includes('passout') ? '${translations.alumni}' : '${translations.active_student}') : '${translations.alumni}'}</span>
+                        <span class="badge bg-primary px-3 py-2 fs-6">${data.beneficiaryStatus === 'active' ? translations.active_student : translations.alumni}</span>
                     </div>
                 </div>
             </div>
