@@ -273,8 +273,14 @@
                 <div class="success-card-professional h-100">
                     <div class="success-header">
                         <div class="success-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format&q=80"
+                            <?php if (!empty($story['image'])): ?>
+                            <img src="<?= base_url('writable/uploads/success_stories/' . $story['image']) ?>"
                                 alt="<?= esc($story['name']) ?>" class="avatar-img">
+                            <?php else: ?>
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <?php endif; ?>
                         </div>
                         <div class="success-info">
                             <h5 class="success-name"><?= esc($story['name']) ?></h5>

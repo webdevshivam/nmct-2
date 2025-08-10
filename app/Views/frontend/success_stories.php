@@ -3,6 +3,40 @@
 
 <?= $this->section('content') ?>
 
+<style>
+.profile-photo-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.profile-photo-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.card-header {
+    border-bottom: none !important;
+}
+</style>
+
 <!-- Page Header -->
 <section class="hero-section">
     <div class="container">
@@ -23,18 +57,27 @@
             <?php foreach($success_stories as $story): ?>
             <div class="col-lg-6 mb-5">
                 <div class="card h-100 border-0 shadow-lg">
-                    <?php if (!empty($story['image'])): ?>
-                    <div class="card-img-container" style="height: 200px; overflow: hidden;">
-                        <img src="<?= base_url('writable/uploads/success_stories/' . $story['image']) ?>" 
-                             class="card-img-top" alt="<?= esc($story['name']) ?>" 
-                             style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <?php endif; ?>
-                    <div class="card-header" style="background: var(--gradient-primary); color: white;">
-                        <h4 class="mb-1"><?= esc($story['name']) ?></h4>
-                        <h6 class="text-light mb-0">
-                            <i class="fas fa-briefcase"></i> <?= esc($story['current_position']) ?>
-                        </h6>
+                    <div class="card-header" style="background: var(--gradient-primary); color: white; position: relative; padding: 20px;">
+                        <div class="d-flex align-items-center">
+                            <?php if (!empty($story['image'])): ?>
+                            <div class="profile-photo-container me-3">
+                                <img src="<?= base_url('writable/uploads/success_stories/' . $story['image']) ?>" 
+                                     class="profile-photo" alt="<?= esc($story['name']) ?>">
+                            </div>
+                            <?php else: ?>
+                            <div class="profile-photo-container me-3">
+                                <div class="profile-photo-placeholder">
+                                    <i class="fas fa-user fa-2x"></i>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                            <div class="flex-grow-1">
+                                <h4 class="mb-1"><?= esc($story['name']) ?></h4>
+                                <h6 class="text-light mb-0">
+                                    <i class="fas fa-briefcase"></i> <?= esc($story['current_position']) ?>
+                                </h6>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="mb-4">
