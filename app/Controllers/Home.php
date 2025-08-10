@@ -302,7 +302,13 @@ class Home extends BaseController
         $language = $this->setLanguage($lang);
 
         $successStoryModel = new \App\Models\SuccessStoryModel();
-        $stories = $successStoryModel->getPublishedStories();
+        // First try to get all stories to debug
+        $stories = $successStoryModel->findAll();
+        
+        // If no stories found, try getting published ones
+        if (empty($stories)) {
+            $stories = $successStoryModel->getPublishedStories();
+        }
 
         $pageTranslations = [
             'en' => [
