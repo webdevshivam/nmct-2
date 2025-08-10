@@ -1,0 +1,31 @@
+Sachin Sain
+	hi, I am Sachin Sain. now I am working professional as data science engineer in ambient scientific Ind Pvt Ltd. My graduation and coaching fees and accommodation expenses were paid by NGO. NGO helped me a lot. now whatever position i am because of NGO support and help.
+
+Ravindra Faujdar
+	I came in the contact 2018 in NGO I was started my education in 2021 master of computer Application from Coimbatore tamilnadu . The NGO help me to pay my college tution fees and accomodations or book and travels expensiv fees . I have  completed my education in 2023 by the help of NGO . Now I'm working in Bangalore as data scientist for getting this job NGO help me find out job .
+---------------------
+--> from this please convert the text like above , they are descript theier stories ,not by us
+Khemraj
+	With the support of our NGO, Khemraj Devatwal developed a strong foundation in software development. Now a Software Developer at DreamSearch Technology, he contributes to innovative digital solutions, proving that hard work and the right opportunities lead to success.
+
+MUKESH SINGH
+	Mukesh Singh’s journey reflects his dedication to learning and growth. With the support of our NGO, he honed his data engineering skills and secured an internship as a Data Engineer at Celebal Technologies. His experience in big data solutions and cloud computing is a testament to his bright future.
+
+NEERAJ KUMAR
+	With the right training and guidance from our NGO, Neeraj Kumar established himself as a Software Developer at Inventia Technology Consultants Pvt. Ltd. His expertise in developing enterprise-level applications showcases his technical excellence and perseverance.
+
+
+HITESH KUMAR
+	Guided by our NGO, Hitesh Kumar sharpened his software development skills, paving the way for his role as a Software Engineer at TekSkills India Pvt. Ltd. His expertise in building scalable applications proves how the right support and dedication lead to remarkable success.
+
+Jeetendra Singh
+	With our NGO’s support, Jeetendra Singh refined his expertise in Java development, Spring Boot, Microservices, and AWS. Now, as a Senior Software Engineer at TechMahindra Ltd., he has contributed to smart electricity metering solutions and advanced web APIs. His success showcases the power of perseverance and the right mentorship.
+
+Prahlad Singh 
+	With the support of our NGO, Prahlad Singh honed his skills and pursued his passion for technology. Now a Team Lead - Senior Android Developer at Inventia Technology Consultants Pvt. Ltd., he excels in smart metering and billing solutions, proving that determination and the right support can create inspiring success stories.
+
+
+=== keep same story only change the prospective like they are descupring their story
+--> and I have shared you data before student have company url(all are present in the success stories to please add theuer company url and possiton and everything needed in the success stories)
+
+--> add all success stories give me insert query of sql code ( I will upload image manuuly)
