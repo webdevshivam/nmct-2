@@ -148,9 +148,9 @@ class Home extends BaseController
         return $this->translations[$this->language][$key] ?? $key;
     }
 
-    public function index($lang = 'en')
+    public function index()
     {
-        $this->setLanguage($lang);
+        $this->setLanguage('en');
 
         $successStoryModel = new SuccessStoryModel();
         $beneficiaryModel = new BeneficiaryModel();
@@ -167,9 +167,9 @@ class Home extends BaseController
         return view('frontend/home', $data);
     }
 
-    public function beneficiaries($lang = 'en')
+    public function beneficiaries()
     {
-        $language = $this->setLanguage($lang);
+        $language = $this->setLanguage('en');
 
         $beneficiaryModel = new \App\Models\BeneficiaryModel();
         
@@ -312,28 +312,14 @@ class Home extends BaseController
     }
 
 
-    public function success_stories($lang = 'en')
+    public function success_stories()
     {
-        $language = $this->setLanguage($lang);
+        $language = $this->setLanguage('en');
 
         $successStoryModel = new \App\Models\SuccessStoryModel();
         
-        // First check if table exists and has data
-        $total_count = $successStoryModel->countAll();
-        log_message('debug', 'Total success stories in database: ' . $total_count);
-        
-        // Try different approaches to get stories
-        if ($total_count == 0) {
-            $stories = [];
-        } else {
-            // Try to get all stories first
-            $stories = $successStoryModel->findAll();
-            
-            // If no stories, check if status filtering is the issue
-            if (empty($stories)) {
-                $stories = $successStoryModel->where('status', 'active')->findAll();
-            }
-        }
+        // Get all stories regardless of status first to debug
+        $stories = $successStoryModel->findAll();
         
         // Debug: log the count of stories found
         log_message('debug', 'Success stories found: ' . count($stories));
@@ -371,9 +357,9 @@ class Home extends BaseController
         return view('frontend/layout', $data, ['yield' => view('frontend/success_stories', $data)]);
     }
 
-    public function ngo_works($lang = 'en')
+    public function ngo_works()
     {
-        $this->setLanguage($lang);
+        $this->setLanguage('en');
 
         helper('text');
         $model = new \App\Models\NgoWorkModel();

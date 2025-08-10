@@ -13,24 +13,24 @@ class BeneficiaryModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
+        'student_id',
         'name',
-        'age',
-        'education_level',
         'course',
-        'institution',
-        'city',
-        'state',
-        'phone',
+        'university',
+        'contact_phone',
         'email',
-        'linkedin_url',
-        'company_name',
-        'company_link',
-        'family_background',
-        'academic_achievements',
-        'career_goals',
-        'image',
         'status',
-        'is_passout'
+        'year',
+        'enrolled_date',
+        'expected_graduation',
+        'previous_education',
+        'total_fees',
+        'scholarship_amount',
+        'family_income',
+        'father_name',
+        'father_occupation',
+        'address',
+        'photo'
     ];
 
     // Dates
@@ -131,11 +131,17 @@ class BeneficiaryModel extends Model
 
     public function getBeneficiariesByStatus($isPassout = null, $limit = null, $offset = null, $search = null)
     {
-        $builder = $this->where('status', 'active');
+        $builder = $this->where('status', 'Active');
 
-        // Filter by passout status if specified
+        // For now, we'll differentiate by year - students in final year or graduated are considered passout
         if ($isPassout !== null) {
-            $builder->where('is_passout', $isPassout ? 1 : 0);
+            if ($isPassout) {
+                // Consider 4th year and above as passout/alumni
+                $builder->where('year >=', '4th Year');
+            } else {
+                // Consider 1st, 2nd, 3rd year as currently pursuing
+                $builder->whereIn('year', ['1st Year', '2nd Year', '3rd Year']);
+            }
         }
 
         // Add search functionality
@@ -143,9 +149,7 @@ class BeneficiaryModel extends Model
             $builder->groupStart()
                 ->like('name', $search)
                 ->orLike('course', $search)
-                ->orLike('institution', $search)
-                ->orLike('city', $search)
-                ->orLike('state', $search)
+                ->orLike('university', $search)
                 ->groupEnd();
         }
 
