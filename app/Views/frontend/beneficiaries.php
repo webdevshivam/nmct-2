@@ -3,67 +3,48 @@
 <?= $this->section('content') ?>
 
 <!-- Page Header -->
-<section class="hero-section py-5">
-    <div class="container text-center">
-        <div class="mb-4">
-            <h1 class="display-4 fw-bold text-primary mb-3 position-relative d-inline-block">
-                <i class="fas fa-users me-3" style="color: var(--primary-color);"></i>Our Beneficiaries
-                <div class="position-absolute bottom-0 start-50 translate-middle-x" style="width: 60px; height: 3px; background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); border-radius: 2px;"></div>
-            </h1>
-            <p class="lead text-muted mb-4" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
-                Meet the exceptional students whose dreams we're helping bring to life
-            </p>
-        </div>
-
-        <!-- Enhanced Search Section -->
-        <div class="row justify-content-center mt-4">
-            <div class="col-lg-7 col-md-9">
-                <div class="search-container position-relative">
-                    <form method="GET" action="<?= base_url('beneficiaries') ?>" id="searchForm">
-                        <div class="input-group shadow-lg" style="border-radius: 50px; overflow: hidden; height: 60px;">
-                            <span class="input-group-text border-0" style="background: rgba(255,255,255,0.95); padding: 0 20px;">
-                                <i class="fas fa-search text-primary" style="font-size: 1.1rem;"></i>
-                            </span>
-                            <input type="text" class="form-control border-0" name="search"
-                                placeholder="Search students, courses, or universities"
-                                value="<?= esc($search ?? '') ?>"
-                                style="background: rgba(255,255,255,0.95); font-size: 1rem; padding: 0 15px;"
-                                aria-label="Search students">
-                            <button type="submit" class="btn btn-primary px-4 border-0" style="background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); transition: all 0.3s ease;">
-                                <i class="fas fa-search me-2"></i>Search
-                            </button>
-                            <?php if (!empty($search)): ?>
-                                <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-secondary border-0" style="background: rgba(108, 117, 125, 0.1);" title="Clear search">
-                                    <i class="fas fa-times"></i>
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Quick Filter Chips -->
-                <div class="filter-chips mt-3 d-flex flex-wrap justify-content-center gap-2">
-                    <span class="badge bg-light text-dark border px-3 py-2 rounded-pill filter-chip" style="cursor: pointer; transition: all 0.2s ease;">
-                        <i class="fas fa-graduation-cap me-1"></i>Undergraduate
-                    </span>
-                    <span class="badge bg-light text-dark border px-3 py-2 rounded-pill filter-chip" style="cursor: pointer; transition: all 0.2s ease;">
-                        <i class="fas fa-user-graduate me-1"></i>Postgraduate
-                    </span>
-                    <span class="badge bg-light text-dark border px-3 py-2 rounded-pill filter-chip" style="cursor: pointer; transition: all 0.2s ease;">
-                        <i class="fas fa-cog me-1"></i>Engineering
-                    </span>
-                    <span class="badge bg-light text-dark border px-3 py-2 rounded-pill filter-chip" style="cursor: pointer; transition: all 0.2s ease;">
-                        <i class="fas fa-flask me-1"></i>Science
-                    </span>
-                </div>
-            </div>
-        </div>
+<section class="hero-section">
+    <div class="container">
+        <h1 class="mb-4">Our Beneficiaries</h1>
+        <p class="lead text-muted">Meet the talented students we're proud to support on their educational journey</p>
     </div>
 </section>
 
-<!-- Search Results Info -->
-<section class="py-3 bg-soft">
+<!-- Search and Filter Section -->
+<section class="py-5 bg-soft">
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body p-4">
+                        <form method="GET" action="<?= base_url('beneficiaries') ?>" class="row g-3" id="searchForm">
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-0">
+                                        <i class="fas fa-search text-muted"></i>
+                                    </span>
+                                    <input type="text" class="form-control border-0 bg-light" name="search"
+                                        placeholder="Search by name, course, or university..."
+                                        value="<?= esc($search ?? '') ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="d-grid gap-2 d-md-flex">
+                                    <button type="submit" class="btn btn-primary flex-fill">
+                                        <i class="fas fa-search me-2"></i> Search
+                                    </button>
+                                    <?php if (!empty($search)): ?>
+                                        <a href="<?= base_url('beneficiaries') ?>" class="btn btn-outline-secondary">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <?php if (!empty($search)): ?>
             <div class="row mt-3">
@@ -244,50 +225,6 @@
 </section>
 
 <style>
-/* Hero Section Improvements */
-.hero-section {
-    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.03) 0%, rgba(var(--accent-rgb), 0.03) 100%);
-    border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
-}
-
-.hero-section h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-}
-
-/* Search Container Enhancements */
-.search-container .input-group {
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-.search-container .input-group:hover {
-    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-}
-
-.search-container .input-group:focus-within {
-    box-shadow: 0 15px 50px rgba(var(--primary-rgb), 0.2);
-}
-
-.search-container .form-control:focus {
-    box-shadow: none;
-    outline: none;
-}
-
-.search-container .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.3);
-}
-
-/* Filter Chips */
-.filter-chip:hover {
-    background: var(--primary-color) !important;
-    color: white !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
-}
-
 /* Card hover effects */
 .beneficiary-card .card {
     transition: all 0.3s ease;
@@ -321,38 +258,6 @@
 
 /* Mobile improvements */
 @media (max-width: 768px) {
-    .hero-section h1 {
-        font-size: 2.2rem;
-    }
-    
-    .hero-section .lead {
-        font-size: 1rem !important;
-    }
-    
-    .search-container .input-group {
-        height: 50px !important;
-        flex-direction: column;
-        height: auto !important;
-    }
-    
-    .search-container .input-group > * {
-        border-radius: 25px !important;
-        margin-bottom: 10px;
-    }
-    
-    .search-container .btn {
-        width: 100%;
-    }
-    
-    .filter-chips {
-        flex-direction: column !important;
-        align-items: center;
-    }
-    
-    .filter-chips .filter-chip {
-        margin-bottom: 5px;
-    }
-    
     .beneficiary-card .card-header {
         padding: 1rem !important;
     }
@@ -371,13 +276,6 @@
     }
 }
 
-/* Tablet improvements */
-@media (max-width: 992px) and (min-width: 769px) {
-    .hero-section h1 {
-        font-size: 2.5rem;
-    }
-}
-
 /* Modal improvements */
 .modal-dialog {
     margin: 1rem;
@@ -393,66 +291,12 @@
         margin-bottom: 1rem;
     }
 }
-
-/* Accessibility improvements */
-.form-control:focus,
-.btn:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
-.filter-chip:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
 </style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const modal = new bootstrap.Modal(document.getElementById('beneficiaryModal'));
         const modalContent = document.getElementById('modalContent');
-        
-        // Enhanced search form keyboard accessibility
-        const searchForm = document.getElementById('searchForm');
-        const searchInput = searchForm.querySelector('input[name="search"]');
-        
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                searchForm.submit();
-            }
-        });
-        
-        // Filter chips functionality
-        const filterChips = document.querySelectorAll('.filter-chip');
-        filterChips.forEach(chip => {
-            chip.addEventListener('click', function() {
-                const filterText = this.textContent.trim().toLowerCase();
-                const searchTerms = {
-                    'undergraduate': 'bachelor',
-                    'postgraduate': 'master phd doctorate',
-                    'engineering': 'engineering computer mechanical civil electrical',
-                    'science': 'science physics chemistry biology mathematics'
-                };
-                
-                if (searchTerms[filterText.replace(/[^a-z]/g, '')]) {
-                    searchInput.value = searchTerms[filterText.replace(/[^a-z]/g, '')];
-                    searchForm.submit();
-                }
-            });
-            
-            // Keyboard accessibility for filter chips
-            chip.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-            });
-            
-            // Make chips focusable
-            chip.setAttribute('tabindex', '0');
-            chip.setAttribute('role', 'button');
-        });
 
         // Handle read more buttons
         document.addEventListener('click', function(e) {
