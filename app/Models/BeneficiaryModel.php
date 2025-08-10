@@ -84,6 +84,7 @@ class BeneficiaryModel extends Model
                 ->orLike('course', $search)
                 ->orLike('institution', $search)
                 ->orLike('city', $search)
+                ->orLike('state', $search)
                 ->groupEnd();
         }
 
@@ -126,5 +127,33 @@ class BeneficiaryModel extends Model
         }
 
         return $builder->countAllResults();
+    }
+
+    public function getBeneficiariesByStatus($isPassout = null, $limit = null, $offset = null, $search = null)
+    {
+        $builder = $this->where('status', 'active');
+
+        // Filter by passout status if specified
+        if ($isPassout !== null) {
+            $builder->where('is_passout', $isPassout ? 1 : 0);
+        }
+
+        // Add search functionality
+        if ($search) {
+            $builder->groupStart()
+                ->like('name', $search)
+                ->orLike('course', $search)
+                ->orLike('institution', $search)
+                ->orLike('city', $search)
+                ->orLike('state', $search)
+                ->groupEnd();
+        }
+
+        // Add pagination if specified
+        if ($limit) {
+            $builder->limit($limit, $offset);
+        }
+
+        return $builder->orderBy('created_at', 'DESC')->findAll();
     }
 }

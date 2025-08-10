@@ -177,8 +177,12 @@ class Home extends BaseController
         $search = $this->request->getGet('search');
         
         // Get beneficiaries based on search and status
-        $pursuing_beneficiaries = $beneficiaryModel->getActiveBeneficiariesByStatus(false, null, null, $search);
-        $passout_beneficiaries = $beneficiaryModel->getActiveBeneficiariesByStatus(true, null, null, $search);
+        $pursuing_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(false, null, null, $search);
+        $passout_beneficiaries = $beneficiaryModel->getBeneficiariesByStatus(true, null, null, $search);
+        
+        // Debug: log the count of beneficiaries found
+        log_message('debug', 'Pursuing beneficiaries found: ' . count($pursuing_beneficiaries));
+        log_message('debug', 'Passout beneficiaries found: ' . count($passout_beneficiaries));
         
         // Count total results for search
         $total_results = null;
@@ -302,13 +306,11 @@ class Home extends BaseController
         $language = $this->setLanguage($lang);
 
         $successStoryModel = new \App\Models\SuccessStoryModel();
-        // First try to get all stories to debug
-        $stories = $successStoryModel->findAll();
+        // Get all active stories
+        $stories = $successStoryModel->where('status', 'active')->orderBy('created_at', 'DESC')->findAll();
         
-        // If no stories found, try getting published ones
-        if (empty($stories)) {
-            $stories = $successStoryModel->getPublishedStories();
-        }
+        // Debug: log the count of stories found
+        log_message('debug', 'Success stories found: ' . count($stories));
 
         $pageTranslations = [
             'en' => [
