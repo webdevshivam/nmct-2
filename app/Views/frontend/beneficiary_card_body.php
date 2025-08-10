@@ -1,68 +1,56 @@
 <div class="card-body p-3">
-                    <!-- Course & University - Compact -->
-                    <div class="mb-2">
-                        <div class="d-flex align-items-start">
-                            <i class="fas fa-graduation-cap text-primary me-2 mt-1"></i>
-                            <div class="flex-grow-1">
-                                <p class="mb-0 text-dark fw-semibold small"><?= esc($beneficiary['course']) ?></p>
-                                <p class="text-muted small mb-0" style="font-size: 0.8rem;"><?= esc($beneficiary['institution']) ?></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Education Level - Compact -->
-                    <div class="mb-2">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-certificate text-primary me-2"></i>
-                            <span class="text-dark small"><?= esc($beneficiary['education_level']) ?></span>
-                        </div>
-                    </div>
-
-                    <!-- Company Name - Compact -->
-                    <?php if (!empty($beneficiary['company_name'])): ?>
-                    <div class="mb-2">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-building text-primary me-2"></i>
-                            <span class="text-dark small"><?= esc($beneficiary['company_name']) ?></span>
-                        </div>
-                    </div>
-                    <?php endif; ?>
-
-                    <!-- Contact Info - Compact -->
-                    <?php if (!empty($beneficiary['phone']) || !empty($beneficiary['email'])): ?>
+                    <!-- Course & Institution - Clean two-line block -->
                     <div class="mb-3">
-                        <?php if (!empty($beneficiary['phone'])): ?>
-                            <div class="d-flex align-items-center mb-1">
-                                <i class="fas fa-phone text-muted me-2" style="font-size: 0.8rem;"></i>
-                                <a href="tel:<?= esc($beneficiary['phone']) ?>" class="text-dark text-decoration-none small">
-                                    <?= esc($beneficiary['phone']) ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
-                        <?php if (!empty($beneficiary['email'])): ?>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-envelope text-muted me-2" style="font-size: 0.8rem;"></i>
-                                <a href="mailto:<?= esc(strlen($beneficiary['email']) > 20 ? substr($beneficiary['email'], 0, 20) . '...' : $beneficiary['email']) ?> " class="text-dark text-decoration-none small">
-                                    <?= esc(strlen($beneficiary['email']) > 20 ? substr($beneficiary['email'], 0, 20) . '...' : $beneficiary['email']) ?>
-                                </a>
-                            </div>
-                        <?php endif; ?>
+                        <h6 class="mb-1 text-dark fw-bold" style="font-size: 0.9rem; line-height: 1.2;">
+                            <?= esc($beneficiary['course']) ?>
+                        </h6>
+                        <p class="text-muted mb-0" style="font-size: 0.8rem;" title="<?= esc($beneficiary['institution']) ?>">
+                            <?= esc(strlen($beneficiary['institution']) > 35 ? substr($beneficiary['institution'], 0, 35) . '...' : $beneficiary['institution']) ?>
+                        </p>
+                    </div>
+
+                    <!-- Education Level Badge -->
+                    <div class="mb-3">
+                        <span class="badge bg-light text-dark border" style="font-size: 0.75rem;">
+                            <i class="fas fa-graduation-cap me-1"></i><?= esc($beneficiary['education_level']) ?>
+                        </span>
+                    </div>
+
+                    <!-- Company Name - Only if available -->
+                    <?php if (!empty($beneficiary['company_name'])): ?>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-building text-success me-2" style="font-size: 0.8rem;"></i>
+                            <span class="text-dark" style="font-size: 0.8rem;" title="<?= esc($beneficiary['company_name']) ?>">
+                                <?= esc(strlen($beneficiary['company_name']) > 25 ? substr($beneficiary['company_name'], 0, 25) . '...' : $beneficiary['company_name']) ?>
+                            </span>
+                        </div>
                     </div>
                     <?php endif; ?>
 
-                    <!-- Action Buttons - Compact -->
-                    <div class="d-flex gap-1 mb-2">
-                        <?php if (!empty($beneficiary['email'])): ?>
-                            <a href="mailto:<?= esc($beneficiary['email']) ?>" class="btn btn-outline-primary btn-sm flex-fill" style="font-size: 0.75rem;">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        <?php endif; ?>
-                        <?php if (!empty($beneficiary['linkedin_url'])): ?>
-                            <a href="<?= esc($beneficiary['linkedin_url']) ?>" target="_blank" class="btn btn-outline-info btn-sm flex-fill" style="font-size: 0.75rem;">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        <?php endif; ?>
-                        <button class="btn btn-primary btn-sm flex-fill read-more-btn" style="font-size: 0.75rem;"
+                    <!-- Action Buttons - Better positioned -->
+                    <div class="d-flex gap-2 align-items-center">
+                        <div class="d-flex gap-1 flex-grow-1">
+                            <?php if (!empty($beneficiary['email'])): ?>
+                                <a href="mailto:<?= esc($beneficiary['email']) ?>" 
+                                   class="btn btn-outline-primary btn-sm" 
+                                   style="font-size: 0.7rem; padding: 0.25rem 0.5rem;"
+                                   title="Send Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            <?php endif; ?>
+                            <?php if (!empty($beneficiary['linkedin_url'])): ?>
+                                <a href="<?= esc($beneficiary['linkedin_url']) ?>" 
+                                   target="_blank" 
+                                   class="btn btn-outline-info btn-sm" 
+                                   style="font-size: 0.7rem; padding: 0.25rem 0.5rem;"
+                                   title="LinkedIn Profile">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                        <button class="btn btn-primary btn-sm read-more-btn" 
+                                style="font-size: 0.75rem; padding: 0.3rem 0.8rem;"
                                 data-beneficiary-id="<?= $beneficiary['id'] ?>"
                                 data-beneficiary-name="<?= esc($beneficiary['name']) ?>"
                                 data-beneficiary-age="<?= esc($beneficiary['age'] ?? '') ?>"
@@ -79,8 +67,9 @@
                                 data-beneficiary-achievements="<?= esc($beneficiary['academic_achievements'] ?? '') ?>"
                                 data-beneficiary-goals="<?= esc($beneficiary['career_goals'] ?? '') ?>"
                                 data-beneficiary-company="<?= esc($beneficiary['company_link'] ?? '') ?>"
-                                data-beneficiary-status="<?= esc($beneficiary['status']) ?>">
-                            <i class="fas fa-info-circle"></i>
+                                data-beneficiary-status="<?= esc($beneficiary['status']) ?>"
+                                title="View Details">
+                            <i class="fas fa-info-circle me-1"></i>Details
                         </button>
                     </div>
                 </div>

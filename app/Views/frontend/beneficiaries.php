@@ -82,8 +82,13 @@
                             <?php foreach ($pursuing_beneficiaries as $beneficiary): ?>
                                 <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
                                     <div class="card h-100 border-0 shadow-lg">
-                                        <div class="card-header text-center bg-light py-2">
-                                            <div class="feature-icon mx-auto mb-2" style="width: 60px; height: 60px; font-size: 1.5rem; background: var(--gradient-soft); color: var(--primary-color); overflow: hidden; border-radius: 50%;">
+                                        <div class="card-header text-center bg-light py-3 position-relative">
+                                            <!-- Status Badge - Top Right -->
+                                            <span class="badge bg-info position-absolute top-0 end-0 m-2" style="font-size: 0.7rem;">
+                                                <i class="fas fa-book me-1"></i>Studying
+                                            </span>
+                                            
+                                            <div class="feature-icon mx-auto mb-2" style="width: 55px; height: 55px; font-size: 1.4rem; background: var(--gradient-soft); color: var(--primary-color); overflow: hidden; border-radius: 50%;">
                                                 <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
                                                     <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>" 
                                                          alt="<?= esc($beneficiary['name']) ?>" 
@@ -92,16 +97,9 @@
                                                     <i class="fas fa-user-graduate"></i>
                                                 <?php endif; ?>
                                             </div>
-                                            <h6 class="mb-1 font-display text-dark">
+                                            <h6 class="mb-0 font-display text-dark fw-bold" style="font-size: 1rem;">
                                                 <?= esc($beneficiary['name']) ?>
                                             </h6>
-                                            <?php if (!empty($beneficiary['age'])): ?>
-                                                <p class="text-muted small mb-1" style="font-size: 0.75rem;"><?= esc($beneficiary['age']) ?> years old</p>
-                                            <?php endif; ?>
-
-                                            <span class="badge bg-info px-2 py-1 small">
-                                                <i class="fas fa-book me-1"></i>Studying
-                                            </span>
                                         </div>
                                         <?php
                                         // Include the card body content here
@@ -128,8 +126,13 @@
                             <?php foreach ($passout_beneficiaries as $beneficiary): ?>
                                 <div class="col-lg-6 col-xl-4 mb-4 beneficiary-card">
                                     <div class="card h-100 border-0 shadow-lg">
-                                        <div class="card-header text-center bg-light py-2">
-                                            <div class="feature-icon mx-auto mb-2" style="width: 60px; height: 60px; font-size: 1.5rem; background: var(--gradient-soft); color: var(--success-color); overflow: hidden; border-radius: 50%;">
+                                        <div class="card-header text-center bg-light py-3 position-relative">
+                                            <!-- Status Badge - Top Right -->
+                                            <span class="badge bg-success position-absolute top-0 end-0 m-2" style="font-size: 0.7rem;">
+                                                <i class="fas fa-graduation-cap me-1"></i>Alumni
+                                            </span>
+                                            
+                                            <div class="feature-icon mx-auto mb-2" style="width: 55px; height: 55px; font-size: 1.4rem; background: var(--gradient-soft); color: var(--success-color); overflow: hidden; border-radius: 50%;">
                                                 <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
                                                     <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>" 
                                                          alt="<?= esc($beneficiary['name']) ?>" 
@@ -138,16 +141,9 @@
                                                     <i class="fas fa-graduation-cap"></i>
                                                 <?php endif; ?>
                                             </div>
-                                            <h6 class="mb-1 font-display text-dark">
+                                            <h6 class="mb-0 font-display text-dark fw-bold" style="font-size: 1rem;">
                                                 <?= esc($beneficiary['name']) ?>
                                             </h6>
-                                            <?php if (!empty($beneficiary['age'])): ?>
-                                                <p class="text-muted small mb-1" style="font-size: 0.75rem;"><?= esc($beneficiary['age']) ?> years old</p>
-                                            <?php endif; ?>
-
-                                            <span class="badge bg-success px-2 py-1 small">
-                                                <i class="fas fa-graduation-cap me-1"></i>Graduated
-                                            </span>
                                         </div>
                                         <?php
                                         // Include the card body content here
@@ -228,6 +224,75 @@
     </div>
 </section>
 
+<style>
+/* Card hover effects */
+.beneficiary-card .card {
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.beneficiary-card .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* Button hover effects */
+.beneficiary-card .btn {
+    transition: all 0.2s ease;
+}
+
+.beneficiary-card .btn:hover {
+    transform: scale(1.05);
+}
+
+/* Institution title truncation */
+.beneficiary-card .card-body p[title] {
+    cursor: help;
+}
+
+/* Status badge improvements */
+.badge {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+    .beneficiary-card .card-header {
+        padding: 1rem !important;
+    }
+    
+    .beneficiary-card .card-body {
+        padding: 1rem !important;
+    }
+    
+    .beneficiary-card .d-flex.gap-2 {
+        flex-direction: column;
+        gap: 0.5rem !important;
+    }
+    
+    .beneficiary-card .d-flex.gap-1 {
+        justify-content: center;
+    }
+}
+
+/* Modal improvements */
+.modal-dialog {
+    margin: 1rem;
+}
+
+@media (max-width: 576px) {
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+    
+    .modal-body .row .col-md-7,
+    .modal-body .row .col-md-5 {
+        margin-bottom: 1rem;
+    }
+}
+</style>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const modal = new bootstrap.Modal(document.getElementById('beneficiaryModal'));
@@ -247,60 +312,79 @@
 
         function generateModalContent(data) {
             let html = `
-            <div class="row">
-                <div class="col-12 text-center mb-4">
-                    <div class="feature-icon mx-auto mb-3" style="width: 100px; height: 100px; font-size: 3rem; background: var(--gradient-soft); color: var(--primary-color);">
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <div class="feature-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2.5rem; background: var(--gradient-soft); color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-user-graduate"></i>
                     </div>
-                    <h4 class="text-dark mb-1">${data.beneficiaryName}</h4>
-                    ${data.beneficiaryAge ? `<p class="text-muted">${data.beneficiaryAge} years old</p>` : ''}
-                    <span class="badge bg-success px-3 py-2">${data.beneficiaryStatus.charAt(0).toUpperCase() + data.beneficiaryStatus.slice(1)}</span>
+                    <div class="d-flex align-items-center justify-content-center gap-3">
+                        <h4 class="text-dark mb-0 fw-bold">${data.beneficiaryName}</h4>
+                        <span class="badge bg-primary px-3 py-2 fs-6">${data.beneficiaryStatus === 'active' ? (data.beneficiaryStatus.includes('passout') ? 'Alumni' : 'Active Student') : 'Alumni'}</span>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-6">
-                    <h6 class="text-primary mb-3 fw-bold"><i class="fas fa-graduation-cap me-2"></i>Academic Information</h6>
-                    <div class="mb-3">
-                        <strong class="text-dark">Education Level:</strong><br>
-                        <span class="text-muted">${data.beneficiaryEducation}</span>
-                    </div>
-                    <div class="mb-3">
-                        <strong class="text-dark">Course:</strong><br>
-                        <span class="text-muted">${data.beneficiaryCourse}</span>
-                    </div>
-                    <div class="mb-3">
-                        <strong class="text-dark">Institution:</strong><br>
-                        <span class="text-muted">${data.beneficiaryInstitution}</span>
+                <div class="col-md-7">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body">
+                            <h6 class="text-primary mb-3 fw-bold d-flex align-items-center">
+                                <i class="fas fa-graduation-cap me-2"></i>Academic Profile
+                            </h6>
+                            <div class="mb-3 p-3 bg-white rounded border-start border-4 border-primary">
+                                <div class="row">
+                                    <div class="col-4"><strong class="text-dark">Level:</strong></div>
+                                    <div class="col-8"><span class="badge bg-info">${data.beneficiaryEducation}</span></div>
+                                </div>
+                            </div>
+                            <div class="mb-3 p-3 bg-white rounded border-start border-4 border-info">
+                                <div class="row">
+                                    <div class="col-4"><strong class="text-dark">Course:</strong></div>
+                                    <div class="col-8"><span class="text-muted">${data.beneficiaryCourse}</span></div>
+                                </div>
+                            </div>
+                            <div class="mb-3 p-3 bg-white rounded border-start border-4 border-success">
+                                <div class="row">
+                                    <div class="col-4"><strong class="text-dark">Institution:</strong></div>
+                                    <div class="col-8"><span class="text-muted">${data.beneficiaryInstitution}</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <h6 class="text-primary mb-3 fw-bold"><i class="fas fa-address-book me-2"></i>Contact Information</h6>
-                    ${data.beneficiaryPhone ? `
-                        <div class="mb-3">
-                            <strong class="text-dark">Phone:</strong><br>
-                            <a href="tel:${data.beneficiaryPhone}" class="text-muted text-decoration-none">${data.beneficiaryPhone}</a>
+                <div class="col-md-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body">
+                            <h6 class="text-primary mb-3 fw-bold d-flex align-items-center">
+                                <i class="fas fa-address-book me-2"></i>Contact & Status
+                            </h6>
+                            ${data.beneficiaryPhone ? `
+                                <div class="mb-3 d-flex align-items-center">
+                                    <i class="fas fa-phone text-success me-3"></i>
+                                    <a href="tel:${data.beneficiaryPhone}" class="text-decoration-none text-dark">${data.beneficiaryPhone}</a>
+                                </div>
+                            ` : ''}
+                            ${data.beneficiaryEmail ? `
+                                <div class="mb-3 d-flex align-items-center">
+                                    <i class="fas fa-envelope text-primary me-3"></i>
+                                    <a href="mailto:${data.beneficiaryEmail}" class="text-decoration-none text-dark text-break">${data.beneficiaryEmail}</a>
+                                </div>
+                            ` : ''}
+                            ${data.beneficiaryCompanyName ? `
+                                <div class="mb-3 d-flex align-items-center">
+                                    <i class="fas fa-building text-warning me-3"></i>
+                                    <span class="text-dark">${data.beneficiaryCompanyName}</span>
+                                </div>
+                            ` : ''}
+                            ${(data.beneficiaryCity || data.beneficiaryState) ? `
+                                <div class="mb-3 d-flex align-items-center">
+                                    <i class="fas fa-map-marker-alt text-danger me-3"></i>
+                                    <span class="text-dark">${[data.beneficiaryCity, data.beneficiaryState].filter(Boolean).join(', ')}</span>
+                                </div>
+                            ` : ''}
                         </div>
-                    ` : ''}
-                    ${data.beneficiaryEmail ? `
-                        <div class="mb-3">
-                            <strong class="text-dark">Email:</strong><br>
-                            <a href="mailto:${data.beneficiaryEmail}" class="text-muted text-decoration-none">${data.beneficiaryEmail}</a>
-                        </div>
-                    ` : ''}
-                    ${data.beneficiaryCompanyName ? `
-                        <div class="mb-3">
-                            <strong class="text-dark">Company:</strong><br>
-                            <span class="text-muted">${data.beneficiaryCompanyName}</span>
-                        </div>
-                    ` : ''}
-                    ${(data.beneficiaryCity || data.beneficiaryState) ? `
-                        <div class="mb-3">
-                            <strong class="text-dark">Location:</strong><br>
-                            <span class="text-muted">${[data.beneficiaryCity, data.beneficiaryState].filter(Boolean).join(', ')}</span>
-                        </div>
-                    ` : ''}
+                    </div>
                 </div>
             </div>
 
