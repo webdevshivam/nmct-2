@@ -1,0 +1,69 @@
+1. Card List View Improvements (First Screen)
+Age Formatting
+Right now you have unrealistic ages like 2 years old for a postgraduate.
+→ Either hide the age if irrelevant, or make it a “Years in Program” or “Batch Year” instead.
+
+Hierarchy & Readability
+The current card layout is a bit text-heavy without a clear visual hierarchy.
+→ Make the name bold and larger, role/status just below it, and keep course + institution in a clean two-line block.
+
+Information Density
+Right now each card tries to show email, education, and status all at once.
+→ For list view, only show key identifiers: Name, Status (Studying/Alumni), Course, Institution. Keep secondary details for the modal.
+
+Status Badge Styling
+The “Studying” badge is small and doesn’t stand out much.
+→ Use a brighter contrasting background, add an icon (e.g., 🎓), and place it near the top right for quick scanning.
+
+Institution Name Truncation
+The institution text is getting cut and looking awkward.
+→ Use ellipsis + tooltip OR smaller font with wrapping.
+Avoid mid-word breaks (“enginernrg”).
+
+Action Buttons Placement
+Currently, the email and info buttons feel like they are floating at the bottom.
+→ Place them inline under the name or at the right side of the card so they’re not too far from the content.
+
+2. Modal View Improvements (Second Screen)
+Age vs Education Mismatch
+Having “12 years old” for a postgraduate looks like a data error.
+→ Add validation or hide irrelevant fields in the modal to maintain credibility.
+
+Two-Column Layout Balance
+The modal splits Academic Information and Contact Information, but the space feels unbalanced.
+→ Consider a left column for profile + academic info, and right column for contact + status with aligned heights.
+
+Profile Section
+The top of the modal has a lot of white space around the icon.
+→ Reduce padding, or replace the generic avatar with a more personal placeholder (e.g., initials in a circle).
+
+Highlighting Key Facts
+The “Active” label is good but could be a prominent badge near the name, not in the middle.
+
+Institution & Course Formatting
+Right now, they look like plain text.
+→ Make them styled as highlighted info rows with subtle background or icon.
+
+Close Button Placement
+Currently at bottom-right, which is less intuitive.
+→ Keep top-right “X” as the main close action, and optionally bottom close for accessibility.
+
+3. General UX Enhancements
+Consistency
+The same information appears in both the card and modal in slightly different formats.
+→ Show only essentials in the card; keep the modal for full profile details.
+
+Data Validation
+Ensure ages, degrees, and courses make sense together (avoid mismatches that hurt trust).
+
+Interactive Feedback
+Hover states for cards and buttons to give users a feeling of responsiveness.
+
+Mobile Friendliness
+Cards should stack vertically on small screens, with buttons always accessible without scrolling.
+
+Accessibility
+Use clear labels, ensure contrast ratios are high, and allow keyboard navigation for opening and closing modals.
+
+If I were to sum it up in one principle:
+➡ Cards should be quick “identity snapshots” and modals should be detailed, clean, and balanced — without repeating unnecessary info.
