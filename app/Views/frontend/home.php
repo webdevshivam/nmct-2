@@ -221,16 +221,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="impact-card">
-                    <div class="impact-icon">
-                        <i class="fas fa-rupee-sign"></i>
-                    </div>
-                    <div class="impact-number">₹50K+</div>
-                    <div class="impact-label">Average Starting Salary</div>
-                    <div class="impact-sublabel">Sustainable livelihoods</div>
-                </div>
-            </div>
+            
 
             <div class="col-lg-3 col-md-6">
                 <div class="impact-card">
@@ -250,6 +241,147 @@
                 <i class="fas fa-file-alt me-2"></i>
                 View Full Impact Report
             </a>
+        </div>
+    </div>
+</section>
+
+<!-- Beneficiaries Showcase Section -->
+<section class="beneficiaries-showcase-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title mb-4">Meet Our Amazing Students</h2>
+                <p class="section-subtitle">
+                    Dedicated students who are transforming their lives through education and determination
+                </p>
+            </div>
+        </div>
+
+        <?php 
+        $beneficiaryModel = new \App\Models\BeneficiaryModel();
+        $featured_beneficiaries = $beneficiaryModel->getActiveBeneficiaries(3);
+        ?>
+
+        <?php if (!empty($featured_beneficiaries)): ?>
+            <div class="row g-4">
+                <?php foreach ($featured_beneficiaries as $beneficiary): ?>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="beneficiary-showcase-card h-100">
+                            <div class="beneficiary-header">
+                                <div class="beneficiary-avatar">
+                                    <?php if (!empty($beneficiary['image']) && file_exists(WRITEPATH . 'uploads/beneficiaries/' . $beneficiary['image'])): ?>
+                                        <img src="<?= base_url('uploads/beneficiaries/' . $beneficiary['image']) ?>"
+                                            alt="<?= esc($beneficiary['name']) ?>" class="avatar-img">
+                                    <?php else: ?>
+                                        <div class="avatar-placeholder">
+                                            <i class="fas fa-user-graduate"></i>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="beneficiary-info">
+                                    <h5 class="beneficiary-name"><?= esc($beneficiary['name']) ?></h5>
+                                    <p class="beneficiary-course"><?= esc($beneficiary['course']) ?></p>
+                                    <span class="badge bg-primary-soft text-primary">
+                                        <i class="fas fa-graduation-cap me-1"></i>
+                                        <?= $beneficiary['is_passout'] ? 'Alumni' : 'Active Student' ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="beneficiary-content">
+                                <div class="institution-info">
+                                    <i class="fas fa-university me-2 text-navy"></i>
+                                    <span><?= esc($beneficiary['institution']) ?></span>
+                                </div>
+                                <?php if (!empty($beneficiary['city'])): ?>
+                                    <div class="location-info">
+                                        <i class="fas fa-map-marker-alt me-2 text-navy"></i>
+                                        <span><?= esc($beneficiary['city']) ?></span>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="<?= base_url(($language ?? 'en') . '/beneficiaries') ?>" class="btn btn-outline-navy btn-lg">
+                    <i class="fas fa-users me-2"></i>
+                    Meet All Our Students
+                </a>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
+
+<!-- Community Impact Section -->
+<section class="community-impact-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="impact-content">
+                    <h2 class="section-title mb-4">Creating Ripple Effects in Communities</h2>
+                    <p class="lead mb-4">
+                        When we educate one student, we transform an entire family and strengthen the whole community. 
+                        Our approach creates lasting change that spans generations.
+                    </p>
+                    
+                    <div class="impact-features">
+                        <div class="feature-item">
+                            <div class="feature-icon-small">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div>
+                                <h6>Family Transformation</h6>
+                                <p>Breaking cycles of poverty, one family at a time</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon-small">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h6>Community Leadership</h6>
+                                <p>Our graduates become mentors and role models</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon-small">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h6>Sustainable Growth</h6>
+                                <p>Creating economic opportunities in rural areas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="impact-visual">
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Villages Reached</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Families Supported</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">85%</div>
+                            <div class="stat-label">Stay in Rural Areas</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">3x</div>
+                            <div class="stat-label">Income Increase</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -829,6 +961,172 @@
         margin: 0;
     }
 
+    /* Beneficiaries Showcase Section */
+    .beneficiaries-showcase-section {
+        padding: 100px 0;
+        background: var(--cream);
+    }
+
+    .beneficiary-showcase-card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .beneficiary-showcase-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .beneficiary-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .beneficiary-avatar {
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    .avatar-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--gold);
+    }
+
+    .avatar-placeholder {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--navy);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .beneficiary-name {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 0.25rem;
+    }
+
+    .beneficiary-course {
+        font-size: 0.9rem;
+        color: var(--gray-text);
+        margin-bottom: 0.5rem;
+    }
+
+    .bg-primary-soft {
+        background-color: rgba(15, 58, 102, 0.1) !important;
+    }
+
+    .text-primary {
+        color: var(--navy) !important;
+    }
+
+    .beneficiary-content {
+        margin-top: 1rem;
+    }
+
+    .institution-info, .location-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--gray-text);
+    }
+
+    /* Community Impact Section */
+    .community-impact-section {
+        padding: 100px 0;
+        background: white;
+    }
+
+    .impact-features {
+        margin-top: 2rem;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-icon-small {
+        width: 40px;
+        height: 40px;
+        background: var(--gold);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1rem;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    .feature-item h6 {
+        font-weight: 600;
+        color: var(--navy);
+        margin-bottom: 0.25rem;
+    }
+
+    .feature-item p {
+        color: var(--gray-text);
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .stat-box {
+        background: var(--navy-light-bg);
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .stat-box:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-box .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--navy);
+        display: block;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-box .stat-label {
+        font-size: 0.875rem;
+        color: var(--gray-text);
+        font-weight: 500;
+    }
+
+    /* Remove gap before footer */
+    .footer {
+        margin-top: 0 !important;
+    }
+
     /* Responsive Design */
     @media (max-width: 992px) {
         .hero-title {
@@ -847,6 +1145,15 @@
         .stat-divider {
             display: none;
         }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .impact-features {
+            margin-top: 1.5rem;
+        }
     }
 
     @media (max-width: 768px) {
@@ -861,6 +1168,7 @@
 
         .hero-subtitle {
             text-align: center;
+            font-size: 1.1rem;
         }
 
         .hero-cta-section {
@@ -876,23 +1184,63 @@
             font-size: 2rem;
         }
 
-        .success-header {
+        .success-header,
+        .beneficiary-header {
             flex-direction: column;
             text-align: center;
         }
 
-        .success-avatar {
+        .success-avatar,
+        .beneficiary-avatar {
             margin-right: 0;
             margin-bottom: 1rem;
+        }
+
+        .beneficiaries-showcase-section,
+        .community-impact-section,
+        .pillars-section-professional,
+        .impact-section,
+        .success-stories-section,
+        .cta-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .stat-box {
+            padding: 1rem;
+        }
+
+        .stat-box .stat-number {
+            font-size: 1.5rem;
+        }
+
+        .feature-item {
+            margin-bottom: 1rem;
+        }
+
+        .feature-icon-small {
+            width: 35px;
+            height: 35px;
+            font-size: 0.9rem;
         }
     }
 
     @media (max-width: 576px) {
-
         .btn-primary-navy,
         .btn-outline-gold {
             width: 100%;
             margin-bottom: 1rem;
+            padding: 14px 20px;
+            font-size: 1rem;
         }
 
         .cta-buttons {
@@ -903,6 +1251,56 @@
         .btn-cta-secondary {
             width: 100%;
             margin-bottom: 1rem;
+            padding: 16px 20px;
+            font-size: 1rem;
+        }
+
+        .hero-title {
+            font-size: 1.75rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+        }
+
+        .trust-badge .badge {
+            font-size: 0.8rem;
+            padding: 6px 12px;
+        }
+
+        .pillar-card-professional {
+            padding: 2rem 1.5rem;
+        }
+
+        .pillar-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+
+        .pillar-title {
+            font-size: 1.2rem;
+        }
+
+        .impact-card {
+            padding: 1.5rem 1rem;
+        }
+
+        .beneficiary-showcase-card {
+            padding: 1rem;
+        }
+
+        .beneficiary-name {
+            font-size: 1rem;
+        }
+
+        .beneficiary-course {
+            font-size: 0.85rem;
+        }
+
+        .institution-info,
+        .location-info {
+            font-size: 0.8rem;
         }
     }
 </style>

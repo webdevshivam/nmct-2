@@ -312,7 +312,7 @@
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--text-primary) 100%);
             color: white;
             padding: 5rem 0 2rem;
-            margin-top: 8rem;
+            margin-top: 0;
             position: relative;
         }
 
@@ -549,16 +549,7 @@
                             <?= $translations['nav_our_works'] ?? 'Our Works' ?>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-globe me-1"></i> 
-                            <span id="currentLang"><?= ($language ?? 'en') === 'hi' ? 'हिंदी' : 'English' ?></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= base_url('en') ?>">🇬🇧 English</a></li>
-                            <li><a class="dropdown-item" href="<?= base_url('hi') ?>">🇮🇳 हिंदी</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

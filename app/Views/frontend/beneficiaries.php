@@ -201,7 +201,7 @@
 </div>
 
 <!-- Call to Action -->
-<section class="section-padding bg-soft">
+<section class="bg-soft" style="padding: 80px 0;">
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-8 mx-auto">
