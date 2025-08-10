@@ -86,8 +86,8 @@
 
                     <div class="mb-3">
                         <label for="image" class="form-label">Profile Image (Optional)</label>
-                        <input type="file" class="form-control" id="image" name="image" accept="image/*">
-                        <div class="form-text">Upload a profile picture (JPG, PNG, max 2MB)</div>
+                        <input type="file" class="form-control" id="image" name="image" accept="image/jpeg,image/jpg,image/png,image/gif">
+                        <div class="form-text">Upload a profile picture (JPG, PNG, GIF - max 2MB)</div>
                     </div>
 
                     <div class="mb-3">

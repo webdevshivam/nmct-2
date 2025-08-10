@@ -93,8 +93,8 @@
                             <p class="text-muted small">Current image</p>
                         </div>
                         <?php endif; ?>
-                        <input type="file" class="form-control" id="image" name="image" accept="image/*">
-                        <div class="form-text">Upload a new profile picture to replace the current one (JPG, PNG, max 2MB)</div>
+                        <input type="file" class="form-control" id="image" name="image" accept="image/jpeg,image/jpg,image/png,image/gif">
+                        <div class="form-text">Upload a new profile picture to replace the current one (JPG, PNG, GIF - max 2MB)</div>
                     </div>
 
                     <div class="mb-3">

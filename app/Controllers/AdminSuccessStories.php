@@ -67,11 +67,25 @@ class AdminSuccessStories extends BaseController
         $image = $this->request->getFile('image');
         if ($image && $image->isValid() && !$image->hasMoved()) {
             $newName = $image->getRandomName();
-            if (!is_dir(WRITEPATH . 'uploads/success_stories')) {
-                mkdir(WRITEPATH . 'uploads/success_stories', 0755, true);
+            $uploadPath = WRITEPATH . 'uploads/success_stories/';
+            
+            // Create directory if it doesn't exist
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
             }
-            $image->move(WRITEPATH . 'uploads/success_stories', $newName);
-            $data['image'] = $newName;
+            
+            // Validate file type
+            $validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+            if (in_array($image->getMimeType(), $validTypes)) {
+                // Move the file
+                if ($image->move($uploadPath, $newName)) {
+                    $data['image'] = $newName;
+                } else {
+                    $this->session->setFlashdata('error', 'Failed to upload image');
+                }
+            } else {
+                $this->session->setFlashdata('error', 'Invalid image format. Please use JPG, PNG, or GIF');
+            }
         }
 
         if ($this->successStoryModel->insert($data)) {
@@ -128,15 +142,29 @@ class AdminSuccessStories extends BaseController
         $image = $this->request->getFile('image');
         if ($image && $image->isValid() && !$image->hasMoved()) {
             $newName = $image->getRandomName();
-            if (!is_dir(WRITEPATH . 'uploads/success_stories')) {
-                mkdir(WRITEPATH . 'uploads/success_stories', 0755, true);
+            $uploadPath = WRITEPATH . 'uploads/success_stories/';
+            
+            // Create directory if it doesn't exist
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
             }
-            $image->move(WRITEPATH . 'uploads/success_stories', $newName);
-            $data['image'] = $newName;
-
-            // Delete old image if exists
-            if (!empty($successStory['image']) && file_exists(WRITEPATH . 'uploads/success_stories/' . $successStory['image'])) {
-                unlink(WRITEPATH . 'uploads/success_stories/' . $successStory['image']);
+            
+            // Validate file type
+            $validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+            if (in_array($image->getMimeType(), $validTypes)) {
+                // Move the file
+                if ($image->move($uploadPath, $newName)) {
+                    $data['image'] = $newName;
+                    
+                    // Delete old image if exists
+                    if (!empty($successStory['image']) && file_exists($uploadPath . $successStory['image'])) {
+                        unlink($uploadPath . $successStory['image']);
+                    }
+                } else {
+                    $this->session->setFlashdata('error', 'Failed to upload image');
+                }
+            } else {
+                $this->session->setFlashdata('error', 'Invalid image format. Please use JPG, PNG, or GIF');
             }
         }
 
