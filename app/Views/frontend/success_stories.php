@@ -76,9 +76,9 @@
                             </div>
                             <?php endif; ?>
                             <div class="flex-grow-1">
-                                <h4 class="mb-1 <?= ($language ?? 'en') === 'hi' ? 'lang-hi' : '' ?>"><?= esc($story['student_name']) ?></h4>
+                                <h4 class="mb-1 <?= ($language ?? 'en') === 'hi' ? 'lang-hi' : '' ?>"><?= esc($story['name']) ?></h4>
                                 <h6 class="text-light mb-0">
-                                    <i class="fas fa-briefcase"></i> <?= esc($story['current_position'] ?? 'Student') ?>
+                                    <i class="fas fa-briefcase"></i> <?= esc($story['current_position']) ?>
                                 </h6>
                             </div>
                         </div>
@@ -88,36 +88,63 @@
                             <p class="card-text"><?= nl2br(esc($story['story'])) ?></p>
                         </div>
 
-                        <?php if (!empty($story['current_position'])): ?>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <h6 class="text-primary">Current Position</h6>
+                                <h6 class="text-primary">Company</h6>
                                 <p class="mb-0">
-                                    <i class="fas fa-briefcase text-success"></i> 
-                                    <?= esc($story['current_position']) ?>
+                                    <i class="fas fa-building text-success"></i> 
+                                    <?php if (!empty($story['company_link'])): ?>
+                                        <a href="<?= esc($story['company_link']) ?>" target="_blank" class="text-decoration-none">
+                                            <?= esc($story['company']) ?>
+                                        </a>
+                                    <?php else: ?>
+                                        <?= esc($story['company']) ?>
+                                    <?php endif; ?>
                                 </p>
                             </div>
-                            <?php if (!empty($story['graduation_year'])): ?>
                             <div class="col-md-6">
-                                <h6 class="text-primary">Graduation Year</h6>
+                                <h6 class="text-primary">Education</h6>
                                 <p class="mb-0">
                                     <i class="fas fa-graduation-cap text-info"></i> 
-                                    <?= esc($story['graduation_year']) ?>
+                                    <?= esc($story['education']) ?>
                                 </p>
                             </div>
-                            <?php endif; ?>
                         </div>
-                        <?php endif; ?>
 
-                        <?php if (!empty($story['achievement'])): ?>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <h6 class="text-primary">Location</h6>
+                                <p class="mb-0">
+                                    <i class="fas fa-map-marker-alt text-warning"></i> 
+                                    <?= esc($story['city'] . ', ' . $story['state']) ?>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-primary">Age</h6>
+                                <p class="mb-0">
+                                    <i class="fas fa-calendar text-secondary"></i> 
+                                    <?= esc($story['age']) ?> years old
+                                </p>
+                            </div>
+                        </div>
+
+                        <?php if (!empty($story['achievements'])): ?>
                         <div class="row mb-3">
                             <div class="col-12">
                                 <h6 class="text-primary">Achievements</h6>
                                 <p class="mb-0">
                                     <i class="fas fa-trophy text-warning"></i> 
-                                    <?= nl2br(esc($story['achievement'])) ?>
+                                    <?= nl2br(esc($story['achievements'])) ?>
                                 </p>
                             </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($story['linkedin_url'])): ?>
+                        <div class="text-center mt-3">
+                            <a href="<?= esc($story['linkedin_url']) ?>" target="_blank" class="btn btn-primary btn-sm">
+                                <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                            </a>
                         </div>
                         <?php endif; ?>
                     </div>

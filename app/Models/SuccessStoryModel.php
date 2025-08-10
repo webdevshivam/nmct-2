@@ -13,13 +13,18 @@ class SuccessStoryModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'title',
-        'student_name',
-        'story',
-        'image',
-        'achievement',
+        'name',
+        'age',
+        'education',
         'current_position',
-        'graduation_year',
+        'company',
+        'city',
+        'state',
+        'linkedin_url',
+        'company_link',
+        'story',
+        'achievements',
+        'image',
         'status'
     ];
 
@@ -45,7 +50,7 @@ class SuccessStoryModel extends Model
 
     public function getPublishedStories($limit = null, $offset = null)
     {
-        $builder = $this->where('status', 'Published');
+        $builder = $this->where('status', 'active');
 
         if ($limit) {
             $builder->limit($limit, $offset);

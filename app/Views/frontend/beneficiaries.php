@@ -100,9 +100,6 @@
                                             <h6 class="mb-0 font-display text-dark fw-bold" style="font-size: 1rem;">
                                                 <?= esc($beneficiary['name']) ?>
                                             </h6>
-                                            <?php if (!empty($beneficiary['year'])): ?>
-                                                <p class="text-muted small mb-1" style="font-size: 0.75rem;"><?= esc($beneficiary['year']) ?></p>
-                                            <?php endif; ?>
                                         </div>
                                         <?php
                                         // Include the card body content here
@@ -147,9 +144,6 @@
                                             <h6 class="mb-0 font-display text-dark fw-bold" style="font-size: 1rem;">
                                                 <?= esc($beneficiary['name']) ?>
                                             </h6>
-                                            <?php if (!empty($beneficiary['year'])): ?>
-                                                <p class="text-muted small mb-1" style="font-size: 0.75rem;"><?= esc($beneficiary['year']) ?></p>
-                                            <?php endif; ?>
                                         </div>
                                         <?php
                                         // Include the card body content here
