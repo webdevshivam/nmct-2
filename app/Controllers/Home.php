@@ -172,7 +172,19 @@ class Home extends BaseController
         $language = $this->setLanguage($lang);
 
         $beneficiaryModel = new \App\Models\BeneficiaryModel();
-        $beneficiaries = $beneficiaryModel->findAll();
+        
+        // Get search parameter
+        $search = $this->request->getGet('search');
+        
+        // Get beneficiaries based on search and status
+        $pursuing_beneficiaries = $beneficiaryModel->getActiveBeneficiariesByStatus(false, null, null, $search);
+        $passout_beneficiaries = $beneficiaryModel->getActiveBeneficiariesByStatus(true, null, null, $search);
+        
+        // Count total results for search
+        $total_results = null;
+        if ($search) {
+            $total_results = $beneficiaryModel->countActiveBeneficiaries($search);
+        }
 
         $pageTranslations = [
             'en' => [
@@ -187,7 +199,39 @@ class Home extends BaseController
                 'email' => 'Email',
                 'phone' => 'Phone',
                 'no_beneficiaries' => 'No beneficiaries available at the moment.',
-                'back_to_home' => 'Back to Home'
+                'back_to_home' => 'Back to Home',
+                'search' => 'Search',
+                'currently_pursuing' => 'Currently Pursuing',
+                'passed_out' => 'Passed Out Alumni',
+                'students_pursuing_description' => 'Students currently pursuing their education with our support',
+                'students_passed_out_description' => 'Our alumni who have successfully completed their education',
+                'studying' => 'Studying',
+                'alumni' => 'Alumni',
+                'beneficiary_details' => 'Beneficiary Details',
+                'close' => 'Close',
+                'academic_profile' => 'Academic Profile',
+                'level' => 'Level',
+                'institution' => 'Institution',
+                'contact_status' => 'Contact & Status',
+                'family_background' => 'Family Background',
+                'academic_achievements' => 'Academic Achievements',
+                'career_goals' => 'Career Goals',
+                'quick_actions' => 'Quick Actions',
+                'send_email' => 'Send Email',
+                'linkedin_profile' => 'LinkedIn',
+                'company_link' => 'Company',
+                'showing_results_for' => 'Showing results for',
+                'student_found' => 'students found',
+                'no_results_found' => 'No results found',
+                'try_adjusting_search' => 'Try adjusting your search terms or view all beneficiaries',
+                'no_beneficiaries_yet' => 'Check back soon as we add more students to our program',
+                'view_all_beneficiaries' => 'View All Beneficiaries',
+                'support_our_mission' => 'Support Our Mission',
+                'support_mission_description' => 'Help us transform more students into industry professionals',
+                'read_success_stories' => 'Read Success Stories',
+                'all_students_loaded' => 'All students have been loaded',
+                'error_loading_more' => 'Error loading more students',
+                'active_student' => 'Active Student'
             ],
             'hi' => [
                 'page_title' => 'लाभार्थी',
@@ -201,7 +245,39 @@ class Home extends BaseController
                 'email' => 'ईमेल',
                 'phone' => 'फोन',
                 'no_beneficiaries' => 'फिलहाल कोई लाभार्थी उपलब्ध नहीं है।',
-                'back_to_home' => 'होम पर वापस जाएं'
+                'back_to_home' => 'होम पर वापस जाएं',
+                'search' => 'खोजें',
+                'currently_pursuing' => 'वर्तमान में अध्ययनरत',
+                'passed_out' => 'पास आउट छात्र',
+                'students_pursuing_description' => 'वर्तमान में हमारी सहायता से अपनी शिक्षा प्राप्त कर रहे छात्र',
+                'students_passed_out_description' => 'हमारे पूर्व छात्र जिन्होंने सफलतापूर्वक अपनी शिक्षा पूरी की है',
+                'studying' => 'अध्ययनरत',
+                'alumni' => 'पूर्व छात्र',
+                'beneficiary_details' => 'लाभार्थी विवरण',
+                'close' => 'बंद करें',
+                'academic_profile' => 'शैक्षणिक प्रोफ़ाइल',
+                'level' => 'स्तर',
+                'institution' => 'संस्थान',
+                'contact_status' => 'संपर्क और स्थिति',
+                'family_background' => 'पारिवारिक पृष्ठभूमि',
+                'academic_achievements' => 'शैक्षणिक उपलब्धियां',
+                'career_goals' => 'करियर लक्ष्य',
+                'quick_actions' => 'त्वरित कार्य',
+                'send_email' => 'ईमेल भेजें',
+                'linkedin_profile' => 'लिंक्डइन',
+                'company_link' => 'कंपनी',
+                'showing_results_for' => 'के लिए परिणाम दिखा रहे हैं',
+                'student_found' => 'छात्र मिले',
+                'no_results_found' => 'कोई परिणाम नहीं मिला',
+                'try_adjusting_search' => 'अपनी खोज शर्तों को समायोजित करने की कोशिश करें या सभी लाभार्थियों को देखें',
+                'no_beneficiaries_yet' => 'जल्द ही वापस देखें क्योंकि हम अपने कार्यक्रम में और छात्रों को जोड़ते हैं',
+                'view_all_beneficiaries' => 'सभी लाभार्थी देखें',
+                'support_our_mission' => 'हमारे मिशन का समर्थन करें',
+                'support_mission_description' => 'अधिक छात्रों को उद्योग पेशेवरों में बदलने में हमारी सहायता करें',
+                'read_success_stories' => 'सफलता की कहानियां पढ़ें',
+                'all_students_loaded' => 'सभी छात्र लोड हो गए हैं',
+                'error_loading_more' => 'अधिक छात्रों को लोड करने में त्रुटि',
+                'active_student' => 'सक्रिय छात्र'
             ]
         ];
 
@@ -209,7 +285,10 @@ class Home extends BaseController
 
         $data = [
             'title' => $pageTranslations[$language]['page_title'],
-            'beneficiaries' => $beneficiaries,
+            'pursuing_beneficiaries' => $pursuing_beneficiaries,
+            'passout_beneficiaries' => $passout_beneficiaries,
+            'search' => $search,
+            'total_results' => $total_results,
             'language' => $language,
             'translations' => $allTranslations
         ];
