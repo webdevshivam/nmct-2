@@ -256,16 +256,6 @@
 
 <!-- Success Stories Preview -->
 <?php if (!empty($success_stories)): ?>
-<<<<<<< HEAD
-    <section class="success-stories-section">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="section-title mb-4">Real Students, Real Success</h2>
-                    <p class="section-subtitle">
-                        Meet some of the professionals we've helped create through our comprehensive program
-                    </p>
-=======
 <section class="success-stories-section">
     <div class="container">
         <div class="row mb-5">
@@ -306,47 +296,17 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row g-4">
-                <?php foreach (array_slice($success_stories, 0, 3) as $story): ?>
-                    <div class="col-lg-4">
-                        <div class="success-card-professional h-100">
-                            <div class="success-header">
-                                <div class="success-avatar">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format&q=80"
-                                        alt="<?= esc($story['name']) ?>" class="avatar-img">
-                                </div>
-                                <div class="success-info">
-                                    <h5 class="success-name"><?= esc($story['name']) ?></h5>
-                                    <p class="success-position"><?= esc($story['current_position']) ?></p>
-                                    <span class="badge bg-success-soft text-success">
-                                        <i class="fas fa-check-circle me-1"></i>
-                                        Employed
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="success-content">
-                                <p class="success-story"><?= esc(substr($story['story'], 0, 120)) ?>...</p>
-                                <div class="success-meta">
-                                    <small class="text-muted">
-                                        <i class="fas fa-calendar me-1"></i>
-                                        Program Graduate <?= date('Y', strtotime($story['created_at'] ?? 'now')) ?>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-
-            <div class="text-center mt-5">
-                <a href="<?= base_url($language . '/success-stories') ?>" class="btn btn-outline-navy btn-lg">
-                    <i class="fas fa-arrow-right me-2"></i>
-                    View All Success Stories
-                </a>
-            </div>
+            <?php endforeach; ?>
         </div>
-    </section>
+
+        <div class="text-center mt-5">
+            <a href="<?= base_url($language . '/success-stories') ?>" class="btn btn-outline-navy btn-lg">
+                <i class="fas fa-arrow-right me-2"></i>
+                View All Success Stories
+            </a>
+        </div>
+    </div>
+</section>
 <?php endif; ?>
 
 <!-- Call to Action -->
