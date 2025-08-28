@@ -221,7 +221,7 @@
                 </div>
             </div>
 
-            
+
 
             <div class="col-lg-3 col-md-6">
                 <div class="impact-card">
@@ -325,7 +325,7 @@
                         When we educate one student, we transform an entire family and strengthen the whole community. 
                         Our approach creates lasting change that spans generations.
                     </p>
-                    
+
                     <div class="impact-features">
                         <div class="feature-item">
                             <div class="feature-icon-small">
@@ -336,7 +336,7 @@
                                 <p>Breaking cycles of poverty, one family at a time</p>
                             </div>
                         </div>
-                        
+
                         <div class="feature-item">
                             <div class="feature-icon-small">
                                 <i class="fas fa-users"></i>
@@ -346,7 +346,7 @@
                                 <p>Our graduates become mentors and role models</p>
                             </div>
                         </div>
-                        
+
                         <div class="feature-item">
                             <div class="feature-icon-small">
                                 <i class="fas fa-seedling"></i>
@@ -359,7 +359,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-6">
                 <div class="impact-visual">
                     <div class="stats-grid">
@@ -1127,86 +1127,80 @@
         margin-top: 0 !important;
     }
 
-    /* Responsive Design */
-    @media (max-width: 992px) {
-        .hero-title {
-            font-size: 2.5rem;
+    /* Comprehensive Responsive Design */
+    @media (max-width: 1200px) {
+        .hero-section-enhanced .row {
+            flex-direction: column-reverse;
         }
 
-        .section-title {
-            font-size: 2rem;
-        }
-
-        .trust-stats {
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .stat-divider {
-            display: none;
+        .hero-visual-section {
+            min-height: 60vh;
+            margin-bottom: 2rem;
         }
 
         .stats-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
         }
 
-        .impact-features {
-            margin-top: 1.5rem;
+        .floating-cards .success-card {
+            position: relative;
+            margin: 1rem 0;
+            left: 0 !important;
+            right: 0 !important;
+            top: auto !important;
+            bottom: auto !important;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .pillars-section-modern {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .pillars-container {
+            margin: 2rem 0;
+        }
+
+        .journey-flow {
+            padding: 2rem 0;
+        }
+
+        .flow-container {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .flow-arrow {
+            transform: rotate(90deg);
+        }
+
+        .hero-title-modern {
+            text-align: center;
+        }
+
+        .hero-subtitle-modern {
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .title-decoration {
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 
     @media (max-width: 768px) {
-        .hero-section-professional {
-            padding: 120px 0 80px 0;
+        .hero-section-enhanced {
+            padding: 2rem 0;
         }
 
-        .hero-title {
-            font-size: 2rem;
-            text-align: center;
-        }
-
-        .hero-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-        }
-
-        .hero-cta-section {
-            text-align: center;
-        }
-
-        .trust-stats {
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .impact-number {
-            font-size: 2rem;
-        }
-
-        .success-header,
-        .beneficiary-header {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .success-avatar,
-        .beneficiary-avatar {
-            margin-right: 0;
-            margin-bottom: 1rem;
-        }
-
-        .beneficiaries-showcase-section,
-        .community-impact-section,
-        .pillars-section-professional,
-        .impact-section,
-        .success-stories-section,
-        .cta-section {
-            padding: 60px 0;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
+        .hero-content-modern {
+            padding: 2rem 0;
             text-align: center;
         }
 
@@ -1215,92 +1209,177 @@
             gap: 1rem;
         }
 
-        .stat-box {
-            padding: 1rem;
+        .stat-card {
+            padding: 1.5rem;
         }
 
-        .stat-box .stat-number {
+        .pillar-card-modern {
+            margin-bottom: 2rem;
+        }
+
+        .card-header-modern {
+            padding: 1.5rem 1.5rem 1rem;
+        }
+
+        .card-content {
+            padding: 0 1.5rem 1rem;
+        }
+
+        .card-footer-modern {
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        .pillar-icon-modern {
+            width: 60px;
+            height: 60px;
             font-size: 1.5rem;
         }
 
-        .feature-item {
-            margin-bottom: 1rem;
-        }
-
-        .feature-icon-small {
+        .pillar-number {
             width: 35px;
             height: 35px;
-            font-size: 0.9rem;
+            font-size: 1rem;
+        }
+
+        .feature-item-modern {
+            padding: 0.5rem;
+        }
+
+        .feature-item-modern span {
+            font-size: 0.85rem;
+        }
+
+        .hero-image-enhanced {
+            height: 300px;
+        }
+
+        .image-wrapper {
+            transform: none;
+        }
+
+        .floating-cards {
+            display: none;
         }
     }
 
     @media (max-width: 576px) {
-        .btn-primary-navy,
-        .btn-outline-gold {
-            width: 100%;
-            margin-bottom: 1rem;
-            padding: 14px 20px;
-            font-size: 1rem;
+        .hero-section-enhanced {
+            min-height: auto;
         }
 
-        .cta-buttons {
-            text-align: center;
+        .hero-content-modern {
+            padding: 1rem 0;
         }
 
-        .btn-cta-primary,
-        .btn-cta-secondary {
+        .btn-primary-modern,
+        .btn-outline-modern {
             width: 100%;
             margin-bottom: 1rem;
             padding: 16px 20px;
             font-size: 1rem;
         }
 
-        .hero-title {
-            font-size: 1.75rem;
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .hero-subtitle {
+        .pillar-title-modern {
+            font-size: 1.3rem;
+        }
+
+        .pillar-description-modern {
+            font-size: 0.95rem;
+        }
+
+        .section-title-modern {
+            font-size: 2rem;
+        }
+
+        .section-subtitle-modern {
             font-size: 1rem;
         }
 
-        .trust-badge .badge {
-            font-size: 0.8rem;
-            padding: 6px 12px;
+        .stat-card {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
         }
 
-        .pillar-card-professional {
-            padding: 2rem 1.5rem;
+        .stat-icon {
+            width: 45px;
+            height: 45px;
+            font-size: 1rem;
         }
 
-        .pillar-icon {
-            width: 60px;
-            height: 60px;
+        .stat-number {
             font-size: 1.5rem;
         }
 
-        .pillar-title {
-            font-size: 1.2rem;
+        .flow-step span {
+            font-size: 0.8rem;
         }
 
-        .impact-card {
-            padding: 1.5rem 1rem;
-        }
-
-        .beneficiary-showcase-card {
-            padding: 1rem;
-        }
-
-        .beneficiary-name {
+        .flow-icon {
+            width: 40px;
+            height: 40px;
             font-size: 1rem;
         }
+    }
 
-        .beneficiary-course {
-            font-size: 0.85rem;
+    /* Loading Animation */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .pillar-card-modern {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .pillar-card-modern:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .pillar-card-modern:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    /* Smooth Scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Focus States for Accessibility */
+    .btn-primary-modern:focus,
+    .btn-outline-modern:focus {
+        outline: 3px solid rgba(214, 154, 42, 0.5);
+        outline-offset: 2px;
+    }
+
+    .pillar-card-modern:focus-within {
+        box-shadow: var(--shadow-xl), 0 0 0 3px rgba(15, 58, 102, 0.2);
+    }
+
+    /* Print Styles */
+    @media print {
+        .hero-section-enhanced {
+            background: white !important;
+            color: black !important;
+            min-height: auto !important;
         }
 
-        .institution-info,
-        .location-info {
-            font-size: 0.8rem;
+        .floating-cards,
+        .badge-glow,
+        .icon-glow {
+            display: none !important;
         }
     }
 </style>
