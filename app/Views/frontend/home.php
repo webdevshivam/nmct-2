@@ -52,7 +52,7 @@
                     <div class="disclaimer-badge mb-4">
                         <div class="badge bg-warning text-dark px-4 py-2 rounded-pill">
                             <i class="fas fa-info-circle me-2"></i>
-                            <strong>Unofficial Version</strong> - Official Website: 
+                            <strong>Unofficial Version</strong> - Official Website:
                             <a href="https://nayantaratrust.com" target="_blank" class="text-dark text-decoration-none fw-bold">
                                 nayantaratrust.com
                             </a>
@@ -318,7 +318,7 @@
             </div>
         </div>
 
-        <?php 
+        <?php
         $beneficiaryModel = new \App\Models\BeneficiaryModel();
         $featured_beneficiaries = $beneficiaryModel->getActiveBeneficiaries(6);
         ?>
@@ -538,8 +538,8 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 4.5rem;
     font-weight: 800;
     color: white;
-    text-shadow: 
-        0 4px 8px rgba(0, 0, 0, 0.7), 
+    text-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.7),
         0 2px 4px rgba(0, 0, 0, 0.9);
     margin: 0;
     line-height: 1.1;
