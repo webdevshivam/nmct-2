@@ -67,7 +67,7 @@
 
 /* Enhanced Hero Section with Indian Patterns */
 .hero-section-enhanced {
-  min-height: 80vh;
+  min-height: 70vh;
   background: linear-gradient(
       135deg,
       rgba(15, 58, 102, 0.85) 0%,
@@ -83,7 +83,7 @@
   color: white;
   display: flex;
   align-items: center;
-  padding: 80px 0;
+  padding: 60px 0;
 }
 
 /* Ensure proper aspect ratio for hero image */
@@ -101,91 +101,9 @@
   }
 }
 
-/* Indian Mehndi Pattern Background */
-.hero-section-enhanced::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(165, 102, 28, 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(212, 132, 43, 0.08) 1px, transparent 1px),
-    linear-gradient(45deg, transparent 40%, rgba(165, 102, 28, 0.05) 50%, transparent 60%),
-    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(165, 102, 28, 0.03) 10px, rgba(165, 102, 28, 0.03) 20px);
-  background-size: 60px 60px, 40px 40px, 80px 80px, 30px 30px;
-  background-position: 0 0, 20px 20px, 0 0, 10px 10px;
-  z-index: 1;
-}
 
-/* Decorative Indian Mandala Elements */
-.hero-decorative-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  pointer-events: none;
-}
 
-.mandala-element {
-  position: absolute;
-  color: rgba(15, 58, 102, 0.15);
-  font-size: 4rem;
-  animation: rotate-mandala 20s linear infinite;
-}
 
-.mandala-1 {
-  top: 10%;
-  left: 5%;
-  animation-delay: 0s;
-}
-
-.mandala-2 {
-  top: 60%;
-  right: 8%;
-  animation-delay: -7s;
-  font-size: 3rem;
-}
-
-.mandala-3 {
-  bottom: 15%;
-  left: 10%;
-  animation-delay: -14s;
-  font-size: 2.5rem;
-}
-
-@keyframes rotate-mandala {
-  0% { transform: rotate(0deg) scale(1); opacity: 0.1; }
-  50% { transform: rotate(180deg) scale(1.1); opacity: 0.2; }
-  100% { transform: rotate(360deg) scale(1); opacity: 0.1; }
-}
-
-/* Traditional Indian Border Pattern */
-.traditional-border {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 8px;
-  background: linear-gradient(90deg, 
-    #0F3A66 0%, #D69A2A 25%, #E0A95F 50%, #D69A2A 75%, #0F3A66 100%);
-  z-index: 10;
-}
-
-.traditional-border::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: repeating-linear-gradient(90deg, 
-    transparent 0px, transparent 8px, 
-    rgba(255, 255, 255, 0.3) 8px, rgba(255, 255, 255, 0.3) 12px);
-}
 
 /* Hero Content Wrapper */
 .hero-content-wrapper {
@@ -210,159 +128,7 @@
   z-index: 1;
 }
 
-/* Floating Indian Decorative Elements */
-.floating-elements {
-  z-index: 3;
-}
 
-.float-element {
-  position: absolute;
-  color: rgba(214, 154, 42, 0.2);
-  font-size: 2rem;
-  animation: float 6s ease-in-out infinite;
-  font-family: 'Devanagari', 'Hindi', serif;
-}
-
-/* Traditional Indian Symbols */
-.float-element-1 {
-  top: 10%;
-  left: 10%;
-  animation-delay: 0s;
-}
-.float-element-1::before { content: '🕉️'; }
-
-.float-element-2 {
-  top: 20%;
-  right: 15%;
-  animation-delay: -1s;
-}
-.float-element-2::before { content: '🪔'; }
-
-.float-element-3 {
-  top: 60%;
-  left: 5%;
-  animation-delay: -2s;
-}
-.float-element-3::before { content: '🌺'; }
-
-.float-element-4 {
-  bottom: 30%;
-  right: 10%;
-  animation-delay: -3s;
-}
-.float-element-4::before { content: '🙏'; }
-
-.float-element-5 {
-  bottom: 10%;
-  left: 20%;
-  animation-delay: -4s;
-}
-.float-element-5::before { content: '⚛️'; }
-
-/* Paisley Pattern Elements */
-.paisley-element {
-  position: absolute;
-  color: rgba(15, 58, 102, 0.12);
-  font-size: 3rem;
-  animation: paisley-dance 12s ease-in-out infinite;
-}
-
-.paisley-1 {
-  top: 25%;
-  left: 15%;
-  animation-delay: 0s;
-}
-.paisley-1::before { content: '☪️'; transform: rotate(45deg); display: block; }
-
-.paisley-2 {
-  top: 45%;
-  right: 20%;
-  animation-delay: -4s;
-}
-.paisley-2::before { content: '☪️'; transform: rotate(-30deg); display: block; }
-
-.paisley-3 {
-  bottom: 25%;
-  left: 25%;
-  animation-delay: -8s;
-}
-.paisley-3::before { content: '☪️'; transform: rotate(90deg); display: block; }
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.2;
-  }
-  50% {
-    transform: translateY(-20px) rotate(5deg);
-    opacity: 0.4;
-  }
-}
-
-@keyframes paisley-dance {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-    opacity: 0.1;
-  }
-  33% {
-    transform: translateY(-15px) rotate(15deg) scale(1.1);
-    opacity: 0.15;
-  }
-  66% {
-    transform: translateY(-10px) rotate(-10deg) scale(0.9);
-    opacity: 0.12;
-  }
-}
-
-/* Hindi Decorative Elements */
-.hindi-decorative {
-  position: absolute;
-  color: rgba(214, 154, 42, 0.2);
-  font-size: 2.5rem;
-  font-family: 'Devanagari', 'Noto Sans Devanagari', 'Hindi', serif;
-  animation: hindu-glow 8s ease-in-out infinite;
-  text-shadow: 0 0 10px rgba(214, 154, 42, 0.3);
-}
-
-.hindi-1 {
-  top: 15%;
-  right: 12%;
-  animation-delay: 0s;
-}
-
-.hindi-2 {
-  top: 65%;
-  left: 8%;
-  animation-delay: -3s;
-}
-
-.hindi-3 {
-  bottom: 20%;
-  right: 15%;
-  animation-delay: -6s;
-}
-
-@keyframes hindu-glow {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 0.2;
-    text-shadow: 0 0 10px rgba(230, 160, 71, 0.3);
-  }
-  50% {
-    transform: scale(1.1) rotate(5deg);
-    opacity: 0.4;
-    text-shadow: 0 0 20px rgba(230, 160, 71, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
-  }
-}
-
-/* Enhanced Float Elements with Hindu Symbols */
-.float-element-6 {
-  top: 35%;
-  right: 5%;
-  animation-delay: -5.5s;
-  font-size: 2.2rem;
-  color: rgba(255, 182, 193, 0.3);
-}
 
 /* Image Overlay Decorations */
 .image-overlay-decorations {
@@ -814,25 +580,7 @@
   }
 }
 
-/* Hero Wave */
-.hero-wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg);
-  z-index: 5;
-}
 
-.hero-wave svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 80px;
-  color: var(--bg-primary);
-}
 
 /* Responsive Design */
 @media (max-width: 992px) {

@@ -10,31 +10,7 @@
     <!-- Background Overlay -->
     <div class="hero-bg-overlay position-absolute top-0 start-0 w-100 h-100"></div>
 
-    <!-- Decorative Elements -->
-    <div class="hero-decorative-elements">
-        <div class="mandala-element mandala-1">⚛</div>
-        <div class="mandala-element mandala-2">☸</div>
-        <div class="mandala-element mandala-3">✦</div>
-    </div>
-
-    <!-- Floating Elements -->
-    <div class="floating-elements">
-        <div class="float-element float-element-1"></div>
-        <div class="float-element float-element-2"></div>
-        <div class="float-element float-element-3"></div>
-        <div class="float-element float-element-4"></div>
-        <div class="float-element float-element-5"></div>
-    </div>
-
-    <!-- Paisley Elements -->
-    <div class="paisley-element paisley-1"></div>
-    <div class="paisley-element paisley-2"></div>
-    <div class="paisley-element paisley-3"></div>
-
-    <!-- Hindi Decorative Elements -->
-    <div class="hindi-decorative hindi-1">॥ श्री ॥</div>
-    <div class="hindi-decorative hindi-2">॥ गुरु ॥</div>
-    <div class="hindi-decorative hindi-3">॥ जय ॥</div>
+    
 
     <div class="container">
         <div class="row align-items-center min-vh-100 py-5">
@@ -52,18 +28,18 @@
                     </div>
 
                     <!-- Main Title -->
-                    <h1 class="hero-title text-center mb-3">
+                    <h1 class="hero-title-simple text-center mb-3">
                         Transforming Underprivileged Students into Industry-Ready Professionals
                     </h1>
 
                     <!-- Subtitle -->
-                    <p class="hero-subtitle text-center mb-4">
+                    <p class="hero-subtitle-simple text-center mb-4">
                         Bharatpur Foundation - Empowering Dreams Through Education
                     </p>
 
                     <!-- Main Description -->
-                    <div class="hero-description text-center mb-5">
-                        Every underprivileged student deserves a chance to break the cycle of poverty. Through comprehensive education, professional mentoring and career placement, we transform potential into success—building dreams and creating sustainable prosperity for families.
+                    <div class="hero-description-simple text-center mb-5">
+                        Through comprehensive education, mentoring and career placement, we transform potential into success.
                     </div>
 
                     <!-- Journey Steps -->
@@ -119,12 +95,7 @@
         </div>
     </div>
 
-    <!-- Wave Separator -->
-    <div class="hero-wave">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-        </svg>
-    </div>
+    
 </section>
 
 <!-- Three Pillars Section -->
@@ -524,43 +495,35 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center !important;
 }
 
-/* Enhanced Typography with Better Fonts */
-.hero-title {
-    font-family: 'Playfair Display', 'Georgia', serif;
-    font-size: 4.5rem;
-    font-weight: 800;
+/* Simplified Typography */
+.hero-title-simple {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
     color: white;
-    text-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.7),
-        0 2px 4px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     margin: 0;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    line-height: 1.2;
     text-align: center;
 }
 
-.hero-subtitle {
-    font-family: 'Crimson Text', 'Times', serif;
-    font-size: 1.4rem;
-    color: rgba(255, 255, 255, 0.95);
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-style: italic;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-    text-align: center;
-}
-
-.hero-description {
-    font-family: 'Lora', 'Georgia', serif;
-    font-size: 1.4rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.98);
+.hero-subtitle-simple {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 500;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-    font-style: italic;
-    letter-spacing: 0.3px;
-    max-width: 800px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.hero-description-simple {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
 }
