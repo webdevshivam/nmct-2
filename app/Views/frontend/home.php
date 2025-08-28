@@ -19,12 +19,12 @@
 
                     <!-- Main Headline -->
                     <h1 class="hero-title mb-3">
-                        Help Underprivileged Students Transform into Industry-Ready Professionals
+                        Transforming Underprivileged Students into Industry-Ready Professionals
                     </h1>
 
                     <!-- Supporting Text -->
                     <p class="hero-subtitle mb-4">
-                        Every underprivileged student deserves a chance to break the cycle of poverty. Through education, mentoring and career placement, we're not just changing lives—we're building dreams and creating hope for families who need it most.
+                        Every underprivileged student deserves a chance to break the cycle of poverty. Through comprehensive education, professional mentoring and career placement, we transform potential into success—building dreams and creating sustainable prosperity for families.
                     </p>
 
                     <!-- Primary CTAs -->
@@ -88,9 +88,9 @@
     <div class="container">
         <div class="row mb-5">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-title mb-4">Lifting Underprivileged Students Through Love & Care</h2>
+                <h2 class="section-title mb-4">Empowering Students Through Comprehensive Development</h2>
                 <p class="section-subtitle">
-                    Every deserving student gets a complete transformation journey—because every child's dream matters, regardless of their background
+                    Every deserving student receives a complete transformation journey—because we believe in turning potential into professional success, regardless of background
                 </p>
             </div>
         </div>
@@ -452,15 +452,15 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="cta-title mb-4">Be the Reason an Underprivileged Student Smiles</h2>
+                <h2 class="cta-title mb-4">Join Our Mission to Transform Lives Through Education</h2>
                 <p class="cta-description mb-5">
-                    Your kindness can change a life forever. Help a deserving student break free from poverty, achieve their dreams, and give their family the hope they've been waiting for. Together, we can create miracles.
+                    Your partnership enables life-changing transformations. Support our proven program that takes deserving students from poverty to professional success, creating sustainable prosperity for entire families. Together, we build futures.
                 </p>
 
                 <div class="cta-buttons mb-5">
                     <a href="#donate" class="btn btn-cta-primary btn-xl me-3 mb-3">
-                        <i class="fas fa-heart me-2"></i>
-                        Sponsor a Student
+                        <i class="fas fa-graduation-cap me-2"></i>
+                        Partner With Us
                     </a>
                     <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-cta-secondary btn-xl mb-3">
                         <i class="fas fa-info-circle me-2"></i>
