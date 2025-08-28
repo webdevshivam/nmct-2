@@ -40,14 +40,6 @@
         <div class="row align-items-center min-vh-100 py-5">
             <div class="col-12">
                 <div class="hero-content-enhanced text-center">
-                    <!-- Logo -->
-                    <div class="logo-container mx-auto mb-4">
-                        <img src="<?= base_url('assets/images/bharatpur-hero-image.png') ?>"
-                            alt="Bharatpur Foundation Logo"
-                            class="bharatpur-logo-hero"
-                            onerror="this.style.display='none'">
-                    </div>
-
                     <!-- Disclaimer Badge -->
                     <div class="disclaimer-badge mb-4">
                         <div class="badge bg-warning text-dark px-4 py-2 rounded-pill">
