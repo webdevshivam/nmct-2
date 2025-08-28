@@ -1,0 +1,65 @@
+🔹 New Hero Layout Suggestion
+1. Left–Right Split Layout (Recommended)
+
+Left side (Text content):
+
+Big bold headline: “Transforming Students into Industry-Ready Professionals”
+
+Subheading: Short, clear mission statement in 2–3 lines.
+
+CTAs:
+
+Primary Button → “Meet Students” (highlighted in brand color).
+
+Secondary Button → “Learn More” (outlined).
+
+Right side (Visual element):
+
+An illustration/abstract graphic (education, mentorship, career growth theme)
+
+OR a student success photo with gradient overlay for branding.
+
+2. Feature Highlights Below (3 Pillars)
+
+Move the Quality Education / Personal Mentoring / Career Placement into a horizontal feature strip just below the hero (not inside it).
+
+Each card:
+
+Icon + Title + 1-line description.
+
+Hover effect (lift/shadow).
+
+This keeps the hero clean and makes features more digestible.
+
+3. Background Styling
+
+Replace flat blue with:
+
+A gradient background (e.g., deep blue → lighter teal).
+
+OR a subtle abstract wave/shape behind the text for depth.
+
+4. Button Strategy
+
+Remove “Partner With Us” (as you requested).
+
+Make “Meet Students” the main CTA (solid, high contrast).
+
+“Learn More” secondary (outlined).
+
+Add hover states (slight scale + shadow).
+
+🔹 Example Structure (Wireframe Style)
+---------------------------------------------------------
+|   [Headline: Big Bold]                                 |
+|   Transforming Students into                          |
+|   Industry-Ready Professionals                        |
+|                                                       |
+|   [Subheading: 2–3 line mission statement]            |
+|                                                       |
+|   [Meet Students Button]   [Learn More Button]        |
+|                                                       |
+|-------------------------------------------------------|
+|   [Feature 1]   [Feature 2]   [Feature 3]             |
+|   Education     Mentoring     Career Placement        |
+---------------------------------------------------------
