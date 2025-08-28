@@ -65,14 +65,13 @@
   transform: scale(1.05);
 }
 
-/* Enhanced Hero Section with Indian Patterns */
+/* Professional Hero Section */
 .hero-section-enhanced {
-  min-height: 70vh;
+  min-height: 65vh;
   background: linear-gradient(
       135deg,
-      rgba(15, 58, 102, 0.85) 0%,
-      rgba(0, 0, 0, 0.7) 50%,
-      rgba(15, 58, 102, 0.85) 100%
+      rgba(15, 58, 102, 0.8) 0%,
+      rgba(0, 0, 0, 0.6) 100%
     ),
     url('../images/bharatpur-hero-image.png');
   background-size: cover;
@@ -83,7 +82,7 @@
   color: white;
   display: flex;
   align-items: center;
-  padding: 60px 0;
+  padding: 80px 0;
 }
 
 /* Ensure proper aspect ratio for hero image */
@@ -130,54 +129,7 @@
 
 
 
-/* Image Overlay Decorations */
-.image-overlay-decorations {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
-.hindi-symbol {
-  position: absolute;
-  font-size: 1.5rem;
-  color: rgba(230, 160, 71, 0.7);
-  animation: gentle-float 4s ease-in-out infinite;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.symbol-1 {
-  top: 10%;
-  right: 10%;
-  animation-delay: 0s;
-}
-
-.symbol-2 {
-  bottom: 15%;
-  left: 10%;
-  animation-delay: -1.5s;
-}
-
-.symbol-3 {
-  top: 50%;
-  right: 5%;
-  animation-delay: -3s;
-}
-
-@keyframes gentle-float {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    transform: translateY(-8px) scale(1.05);
-    opacity: 1;
-  }
-}
+/* Simplified decorations removed for professional look */
 
 /* Language Toggle Styles */
 .dropdown-menu {
@@ -229,38 +181,15 @@
 }
 
 .logo-container {
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(20px);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3), 
-    0 4px 16px rgba(165, 102, 28, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  border: 3px solid rgba(214, 154, 42, 0.4);
-  position: relative;
-}
-
-.logo-container::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, #0F3A66, #D69A2A, #E0A95F, #D69A2A, #0F3A66);
-  z-index: -1;
-  animation: rotate-border 8s linear infinite;
-}
-
-@keyframes rotate-border {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .bharatpur-logo-hero {
@@ -370,23 +299,17 @@
 }
 
 .step-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #D69A2A 0%, #E0A95F 100%);
-  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: #D69A2A;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
   color: white;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 15px rgba(214, 154, 42, 0.3);
-  transition: all 0.3s ease;
-}
-
-.step-icon:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 8px 25px rgba(214, 154, 42, 0.5);
+  font-size: 1.3rem;
+  box-shadow: 0 2px 8px rgba(214, 154, 42, 0.2);
 }
 
 .journey-step h6 {
@@ -405,24 +328,21 @@
 
 /* Hero Buttons */
 .btn-hero-primary {
-  background: linear-gradient(135deg, #D69A2A 0%, #E0A95F 100%);
+  background: #D69A2A;
   border: none;
   color: white;
-  font-weight: 700;
-  padding: 15px 35px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(214, 154, 42, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(214, 154, 42, 0.2);
 }
 
 .btn-hero-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(214, 154, 42, 0.5);
+  background: #B8851F;
   color: white;
-  background: linear-gradient(135deg, #E0A95F 0%, #F4B942 100%);
+  box-shadow: 0 4px 12px rgba(214, 154, 42, 0.3);
 }
 
 .btn-hero-secondary {
@@ -448,24 +368,19 @@
 
 .btn-hero-outline {
   background: transparent;
-  border: 3px solid rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.9);
   color: white;
-  font-weight: 700;
-  padding: 12px 32px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
 .btn-hero-outline:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   border-color: white;
-  transform: translateY(-3px);
   color: white;
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
 }
 
 /* Hero Visual */
@@ -486,99 +401,7 @@
   border: 4px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Floating Statistics */
-.floating-stat {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(15px);
-  border-radius: 15px;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 2px solid rgba(255, 215, 0, 0.3);
-  animation: floatStat 4s ease-in-out infinite;
-  min-width: 120px;
-}
-
-.floating-stat-1 {
-  top: 10%;
-  left: -15%;
-  animation-delay: 0s;
-}
-
-.floating-stat-2 {
-  top: 50%;
-  right: -20%;
-  animation-delay: -1.5s;
-}
-
-.floating-stat-3 {
-  bottom: 15%;
-  left: -10%;
-  animation-delay: -3s;
-}
-
-.stat-number {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  font-weight: 600;
-  margin-top: 0.5rem;
-}
-
-@keyframes floatStat {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Success Arrows */
-.success-arrow {
-  position: absolute;
-  color: #ffd700;
-  font-size: 2.5rem;
-  animation: arrowPulse 2s ease-in-out infinite;
-}
-
-.success-arrow-1 {
-  top: 25%;
-  left: 30%;
-  animation-delay: 0s;
-}
-
-.success-arrow-2 {
-  top: 45%;
-  right: 25%;
-  animation-delay: -0.7s;
-}
-
-.success-arrow-3 {
-  bottom: 30%;
-  left: 40%;
-  animation-delay: -1.4s;
-}
-
-@keyframes arrowPulse {
-  0%,
-  100% {
-    transform: translateY(0px) scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(-15px) scale(1.1);
-    opacity: 1;
-  }
-}
+/* Removed floating animations for professional look */
 
 
 

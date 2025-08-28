@@ -77,11 +77,7 @@
 
                     <!-- Action Buttons -->
                     <div class="hero-buttons text-center">
-                        <a href="#support" class="btn btn-hero-primary btn-lg me-3 mb-3">
-                            <i class="fas fa-graduation-cap me-2"></i>
-                            Partner With Us
-                        </a>
-                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-hero-secondary btn-lg me-3 mb-3">
+                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-hero-primary btn-lg me-3 mb-3">
                             <i class="fas fa-users me-2"></i>
                             Meet Students
                         </a>
@@ -408,9 +404,9 @@
                 </p>
 
                 <div class="cta-buttons text-center mb-5">
-                    <a href="#donate" class="btn btn-cta-primary btn-xl me-3 mb-3">
-                        <i class="fas fa-graduation-cap me-2"></i>
-                        Partner With Us
+                    <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-cta-primary btn-xl me-3 mb-3">
+                        <i class="fas fa-users me-2"></i>
+                        Support Education
                     </a>
                     <a href="<?= base_url($language . '/ngo-works') ?>" class="btn btn-cta-secondary btn-xl mb-3">
                         <i class="fas fa-info-circle me-2"></i>
