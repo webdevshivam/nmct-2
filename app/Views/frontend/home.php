@@ -37,75 +37,40 @@
     <div class="hindi-decorative hindi-3">॥ जय ॥</div>
 
     <div class="container">
-        <div class="row align-items-center min-vh-100 py-5">
-            <div class="col-12">
-                <div class="hero-content-enhanced text-center">
-                    <!-- Disclaimer Badge -->
-                    <div class="disclaimer-badge mb-4">
-                        <div class="badge bg-warning text-dark px-4 py-2 rounded-pill">
-                            <i class="fas fa-info-circle me-2"></i>
-                            <strong>Unofficial Version</strong> - Official Website:
-                            <a href="https://nayantaratrust.com" target="_blank" class="text-dark text-decoration-none fw-bold">
-                                nayantaratrust.com
-                            </a>
-                        </div>
+        <!-- Disclaimer Badge -->
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <div class="disclaimer-badge">
+                    <div class="badge bg-warning text-dark px-4 py-2 rounded-pill">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Unofficial Version</strong> - Official Website:
+                        <a href="https://nayantaratrust.com" target="_blank" class="text-dark text-decoration-none fw-bold">
+                            nayantaratrust.com
+                        </a>
                     </div>
+                </div>
+            </div>
+        </div>
 
-                    <!-- Main Title -->
-                    <h1 class="hero-title text-center mb-3">
-                        Transforming Underprivileged Students into Industry-Ready Professionals
+        <!-- Left-Right Split Layout -->
+        <div class="row align-items-center min-vh-75 py-5">
+            <!-- Left Side - Text Content -->
+            <div class="col-lg-6">
+                <div class="hero-content-left">
+                    <!-- Main Headline -->
+                    <h1 class="hero-main-title mb-4">
+                        Transforming Students into 
+                        <span class="text-gradient-hero">Industry-Ready Professionals</span>
                     </h1>
 
-                    <!-- Subtitle -->
-                    <p class="hero-subtitle text-center mb-4">
-                        Bharatpur Foundation - Empowering Dreams Through Education
+                    <!-- Mission Statement -->
+                    <p class="hero-mission-statement mb-5">
+                        We break the cycle of poverty through comprehensive education, professional mentoring, and guaranteed career placement—turning potential into prosperity for deserving students and their families.
                     </p>
 
-                    <!-- Main Description -->
-                    <div class="hero-description text-center mb-5">
-                        Every underprivileged student deserves a chance to break the cycle of poverty. Through comprehensive education, professional mentoring and career placement, we transform potential into success—building dreams and creating sustainable prosperity for families.
-                    </div>
-
-                    <!-- Journey Steps -->
-                    <div class="journey-steps mx-auto mb-5">
-                        <div class="row g-4">
-                            <div class="col-md-4">
-                                <div class="journey-step">
-                                    <div class="step-icon">
-                                        <i class="fas fa-graduation-cap"></i>
-                                    </div>
-                                    <h6>Quality Education</h6>
-                                    <small>Complete academic coverage with modern tools</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="journey-step">
-                                    <div class="step-icon">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <h6>Personal Mentoring</h6>
-                                    <small>One-on-one guidance from industry professionals</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="journey-step">
-                                    <div class="step-icon">
-                                        <i class="fas fa-briefcase"></i>
-                                    </div>
-                                    <h6>Career Placement</h6>
-                                    <small>Job placement and professional training</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="hero-buttons text-center">
-                        <a href="#support" class="btn btn-hero-primary btn-lg me-3 mb-3">
-                            <i class="fas fa-graduation-cap me-2"></i>
-                            Partner With Us
-                        </a>
-                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-hero-secondary btn-lg me-3 mb-3">
+                    <!-- CTA Buttons -->
+                    <div class="hero-cta-buttons">
+                        <a href="<?= base_url($language . '/beneficiaries') ?>" class="btn btn-hero-primary btn-lg me-3 mb-3">
                             <i class="fas fa-users me-2"></i>
                             Meet Students
                         </a>
@@ -113,6 +78,60 @@
                             <i class="fas fa-info-circle me-2"></i>
                             Learn More
                         </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Visual Element -->
+            <div class="col-lg-6">
+                <div class="hero-visual-right">
+                    <div class="hero-graphic">
+                        <div class="success-illustration">
+                            <!-- Education Icon -->
+                            <div class="illustration-element education-element">
+                                <div class="icon-wrapper">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <span>Quality Education</span>
+                            </div>
+
+                            <!-- Arrow Flow -->
+                            <div class="flow-arrow arrow-1">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+
+                            <!-- Mentoring Icon -->
+                            <div class="illustration-element mentoring-element">
+                                <div class="icon-wrapper">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <span>Professional Mentoring</span>
+                            </div>
+
+                            <!-- Arrow Flow -->
+                            <div class="flow-arrow arrow-2">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+
+                            <!-- Career Icon -->
+                            <div class="illustration-element career-element">
+                                <div class="icon-wrapper">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <span>Career Success</span>
+                            </div>
+
+                            <!-- Success Stats -->
+                            <div class="floating-stat floating-stat-1">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Lives Changed</div>
+                            </div>
+
+                            <div class="floating-stat floating-stat-2">
+                                <div class="stat-number">95%</div>
+                                <div class="stat-label">Job Placement</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -127,103 +146,46 @@
     </div>
 </section>
 
-<!-- Three Pillars Section -->
-<section class="pillars-section-professional">
+<!-- Feature Strip - Three Pillars -->
+<section class="feature-strip-pillars">
     <div class="container">
-        <div class="row mb-5">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-title text-center mb-4">Empowering Students Through Comprehensive Development</h2>
-                <p class="section-subtitle text-center">
-                    Every deserving student receives a complete transformation journey—because we believe in turning potential into professional success, regardless of background
-                </p>
-            </div>
-        </div>
-
         <div class="row g-4">
-            <!-- Education Pillar -->
+            <!-- Education Feature -->
             <div class="col-lg-4">
-                <div class="pillar-card-professional h-100 text-center">
-                    <div class="pillar-icon-container">
-                        <div class="pillar-icon bg-navy">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
+                <div class="feature-card-compact text-center h-100">
+                    <div class="feature-icon-compact">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3 class="pillar-title text-center">Quality Education</h3>
-                    <p class="pillar-description text-center">
-                        Complete academic fee coverage with modern learning tools and industry-relevant curriculum.
+                    <h4 class="feature-title">Quality Education</h4>
+                    <p class="feature-description">
+                        Complete academic coverage with modern learning tools and industry-relevant curriculum.
                     </p>
-                    <ul class="pillar-features text-start">
-                        <li>
-                            <i class="fas fa-check text-gold me-2"></i>
-                            Full academic coverage
-                        </li>
-                        <li>
-                            <i class="fas fa-check text-gold me-2"></i>
-                            Modern learning tools
-                        </li>
-                        <li>
-                            <i class="fas fa-check text-gold me-2"></i>
-                            Industry-relevant skills
-                        </li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- Mentoring Pillar -->
+            <!-- Mentoring Feature -->
             <div class="col-lg-4">
-                <div class="pillar-card-professional h-100 text-center">
-                    <div class="pillar-icon-container">
-                        <div class="pillar-icon bg-navy">
-                            <i class="fas fa-users"></i>
-                        </div>
+                <div class="feature-card-compact text-center h-100">
+                    <div class="feature-icon-compact">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="pillar-title text-center">Personal Mentoring</h3>
-                    <p class="pillar-description text-center">
-                        One-on-one guidance from industry professionals for both career and personal development.
+                    <h4 class="feature-title">Personal Mentoring</h4>
+                    <p class="feature-description">
+                        One-on-one guidance from industry professionals for career and personal development.
                     </p>
-                    <ul class="pillar-features text-start">
-                        <li>
-                            <i class="fas fa-check text-gold me-2"></i>
-                            Industry mentors
-                        </li>
-                        <li>
-                            <i class="fas fa-check text-gold me-2"></i>
-                            Regular guidance sessions
-                        </li>
-                        <li>
-                            <i class="fas fa-check text-gold me-2"></i>
-                            Personality development
-                        </li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- Career Development Pillar -->
+            <!-- Career Feature -->
             <div class="col-lg-4">
-                <div class="pillar-card-professional h-100 text-center">
-                    <div class="pillar-icon-container">
-                        <div class="pillar-icon bg-navy">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
+                <div class="feature-card-compact text-center h-100">
+                    <div class="feature-icon-compact">
+                        <i class="fas fa-briefcase"></i>
                     </div>
-                    <h3 class="pillar-title text-center">Career Placement</h3>
-                    <p class="pillar-description text-center">
-                        Job placement assistance and professional training for sustainable, well-paying careers.
+                    <h4 class="feature-title">Career Placement</h4>
+                    <p class="feature-description">
+                        Job placement assistance and professional training for sustainable careers.
                     </p>
-                    <ul class="pillar-features text-start">
-                        <li>
-                            <i class="fas fa-check text-gold me-2"></i>
-                            Job placement support
-                        </li>
-                        <li>
-                            <i class="fas fa-check text-gold me-2"></i>
-                            Interview training
-                        </li>
-                        <li>
-                            <i class="fas fa-check text-gold me-2"></i>
-                            Career advancement
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
