@@ -8,19 +8,19 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/en', 'Home::index/en');
 $routes->get('/hi', 'Home::index/hi');
-$routes->get('/en/beneficiaries', 'Home::beneficiaries/en');
-$routes->get('/hi/beneficiaries', 'Home::beneficiaries/hi');
+$routes->get('/en/students', 'Home::students/en');
+$routes->get('/hi/students', 'Home::students/hi');
 $routes->get('/en/success-stories', 'Home::success_stories/en');
 $routes->get('/hi/success-stories', 'Home::success_stories/hi');
-$routes->get('/en/ngo-works', 'Home::ngo_works/en');
-$routes->get('/hi/ngo-works', 'Home::ngo_works/hi');
+$routes->get('/en/activities', 'Home::activities/en');
+$routes->get('/hi/activities', 'Home::activities/hi');
 
 // Frontend routes
-$routes->get('beneficiaries', 'Home::beneficiaries');
-$routes->get('beneficiaries/load-more', 'Home::loadMoreBeneficiaries');
-$routes->get('uploads/beneficiaries/(:any)', 'Home::serveBeneficiaryImage/$1');
-$routes->get('success-stories', 'Home::success_stories');
-$routes->get('ngo-works', 'Home::ngo_works');
+$routes->get('students', 'Home::students');
+$routes->get('students/load-more', 'Home::loadMoreStudents');
+$routes->get('uploads/students/(:any)', 'Home::serveStudentImage/$1');
+$routes->get('success-stories', 'Home::successStories');
+$routes->get('activities', 'Home::activities');
 
 // Admin routes
 $routes->group('admin', function($routes) {
@@ -29,27 +29,27 @@ $routes->group('admin', function($routes) {
     $routes->post('authenticate', 'Admin::authenticate');
     $routes->get('logout', 'Admin::logout');
 
-    // Beneficiaries management
-    $routes->group('beneficiaries', ['filter' => 'auth'], function($routes) {
-        $routes->get('/', 'AdminBeneficiaries::index');
-        $routes->get('create', 'AdminBeneficiaries::create');
-        $routes->post('store', 'AdminBeneficiaries::store');
-        $routes->get('view/(:num)', 'AdminBeneficiaries::view/$1');
-        $routes->get('edit/(:num)', 'AdminBeneficiaries::edit/$1');
-        $routes->post('update/(:num)', 'AdminBeneficiaries::update/$1');
-        $routes->get('delete/(:num)', 'AdminBeneficiaries::delete/$1');
-        $routes->post('delete-multiple', 'AdminBeneficiaries::deleteMultiple');
-        $routes->get('export-pdf', 'AdminBeneficiaries::exportPdf');
+    // Students management
+    $routes->group('students', ['filter' => 'auth'], function($routes) {
+        $routes->get('/', 'AdminStudents::index');
+        $routes->get('create', 'AdminStudents::create');
+        $routes->post('store', 'AdminStudents::store');
+        $routes->get('view/(:num)', 'AdminStudents::view/$1');
+        $routes->get('edit/(:num)', 'AdminStudents::edit/$1');
+        $routes->post('update/(:num)', 'AdminStudents::update/$1');
+        $routes->get('delete/(:num)', 'AdminStudents::delete/$1');
+        $routes->post('delete-multiple', 'AdminStudents::deleteMultiple');
+        $routes->get('export-pdf', 'AdminStudents::exportPdf');
     });
 
-    // NGO Works management
-    $routes->get('ngo-works', 'AdminNgoWorks::index');
-    $routes->get('ngo-works/create', 'AdminNgoWorks::create');
-    $routes->post('ngo-works/store', 'AdminNgoWorks::store');
-    $routes->get('ngo-works/edit/(:num)', 'AdminNgoWorks::edit/$1');
-    $routes->post('ngo-works/update/(:num)', 'AdminNgoWorks::update/$1');
-    $routes->get('ngo-works/delete/(:num)', 'AdminNgoWorks::delete/$1');
-    $routes->get('ngo-works/view/(:num)', 'AdminNgoWorks::view/$1');
+    // Activities management
+    $routes->get('activities', 'AdminActivities::index');
+    $routes->get('activities/create', 'AdminActivities::create');
+    $routes->post('activities/store', 'AdminActivities::store');
+    $routes->get('activities/edit/(:num)', 'AdminActivities::edit/$1');
+    $routes->post('activities/update/(:num)', 'AdminActivities::update/$1');
+    $routes->get('activities/delete/(:num)', 'AdminActivities::delete/$1');
+    $routes->get('activities/view/(:num)', 'AdminActivities::view/$1');
 
     // Success stories management
     $routes->get('success-stories', 'AdminSuccessStories::index');
@@ -87,8 +87,8 @@ $routes->get('volunteering-form/(:num)', 'VolunteeringForm::form/$1');
 $routes->post('volunteering-form/(:num)', 'VolunteeringForm::form/$1');
 
 // Image serving routes
-$routes->get('uploads/beneficiaries/(:any)', function($filename) {
-    $path = WRITEPATH . 'uploads/beneficiaries/' . $filename;
+$routes->get('uploads/students/(:any)', function($filename) {
+    $path = WRITEPATH . 'uploads/students/' . $filename;
     if (file_exists($path)) {
         return response()->setHeader('Content-Type', mime_content_type($path))->setBody(file_get_contents($path));
     }
@@ -111,8 +111,8 @@ $routes->get('uploads/public_submissions/(:any)', function($filename) {
     throw new \CodeIgniter\Exceptions\PageNotFoundException('Image not found');
 });
 
-$routes->get('uploads/ngo_works/(:any)', function($filename) {
-    $path = WRITEPATH . 'uploads/ngo_works/' . $filename;
+$routes->get('uploads/activities/(:any)', function($filename) {
+    $path = WRITEPATH . 'uploads/activities/' . $filename;
     if (file_exists($path)) {
         return response()->setHeader('Content-Type', mime_content_type($path))->setBody(file_get_contents($path));
     }
