@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class BeneficiaryModel extends Model
 {
-    protected $table = 'students';
+    protected $table = 'beneficiaries';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
