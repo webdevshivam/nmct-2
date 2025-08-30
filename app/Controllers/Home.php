@@ -18,14 +18,15 @@ class Home extends BaseController
         $siteSettingsModel = new SiteSettingsModel();
 
 
-        // Get students data - using beneficiaries table
-        $students = $beneficiaryModel->where('status', 'active')->findAll(6); // Get first 6 students
+        // Get featured beneficiaries data
+        $featured_beneficiaries = $beneficiaryModel->where('status', 'active')->findAll(6);
 
-        // Get student statistics
-        $student_stats = [
+        // Get beneficiary statistics
+        $beneficiary_stats = [
             'total' => $beneficiaryModel->countAll(),
             'active' => $beneficiaryModel->where('status', 'active')->countAllResults(),
-            'graduated' => $beneficiaryModel->where('is_passout', 'passout')->countAllResults()
+            'passouts' => $beneficiaryModel->where('is_passout', 'passout')->countAllResults(),
+            'currently_studying' => $beneficiaryModel->where('is_passout', 'currently_studying')->countAllResults()
         ];
 
         // Get success stories
@@ -47,11 +48,11 @@ class Home extends BaseController
 
         $data = [
             'title' => 'Nayantara Trust - Empowering Rural Education',
-            'students' => $students,
-            'student_stats' => $student_stats,
+            'featured_beneficiaries' => $featured_beneficiaries,
+            'beneficiary_stats' => $beneficiary_stats,
             'success_stories' => $success_stories,
-            'recent_activities' => $recent_activities, // Include recent activities
-            'site_settings' => $site_settings // Include site settings
+            'recent_activities' => $recent_activities,
+            'site_settings' => $site_settings
         ];
 
         return view('frontend/home', $data);
