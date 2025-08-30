@@ -7,31 +7,14 @@
     <title><?= $title ?? 'Nayantara Memorial Charitable Trust' ?></title>
     <meta name="description" content="Empowering education and transforming lives through scholarships and support for underprivileged students in Bihar, India.">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#fef7ee',
-                            100: '#fdedd3',
-                            500: '#f97316',
-                            600: '#ea580c',
-                            700: '#c2410c',
-                            800: '#9a3412',
-                            900: '#7c2d12',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Custom Styles -->
     <style>
@@ -46,73 +29,40 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
     <!-- Navigation -->
-    <nav class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="<?= base_url() ?>" class="flex items-center space-x-2">
-                        <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
-                            <i class="fas fa-graduation-cap text-white text-xl"></i>
-                        </div>
-                        <span class="font-bold text-xl text-gray-800 dark:text-white">Nayantara Trust</span>
-                    </a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="<?= base_url() ?>">
+                <div class="me-3" style="width: 40px; height: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-graduation-cap text-white"></i>
                 </div>
+                <span class="fw-bold fs-5" style="font-family: 'Poppins', sans-serif; color: #1f2937;">Nayantara Trust</span>
+            </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="<?= base_url() ?>" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                            Home
-                        </a>
-                        <a href="<?= base_url('students') ?>" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                            Our Students
-                        </a>
-                        <a href="<?= base_url('beneficiaries') ?>" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                            Beneficiaries
-                        </a>
-                        <a href="<?= base_url('success-stories') ?>" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                            Success Stories
-                        </a>
-                        <a href="<?= base_url('activities') ?>" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                            Activities
-                        </a>
-                    </div>
-                </div>
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <!-- Dark Mode Toggle -->
-                <div class="flex items-center space-x-4">
-                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200">
-                        <i class="fas fa-moon dark:hidden"></i>
-                        <i class="fas fa-sun hidden dark:block"></i>
-                    </button>
-
-                    <!-- Mobile menu button -->
-                    <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-white dark:bg-gray-800 border-t dark:border-gray-700">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="<?= base_url() ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    Home
-                </a>
-                <a href="<?= base_url('students') ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    Our Students
-                </a>
-                <a href="<?= base_url('beneficiaries') ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    Beneficiaries
-                </a>
-                <a href="<?= base_url('success-stories') ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    Success Stories
-                </a>
-                <a href="<?= base_url('activities') ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700">
-                    Activities
-                </a>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link fw-500" href="<?= base_url() ?>" style="font-family: 'Inter', sans-serif;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-500" href="<?= base_url('students') ?>" style="font-family: 'Inter', sans-serif;">Our Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-500" href="<?= base_url('beneficiaries') ?>" style="font-family: 'Inter', sans-serif;">Beneficiaries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-500" href="<?= base_url('success-stories') ?>" style="font-family: 'Inter', sans-serif;">Success Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-500" href="<?= base_url('activities') ?>" style="font-family: 'Inter', sans-serif;">Activities</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -192,30 +142,11 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
     <script>
-        // Dark mode toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const html = document.documentElement;
-
-        // Check for saved theme preference or default to 'light'
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        html.className = currentTheme;
-
-        darkModeToggle.addEventListener('click', () => {
-            const newTheme = html.classList.contains('dark') ? 'light' : 'dark';
-            html.className = newTheme;
-            localStorage.setItem('theme', newTheme);
-        });
-
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -228,6 +159,15 @@
                     });
                 }
             });
+        });
+
+        // Add active class to current nav item
+        const currentLocation = location.pathname;
+        const menuItems = document.querySelectorAll('.nav-link');
+        menuItems.forEach(item => {
+            if(item.getAttribute('href') === currentLocation){
+                item.classList.add('active');
+            }
         });
     </script>
 </body>

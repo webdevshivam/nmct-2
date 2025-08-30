@@ -6,28 +6,44 @@ use App\Models\StudentModel;
 use App\Models\SuccessStoryModel;
 use App\Models\ActivityModel;
 use App\Models\SiteSettingsModel;
+use App\Models\BeneficiaryModel; // Import BeneficiaryModel
 
 class Home extends BaseController
 {
     public function index()
     {
-        $studentModel = new StudentModel();
+        $beneficiaryModel = new BeneficiaryModel();
         $successStoryModel = new SuccessStoryModel();
-        $activityModel = new ActivityModel();
-        $siteSettingsModel = new SiteSettingsModel();
+        $activityModel = new ActivityModel(); // Keep activity model for potential future use or other methods
+        $siteSettingsModel = new SiteSettingsModel(); // Keep site settings model for potential future use or other methods
+
+
+        // Get students data - using beneficiaries table
+        $students = $beneficiaryModel->where('status', 'active')->findAll(6); // Get first 6 students
+
+        // Get student statistics
+        $student_stats = [
+            'total' => $beneficiaryModel->countAll(),
+            'active' => $beneficiaryModel->where('status', 'active')->countAllResults(),
+            'graduated' => $beneficiaryModel->where('is_passout', 'passout')->countAllResults()
+        ];
+
+        // Get success stories
+        $success_stories = $successStoryModel->where('status', 'active')->findAll(3);
+
+        // Get recent activities for the home page as well, if needed for a more comprehensive view
+        $recent_activities = $activityModel->getRecentActivities(3);
+
+        // Get site settings
+        $site_settings = $siteSettingsModel->getAllSettings();
 
         $data = [
-            'title' => 'Nayantara Memorial Charitable Trust',
-            'students' => $studentModel->getActiveStudents(),
-            'student_stats' => $studentModel->getStudentStats(),
-            'success_stories' => $successStoryModel->select('success_stories.*, students.name as student_name')
-                                                  ->join('students', 'students.id = success_stories.student_id', 'left')
-                                                  ->where('success_stories.status', 'published')
-                                                  ->orderBy('success_stories.created_at', 'DESC')
-                                                  ->limit(3)
-                                                  ->findAll(),
-            'recent_activities' => $activityModel->getRecentActivities(3),
-            'site_settings' => $siteSettingsModel->getAllSettings()
+            'title' => 'Nayantara Memorial Charitable Trust - Empowering Education',
+            'students' => $students,
+            'student_stats' => $student_stats,
+            'success_stories' => $success_stories,
+            'recent_activities' => $recent_activities, // Include recent activities
+            'site_settings' => $site_settings // Include site settings
         ];
 
         return view('frontend/home', $data);
@@ -47,34 +63,18 @@ class Home extends BaseController
 
     public function beneficiaries()
     {
-        $studentModel = new StudentModel();
+        $beneficiaryModel = new BeneficiaryModel(); // Use BeneficiaryModel
 
-        // Get all students to show as beneficiaries
-        $students = $studentModel->findAll();
-        
-        // Transform student data to match beneficiary structure
-        $beneficiaries = [];
-        foreach ($students as $student) {
-            $beneficiaries[] = [
-                'id' => $student['id'],
-                'name' => $student['name'],
-                'age' => $this->calculateAge($student['enrolled_date'] ?? date('Y-m-d')),
-                'category' => $student['status'] ?? 'Student',
-                'course_name' => $student['course'],
-                'institution' => $student['institution'],
-                'status' => strtolower($student['status'] ?? 'active'),
-                'email' => $student['email'],
-                'mobile_number' => $student['phone'],
-                'company_name' => null, // Students don't have company info
-                'current_position' => null,
-                'education_level' => $student['year'] ? 'Year ' . $student['year'] : 'Undergraduate',
-                'scholarship_amount' => $student['scholarship_amount'] ?? 0,
-                'total_fees' => $student['total_fees'] ?? 0,
-                'father_name' => $student['father_name'] ?? '',
-                'family_income' => $student['family_income'] ?? '',
-                'expected_graduation' => $student['expected_graduation'] ?? ''
-            ];
-        }
+        // Get all beneficiaries
+        $beneficiaries = $beneficiaryModel->findAll();
+
+        // Ensure the structure matches what the view expects, or adjust the view
+        // The original code transformed student data to beneficiary structure.
+        // Assuming BeneficiaryModel returns data in a suitable format,
+        // no transformation is needed here unless the view requires a different format.
+        // If the view expects specific keys that are not directly in BeneficiaryModel,
+        // then a transformation loop would be needed.
+        // For now, assuming the model output is directly usable.
 
         $data = [
             'title' => 'Our Beneficiaries - Nayantara Memorial Charitable Trust',
@@ -112,8 +112,14 @@ class Home extends BaseController
         return view('frontend/activities', $data);
     }
 
+    // The calculateAge function might not be directly relevant if BeneficiaryModel has age,
+    // but keeping it in case it's used elsewhere or for reference.
+    // If BeneficiaryModel has 'date_of_birth' or 'enrolled_date', this function could be adapted.
     private function calculateAge($enrolledDate)
     {
+        // This function was originally designed for students and might need adjustment
+        // if the 'enrolled_date' field in the beneficiaries table is different or non-existent.
+        // Assuming it might still be used for a 'student' related context or a similar logic.
         $enrollDate = new \DateTime($enrolledDate);
         $now = new \DateTime();
         $age = $now->diff($enrollDate)->y;
