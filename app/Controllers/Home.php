@@ -32,10 +32,18 @@ class Home extends BaseController
         $success_stories = $successStoryModel->where('status', 'active')->findAll(3);
 
         // Get recent activities for the home page as well, if needed for a more comprehensive view
-        $recent_activities = $activityModel->getRecentActivities(3);
+        try {
+            $recent_activities = $activityModel->getRecentActivities(3);
+        } catch (\Exception $e) {
+            $recent_activities = [];
+        }
 
         // Get site settings
-        $site_settings = $siteSettingsModel->getAllSettings();
+        try {
+            $site_settings = $siteSettingsModel->getAllSettings();
+        } catch (\Exception $e) {
+            $site_settings = [];
+        }
 
         $data = [
             'title' => 'Nayantara Trust - Empowering Rural Education',
