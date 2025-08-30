@@ -4,656 +4,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #f59e0b;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --text-light: #9ca3af;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-accent: #f1f5f9;
-            --border-color: #e5e7eb;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
+        .font-display {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
         }
-
-        .nav {
-            display: flex;
-            gap: 2rem;
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav a:hover {
-            opacity: 0.8;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
-            padding: 4rem 0;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 2px,
-                rgba(37, 99, 235, 0.02) 2px,
-                rgba(37, 99, 235, 0.02) 4px
-            );
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 3rem 0;
-            background: var(--bg-primary);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-icon {
-            width: 3rem;
-            height: 3rem;
-            margin: 0 auto 1rem;
-            border-radius: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .stat-icon.total { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-        .stat-icon.active { background: linear-gradient(135deg, #10b981, #047857); }
-        .stat-icon.passout { background: linear-gradient(135deg, #f59e0b, #d97706); }
-        .stat-icon.studying { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        /* Section Headers */
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Featured Beneficiaries */
-        .featured-section {
-            padding: 4rem 0;
-            background: var(--bg-secondary);
-        }
-
-        .beneficiaries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .beneficiary-card {
-            background: white;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border-color);
-        }
-
-        .beneficiary-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .beneficiary-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1.5rem;
-            position: relative;
-        }
-
-        .beneficiary-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--accent-color);
-        }
-
-        .beneficiary-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .beneficiary-course {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-
-        .beneficiary-body {
-            padding: 1.5rem;
-        }
-
-        .beneficiary-info {
-            display: grid;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .info-icon {
-            width: 1.25rem;
-            height: 1.25rem;
-            color: var(--primary-color);
-        }
-
-        .info-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .company-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--bg-accent);
-            color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .company-link:hover {
-            background: var(--border-color);
-        }
-
-        /* Success Stories Preview */
-        .success-preview {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .stories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .story-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .story-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .story-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .story-avatar {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .story-name {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .story-position {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .story-excerpt {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
-
-        .footer-section p, .footer-section a {
-            color: var(--text-light);
-            text-decoration: none;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #374151;
-            padding-top: 1rem;
-            color: var(--text-light);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav {
-                gap: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .beneficiaries-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-heart"></i> Nayantara Trust
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-heart text-white text-lg"></i>
+                    </div>
+                    <span class="font-display text-xl font-bold text-gray-800">Nayantara Trust</span>
                 </div>
-                <nav class="nav">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#beneficiaries">Beneficiaries</a>
-                    <a href="#success-stories">Success Stories</a>
-                    <a href="#contact">Contact</a>
-                </nav>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="<?= base_url() ?>" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a>
+                    <a href="<?= base_url('beneficiaries') ?>" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Beneficiaries</a>
+                    <a href="<?= base_url('success-stories') ?>" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Success Stories</a>
+                    <a href="<?= base_url('activities') ?>" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Activities</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </header>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-4 space-y-3">
+                <a href="<?= base_url() ?>" class="block text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                <a href="<?= base_url('beneficiaries') ?>" class="block text-gray-700 hover:text-blue-600 font-medium">Beneficiaries</a>
+                <a href="<?= base_url('success-stories') ?>" class="block text-gray-700 hover:text-blue-600 font-medium">Success Stories</a>
+                <a href="<?= base_url('activities') ?>" class="block text-gray-700 hover:text-blue-600 font-medium">Activities</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Empowering Dreams Through Education</h1>
-                <p>Nayantara Memorial Charitable Trust is dedicated to transforming lives through quality education and unwavering support. We believe every student deserves the opportunity to reach their full potential, regardless of their financial background.</p>
-                <a href="#beneficiaries" class="cta-button">
-                    <i class="fas fa-graduation-cap"></i> See Our Impact
-                </a>
+    <section class="pt-16 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white hero-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+            <div class="text-center">
+                <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Empowering Dreams Through
+                    <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                        Education
+                    </span>
+                </h1>
+                <p class="text-xl lg:text-2xl text-blue-100 mb-10 max-w-4xl mx-auto leading-relaxed">
+                    Nayantara Memorial Charitable Trust transforms lives through quality education, unwavering support, and endless opportunities for underprivileged students.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="<?= base_url('beneficiaries') ?>" class="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-yellow-600 hover:to-orange-600 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                        <i class="fas fa-graduation-cap mr-2"></i>Meet Our Beneficiaries
+                    </a>
+                    <a href="<?= base_url('success-stories') ?>" class="bg-white/10 backdrop-blur text-white border-2 border-white/30 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transform hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-star mr-2"></i>Success Stories
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Impact in Numbers</h2>
-                <p class="section-subtitle">Every number represents a life transformed, a dream fulfilled, and a future brightened through education.</p>
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Impact in Numbers</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Every number represents a life transformed, a dream fulfilled, and a future brightened through education.</p>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon total">
-                        <i class="fas fa-users"></i>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl text-center border border-blue-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-white text-2xl"></i>
                     </div>
-                    <div class="stat-number"><?= $beneficiary_stats['total'] ?></div>
-                    <div class="stat-label">Total Beneficiaries</div>
+                    <div class="text-3xl lg:text-4xl font-bold text-blue-600 mb-2"><?= $beneficiary_stats['total'] ?></div>
+                    <div class="text-gray-700 font-medium">Total Beneficiaries</div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-icon active">
-                        <i class="fas fa-user-check"></i>
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl text-center border border-green-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-check text-white text-2xl"></i>
                     </div>
-                    <div class="stat-number"><?= $beneficiary_stats['active'] ?></div>
-                    <div class="stat-label">Active Students</div>
+                    <div class="text-3xl lg:text-4xl font-bold text-green-600 mb-2"><?= $beneficiary_stats['active'] ?></div>
+                    <div class="text-gray-700 font-medium">Active Students</div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-icon passout">
-                        <i class="fas fa-trophy"></i>
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-2xl text-center border border-yellow-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-white text-2xl"></i>
                     </div>
-                    <div class="stat-number"><?= $beneficiary_stats['passouts'] ?></div>
-                    <div class="stat-label">Graduates</div>
+                    <div class="text-3xl lg:text-4xl font-bold text-yellow-600 mb-2"><?= $beneficiary_stats['passouts'] ?></div>
+                    <div class="text-gray-700 font-medium">Graduates</div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-icon studying">
-                        <i class="fas fa-book-open"></i>
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl text-center border border-purple-200 hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-book-open text-white text-2xl"></i>
                     </div>
-                    <div class="stat-number"><?= $beneficiary_stats['currently_studying'] ?></div>
-                    <div class="stat-label">Currently Studying</div>
+                    <div class="text-3xl lg:text-4xl font-bold text-purple-600 mb-2"><?= $beneficiary_stats['currently_studying'] ?></div>
+                    <div class="text-gray-700 font-medium">Currently Studying</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Beneficiaries -->
-    <section class="featured-section" id="beneficiaries">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Success Stories in Progress</h2>
-                <p class="section-subtitle">Meet some of our remarkable beneficiaries who have successfully transitioned from students to professionals, making their mark in the industry.</p>
+    <!-- Featured Beneficiaries Preview -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Featured Success Stories</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">Meet some of our remarkable beneficiaries who are making their mark in the professional world.</p>
+                <a href="<?= base_url('beneficiaries') ?>" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg group">
+                    View All Beneficiaries 
+                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
             </div>
 
-            <div class="beneficiaries-grid">
-                <?php if (!empty($featured_beneficiaries)): ?>
-                    <?php foreach ($featured_beneficiaries as $beneficiary): ?>
-                        <div class="beneficiary-card">
-                            <div class="beneficiary-header">
-                                <div class="beneficiary-name"><?= esc($beneficiary['name']) ?></div>
-                                <div class="beneficiary-course"><?= esc($beneficiary['course']) ?></div>
+            <?php if (!empty($featured_beneficiaries)): ?>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <?php foreach (array_slice($featured_beneficiaries, 0, 6) as $beneficiary): ?>
+                        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 transform hover:-translate-y-2">
+                            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">
+                                        <?= strtoupper(substr(esc($beneficiary['name']), 0, 1)) ?>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-lg"><?= esc($beneficiary['name']) ?></h3>
+                                        <p class="text-blue-100 text-sm"><?= esc($beneficiary['course']) ?></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="beneficiary-body">
-                                <div class="beneficiary-info">
-                                    <div class="info-row">
-                                        <i class="fas fa-graduation-cap info-icon"></i>
-                                        <span class="info-text"><?= esc($beneficiary['education_level']) ?></span>
+                            <div class="p-6">
+                                <div class="space-y-3 mb-4">
+                                    <div class="flex items-center text-gray-600">
+                                        <i class="fas fa-university w-5 text-blue-500 mr-3"></i>
+                                        <span class="text-sm"><?= esc($beneficiary['institution']) ?></span>
                                     </div>
-                                    <div class="info-row">
-                                        <i class="fas fa-university info-icon"></i>
-                                        <span class="info-text"><?= esc($beneficiary['institution']) ?></span>
+                                    <div class="flex items-center text-gray-600">
+                                        <i class="fas fa-graduation-cap w-5 text-green-500 mr-3"></i>
+                                        <span class="text-sm"><?= esc($beneficiary['education_level']) ?></span>
                                     </div>
-                                    <div class="info-row">
-                                        <i class="fas fa-calendar info-icon"></i>
-                                        <span class="info-text">Age: <?= esc($beneficiary['age']) ?> years</span>
-                                    </div>
-                                    <?php if (!empty($beneficiary['phone'])): ?>
-                                        <div class="info-row">
-                                            <i class="fas fa-phone info-icon"></i>
-                                            <span class="info-text"><?= esc($beneficiary['phone']) ?></span>
+                                    <?php if (!empty($beneficiary['city'])): ?>
+                                        <div class="flex items-center text-gray-600">
+                                            <i class="fas fa-map-marker-alt w-5 text-red-500 mr-3"></i>
+                                            <span class="text-sm"><?= esc($beneficiary['city']) ?></span>
                                         </div>
                                     <?php endif; ?>
                                 </div>
-
                                 <?php if (!empty($beneficiary['company_name'])): ?>
-                                    <a href="<?= !empty($beneficiary['company_link']) ? esc($beneficiary['company_link']) : '#' ?>" 
-                                       class="company-link" 
-                                       <?= !empty($beneficiary['company_link']) ? 'target="_blank"' : '' ?>>
-                                        <i class="fas fa-building"></i>
+                                    <div class="inline-flex items-center bg-gradient-to-r from-green-50 to-blue-50 text-green-700 px-3 py-2 rounded-full text-sm font-medium">
+                                        <i class="fas fa-briefcase mr-2"></i>
                                         <?= esc($beneficiary['company_name']) ?>
-                                    </a>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
-                <?php else: ?>
-                    <div class="col-span-full text-center text-gray-500 py-8">
-                        <i class="fas fa-users text-4xl mb-4"></i>
-                        <p>Featured beneficiaries will be displayed here soon.</p>
-                    </div>
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php else: ?>
+                <div class="text-center py-12">
+                    <i class="fas fa-users text-gray-400 text-6xl mb-4"></i>
+                    <p class="text-gray-500 text-lg">Featured beneficiaries will be displayed here soon.</p>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
 
-    <!-- Mission & Vision Section -->
-        <section class="mission-section">
-            <div class="container">
-                <div class="mission-grid">
-                    <div class="mission-item">
-                        <div class="mission-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3>Our Mission</h3>
-                        <p>To provide quality education and opportunities to underprivileged students, enabling them to achieve their full potential and contribute meaningfully to society.</p>
-                    </div>
-                    <div class="mission-item">
-                        <div class="mission-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h3>Our Vision</h3>
-                        <p>A world where every child has access to quality education regardless of their economic background, creating a more equitable and prosperous society.</p>
-                    </div>
-                    <div class="mission-item">
-                        <div class="mission-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <h3>Our Values</h3>
-                        <p>We believe in transparency, accountability, and making a lasting impact through education, mentorship, and community support.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     <!-- Success Stories Preview -->
     <?php if (!empty($success_stories)): ?>
-    <section class="success-preview" id="success-stories">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Inspiring Success Stories</h2>
-                <p class="section-subtitle">Real stories of transformation, perseverance, and achievement from our beneficiaries who have made their mark in their respective fields.</p>
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Inspiring Journeys</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">Real stories of transformation, perseverance, and achievement from our beneficiaries.</p>
+                <a href="<?= base_url('success-stories') ?>" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg group">
+                    Read All Success Stories 
+                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
             </div>
 
-            <div class="stories-grid">
-                <?php foreach ($success_stories as $story): ?>
-                    <div class="story-card">
-                        <div class="story-header">
-                            <div class="story-avatar">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php foreach (array_slice($success_stories, 0, 3) as $story): ?>
+                    <div class="bg-gradient-to-br from-gray-50 to-blue-50 p-8 rounded-2xl border border-gray-200 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
                                 <?= strtoupper(substr(esc($story['name']), 0, 1)) ?>
                             </div>
                             <div>
-                                <div class="story-name"><?= esc($story['name']) ?></div>
-                                <div class="story-position"><?= esc($story['current_position']) ?></div>
+                                <h3 class="font-semibold text-lg text-gray-900"><?= esc($story['name']) ?></h3>
+                                <p class="text-blue-600 font-medium"><?= esc($story['current_position']) ?></p>
                             </div>
                         </div>
-                        <div class="story-excerpt">
+                        <p class="text-gray-600 leading-relaxed">
                             <?= esc(substr($story['story'], 0, 150)) ?>...
-                        </div>
+                        </p>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -661,31 +228,121 @@
     </section>
     <?php endif; ?>
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> admin@nayantar.org</p>
-                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Patna, Bihar, India</p>
+    <!-- Mission Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="text-center p-8">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-graduation-cap text-3xl"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Our Mission</h3>
+                    <p class="text-blue-100 leading-relaxed">To provide quality education and opportunities to underprivileged students, enabling them to achieve their full potential and contribute meaningfully to society.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Our Mission</h3>
-                    <p>Empowering underprivileged students through quality education, mentorship, and financial support to build a brighter future.</p>
+
+                <div class="text-center p-8">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-eye text-3xl"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Our Vision</h3>
+                    <p class="text-blue-100 leading-relaxed">A world where every child has access to quality education regardless of their economic background, creating a more equitable and prosperous society.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Get Involved</h3>
-                    <p><a href="#volunteer">Become a Volunteer</a></p>
-                    <p><a href="#donate">Make a Donation</a></p>
-                    <p><a href="#partner">Partner with Us</a></p>
+
+                <div class="text-center p-8">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-heart text-3xl"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Our Values</h3>
+                    <p class="text-blue-100 leading-relaxed">We believe in transparency, accountability, and making a lasting impact through education, mentorship, and community support.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Nayantara Memorial Charitable Trust. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-heart text-white text-xl"></i>
+                        </div>
+                        <span class="font-display text-2xl font-bold">Nayantara Trust</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">Empowering underprivileged students through quality education, mentorship, and financial support to build a brighter future for all.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-4 text-yellow-400">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="<?= base_url() ?>" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="<?= base_url('beneficiaries') ?>" class="text-gray-300 hover:text-white transition-colors">Beneficiaries</a></li>
+                        <li><a href="<?= base_url('success-stories') ?>" class="text-gray-300 hover:text-white transition-colors">Success Stories</a></li>
+                        <li><a href="<?= base_url('activities') ?>" class="text-gray-300 hover:text-white transition-colors">Activities</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-4 text-yellow-400">Contact Us</h3>
+                    <div class="space-y-3">
+                        <p class="text-gray-300 flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            admin@nayantar.org
+                        </p>
+                        <p class="text-gray-300 flex items-center">
+                            <i class="fas fa-phone mr-3 text-green-400"></i>
+                            +91 98765 43210
+                        </p>
+                        <p class="text-gray-300 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-3 text-red-400"></i>
+                            Patna, Bihar, India
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2025 Nayantara Memorial Charitable Trust. All rights reserved.
+                </p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
