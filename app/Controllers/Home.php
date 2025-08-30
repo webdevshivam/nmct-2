@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\StudentModel;
 use App\Models\SuccessStoryModel;
-use App\Models\ActivityModel;
+use App\Models\NgoWorkModel;
 use App\Models\SiteSettingsModel;
 use App\Models\BeneficiaryModel; // Import BeneficiaryModel
 
@@ -14,8 +14,8 @@ class Home extends BaseController
     {
         $beneficiaryModel = new BeneficiaryModel();
         $successStoryModel = new SuccessStoryModel();
-        $activityModel = new ActivityModel(); // Keep activity model for potential future use or other methods
-        $siteSettingsModel = new SiteSettingsModel(); // Keep site settings model for potential future use or other methods
+        $ngoWorkModel = new NgoWorkModel();
+        $siteSettingsModel = new SiteSettingsModel();
 
 
         // Get students data - using beneficiaries table
@@ -29,11 +29,11 @@ class Home extends BaseController
         ];
 
         // Get success stories
-        $success_stories = $successStoryModel->where('status', 'active')->findAll(3);
+        $success_stories = $successStoryModel->where('status', 'published')->findAll(3);
 
-        // Get recent activities for the home page as well, if needed for a more comprehensive view
+        // Get recent ngo works for the home page
         try {
-            $recent_activities = $activityModel->getRecentActivities(3);
+            $recent_activities = $ngoWorkModel->getPublishedWorks(3);
         } catch (\Exception $e) {
             $recent_activities = [];
         }
@@ -98,8 +98,8 @@ class Home extends BaseController
 
         $data = [
             'title' => 'Success Stories - Nayantara Memorial Charitable Trust',
-            'success_stories' => $successStoryModel->select('success_stories.*, students.name as student_name, students.course, students.institution')
-                                                  ->join('students', 'students.id = success_stories.student_id', 'left')
+            'success_stories' => $successStoryModel->select('success_stories.*, beneficiaries.name as student_name, beneficiaries.course_name as course, beneficiaries.institution_name as institution')
+                                                  ->join('beneficiaries', 'beneficiaries.id = success_stories.student_id', 'left')
                                                   ->where('success_stories.status', 'published')
                                                   ->orderBy('success_stories.created_at', 'DESC')
                                                   ->findAll()
@@ -110,11 +110,11 @@ class Home extends BaseController
 
     public function activities()
     {
-        $activityModel = new ActivityModel();
+        $ngoWorkModel = new NgoWorkModel();
 
         $data = [
             'title' => 'Our Activities - Nayantara Memorial Charitable Trust',
-            'activities' => $activityModel->orderBy('activity_date', 'DESC')->findAll()
+            'activities' => $ngoWorkModel->getPublishedWorks()
         ];
 
         return view('frontend/activities', $data);
