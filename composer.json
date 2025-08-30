@@ -11,6 +11,7 @@
     },
     "require": {
         "php": "^8.1",
+        "composer": "*",
         "codeigniter4/framework": "^4.0",
         "tecnickcom/tcpdf": "^6.10"
     },
