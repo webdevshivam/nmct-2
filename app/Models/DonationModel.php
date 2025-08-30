@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -10,8 +9,15 @@ class DonationModel extends Model
     protected $table = 'donations';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'donor_name', 'donor_email', 'donor_phone', 'amount',
-        'donation_type', 'purpose', 'payment_method', 'transaction_id', 'status'
+        'donor_name',
+        'donor_email',
+        'donor_phone',
+        'amount',
+        'donation_type',
+        'purpose',
+        'payment_method',
+        'transaction_id',
+        'status'
     ];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';

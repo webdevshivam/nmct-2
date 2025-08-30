@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -10,10 +9,24 @@ class StudentModel extends Model
     protected $table = 'students';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'name', 'email', 'phone', 'address', 'course', 'institution', 
-        'year', 'total_fees', 'scholarship_amount', 'scholarship_amount_numeric',
-        'status', 'father_name', 'father_occupation', 'family_income',
-        'previous_education', 'enrolled_date', 'expected_graduation', 'photo_url'
+        'name',
+        'email',
+        'phone',
+        'address',
+        'course',
+        'institution',
+        'year',
+        'total_fees',
+        'scholarship_amount',
+        'scholarship_amount_numeric',
+        'status',
+        'father_name',
+        'father_occupation',
+        'family_income',
+        'previous_education',
+        'enrolled_date',
+        'expected_graduation',
+        'photo_url'
     ];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
@@ -29,7 +42,7 @@ class StudentModel extends Model
         $total = $this->countAll();
         $active = $this->where('status', 'Active')->countAllResults();
         $graduated = $this->where('status', 'Graduated')->countAllResults();
-        
+
         return [
             'total' => $total,
             'active' => $active,

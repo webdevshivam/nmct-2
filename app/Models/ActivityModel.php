@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -10,8 +9,13 @@ class ActivityModel extends Model
     protected $table = 'activities';
     protected $primaryKey = 'id';
     protected $allowedFields = [
-        'title', 'description', 'activity_date', 'location', 
-        'participants_count', 'photo_url', 'status'
+        'title',
+        'description',
+        'activity_date',
+        'location',
+        'participants_count',
+        'photo_url',
+        'status'
     ];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
