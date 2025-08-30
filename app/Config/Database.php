@@ -168,18 +168,26 @@ class Database extends Config
     {
         parent::__construct();
 
-        // Initialize default database configuration with SQLite for Replit
+        // Initialize default database configuration with MySQL
         $this->default = [
-            'database'    => WRITEPATH . 'database.db',
-            'DBDriver'    => 'SQLite3',
-            'DBPrefix'    => '',
-            'DBDebug'     => true,
-            'swapPre'     => '',
-            'failover'    => [],
-            'foreignKeys' => true,
-            'busyTimeout' => 1000,
-            'synchronous' => null,
-            'dateFormat'  => [
+            'DSN'        => '',
+            'hostname'   => 'localhost',
+            'username'   => 'root',
+            'password'   => '',
+            'database'   => 'nayantar_cms',
+            'DBDriver'   => 'MySQLi',
+            'DBPrefix'   => '',
+            'pConnect'   => false,
+            'DBDebug'    => true,
+            'charset'    => 'utf8',
+            'DBCollat'   => 'utf8_general_ci',
+            'swapPre'    => '',
+            'encrypt'    => false,
+            'compress'   => false,
+            'strictOn'   => false,
+            'failover'   => [],
+            'port'       => 3306,
+            'dateFormat' => [
                 'date'     => 'Y-m-d',
                 'datetime' => 'Y-m-d H:i:s',
                 'time'     => 'H:i:s',
