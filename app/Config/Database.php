@@ -174,7 +174,7 @@ class Database extends Config
             'hostname'   => 'localhost',
             'username'   => 'root',
             'password'   => '',
-            'database'   => 'nayantar_cms',
+            'database'   => 'nayantara_trust',
             'DBDriver'   => 'MySQLi',
             'DBPrefix'   => '',
             'pConnect'   => false,

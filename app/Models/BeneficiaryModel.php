@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class BeneficiaryModel extends Model
 {
-    protected $table = 'beneficiaries';
+    protected $table = 'students';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
@@ -94,7 +94,7 @@ class BeneficiaryModel extends Model
     public function getActiveBeneficiariesByStatus($isPassout = false, $limit = null, $offset = null, $search = null)
     {
         $builder = $this->where('status', 'active')
-                        ->where('is_passout', $isPassout);
+            ->where('is_passout', $isPassout);
 
         if ($search) {
             $builder->groupStart()
@@ -115,7 +115,7 @@ class BeneficiaryModel extends Model
     public function countActiveBeneficiariesByStatus($isPassout = false, $search = null)
     {
         $builder = $this->where('status', 'active')
-                        ->where('is_passout', $isPassout);
+            ->where('is_passout', $isPassout);
 
         if ($search) {
             $builder->groupStart()
