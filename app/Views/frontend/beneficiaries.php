@@ -47,11 +47,14 @@
                 <div class="w-px h-12 bg-blue-400/30"></div>
                 <div class="text-center">
                     <div class="text-3xl font-bold text-orange-400">
-                        <?= count(array_filter($beneficiaries, fn($b) => $b['status'] === 'graduated')) ?>
+                        <?= count(array_filter($beneficiaries, fn($b) => ($b['is_passout'] ?? '') === 'passout')) ?>
                     </div>
                     <div class="text-blue-200">Graduated</div>
                 </div>
-            </div>
+            </div></div>
+        </div>
+    </div>
+</div>
         </div>
     </div>
 </div>
@@ -65,7 +68,7 @@
                 <select id="statusFilter" class="rounded-lg border-gray-300 text-sm focus:ring-blue-500 focus:border-blue-500">
                     <option value="">All Status</option>
                     <option value="active">Active</option>
-                    <option value="graduated">Graduated</option>
+                    <option value="passout">Graduated</option>
                     <option value="inactive">Inactive</option>
                 </select>
             </div>
@@ -85,10 +88,11 @@
         <?php if (!empty($beneficiaries)): ?>
             <div id="beneficiariesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 <?php foreach ($beneficiaries as $beneficiary): ?>
-                    <div class="beneficiary-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 group transform hover:-translate-y-2"
+                    <div class="beneficiary-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 group transform hover:-translate_y-2"
                          data-status="<?= esc($beneficiary['status']) ?>"
+                         data-passout="<?= esc($beneficiary['is_passout'] ?? '') ?>"
                          data-name="<?= esc(strtolower($beneficiary['name'])) ?>"
-                         data-course="<?= esc(strtolower($beneficiary['course_name'])) ?>"
+                         data-course="<?= esc(strtolower($beneficiary['course'])) ?>"
                          data-institution="<?= esc(strtolower($beneficiary['institution'])) ?>">
                         
                         <!-- Card Header -->
@@ -112,12 +116,14 @@
                             <!-- Status Badge -->
                             <div class="absolute top-4 right-4">
                                 <?php 
-                                $statusConfig = [
-                                    'active' => ['bg-green-500', 'text-white', 'Active'],
-                                    'graduated' => ['bg-blue-500', 'text-white', 'Graduated'],
-                                    'inactive' => ['bg-gray-500', 'text-white', 'Inactive']
-                                ];
-                                $config = $statusConfig[$beneficiary['status']] ?? ['bg-gray-500', 'text-white', 'Unknown'];
+                                $isPassout = $beneficiary['is_passout'] ?? '';
+                                if ($isPassout === 'passout') {
+                                    $config = ['bg-blue-500', 'text-white', 'Graduated'];
+                                } elseif ($beneficiary['status'] === 'active') {
+                                    $config = ['bg-green-500', 'text-white', 'Active'];
+                                } else {
+                                    $config = ['bg-gray-500', 'text-white', 'Inactive'];
+                                }
                                 ?>
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium <?= $config[0] ?> <?= $config[1] ?>">
                                     <i class="fas fa-circle w-2 h-2 mr-2"></i>
@@ -136,7 +142,7 @@
                                     </div>
                                     <div class="flex-1 min-w-0">
                                         <h4 class="font-semibold text-gray-900 leading-tight">
-                                            <?= esc($beneficiary['course_name']) ?>
+                                            <?= esc($beneficiary['course']) ?>
                                         </h4>
                                         <p class="text-gray-600 text-sm mt-1 leading-relaxed" title="<?= esc($beneficiary['institution']) ?>">
                                             <?= esc(strlen($beneficiary['institution']) > 40 ? substr($beneficiary['institution'], 0, 40) . '...' : $beneficiary['institution']) ?>
@@ -145,16 +151,16 @@
                                 </div>
                             </div>
 
-                            <!-- Scholarship Information -->
-                            <?php if (!empty($beneficiary['scholarship_amount']) && is_numeric($beneficiary['scholarship_amount']) && $beneficiary['scholarship_amount'] > 0): ?>
-                                <div class="bg-orange-50 rounded-xl p-4">
+                            <!-- Company Information -->
+                            <?php if (!empty($beneficiary['company_name'])): ?>
+                                <div class="bg-blue-50 rounded-xl p-4">
                                     <div class="flex items-center space-x-3">
-                                        <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-                                            <i class="fas fa-award text-white text-sm"></i>
+                                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-building text-white text-sm"></i>
                                         </div>
                                         <div>
-                                            <p class="text-orange-800 font-semibold text-sm">Scholarship Amount</p>
-                                            <p class="text-orange-600 font-bold">₹<?= number_format((float)$beneficiary['scholarship_amount']) ?></p>
+                                            <p class="text-blue-800 font-semibold text-sm">Company</p>
+                                            <p class="text-blue-600 font-bold"><?= esc($beneficiary['company_name']) ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -169,38 +175,43 @@
                                     </div>
                                 <?php endif; ?>
 
-                                <?php if (!empty($beneficiary['mobile_number'])): ?>
+                                <?php if (!empty($beneficiary['phone'])): ?>
                                     <div class="flex items-center space-x-3 text-sm text-gray-600">
                                         <i class="fas fa-phone w-4 text-green-500"></i>
-                                        <span><?= esc($beneficiary['mobile_number']) ?></span>
+                                        <span><?= esc($beneficiary['phone']) ?></span>
                                     </div>
                                 <?php endif; ?>
 
-                                <?php if (!empty($beneficiary['expected_graduation'])): ?>
+                                <?php if (!empty($beneficiary['city']) && !empty($beneficiary['state'])): ?>
                                     <div class="flex items-center space-x-3 text-sm text-gray-600">
-                                        <i class="fas fa-calendar w-4 text-purple-500"></i>
-                                        <span>Expected: <?= date('M Y', strtotime($beneficiary['expected_graduation'])) ?></span>
+                                        <i class="fas fa-map-marker-alt w-4 text-purple-500"></i>
+                                        <span><?= esc($beneficiary['city']) ?>, <?= esc($beneficiary['state']) ?></span>
+                                    </div>
+                                <?php elseif (!empty($beneficiary['city'])): ?>
+                                    <div class="flex items-center space-x-3 text-sm text-gray-600">
+                                        <i class="fas fa-map-marker-alt w-4 text-purple-500"></i>
+                                        <span><?= esc($beneficiary['city']) ?></span>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if (!empty($beneficiary['age'])): ?>
+                                    <div class="flex items-center space-x-3 text-sm text-gray-600">
+                                        <i class="fas fa-user w-4 text-orange-500"></i>
+                                        <span><?= esc($beneficiary['age']) ?> years old</span>
                                     </div>
                                 <?php endif; ?>
                             </div>
 
-                            <!-- Family Background -->
-                            <?php if (!empty($beneficiary['father_name']) || !empty($beneficiary['family_income'])): ?>
+                            <!-- Additional Information -->
+                            <?php if (!empty($beneficiary['family_background'])): ?>
                                 <div class="bg-gray-50 rounded-xl p-4 space-y-2">
                                     <h5 class="font-semibold text-gray-800 text-sm flex items-center">
                                         <i class="fas fa-users w-4 mr-2 text-gray-600"></i>
-                                        Family Background
+                                        Background
                                     </h5>
-                                    <?php if (!empty($beneficiary['father_name'])): ?>
-                                        <p class="text-gray-600 text-sm">
-                                            <span class="font-medium">Father:</span> <?= esc($beneficiary['father_name']) ?>
-                                        </p>
-                                    <?php endif; ?>
-                                    <?php if (!empty($beneficiary['family_income']) && is_numeric($beneficiary['family_income'])): ?>
-                                        <p class="text-gray-600 text-sm">
-                                            <span class="font-medium">Family Income:</span> ₹<?= number_format((float)$beneficiary['family_income']) ?>/year
-                                        </p>
-                                    <?php endif; ?>
+                                    <p class="text-gray-600 text-sm">
+                                        <?= esc(substr($beneficiary['family_background'], 0, 100)) ?><?= strlen($beneficiary['family_background']) > 100 ? '...' : '' ?>
+                                    </p>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -287,13 +298,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const course = card.dataset.course;
             const institution = card.dataset.institution;
             const status = card.dataset.status;
+            const passout = card.dataset.passout;
 
             const matchesSearch = !searchTerm || 
                 name.includes(searchTerm) || 
                 course.includes(searchTerm) || 
                 institution.includes(searchTerm);
             
-            const matchesStatus = !statusValue || status === statusValue;
+            let matchesStatus = true;
+            if (statusValue) {
+                if (statusValue === 'passout') {
+                    matchesStatus = passout === 'passout';
+                } else {
+                    matchesStatus = status === statusValue && passout !== 'passout';
+                }
+            }
 
             if (matchesSearch && matchesStatus) {
                 card.style.display = 'block';
@@ -319,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Modal Functions
 function showStudentDetails(student) {
     document.getElementById('modalName').textContent = student.name;
-    document.getElementById('modalCourse').textContent = student.course_name;
+    document.getElementById('modalCourse').textContent = student.course;
     
     const modalContent = document.getElementById('modalContent');
     modalContent.innerHTML = `
@@ -329,9 +348,11 @@ function showStudentDetails(student) {
                     <h4 class="text-lg font-semibold text-gray-900 border-b pb-2">Personal Information</h4>
                     <div class="space-y-3">
                         <div><span class="font-medium text-gray-700">Email:</span> <span class="text-gray-600">${student.email || 'Not provided'}</span></div>
-                        <div><span class="font-medium text-gray-700">Phone:</span> <span class="text-gray-600">${student.mobile_number || 'Not provided'}</span></div>
+                        <div><span class="font-medium text-gray-700">Phone:</span> <span class="text-gray-600">${student.phone || 'Not provided'}</span></div>
+                        <div><span class="font-medium text-gray-700">Age:</span> <span class="text-gray-600">${student.age || 'Not provided'}</span></div>
+                        <div><span class="font-medium text-gray-700">Location:</span> <span class="text-gray-600">${student.city ? (student.state ? student.city + ', ' + student.state : student.city) : 'Not provided'}</span></div>
                         <div><span class="font-medium text-gray-700">Status:</span> 
-                            <span class="px-2 py-1 rounded-full text-xs font-medium ${getStatusClass(student.status)}">${student.status.charAt(0).toUpperCase() + student.status.slice(1)}</span>
+                            <span class="px-2 py-1 rounded-full text-xs font-medium ${getStatusClass(student.status, student.is_passout)}">${getStatusText(student.status, student.is_passout)}</span>
                         </div>
                     </div>
                 </div>
@@ -341,27 +362,40 @@ function showStudentDetails(student) {
                     <div class="space-y-3">
                         <div><span class="font-medium text-gray-700">Institution:</span> <span class="text-gray-600">${student.institution}</span></div>
                         <div><span class="font-medium text-gray-700">Education Level:</span> <span class="text-gray-600">${student.education_level}</span></div>
-                        ${student.expected_graduation ? `<div><span class="font-medium text-gray-700">Expected Graduation:</span> <span class="text-gray-600">${new Date(student.expected_graduation).toLocaleDateString()}</span></div>` : ''}
+                        <div><span class="font-medium text-gray-700">Course:</span> <span class="text-gray-600">${student.course}</span></div>
                     </div>
                 </div>
             </div>
             
-            ${student.scholarship_amount > 0 && !isNaN(student.scholarship_amount) ? `
-                <div class="bg-orange-50 rounded-xl p-4">
-                    <h4 class="text-lg font-semibold text-orange-800 mb-3">Scholarship Details</h4>
+            ${student.company_name ? `
+                <div class="bg-blue-50 rounded-xl p-4">
+                    <h4 class="text-lg font-semibold text-blue-800 mb-3">Professional Information</h4>
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div><span class="font-medium text-orange-700">Scholarship Amount:</span> <span class="text-orange-600 font-bold">₹${parseFloat(student.scholarship_amount).toLocaleString()}</span></div>
-                        ${student.total_fees > 0 && !isNaN(student.total_fees) ? `<div><span class="font-medium text-orange-700">Total Fees:</span> <span class="text-orange-600">₹${parseFloat(student.total_fees).toLocaleString()}</span></div>` : ''}
+                        <div><span class="font-medium text-blue-700">Company:</span> <span class="text-blue-600 font-bold">${student.company_name}</span></div>
+                        ${student.company_link ? `<div><span class="font-medium text-blue-700">Company Website:</span> <a href="${student.company_link}" target="_blank" class="text-blue-600 hover:underline">Visit Website</a></div>` : ''}
                     </div>
                 </div>
             ` : ''}
             
-            ${student.father_name || student.family_income ? `
+            ${student.family_background || student.academic_achievements || student.career_goals ? `
                 <div class="bg-gray-50 rounded-xl p-4">
-                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Family Background</h4>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        ${student.father_name ? `<div><span class="font-medium text-gray-700">Father's Name:</span> <span class="text-gray-600">${student.father_name}</span></div>` : ''}
-                        ${student.family_income && !isNaN(student.family_income) ? `<div><span class="font-medium text-gray-700">Family Income:</span> <span class="text-gray-600">₹${parseFloat(student.family_income).toLocaleString()}/year</span></div>` : ''}
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Additional Information</h4>
+                    <div class="space-y-3">
+                        ${student.family_background ? `<div><span class="font-medium text-gray-700">Background:</span> <p class="text-gray-600 mt-1">${student.family_background}</p></div>` : ''}
+                        ${student.academic_achievements ? `<div><span class="font-medium text-gray-700">Achievements:</span> <p class="text-gray-600 mt-1">${student.academic_achievements}</p></div>` : ''}
+                        ${student.career_goals ? `<div><span class="font-medium text-gray-700">Career Goals:</span> <p class="text-gray-600 mt-1">${student.career_goals}</p></div>` : ''}
+                    </div>
+                </div>
+            ` : ''}
+            
+            ${student.linkedin_url ? `
+                <div class="bg-indigo-50 rounded-xl p-4">
+                    <h4 class="text-lg font-semibold text-indigo-800 mb-3">Professional Links</h4>
+                    <div>
+                        <a href="${student.linkedin_url}" target="_blank" class="text-indigo-600 hover:underline flex items-center">
+                            <i class="fab fa-linkedin mr-2"></i>
+                            LinkedIn Profile
+                        </a>
                     </div>
                 </div>
             ` : ''}
@@ -377,13 +411,22 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-function getStatusClass(status) {
+function getStatusClass(status, isPassout) {
+    if (isPassout === 'passout') {
+        return 'bg-blue-100 text-blue-800';
+    }
     const classes = {
         'active': 'bg-green-100 text-green-800',
-        'graduated': 'bg-blue-100 text-blue-800',
         'inactive': 'bg-gray-100 text-gray-800'
     };
     return classes[status] || 'bg-gray-100 text-gray-800';
+}
+
+function getStatusText(status, isPassout) {
+    if (isPassout === 'passout') {
+        return 'Graduated';
+    }
+    return status.charAt(0).toUpperCase() + status.slice(1);
 }
 
 // Close modal when clicking outside

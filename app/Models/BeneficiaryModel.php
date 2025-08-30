@@ -91,7 +91,7 @@ class BeneficiaryModel extends Model
         return $builder->countAllResults();
     }
 
-    public function getActiveBeneficiariesByStatus($isPassout = false, $limit = null, $offset = null, $search = null)
+    public function getActiveBeneficiariesByStatus($isPassout = 'currently_studying', $limit = null, $offset = null, $search = null)
     {
         $builder = $this->where('status', 'active')
             ->where('is_passout', $isPassout);
@@ -112,7 +112,7 @@ class BeneficiaryModel extends Model
         return $builder->findAll();
     }
 
-    public function countActiveBeneficiariesByStatus($isPassout = false, $search = null)
+    public function countActiveBeneficiariesByStatus($isPassout = 'currently_studying', $search = null)
     {
         $builder = $this->where('status', 'active')
             ->where('is_passout', $isPassout);
@@ -135,7 +135,11 @@ class BeneficiaryModel extends Model
 
         // Filter by passout status if specified
         if ($isPassout !== null) {
-            $builder->where('is_passout', $isPassout ? 1 : 0);
+            if ($isPassout === true || $isPassout === 'passout') {
+                $builder->where('is_passout', 'passout');
+            } else {
+                $builder->where('is_passout', 'currently_studying');
+            }
         }
 
         // Add search functionality
