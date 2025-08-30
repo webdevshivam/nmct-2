@@ -249,12 +249,12 @@
                         </div>
                         <div>
                             <h3 class="text-lg font-bold text-gray-900"><?= esc($story['title']) ?></h3>
-                            <p class="text-gray-600 text-sm"><?= esc($story['category']) ?></p>
+                            <p class="text-gray-600 text-sm"><?= esc($story['current_position'] ?? 'Success Story') ?></p>
                         </div>
                     </div>
                     
                     <p class="text-gray-700 leading-relaxed mb-6">
-                        <?= esc(substr(strip_tags($story['content']), 0, 150)) ?>...
+                        <?= esc(substr(strip_tags($story['story']), 0, 150)) ?>...
                     </p>
                     
                     <div class="flex items-center justify-between">

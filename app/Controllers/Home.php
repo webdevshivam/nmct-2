@@ -20,7 +20,12 @@ class Home extends BaseController
             'title' => 'Nayantara Memorial Charitable Trust',
             'students' => $studentModel->getActiveStudents(),
             'student_stats' => $studentModel->getStudentStats(),
-            'success_stories' => $successStoryModel->where('status', 'published')->orderBy('created_at', 'DESC')->limit(3)->findAll(),
+            'success_stories' => $successStoryModel->select('success_stories.*, students.name as student_name')
+                                                  ->join('students', 'students.id = success_stories.student_id', 'left')
+                                                  ->where('success_stories.status', 'published')
+                                                  ->orderBy('success_stories.created_at', 'DESC')
+                                                  ->limit(3)
+                                                  ->findAll(),
             'recent_activities' => $activityModel->getRecentActivities(3),
             'site_settings' => $siteSettingsModel->getAllSettings()
         ];

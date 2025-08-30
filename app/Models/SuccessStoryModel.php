@@ -13,18 +13,14 @@ class SuccessStoryModel extends Model
     protected $useSoftDeletes = false;
     protected $protectFields = true;
     protected $allowedFields = [
-        'name',
-        'age',
-        'education',
-        'current_position',
-        'company',
-        'city',
-        'state',
-        'linkedin_url',
-        'company_link',
+        'student_id',
+        'title',
         'story',
-        'achievements',
-        'image',
+        'achievement',
+        'current_position',
+        'company_organization',
+        'photo_url',
+        'is_featured',
         'status'
     ];
 
@@ -35,32 +31,44 @@ class SuccessStoryModel extends Model
 
     // Validation
     protected $validationRules = [
-        'name' => 'required|min_length[3]|max_length[255]',
-        'age' => 'required|integer|greater_than[0]',
-        'education' => 'required|max_length[255]',
-        'current_position' => 'required|max_length[255]',
-        'company' => 'required|max_length[255]',
-        'city' => 'required|max_length[100]',
-        'state' => 'required|max_length[100]',
-        'linkedin_url' => 'permit_empty|valid_url|max_length[500]',
-        'company_link' => 'permit_empty|valid_url|max_length[500]',
+        'title' => 'required|min_length[3]|max_length[200]',
         'story' => 'required',
-        'status' => 'required|in_list[active,inactive]'
+        'current_position' => 'permit_empty|max_length[200]',
+        'company_organization' => 'permit_empty|max_length[200]',
+        'achievement' => 'permit_empty|max_length[300]',
+        'status' => 'required|in_list[draft,published]',
+        'is_featured' => 'permit_empty|in_list[0,1]'
     ];
 
     public function getPublishedStories($limit = null, $offset = null)
     {
-        $builder = $this->where('status', 'active');
+        $builder = $this->select('success_stories.*, students.name as student_name, students.course, students.institution')
+                        ->join('students', 'students.id = success_stories.student_id', 'left')
+                        ->where('success_stories.status', 'published');
 
         if ($limit) {
             $builder->limit($limit, $offset);
         }
 
-        return $builder->orderBy('created_at', 'DESC')->findAll();
+        return $builder->orderBy('success_stories.created_at', 'DESC')->findAll();
     }
 
     public function countPublishedStories()
     {
-        return $this->where('status', 'active')->countAllResults();
+        return $this->where('status', 'published')->countAllResults();
+    }
+
+    public function getFeaturedStories($limit = null)
+    {
+        $builder = $this->select('success_stories.*, students.name as student_name, students.course, students.institution')
+                        ->join('students', 'students.id = success_stories.student_id', 'left')
+                        ->where('success_stories.status', 'published')
+                        ->where('success_stories.is_featured', 1);
+
+        if ($limit) {
+            $builder->limit($limit);
+        }
+
+        return $builder->orderBy('success_stories.created_at', 'DESC')->findAll();
     }
 }
