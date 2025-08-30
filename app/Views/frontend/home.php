@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -506,7 +505,7 @@
                 <h2 class="section-title">Our Impact in Numbers</h2>
                 <p class="section-subtitle">Every number represents a life transformed, a dream fulfilled, and a future brightened through education.</p>
             </div>
-            
+
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-icon total">
@@ -515,7 +514,7 @@
                     <div class="stat-number"><?= $beneficiary_stats['total'] ?></div>
                     <div class="stat-label">Total Beneficiaries</div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-icon active">
                         <i class="fas fa-user-check"></i>
@@ -523,7 +522,7 @@
                     <div class="stat-number"><?= $beneficiary_stats['active'] ?></div>
                     <div class="stat-label">Active Students</div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-icon passout">
                         <i class="fas fa-trophy"></i>
@@ -531,7 +530,7 @@
                     <div class="stat-number"><?= $beneficiary_stats['passouts'] ?></div>
                     <div class="stat-label">Graduates</div>
                 </div>
-                
+
                 <div class="stat-card">
                     <div class="stat-icon studying">
                         <i class="fas fa-book-open"></i>
@@ -550,7 +549,7 @@
                 <h2 class="section-title">Success Stories in Progress</h2>
                 <p class="section-subtitle">Meet some of our remarkable beneficiaries who have successfully transitioned from students to professionals, making their mark in the industry.</p>
             </div>
-            
+
             <div class="beneficiaries-grid">
                 <?php if (!empty($featured_beneficiaries)): ?>
                     <?php foreach ($featured_beneficiaries as $beneficiary): ?>
@@ -580,7 +579,7 @@
                                         </div>
                                     <?php endif; ?>
                                 </div>
-                                
+
                                 <?php if (!empty($beneficiary['company_name'])): ?>
                                     <a href="<?= !empty($beneficiary['company_link']) ? esc($beneficiary['company_link']) : '#' ?>" 
                                        class="company-link" 
@@ -602,6 +601,35 @@
         </div>
     </section>
 
+    <!-- Mission & Vision Section -->
+        <section class="mission-section">
+            <div class="container">
+                <div class="mission-grid">
+                    <div class="mission-item">
+                        <div class="mission-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>To provide quality education and opportunities to underprivileged students, enabling them to achieve their full potential and contribute meaningfully to society.</p>
+                    </div>
+                    <div class="mission-item">
+                        <div class="mission-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>A world where every child has access to quality education regardless of their economic background, creating a more equitable and prosperous society.</p>
+                    </div>
+                    <div class="mission-item">
+                        <div class="mission-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Our Values</h3>
+                        <p>We believe in transparency, accountability, and making a lasting impact through education, mentorship, and community support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     <!-- Success Stories Preview -->
     <?php if (!empty($success_stories)): ?>
     <section class="success-preview" id="success-stories">
@@ -610,7 +638,7 @@
                 <h2 class="section-title">Inspiring Success Stories</h2>
                 <p class="section-subtitle">Real stories of transformation, perseverance, and achievement from our beneficiaries who have made their mark in their respective fields.</p>
             </div>
-            
+
             <div class="stories-grid">
                 <?php foreach ($success_stories as $story): ?>
                     <div class="story-card">

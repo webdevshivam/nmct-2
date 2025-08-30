@@ -38,7 +38,7 @@ class Home extends BaseController
         $site_settings = $siteSettingsModel->getAllSettings();
 
         $data = [
-            'title' => 'Nayantara Memorial Charitable Trust - Empowering Education',
+            'title' => 'Nayantara Trust - Empowering Rural Education',
             'students' => $students,
             'student_stats' => $student_stats,
             'success_stories' => $success_stories,
