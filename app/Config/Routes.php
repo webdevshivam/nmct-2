@@ -17,6 +17,9 @@ $routes->get('/hi/activities', 'Home::activities/hi');
 
 // Frontend routes
 $routes->get('students', 'Home::students');
+$routes->get('beneficiaries', 'Home::beneficiaries');
+$routes->get('success-stories', 'Home::successStories');
+$routes->get('activities', 'Home::activities');
 $routes->get('students/load-more', 'Home::loadMoreStudents');
 $routes->get('uploads/students/(:any)', 'Home::serveStudentImage/$1');
 $routes->get('success-stories', 'Home::successStories');

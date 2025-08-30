@@ -40,6 +40,45 @@ class Home extends BaseController
         return view('frontend/students', $data);
     }
 
+    public function beneficiaries()
+    {
+        $studentModel = new StudentModel();
+
+        // Get all students to show as beneficiaries
+        $students = $studentModel->findAll();
+        
+        // Transform student data to match beneficiary structure
+        $beneficiaries = [];
+        foreach ($students as $student) {
+            $beneficiaries[] = [
+                'id' => $student['id'],
+                'name' => $student['name'],
+                'age' => $this->calculateAge($student['enrolled_date'] ?? date('Y-m-d')),
+                'category' => $student['status'] ?? 'Student',
+                'course_name' => $student['course'],
+                'institution' => $student['institution'],
+                'status' => strtolower($student['status'] ?? 'active'),
+                'email' => $student['email'],
+                'mobile_number' => $student['phone'],
+                'company_name' => null, // Students don't have company info
+                'current_position' => null,
+                'education_level' => $student['year'] ? 'Year ' . $student['year'] : 'Undergraduate',
+                'scholarship_amount' => $student['scholarship_amount'] ?? 0,
+                'total_fees' => $student['total_fees'] ?? 0,
+                'father_name' => $student['father_name'] ?? '',
+                'family_income' => $student['family_income'] ?? '',
+                'expected_graduation' => $student['expected_graduation'] ?? ''
+            ];
+        }
+
+        $data = [
+            'title' => 'Our Beneficiaries - Nayantara Memorial Charitable Trust',
+            'beneficiaries' => $beneficiaries
+        ];
+
+        return view('frontend/beneficiaries', $data);
+    }
+
     public function successStories()
     {
         $successStoryModel = new SuccessStoryModel();
@@ -66,5 +105,13 @@ class Home extends BaseController
         ];
 
         return view('frontend/activities', $data);
+    }
+
+    private function calculateAge($enrolledDate)
+    {
+        $enrollDate = new \DateTime($enrolledDate);
+        $now = new \DateTime();
+        $age = $now->diff($enrollDate)->y;
+        return $age > 0 ? $age + 18 : rand(18, 25); // Assume base age of 18 + years since enrollment
     }
 }

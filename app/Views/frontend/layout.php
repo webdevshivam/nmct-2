@@ -68,6 +68,9 @@
                         <a href="<?= base_url('students') ?>" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
                             Our Students
                         </a>
+                        <a href="<?= base_url('beneficiaries') ?>" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
+                            Beneficiaries
+                        </a>
                         <a href="<?= base_url('success-stories') ?>" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
                             Success Stories
                         </a>
@@ -100,6 +103,9 @@
                 </a>
                 <a href="<?= base_url('students') ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700">
                     Our Students
+                </a>
+                <a href="<?= base_url('beneficiaries') ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    Beneficiaries
                 </a>
                 <a href="<?= base_url('success-stories') ?>" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700">
                     Success Stories
