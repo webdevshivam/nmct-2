@@ -146,7 +146,7 @@
                             </div>
 
                             <!-- Scholarship Information -->
-                            <?php if (!empty($beneficiary['scholarship_amount']) && $beneficiary['scholarship_amount'] > 0): ?>
+                            <?php if (!empty($beneficiary['scholarship_amount']) && is_numeric($beneficiary['scholarship_amount']) && $beneficiary['scholarship_amount'] > 0): ?>
                                 <div class="bg-orange-50 rounded-xl p-4">
                                     <div class="flex items-center space-x-3">
                                         <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
@@ -154,7 +154,7 @@
                                         </div>
                                         <div>
                                             <p class="text-orange-800 font-semibold text-sm">Scholarship Amount</p>
-                                            <p class="text-orange-600 font-bold">₹<?= number_format($beneficiary['scholarship_amount']) ?></p>
+                                            <p class="text-orange-600 font-bold">₹<?= number_format((float)$beneficiary['scholarship_amount']) ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -196,9 +196,9 @@
                                             <span class="font-medium">Father:</span> <?= esc($beneficiary['father_name']) ?>
                                         </p>
                                     <?php endif; ?>
-                                    <?php if (!empty($beneficiary['family_income'])): ?>
+                                    <?php if (!empty($beneficiary['family_income']) && is_numeric($beneficiary['family_income'])): ?>
                                         <p class="text-gray-600 text-sm">
-                                            <span class="font-medium">Family Income:</span> ₹<?= number_format($beneficiary['family_income']) ?>/year
+                                            <span class="font-medium">Family Income:</span> ₹<?= number_format((float)$beneficiary['family_income']) ?>/year
                                         </p>
                                     <?php endif; ?>
                                 </div>
@@ -346,12 +346,12 @@ function showStudentDetails(student) {
                 </div>
             </div>
             
-            ${student.scholarship_amount > 0 ? `
+            ${student.scholarship_amount > 0 && !isNaN(student.scholarship_amount) ? `
                 <div class="bg-orange-50 rounded-xl p-4">
                     <h4 class="text-lg font-semibold text-orange-800 mb-3">Scholarship Details</h4>
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div><span class="font-medium text-orange-700">Scholarship Amount:</span> <span class="text-orange-600 font-bold">₹${student.scholarship_amount.toLocaleString()}</span></div>
-                        ${student.total_fees > 0 ? `<div><span class="font-medium text-orange-700">Total Fees:</span> <span class="text-orange-600">₹${student.total_fees.toLocaleString()}</span></div>` : ''}
+                        <div><span class="font-medium text-orange-700">Scholarship Amount:</span> <span class="text-orange-600 font-bold">₹${parseFloat(student.scholarship_amount).toLocaleString()}</span></div>
+                        ${student.total_fees > 0 && !isNaN(student.total_fees) ? `<div><span class="font-medium text-orange-700">Total Fees:</span> <span class="text-orange-600">₹${parseFloat(student.total_fees).toLocaleString()}</span></div>` : ''}
                     </div>
                 </div>
             ` : ''}
@@ -361,7 +361,7 @@ function showStudentDetails(student) {
                     <h4 class="text-lg font-semibold text-gray-800 mb-3">Family Background</h4>
                     <div class="grid md:grid-cols-2 gap-4">
                         ${student.father_name ? `<div><span class="font-medium text-gray-700">Father's Name:</span> <span class="text-gray-600">${student.father_name}</span></div>` : ''}
-                        ${student.family_income ? `<div><span class="font-medium text-gray-700">Family Income:</span> <span class="text-gray-600">₹${student.family_income.toLocaleString()}/year</span></div>` : ''}
+                        ${student.family_income && !isNaN(student.family_income) ? `<div><span class="font-medium text-gray-700">Family Income:</span> <span class="text-gray-600">₹${parseFloat(student.family_income).toLocaleString()}/year</span></div>` : ''}
                     </div>
                 </div>
             ` : ''}

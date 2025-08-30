@@ -69,11 +69,11 @@
                                     </div>
                                 <?php endif; ?>
 
-                                <?php if (!empty($student['scholarship_amount'])): ?>
+                                <?php if (!empty($student['scholarship_amount']) && is_numeric($student['scholarship_amount'])): ?>
                                     <div class="bg-orange-50 rounded-lg p-3 mt-4">
                                         <div class="flex items-center space-x-2">
                                             <i class="fas fa-award text-orange-600"></i>
-                                            <span class="text-orange-800 font-semibold text-sm">Scholarship: ₹<?= number_format($student['scholarship_amount']) ?></span>
+                                            <span class="text-orange-800 font-semibold text-sm">Scholarship: ₹<?= number_format((float)$student['scholarship_amount']) ?></span>
                                         </div>
                                     </div>
                                 <?php endif; ?>

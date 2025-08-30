@@ -199,10 +199,10 @@
                                 <span><?= esc($student['institution']) ?></span>
                             </div>
                             
-                            <?php if (!empty($student['scholarship_amount'])): ?>
+                            <?php if (!empty($student['scholarship_amount']) && is_numeric($student['scholarship_amount'])): ?>
                                 <div class="flex items-center text-sm text-gray-600">
                                     <i class="fas fa-award w-4 mr-2 text-orange-500"></i>
-                                    <span>Scholarship: ₹<?= number_format($student['scholarship_amount']) ?></span>
+                                    <span>Scholarship: ₹<?= number_format((float)$student['scholarship_amount']) ?></span>
                                 </div>
                             <?php endif; ?>
 
