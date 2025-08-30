@@ -42,8 +42,8 @@ class SuccessStoryModel extends Model
 
     public function getPublishedStories($limit = null, $offset = null)
     {
-        $builder = $this->select('success_stories.*, students.name as student_name, students.course, students.institution')
-                        ->join('students', 'students.id = success_stories.student_id', 'left')
+        $builder = $this->select('success_stories.*, beneficiaries.name as student_name, beneficiaries.course, beneficiaries.institution')
+                        ->join('beneficiaries', 'beneficiaries.id = success_stories.student_id', 'left')
                         ->where('success_stories.status', 'published');
 
         if ($limit) {
@@ -60,8 +60,8 @@ class SuccessStoryModel extends Model
 
     public function getFeaturedStories($limit = null)
     {
-        $builder = $this->select('success_stories.*, students.name as student_name, students.course, students.institution')
-                        ->join('students', 'students.id = success_stories.student_id', 'left')
+        $builder = $this->select('success_stories.*, beneficiaries.name as student_name, beneficiaries.course, beneficiaries.institution')
+                        ->join('beneficiaries', 'beneficiaries.id = success_stories.student_id', 'left')
                         ->where('success_stories.status', 'published')
                         ->where('success_stories.is_featured', 1);
 

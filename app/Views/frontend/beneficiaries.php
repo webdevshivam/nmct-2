@@ -51,10 +51,7 @@
                     </div>
                     <div class="text-blue-200">Graduated</div>
                 </div>
-            </div></div>
-        </div>
-    </div>
-</div>
+            </div>
         </div>
     </div>
 </div>
